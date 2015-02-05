@@ -11,4 +11,4 @@ typedef struct{
 }freq_table;
 
 void update_frequency_table(freq_table* freq_tab_p, char character);
-
+void init_freq_table(freq_table* freq_tab_p);

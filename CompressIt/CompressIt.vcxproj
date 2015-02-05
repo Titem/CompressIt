@@ -91,6 +91,16 @@
     <ClInclude Include="..\src\frequency_table_element.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\properties.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CompressIt.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="txt2.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\src\bibel.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

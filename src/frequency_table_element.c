@@ -3,7 +3,7 @@
 freqtab_element* create_freqtab_element(long frequency, char character)
 {
 	freqtab_element* freq;
-	freq = malloc(sizeof(freq));
+	freq = malloc(sizeof(freqtab_element));
 
 	if (freq != NULL)
 	{

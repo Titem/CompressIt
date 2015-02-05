@@ -33,7 +33,7 @@ properties* create_properties(char** argv,int argc)
 	FILE *file_write = NULL;
 
 	properties *p_properties;
-	p_properties = malloc(sizeof(p_properties));
+	p_properties = malloc(sizeof(properties));
 
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
