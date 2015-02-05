@@ -1,12 +1,5 @@
 #include "frequency_table.h"
 
-typedef struct{
-
-	freqtab_element* freq_table[MAX_CHARACTERS];
-	int working_index;
-
-}freq_table;
-
 
 freq_table* create_frequency_table(FILE* input_stream)
 {
@@ -25,7 +18,7 @@ freq_table* create_frequency_table(FILE* input_stream)
 	}
 	else
 	{
-		print_error(cant_malloc_memory);
+		/*print_error(cant_malloc_memory);*/
 		exit(EXIT_FAILURE);
 	}
 	return freq_tab_p;

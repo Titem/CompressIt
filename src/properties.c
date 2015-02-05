@@ -1,4 +1,20 @@
 #include "properties.h"
+#include "error.h"
+
+/*Beschreibt ob codiert oder decodiert werden soll.*/
+char* const COMPPRESS_STATUS = "-c";
+char* const DECOMPRESS_STATUS = "-d";
+
+/*Beschreibt den Namen der Ausgabedatei, wenn keine angegeben wurde.*/
+char* const COMPRESS_NAME = ".hc";
+char* const DECOMPRESS_NAME = ".hd";
+
+/*Beschreibt das Argument für den Hilfe Aufruf.*/
+char* const HELP = "-h";
+
+/*Beschreibt den Lese- bzw- Schreibevorgang.*/
+char* const READ_BINARY = "rb";
+char* const WRITE_BINARY = "wb";
 
 
 properties* create_properties(char** argv,int argc)
@@ -18,10 +34,6 @@ properties* create_properties(char** argv,int argc)
 
 	properties *p_properties;
 	p_properties = malloc(sizeof(p_properties));
-<<<<<<< HEAD
-	
-=======
->>>>>>> origin/master
 
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
@@ -151,5 +163,6 @@ properties* create_properties(char** argv,int argc)
 void delete_properties(properties (*p_properties))
 {
 	free(p_properties);
+	p_properties = NULL;
 }
 

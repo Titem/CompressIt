@@ -1,40 +1,50 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <time.h>
-
-
-/*Jede C-Anwendung muss genau eine Main-Methode enthalten, in der angegeben ist, wo die Programmausführung beginnen soll.*/
-int main(int argc, char** argv);
-
-
+#include "main.h"
+#define VisualStudio
+#define DEBUG
 int main(int argc, char** argv)
 {
+
 	/*Für die Zeit zuständig.*/
 	clock_t begin;
 	clock_t end;
+
 	/*Timer starten*/
 	begin = clock();
 
+/*-----------------------------CODE--------------------------------*/
+	properties* properties;
+	properties = malloc(sizeof(properties));
+
+	freq_table* frequency_table;
+	frequency_table = malloc(sizeof(freq_table));
+	
+	if (properties != NULL && frequency_table != NULL)
+	{
+		properties = create_properties(argv, argc);
+		frequency_table = create_frequency_table(properties->file_read);
+#ifdef DEBUG
+		print_frequency_table(frequency_table);
+#endif 
+
+	}
 
 
 
-	/*CODE*/
 
 
 
 
 
-
+/*-----------------------------CODE--------------------------------*/
 	/*Timer beenden*/
 	end = clock();
 
+	printf("\n Benoetigte Zeit: %i ms", end - begin);
 
-	printf("Benoetigte Zeit: %i ms", end - begin);
 #ifdef VisualStudio
 	getch();
 #endif
+
 	return 0;
 }
 
