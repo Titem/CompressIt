@@ -18,7 +18,10 @@ properties* create_properties(char** argv,int argc)
 
 	properties *p_properties;
 	p_properties = malloc(sizeof(p_properties));
+<<<<<<< HEAD
 	
+=======
+>>>>>>> origin/master
 
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
