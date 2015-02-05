@@ -81,6 +81,7 @@
     <ClCompile Include="..\src\error.c" />
     <ClCompile Include="..\src\frequency_table.c" />
     <ClCompile Include="..\src\frequency_table_element.c" />
+    <ClCompile Include="..\src\main.c" />
     <ClCompile Include="..\src\properties.c" />
   </ItemGroup>
   <ItemGroup>
