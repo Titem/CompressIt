@@ -13,7 +13,6 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-
 #include "freqtab_element.h"
 
 #define MAX_CHARACTERS 256
