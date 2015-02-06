@@ -10,8 +10,10 @@
 #ifndef PQUEUE_H
 #define	PQUEUE_H
 
+#include "htree_element.h"
 
-typedef S_PQUEUE PQUEUE
+
+typedef struct S_PQUEUE PQUEUE;
 
 
 extern PQUEUE* create_pqueue(void);
