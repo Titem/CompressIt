@@ -13,21 +13,18 @@
 
 
 #include <stdio.h>
+
+typedef enum
+{
+	COMPRESS,
+	DECOMPRESS,
+	MANPAGE
+}MODE;
 /*---------------------------------------------------------------------------------*/
 /*---------------DEKLERATION EINER PORPERTIES STRUCT-------------------------------*/
 /*---------------------------------------------------------------------------------*/
-typedef struct
-{
-	enum
-	{
-		COMPRESS,
-		DECOMPRESS,
-	}MODE;
+typedef struct S_PROPERTIES PROPERTIES;
 
-	FILE *file_read;
-	FILE *file_write;
-
-}properties;
 
 
 
@@ -35,14 +32,14 @@ typedef struct
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE STRUCT UND LIEFERT EINEN PROPERTIES POINTER ZURÜCK-------*/
 /*---------------------------------------------------------------------------------*/
-properties* create_properties(char* argv[], int argc);
+PROPERTIES* create_properties(char* argv[], int argc);
 
 
 /*---------------------------------------------------------------------------------*/
 /*------GIBT DEN SPEICHER WIEDER FREI BZW. LÖSCHT EINEN PROPERTIES POINTER---------*/
 /*---------------------------------------------------------------------------------*/
 
-void delete_properties(properties(*p_properties));
+void delete_properties(PROPERTIES(*p_properties));
 
 
 /*---------------------------------------------------------------------------------*/

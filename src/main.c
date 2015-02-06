@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		compress(properties_get_input_stream(properties), properties_get_output_stream(properties));
 	case DECOMPRESS:
 		decompress(properties_get_input_stream(properties), properties_get_output_stream(properties));
-	case MANPAGE:
+	case :
 		print_error(help);
 		/*Hilfestellung*/
 	}

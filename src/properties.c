@@ -16,9 +16,16 @@ char* const HELP = "-h";
 char* const READ_BINARY = "rb";
 char* const WRITE_BINARY = "wb";
 
+struct S_PROPERTIES
+{
 
+	FILE *file_read;
+	FILE *file_write;
+	MODE mode
 
-properties* create_properties(char* argv[],int argc)
+};
+
+PROPERTIES* create_properties(char* argv[], int argc)
 {
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Dekleration von Variablen----------------------------*/
@@ -34,8 +41,8 @@ properties* create_properties(char* argv[],int argc)
 	FILE *file_read = NULL;
 	FILE *file_write = NULL;
 
-	properties *p_properties;
-	p_properties = malloc(sizeof(properties));
+	PROPERTIES *p_properties;
+	p_properties = malloc(sizeof(PROPERTIES));
 
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
@@ -185,7 +192,7 @@ properties* create_properties(char* argv[],int argc)
 	return p_properties;
 }
 
-void delete_properties(properties (*p_properties))
+void delete_properties(PROPERTIES(*p_properties))
 {
 	free(p_properties);
 	p_properties = NULL;
