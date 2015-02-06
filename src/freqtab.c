@@ -12,12 +12,12 @@ freq_table* create_frequency_table(FILE* input_stream)
 	{
 
 		init_freq_table(freq_tab_p);
-		character_from_file = fgetc(input_stream);
+		character_from_file = (char) fgetc(input_stream);
 		while (character_from_file != EOF)
 		{
 			/*character_from_file = check_offset(character_from_file);*/
 			update_frequency_table(freq_tab_p,character_from_file);
-			character_from_file = fgetc(input_stream);
+			character_from_file = (char) fgetc(input_stream);
 			
 		}
 	}
@@ -32,7 +32,7 @@ freq_table* create_frequency_table(FILE* input_stream)
 	return freq_tab_p;
 }
 
-freqtab_init_working_index(freq_table* freq_tab_p)
+void freqtab_init_working_index(freq_table* freq_tab_p)
 {
 	
 	short tmp_working_index = 0;
@@ -92,7 +92,7 @@ void delete_frequency_table(freq_table* freq_tab_p)
 freqtab_element*  frequency_table_get_element(freq_table* freq_tab_p)
 {
 	int i = 0;
-	int tmp_working_index = freq_tab_p->working_index;
+	short tmp_working_index = freq_tab_p->working_index;
 	freqtab_element* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
 
 	for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i] == NULL; i++)
