@@ -10,8 +10,9 @@
 #ifndef CODETAB_H
 #define	CODETAB_H
 
+#include <stdio.h>
 
-typedef CODETAB struct S_CODETAB
+typedef struct S_CODETAB CODETAB;
 
 
 
