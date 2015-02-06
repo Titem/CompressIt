@@ -25,22 +25,14 @@ typedef struct S_FREQTAB FREQTAB;
 /*---------------------------------------------------------------------------------*/
 extern FREQTAB* create_freqtab(FILE* input_stream);
 
-/*---------------------------------------------------------------------------------*/
-/*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
-/*---------------------------------------------------------------------------------*/
-void freqtab_update(FREQTAB* freq_tab_p, unsigned char character);
+
+extern void delete_freqtab(FREQTAB* freq_tab_p);
 
 
-/*---------------------------------------------------------------------------------*/
-/*-----DEN FREQTAB MIT NULL INITIALISIERN------------------------------------------*/
-/*---------------------------------------------------------------------------------*/
-void freqtab_init(FREQTAB* freq_tab_p);
+extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p);
 
 
-/*---------------------------------------------------------------------------------*/
-/*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
-/*---------------------------------------------------------------------------------*/
-void freqtab_init_working_index(FREQTAB* freq_tab_p);
+extern bool freqtab_is_emty(FREQTAB* freq_tab_p);
 
 
 /*---------------------------------------------------------------------------------*/

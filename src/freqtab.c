@@ -1,6 +1,9 @@
 #include "freqtab.h"
 #include "error.h"
 
+
+
+
 struct S_FREQTAB{
 
 	FREQTAB_ELEMENT* freq_table[MAX_CHARACTERS];
@@ -8,7 +11,28 @@ struct S_FREQTAB{
 
 };
 
-FREQTAB* create_freqtab(FILE* input_stream)
+
+
+/*---------------------------------------------------------------------------------*/
+/*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
+/*---------------------------------------------------------------------------------*/
+static void freqtab_update(FREQTAB* freq_tab_p, unsigned char character);
+
+
+/*---------------------------------------------------------------------------------*/
+/*-----DEN FREQTAB MIT NULL INITIALISIERN------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+static void freqtab_init(FREQTAB* freq_tab_p);
+
+
+/*---------------------------------------------------------------------------------*/
+/*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
+/*---------------------------------------------------------------------------------*/
+static void freqtab_init_working_index(FREQTAB* freq_tab_p);
+
+
+
+extern FREQTAB* create_freqtab(FILE* input_stream)
 {
 	char character_from_file;
 	FREQTAB* freq_tab_p;
@@ -38,7 +62,67 @@ FREQTAB* create_freqtab(FILE* input_stream)
 	return freq_tab_p;
 }
 
-void freqtab_init_working_index(FREQTAB* freq_tab_p)
+
+
+
+extern void delete_freqtab(FREQTAB* freq_tab_p)
+{
+	free(freq_tab_p);	
+	freq_tab_p = NULL;
+}
+
+
+
+
+extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
+{
+	int i = 0;
+	short tmp_working_index = freq_tab_p->working_index;
+	freqtab_element* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
+
+	for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i] == NULL; i++)
+	{
+		tmp_working_index++;
+	}
+
+	freq_tab_p->working_index = tmp_working_index;
+
+	return tmp_p;
+}
+
+
+
+
+extern bool freqtab_is_emty(FREQTAB* freq_tab_p)
+{
+
+	return !(freq_tab_p->working_index < 256);
+}
+
+
+
+
+extern void freqtab_print(FREQTAB* freq_tab_p)
+{
+	long count_chars = 0;
+	int i = 0;
+	printf("Zeichen ---> Haeufigkeit ---> NUMERIC\n");
+	printf("------------------------\n");
+	for (i = 0; i < MAX_CHARACTERS; i++)
+	{
+		if (freq_tab_p->freq_table[i] != NULL)
+		{
+			count_chars = count_chars + freq_tab_p->freq_table[i]->frequency;
+			printf("%c ---> %d ---> %d \n", freq_tab_p->freq_table[i]->character, freq_tab_p->freq_table[i]->frequency, freq_tab_p->freq_table[i]->character);
+		}
+	}
+	printf("Zeichen insgesamt : %d \n", count_chars);
+}
+
+
+
+
+static void freqtab_init_working_index(FREQTAB* freq_tab_p)
 {
 	
 	short tmp_working_index = 0;
@@ -56,13 +140,12 @@ void freqtab_init_working_index(FREQTAB* freq_tab_p)
 	{
 		freq_tab_p->working_index = tmp_working_index;
 	}
-
-
-
-
 }
 
-void freqtab_init(FREQTAB* freq_tab_p)
+
+
+
+static void freqtab_init(FREQTAB* freq_tab_p)
 {
 	int i = 0;
 	for (i = 0; i < MAX_CHARACTERS; i++)
@@ -71,7 +154,10 @@ void freqtab_init(FREQTAB* freq_tab_p)
 	}
 }
 
-void freqtab_update(FREQTAB* freq_tab_p, unsigned char character)
+
+
+
+static void freqtab_update(FREQTAB* freq_tab_p, unsigned char character)
 {
 	if(freq_tab_p->freq_table[character] == NULL)
 	{
@@ -87,50 +173,6 @@ void freqtab_update(FREQTAB* freq_tab_p, unsigned char character)
 }
 
 
-void delete_freqtab(FREQTAB* freq_tab_p)
-{
-	free(freq_tab_p);	
-	freq_tab_p = NULL;
-}
 
 
-FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
-{
-	int i = 0;
-	short tmp_working_index = freq_tab_p->working_index;
-	freqtab_element* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
 
-	for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i] == NULL; i++)
-	{
-		tmp_working_index++;
-	}
-
-	freq_tab_p->working_index = tmp_working_index;
-
-	return tmp_p;
-}
-
-
-bool freqtab_is_emty(FREQTAB* freq_tab_p)
-{
-
-	return !(freq_tab_p->working_index < 256);
-}
-
-
-void freqtab_print(FREQTAB* freq_tab_p)
-{
-	long count_chars = 0;
-	int i = 0;
-	printf("Zeichen ---> Haeufigkeit ---> NUMERIC\n");
-	printf("------------------------\n");
-	for (i = 0; i < MAX_CHARACTERS; i++)
-	{
-		if (freq_tab_p->freq_table[i] != NULL)
-		{
-			count_chars = count_chars + freq_tab_p->freq_table[i]->frequency;
-			printf("%c ---> %d ---> %d \n", freq_tab_p->freq_table[i]->character, freq_tab_p->freq_table[i]->frequency, freq_tab_p->freq_table[i]->character);
-		}
-	}
-	printf("Zeichen insgesamt : %d \n", count_chars);
-}
