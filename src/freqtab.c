@@ -1,12 +1,18 @@
 #include "freqtab.h"
 #include "error.h"
 
+struct S_FREQTAB{
 
-freq_table* create_frequency_table(FILE* input_stream)
+	freqtab_element* freq_table[MAX_CHARACTERS];
+	short working_index;
+
+};
+
+FREQTAB* create_frequency_table(FILE* input_stream)
 {
 	char character_from_file;
-	freq_table* freq_tab_p;
-	freq_tab_p = malloc(sizeof(freq_table));
+	FREQTAB* freq_tab_p;
+	freq_tab_p = malloc(sizeof(FREQTAB));
 
 	if (freq_tab_p != NULL)
 	{
@@ -32,7 +38,7 @@ freq_table* create_frequency_table(FILE* input_stream)
 	return freq_tab_p;
 }
 
-void freqtab_init_working_index(freq_table* freq_tab_p)
+void freqtab_init_working_index(FREQTAB* freq_tab_p)
 {
 	
 	short tmp_working_index = 0;
@@ -56,7 +62,7 @@ void freqtab_init_working_index(freq_table* freq_tab_p)
 
 }
 
-void init_freq_table(freq_table* freq_tab_p)
+void init_freq_table(FREQTAB* freq_tab_p)
 {
 	int i = 0;
 	for (i = 0; i < MAX_CHARACTERS; i++)
@@ -65,7 +71,7 @@ void init_freq_table(freq_table* freq_tab_p)
 	}
 }
 
-void update_frequency_table(freq_table* freq_tab_p, unsigned char character)
+void update_frequency_table(FREQTAB* freq_tab_p, unsigned char character)
 {
 	if(freq_tab_p->freq_table[character] == NULL)
 	{
@@ -81,15 +87,15 @@ void update_frequency_table(freq_table* freq_tab_p, unsigned char character)
 }
 
 
-void delete_frequency_table(freq_table* freq_tab_p)
+void delete_frequency_table(FREQTAB* freq_tab_p)
 {
 	free(freq_tab_p);	
 	freq_tab_p = NULL;
 }
 
 
-/*????????????????????WELCHES ELEMENT AN WELCHEM INDEX ODER WIE ? UND WOFÜR IST WORKING INDEX?????????????????????*/
-freqtab_element*  frequency_table_get_element(freq_table* freq_tab_p)
+
+freqtab_element*  frequency_table_get_element(FREQTAB* freq_tab_p)
 {
 	int i = 0;
 	short tmp_working_index = freq_tab_p->working_index;
@@ -106,14 +112,14 @@ freqtab_element*  frequency_table_get_element(freq_table* freq_tab_p)
 }
 
 
-bool frequency_table_is_emty(freq_table* freq_tab_p)
+bool frequency_table_is_emty(FREQTAB* freq_tab_p)
 {
 
 	return !(freq_tab_p->working_index < 256);
 }
 
 
-void print_frequency_table(freq_table* freq_tab_p) 
+void print_frequency_table(FREQTAB* freq_tab_p)
 {
 	long count_chars = 0;
 	int i = 0;

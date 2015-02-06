@@ -26,6 +26,7 @@ properties* create_properties(char* argv[],int argc)
 
 	bool found_input_document = false;
 	bool found_out_put_document = false;
+	bool need_help = false;
 
 	char *output_file_name = NULL;
 	char *input_file_name = NULL;
@@ -116,8 +117,8 @@ properties* create_properties(char* argv[],int argc)
 			
 			if (*argv != NULL && strcmp(*argv, HELP) == 0)
 			{
-				print_error(help);
-				exit(EXIT_FAILURE);
+				p_properties->MODE = MANPAGE;
+				need_help = true;
 			}
 			/*else if (argc >= 1 && !found_input_document)
 			{
@@ -139,7 +140,7 @@ properties* create_properties(char* argv[],int argc)
 /*----Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung----*/
 /*----------------------------------------------------------------------------------------------*/
 	printf("Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung !\n");
-	if (!found_out_put_document)
+	if (!found_out_put_document && !need_help)
 	{
 		if (p_properties->MODE == COMPRESS)
 		{
@@ -152,32 +153,34 @@ properties* create_properties(char* argv[],int argc)
 			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
 		}	
 	}
-	else if (found_input_document && found_out_put_document && (strcmp(input_file_name, output_file_name) == 0))
+	else if (found_input_document && found_out_put_document && (strcmp(input_file_name, output_file_name) == 0) && !need_help)
 	{
 		print_error(in_and_output_document_are_the_same);
 		exit(EXIT_FAILURE);
 	}
 
-/*---------------------------------------------------------------------------------*/
-/*----------------------FILE POINTER setzen und prüfen-----------------------------*/
-/*---------------------------------------------------------------------------------*/
-	printf("FILE POINTER setzen und prüfen !\n");
+	if (!need_help)
+	{
+		/*---------------------------------------------------------------------------------*/
+		/*----------------------FILE POINTER setzen und prüfen-----------------------------*/
+		/*---------------------------------------------------------------------------------*/
+		printf("FILE POINTER setzen und prüfen !\n");
 
-	printf("FP READ Stream geöffnet !\n");
-	file_read = fopen(input_file_name, READ_BINARY);
-	test_nullpointer_exception(file_read, input_file_name);
+		printf("FP READ Stream geöffnet !\n");
+		file_read = fopen(input_file_name, READ_BINARY);
+		test_nullpointer_exception(file_read, input_file_name);
 
-	printf("FP WRITE Stream geöffnet !\n");
-	file_write = fopen(output_file_name, WRITE_BINARY);
-	test_nullpointer_exception(file_write, output_file_name);
+		printf("FP WRITE Stream geöffnet !\n");
+		file_write = fopen(output_file_name, WRITE_BINARY);
+		test_nullpointer_exception(file_write, output_file_name);
 
-/*---------------------------------------------------------------------------------*/
-/*-------------FILE POINTER in die PROPERTIES STRUCT übernehmen--------------------*/
-/*---------------------------------------------------------------------------------*/
-	printf("FILE POINTER in die PROPERTIES STRUCT übernehmen !\n");
-	p_properties->file_read = file_read;
-	p_properties->file_write = file_write;
-
+		/*---------------------------------------------------------------------------------*/
+		/*-------------FILE POINTER in die PROPERTIES STRUCT übernehmen--------------------*/
+		/*---------------------------------------------------------------------------------*/
+		printf("FILE POINTER in die PROPERTIES STRUCT übernehmen !\n");
+		p_properties->file_read = file_read;
+		p_properties->file_write = file_write;
+	}
 	printf("END OF OPERATION!\n");
 	return p_properties;
 }

@@ -9,6 +9,7 @@
 
 #ifndef COMPRESSOR_H
 #define	COMPRESSOR_H
+#include <stdio.h>
 
 
 extern void compress(FILE* input_stream, FILE* output_stream);
