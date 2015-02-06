@@ -16,9 +16,16 @@ char* const HELP = "-h";
 char* const READ_BINARY = "rb";
 char* const WRITE_BINARY = "wb";
 
+struct S_PROPERTIES
+{
 
+	FILE *file_read;
+	FILE *file_write;
+	MODE mode
 
-properties* create_properties(char* argv[],int argc)
+};
+
+PROPERTIES* create_properties(char* argv[], int argc)
 {
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Dekleration von Variablen----------------------------*/
@@ -34,8 +41,8 @@ properties* create_properties(char* argv[],int argc)
 	FILE *file_read = NULL;
 	FILE *file_write = NULL;
 
-	properties *p_properties;
-	p_properties = malloc(sizeof(properties));
+	PROPERTIES *p_properties;
+	p_properties = malloc(sizeof(PROPERTIES));
 
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
@@ -57,7 +64,7 @@ properties* create_properties(char* argv[],int argc)
 
 			if (!found_input_document && strcmp(*argv, COMPPRESS_STATUS) == 0)
 			{
-				p_properties->MODE = COMPRESS;
+				p_properties->mode = COMPRESS;
 				argc--;
 				argv++;
 
@@ -76,7 +83,7 @@ properties* create_properties(char* argv[],int argc)
 			
 			if (!found_input_document && strcmp(*argv, DECOMPRESS_STATUS) == 0)
 			{
-				p_properties->MODE = DECOMPRESS;
+				p_properties->mode = DECOMPRESS;
 				argc--;
 				argv++;
 
@@ -115,9 +122,9 @@ properties* create_properties(char* argv[],int argc)
 				}
 			}
 			
-			if (*argv != NULL && strcmp(*argv, HELP) == 0)
+			if (*argv != NULL && strcmp(*argv, HELP) == 0 && !need_help)
 			{
-				p_properties->MODE = MANPAGE;
+				p_properties->mode = MANPAGE;
 				need_help = true;
 			}
 			/*else if (argc >= 1 && !found_input_document)
@@ -142,12 +149,12 @@ properties* create_properties(char* argv[],int argc)
 	printf("Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung !\n");
 	if (!found_out_put_document && !need_help)
 	{
-		if (p_properties->MODE == COMPRESS)
+		if (p_properties->mode == COMPRESS)
 		{
 			strcat(output_file_name, COMPRESS_NAME);
 			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
 		}
-		else if (p_properties->MODE == DECOMPRESS)
+		else if (p_properties->mode == DECOMPRESS)
 		{
 			strcat(output_file_name, DECOMPRESS_NAME);
 			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
@@ -185,7 +192,7 @@ properties* create_properties(char* argv[],int argc)
 	return p_properties;
 }
 
-void delete_properties(properties (*p_properties))
+void delete_properties(PROPERTIES(*p_properties))
 {
 	free(p_properties);
 	p_properties = NULL;
@@ -197,7 +204,4 @@ char* init_output_filename(char* input_file_name)
 	char* output_file_name = NULL;
 	output_file_name = malloc(length);
 	return output_file_name;
-
-
-
 }
