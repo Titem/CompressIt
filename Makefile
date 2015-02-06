@@ -85,7 +85,7 @@ $(EXEPATH)/$(EXE) : $(OBJS)
 	@echo Erzeuge $(EXEPATH)/$(EXE)
 	@echo --------------------------------------------------------
 	mkdir -p $(EXEPATH)
-	gcc -o $(EXEPATH)/$(EXE) $(OBJS) $(CFLAGS)
+	gcc -o -f $(EXEPATH)/$(EXE) $(OBJS) $(CFLAGS)
 
 $(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h
 	@echo ========================================================
