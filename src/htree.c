@@ -24,7 +24,7 @@ extern void delete_htree(HTREE* htree)
     
 }
 
-extern CODETABLE_ELEMENT* htree_get_codetab_element(HTREE* htree)
+extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
 {
     
 }
