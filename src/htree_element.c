@@ -3,16 +3,6 @@
 
 #include <stdbool.h>
 
-struct S_HTREE_ELEMENT
-{
-    union
-    {
-        HTREE_LEAF leaf;
-        HTREE_NODE node;
-    } element;
-    bool is_leaf;
-};
-
 
 struct S_HTREE_LEAF
 {
@@ -27,6 +17,21 @@ struct S_HTREE_NODE
     HTREE_ELEMENT* right_child;
     unsigned long weight;
 };
+
+
+struct S_HTREE_ELEMENT
+{
+    union
+    {
+        HTREE_LEAF leaf;
+        HTREE_NODE node;
+    } element;
+    bool is_leaf;
+};
+
+
+
+
 
 
 extern HTREE_ELEMENT* create_htree_node(HTREE_ELEMENT* left_child, 
