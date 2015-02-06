@@ -108,15 +108,8 @@ freqtab_element*  frequency_table_get_element(freq_table* freq_tab_p)
 
 bool frequency_table_is_emty(freq_table* freq_tab_p)
 {
-	bool found_frequency = false;
-	int i = 0;
 
-	for (i = 0; i < MAX_CHARACTERS && !found_frequency; i++)
-	{
-		/*found_frequency = ((freq_tab_p->freq_table[i])->frequency) > 1;*/
-		found_frequency = ((freq_tab_p->freq_table[i]) != NULL);
-	}
-	return !found_frequency;
+	return !(freq_tab_p->working_index < 256);
 }
 
 
