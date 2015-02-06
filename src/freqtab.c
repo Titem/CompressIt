@@ -3,12 +3,12 @@
 
 struct S_FREQTAB{
 
-	freqtab_element* freq_table[MAX_CHARACTERS];
+	FREQTAB_ELEMENT* freq_table[MAX_CHARACTERS];
 	short working_index;
 
 };
 
-FREQTAB* create_frequency_table(FILE* input_stream)
+FREQTAB* create_freqtab(FILE* input_stream)
 {
 	char character_from_file;
 	FREQTAB* freq_tab_p;
@@ -62,7 +62,7 @@ void freqtab_init_working_index(FREQTAB* freq_tab_p)
 
 }
 
-void init_freq_table(FREQTAB* freq_tab_p)
+void freqtab_init(FREQTAB* freq_tab_p)
 {
 	int i = 0;
 	for (i = 0; i < MAX_CHARACTERS; i++)
@@ -71,7 +71,7 @@ void init_freq_table(FREQTAB* freq_tab_p)
 	}
 }
 
-void update_frequency_table(FREQTAB* freq_tab_p, unsigned char character)
+void freqtab_update(FREQTAB* freq_tab_p, unsigned char character)
 {
 	if(freq_tab_p->freq_table[character] == NULL)
 	{
@@ -87,15 +87,14 @@ void update_frequency_table(FREQTAB* freq_tab_p, unsigned char character)
 }
 
 
-void delete_frequency_table(FREQTAB* freq_tab_p)
+void delete_freqtab(FREQTAB* freq_tab_p)
 {
 	free(freq_tab_p);	
 	freq_tab_p = NULL;
 }
 
 
-
-freqtab_element*  frequency_table_get_element(FREQTAB* freq_tab_p)
+FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
 {
 	int i = 0;
 	short tmp_working_index = freq_tab_p->working_index;
@@ -112,14 +111,14 @@ freqtab_element*  frequency_table_get_element(FREQTAB* freq_tab_p)
 }
 
 
-bool frequency_table_is_emty(FREQTAB* freq_tab_p)
+bool freqtab_is_emty(FREQTAB* freq_tab_p)
 {
 
 	return !(freq_tab_p->working_index < 256);
 }
 
 
-void print_frequency_table(FREQTAB* freq_tab_p)
+void freqtab_print(FREQTAB* freq_tab_p)
 {
 	long count_chars = 0;
 	int i = 0;

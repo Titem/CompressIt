@@ -23,18 +23,18 @@ typedef struct S_FREQTAB FREQTAB;
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE FREQTAB--------------------------------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern FREQTAB* create_freqtable(FILE* input_stream);
+extern FREQTAB* create_freqtab(FILE* input_stream);
 
 /*---------------------------------------------------------------------------------*/
 /*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-void update_frequency_table(FREQTAB* freq_tab_p, unsigned char character);
+void freqtab_update(FREQTAB* freq_tab_p, unsigned char character);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----DEN FREQTAB MIT NULL INITIALISIERN------------------------------------------*/
 /*---------------------------------------------------------------------------------*/
-void init_freq_table(FREQTAB* freq_tab_p);
+void freqtab_init(FREQTAB* freq_tab_p);
 
 
 /*---------------------------------------------------------------------------------*/
@@ -46,7 +46,7 @@ void freqtab_init_working_index(FREQTAB* freq_tab_p);
 /*---------------------------------------------------------------------------------*/
 /*-----GIBT DIE FREQUENCY TABELLE AUF DEM BILDSCHIRM AUS---------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern void print_frequency_table(FREQTAB* freq_tab_p);
+extern void freqtab_print(FREQTAB* freq_tab_p);
 
 
 #endif	/* FREQTAB_H */
