@@ -1,7 +1,7 @@
 #include "main.h"
 #define VisualStudio
 #define DEBUG
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {
 
 	/*Für die Zeit zuständig.*/
@@ -14,17 +14,17 @@ int main(int argc, char** argv)
 /*-----------------------------CODE--------------------------------*/
 	properties* properties;
 	properties = malloc(sizeof(properties));
-	FILE* read = fopen("C:/Users/Artur/Documents/Visual Studio 2013/Projects/CompressIt/src/bibel.txt", "r");
+	/*FILE* read = fopen("C:/Users/Artur/Documents/Visual Studio 2013/Projects/CompressIt/src/bibel.txt", "rb");*/
 	freq_table* frequency_table;
 	frequency_table = malloc(sizeof(freq_table));
 	
-	//if (properties != NULL && frequency_table != NULL)
-	//{
-	//	properties = create_properties(argv, argc);
-	//	frequency_table = create_frequency_table(properties->file_read);
-	//}
+	if (properties != NULL && frequency_table != NULL)
+	{
+		properties = create_properties(argv, argc);
+		frequency_table = create_frequency_table(properties->file_read);
+	}
 #ifdef DEBUG
-		frequency_table = create_frequency_table(read);
+		/*frequency_table = create_frequency_table(read);*/
 		print_frequency_table(frequency_table);
 #endif 
 
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 	/*Timer beenden*/
 	end = clock();
 
-	printf("\n Benoetigte Zeit: %i ms", end - begin);
+	printf("\nBenoetigte Zeit: %i ms", end - begin);
 
 #ifdef VisualStudio
 	getch();

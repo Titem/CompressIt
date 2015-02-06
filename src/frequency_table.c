@@ -15,8 +15,10 @@ freq_table* create_frequency_table(FILE* input_stream)
 		character_from_file = fgetc(input_stream);
 		while (character_from_file != EOF)
 		{
+			character_from_file = check_offset(character_from_file);
 			update_frequency_table(freq_tab_p,character_from_file);
 			character_from_file = fgetc(input_stream);
+			
 		}
 	}
 	else
@@ -80,6 +82,7 @@ bool frequency_table_is_emty(freq_table* freq_tab_p)
 
 void print_frequency_table(freq_table* freq_tab_p) 
 {
+	long count_chars = 0;
 	int i = 0;
 	printf("Zeichen ---> Haeufigkeit\n");
 	printf("------------------------\n");
@@ -87,9 +90,19 @@ void print_frequency_table(freq_table* freq_tab_p)
 	{
 		if (freq_tab_p->freq_table[i] != NULL)
 		{
+			count_chars = count_chars + freq_tab_p->freq_table[i]->frequency;
 			printf("%c ---> %d \n", freq_tab_p->freq_table[i]->character,freq_tab_p->freq_table[i]->frequency);
 		}
 	}
+	printf("Zeichen insgesamt : %d \n", count_chars);
 }
 
 //'ä''ü''ö'
+
+char check_offset(char character_from_file)
+{
+	return character_from_file = (character_from_file < 0)
+		? MAX_CHARACTERS - character_from_file
+		: character_from_file;
+
+}

@@ -18,7 +18,7 @@ typedef struct
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE STRUCT UND LIEFERT EINEN PROPERTIES POINTER ZURÜCK-------*/
 /*---------------------------------------------------------------------------------*/
-properties* create_properties(char** argv, int argc);
+properties* create_properties(char* argv[], int argc);
 
 
 /*---------------------------------------------------------------------------------*/

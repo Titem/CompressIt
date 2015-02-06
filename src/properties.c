@@ -17,7 +17,7 @@ char* const READ_BINARY = "rb";
 char* const WRITE_BINARY = "wb";
 
 
-properties* create_properties(char** argv,int argc)
+properties* create_properties(char* argv[],int argc)
 {
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Dekleration von Variablen----------------------------*/
@@ -38,7 +38,7 @@ properties* create_properties(char** argv,int argc)
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-
+	printf("Analyse der Parameter");
 	if (p_properties != NULL)
 	{
 		if ((argc == 1) || (argc == 2) || (argc > 4))
@@ -48,6 +48,8 @@ properties* create_properties(char** argv,int argc)
 		}
 		else
 		{
+			while (argc > 1)
+			{
 			argc--;
 			argv++;
 
@@ -68,7 +70,8 @@ properties* create_properties(char** argv,int argc)
 					exit(EXIT_FAILURE);
 				}
 			}
-			else if (!found_input_document && strcmp(*argv, DECOMPRESS_STATUS) == 0)
+			
+			if (!found_input_document && strcmp(*argv, DECOMPRESS_STATUS) == 0)
 			{
 				p_properties->MODE = DECOMPRESS;
 				argc--;
@@ -85,33 +88,40 @@ properties* create_properties(char** argv,int argc)
 					exit(EXIT_FAILURE);					
 				}
 			}
-			else if (!found_out_put_document && found_input_document)
+			
+			if (!found_out_put_document)
 			{
+				printf("MAYBE");
 				argc--;
 				argv++;
 				if (*argv != NULL)
 				{
+					printf("YES");
 					output_file_name = *argv;
 					found_out_put_document = true;
 				}
 				else
 				{
-					output_file_name = input_file_name;
+					printf("No");
+					strcpy(output_file_name,input_file_name);
+
 				}
 			}
-			else if (strcmp(*argv, HELP) == 0)
+			
+			if (*argv != NULL && strcmp(*argv, HELP) == 0)
 			{
 				print_error(help);
 				exit(EXIT_FAILURE);
 			}
-			else if (argc >= 1 && !found_input_document)
+			/*else if (argc >= 1 && !found_input_document)
 			{
 				print_error(too_many_arguments);
 				print_error(AND);
 				print_error(dont_found_input_document);
 				exit(EXIT_FAILURE);
-			}
+			}*/
 		}
+	}
 	}
 	else
 	{
@@ -122,7 +132,7 @@ properties* create_properties(char** argv,int argc)
 /*----------------------------------------------------------------------------------------------*/
 /*----Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung----*/
 /*----------------------------------------------------------------------------------------------*/
-	
+	printf("Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung");
 	if (!found_out_put_document)
 	{
 		if (p_properties->MODE == COMPRESS)
@@ -143,16 +153,18 @@ properties* create_properties(char** argv,int argc)
 /*---------------------------------------------------------------------------------*/
 /*----------------------FILE POINTER setzen und prüfen-----------------------------*/
 /*---------------------------------------------------------------------------------*/
+	printf("FILE POINTER setzen und prüfen");
+
 	file_read = fopen(input_file_name, READ_BINARY);
 	test_nullpointer_exception(file_read, input_file_name);
 
-	file_write = fopen(output_file_name, WRITE_BINARY);
-	test_nullpointer_exception(file_write, output_file_name);
+	//file_write = fopen(output_file_name, WRITE_BINARY);
+	//test_nullpointer_exception(file_write, output_file_name);
 
 /*---------------------------------------------------------------------------------*/
 /*-------------FILE POINTER in die PROPERTIES STRUCT übernehmen--------------------*/
 /*---------------------------------------------------------------------------------*/
-
+	printf("FILE POINTER in die PROPERTIES STRUCT übernehmen");
 	p_properties->file_read = file_read;
 	p_properties->file_write = file_write;
 
