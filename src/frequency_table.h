@@ -6,7 +6,7 @@
 typedef struct{
 
 	freqtab_element* freq_table[MAX_CHARACTERS];
-	int working_index;
+	short working_index;
 
 }freq_table;
 /*---------------------------------------------------------------------------------*/
@@ -20,8 +20,7 @@ void update_frequency_table(freq_table* freq_tab_p, unsigned char character);
 /*---------------------------------------------------------------------------------*/
 void init_freq_table(freq_table* freq_tab_p);
 
-
 /*---------------------------------------------------------------------------------*/
-/*-----PRÜFT DIE CHARACTER UND FPÜGT EINEN OFFSET HINZU----------------------------*/
+/*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-//char check_offset(char character_from_file);
+freqtab_init_working_index(freq_table* freq_tab_p);

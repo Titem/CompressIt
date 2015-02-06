@@ -30,14 +30,6 @@ int main(int argc, char *argv[])
 #endif 
 
 	
-
-
-
-
-
-
-
-
 /*-----------------------------CODE--------------------------------*/
 	/*Timer beenden*/
 	end = clock();
