@@ -5,6 +5,8 @@
 
 #include "codetab_element.h"
 #include "htree_element.h"
+#include "pqueue.h"
+#include "freqtab.h"
 
 struct S_HTREE
 {
