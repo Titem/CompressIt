@@ -1,6 +1,8 @@
 #include "properties.h"
 #include "freqtab.h"
 #include <time.h>
+#include "compressor.h"
+#include "error.h"
 /* #define VisualStudio */
 #define DEBUG
 
@@ -20,21 +22,20 @@ int main(int argc, char *argv[])
 
 /*-----------------------------CODE--------------------------------*/
 
-	PROPERTIES* properties;
-	properties = malloc(sizeof(properties));
-	/*FILE* read = fopen("C:/Users/Artur/Documents/Visual Studio 2013/Projects/CompressIt/src/bibel.txt", "rb");*/
-	freq_table* frequency_table;
-	frequency_table = malloc(sizeof(freq_table));
-	
-	if (properties != NULL && frequency_table != NULL)
+	PROPERTIES* properties = create_properties(argv, argc);
+	MODE modus = properties_get_mode(properties);
+
+	switch (modus)
 	{
-		properties = create_properties(argv, argc);
-		frequency_table = create_frequency_table(properties_get_input_stream(properties));
+	case COMPRESS:
+		compress(properties_get_input_stream(properties), properties_get_output_stream(properties));
+	case DECOMPRESS:
+		decompress(properties_get_input_stream(properties), properties_get_output_stream(properties));
+	case MANPAGE:
+		print_error(help);
+		/*Hilfestellung*/
 	}
-#ifdef DEBUG
-		/*frequency_table = create_frequency_table(read);*/
-		print_frequency_table(frequency_table);
-#endif 
+
 
 	
 /*-----------------------------CODE--------------------------------*/

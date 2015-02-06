@@ -23,12 +23,7 @@
 /*---------------------------------------------------------------------------------*/
 /*-----STRUCT DEFINITION FÜR FREQUENCY TABLE ELEMENT-------------------------------*/
 /*---------------------------------------------------------------------------------*/
-typedef struct{
-
-	long frequency;
-	char character;
-
-}freqtab_element;
+typedef struct S_FREQTAB_ELEMENT FREQTAB_ELEMENT;
 
 #define ININIT_CHARCTER 1
 
@@ -36,31 +31,31 @@ typedef struct{
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUES FREQUENCY TABLE ELEMENT---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-freqtab_element* create_freqtab_element(char character);
+FREQTAB_ELEMENT* create_freqtab_element(char character);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----LÖSCHT EIN FREQUENCY TABLE ELEMENT BZW GIBT DEN SPEICHER WIEDER FREI--------*/
 /*---------------------------------------------------------------------------------*/
-void delete_freqtab_element(freqtab_element* freq);
+void delete_freqtab_element(FREQTAB_ELEMENT* freq);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----LIEFERT DAS ZEICHEN EINER FREQUENCY TABLE ELEMENT---------------------------*/
 /*---------------------------------------------------------------------------------*/
-char freqtab_elememt_get_char(freqtab_element* freq);
+char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----LIEFERT DIE HÄUFIGKEIT EINER FREQUENCY TABLE ELEMENT------------------------*/
 /*---------------------------------------------------------------------------------*/
-long freqtab_element_get_frequency(freqtab_element* freq);
+long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq);
 
 
 /*---------------------------------------------------------------------------------*/
 /*------ERHÖHT DIE HÄUFIGKEIT EINER FREQUENCY TABLE ELEMENT------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern void freqtab_element_inc_frequency(freqtab_element* freq);
+extern void freqtab_element_inc_frequency(FREQTAB_ELEMENT* freq);
 
 
 

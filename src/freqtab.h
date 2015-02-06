@@ -18,40 +18,35 @@
 #define MAX_CHARACTERS 256
 
 
-typedef struct{
-
-	freqtab_element* freq_table[MAX_CHARACTERS];
-	short working_index;
-
-}freq_table;
+typedef struct S_FREQTAB FREQTAB;
 
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE FREQTAB--------------------------------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern freq_table* create_frequency_table(FILE* input_stream);
+extern FREQTAB* create_frequency_table(FILE* input_stream);
 
 /*---------------------------------------------------------------------------------*/
 /*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-void update_frequency_table(freq_table* freq_tab_p, unsigned char character);
+void update_frequency_table(FREQTAB* freq_tab_p, unsigned char character);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----DEN FREQTAB MIT NULL INITIALISIERN------------------------------------------*/
 /*---------------------------------------------------------------------------------*/
-void init_freq_table(freq_table* freq_tab_p);
+void init_freq_table(FREQTAB* freq_tab_p);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-void freqtab_init_working_index(freq_table* freq_tab_p);
+void freqtab_init_working_index(FREQTAB* freq_tab_p);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----GIBT DIE FREQUENCY TABELLE AUF DEM BILDSCHIRM AUS---------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern void print_frequency_table(freq_table* freq_tab_p);
+extern void print_frequency_table(FREQTAB* freq_tab_p);
 
 
 #endif	/* FREQTAB_H */
