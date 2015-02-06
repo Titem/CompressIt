@@ -113,8 +113,8 @@ extern void freqtab_print(FREQTAB* freq_tab_p)
 	{
 		if (freq_tab_p->freq_table[i] != NULL)
 		{
-			count_chars = count_chars + freqtab_element_get_frequency(freq_tab_p);
-			printf("%c ---> %d ---> %d \n", freqtab_elememt_get_char(freq_tab_p), freqtab_element_get_frequency(freq_tab_p), freqtab_elememt_get_char(freq_tab_p));
+			count_chars = count_chars + freqtab_element_get_frequency(freq_tab_p->freq_table[i]);
+			printf("%c ---> %d ---> %d \n", freqtab_elememt_get_char(freq_tab_p->freq_table[i]), freqtab_element_get_frequency(freq_tab_p->freq_table[i]), freqtab_elememt_get_char(freq_tab_p->freq_table[i]));
 		}
 	}
 	printf("Zeichen insgesamt : %d \n", count_chars);

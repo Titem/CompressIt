@@ -10,6 +10,8 @@
 #ifndef PQUEUE_H
 #define	PQUEUE_H
 
+#include "htree_element.h"
+
 
 typedef struct S_PQUEUE PQUEUE;
 
