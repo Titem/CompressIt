@@ -12,6 +12,7 @@
 
 
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "freqtab_element.h"
 
