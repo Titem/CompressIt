@@ -63,10 +63,10 @@ DOXYGEN_CFG = ~/ppr_doxygen.cfg
 # Konfiguration fuer Splint
 SPLINT_LOG = ./splint.log
 
-OBJS = $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o $(OBJPATH)/compressor.o \
-$(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o $(OBJPATH)/htree.o \
+OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o $(OBJPATH)/compressor.o \
+$(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o $(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o \
 $(OBJPATH)/freqtab.o $(OBJPATH)/pqueue.o \
-$(OBJPATH)/htree_element.o $(OBJPATH)/codetab_element.o $(OBJPATH)/main.o
+$(OBJPATH)/htree_element.o $(OBJPATH)/main.o
 
 # Standardziel
 build : $(EXEPATH)/$(EXE)
@@ -82,31 +82,81 @@ clean_and_build : clean build
 # Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien
 $(EXEPATH)/$(EXE) : $(OBJS)
 	@echo ========================================================
-	@echo Erzeuge $(EXEPATH)/$(EXE)
+	@echo Erzeuge $(EXEPATH)/$(EXE) $(OBJS)
 	@echo --------------------------------------------------------
 	mkdir -p $(EXEPATH)
-	gcc -o -f $(EXEPATH)/$(EXE) $(OBJS) $(CFLAGS)
+	gcc $(OBJS) -o $(EXEPATH)/$(EXE) 
 
-$(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h
+$(OBJPATH)/error.o : src/error.c src/error.h 
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/error.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/error.o src/error.c
+
+$(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h 
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/freqtab_element.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/freqtab_element.o src/freqtab_element.c
 	
-$(OBJPATH)/properties.o : src/properties.c src/properties.h
+
+$(OBJPATH)/freqtab.o : src/freqtab.c src/freqtab.h src/freqtab_element.h src/error.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/freqtab.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/freqtab.o src/freqtab.c
+
+
+$(OBJPATH)/htree_element.o : src/htree_element.c src/htree_element.h src/htree_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree_element.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_element.o src/htree_element.c
+	
+	
+$(OBJPATH)/pqueue.o : src/pqueue.c src/pqueue.h src/htree_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/pqueue.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/pqueue.o src/pqueue.c
+	
+	
+$(OBJPATH)/codetab_element.o : src/codetab_element.c
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree_element.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab_element.o src/codetab_element.c
+
+
+$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h src/freqtab.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
+	
+	
+$(OBJPATH)/properties.o : src/properties.c src/properties.h src/error.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/properties.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/properties.o src/properties.c
 
-$(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/content_coder.h src/codetab.h src/htree.h src/freqtab.h 
+
+$(OBJPATH)/codetab.o : src/codetab.c src/codetab.h src/codetab_element.h
 	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/compressor.o
+	@echo Erzeuge $(OBJPATH)/codetab.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/compressor.o src/compressor.c
+	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab.o src/codetab.c	
+
 
 $(OBJPATH)/content_coder.o : src/content_coder.c src/content_coder.h src/codetab.h
 	@echo ========================================================
@@ -114,50 +164,17 @@ $(OBJPATH)/content_coder.o : src/content_coder.c src/content_coder.h src/codetab
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/content_coder.o src/content_coder.c
-
-$(OBJPATH)/codetab.o : src/codetab.c src/codetab.h src/htree.h src/codetab_element.h
-	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/codetab.o
-	@echo --------------------------------------------------------
-	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab.o src/codetab.c
-
-$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h
-	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/htree.o
-	@echo --------------------------------------------------------
-	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
 	
-$(OBJPATH)/freqtab.o : src/freqtab.c src/freqtab.h src/freqtab_element.h
+	
+$(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/freqtab.h src/htree.h src/codetab.h src/content_coder.h
 	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/freqtab.o
+	@echo Erzeuge $(OBJPATH)/compressor.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/freqtab.o src/freqtab.c
+	gcc $(GCC_OPTION) -o $(OBJPATH)/compressor.o src/compressor.c
 
-$(OBJPATH)/pqueue.o : src/pqueue.c src/pqueue.h src/htree_element.h
-	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/pqueue.o
-	@echo --------------------------------------------------------
-	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/pqueue.o src/pqueue.c
 
-$(OBJPATH)/htree_element.o : src/htree_element.c src/htree_element.h
-	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/htree_element.o
-	@echo --------------------------------------------------------
-	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_element.o src/htree_element.c
-
-$(OBJPATH)/codetab_element.o : src/codetab_element.c src/codetab_element.h
-	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/htree_element.o
-	@echo --------------------------------------------------------
-	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab_element.o src/codetab_element.c
-
-$(OBJPATH)/main.o : src/main.c src/properties.h src/compressor.h
+$(OBJPATH)/main.o : src/main.c src/properties.h src/compressor.h src/error.h src/freqtab.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/main.o
 	@echo --------------------------------------------------------
@@ -185,79 +202,3 @@ $(DOXYGEN_FILE) : *.c *.h
 	@echo --------------------------------------------------------
 	doxygen $(DOXYGEN_CFG)
 
-# build
-build: .build-post
-
-.build-pre:
-# Add your pre 'build' code here...
-
-.build-post: .build-impl
-# Add your post 'build' code here...
-
-
-# clean
-clean: .clean-post
-
-.clean-pre:
-# Add your pre 'clean' code here...
-
-.clean-post: .clean-impl
-# Add your post 'clean' code here...
-
-
-# clobber
-clobber: .clobber-post
-
-.clobber-pre:
-# Add your pre 'clobber' code here...
-
-.clobber-post: .clobber-impl
-# Add your post 'clobber' code here...
-
-
-# all
-all: .all-post
-
-.all-pre:
-# Add your pre 'all' code here...
-
-.all-post: .all-impl
-# Add your post 'all' code here...
-
-
-# build tests
-build-tests: .build-tests-post
-
-.build-tests-pre:
-# Add your pre 'build-tests' code here...
-
-.build-tests-post: .build-tests-impl
-# Add your post 'build-tests' code here...
-
-
-# run tests
-test: .test-post
-
-.test-pre: build-tests
-# Add your pre 'test' code here...
-
-.test-post: .test-impl
-# Add your post 'test' code here...
-
-
-# help
-help: .help-post
-
-.help-pre:
-# Add your pre 'help' code here...
-
-.help-post: .help-impl
-# Add your post 'help' code here...
-
-
-
-# include project implementation makefile
-#include nbproject/Makefile-impl.mk
-
-# include project make variables
-#include nbproject/Makefile-variables.mk
