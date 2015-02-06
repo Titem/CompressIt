@@ -64,7 +64,7 @@ PROPERTIES* create_properties(char* argv[], int argc)
 
 			if (!found_input_document && strcmp(*argv, COMPPRESS_STATUS) == 0)
 			{
-				p_properties->MODE = COMPRESS;
+				p_properties->mode = COMPRESS;
 				argc--;
 				argv++;
 
@@ -83,7 +83,7 @@ PROPERTIES* create_properties(char* argv[], int argc)
 			
 			if (!found_input_document && strcmp(*argv, DECOMPRESS_STATUS) == 0)
 			{
-				p_properties->MODE = DECOMPRESS;
+				p_properties->mode = DECOMPRESS;
 				argc--;
 				argv++;
 
@@ -122,9 +122,9 @@ PROPERTIES* create_properties(char* argv[], int argc)
 				}
 			}
 			
-			if (*argv != NULL && strcmp(*argv, HELP) == 0)
+			if (*argv != NULL && strcmp(*argv, HELP) == 0 && !need_help)
 			{
-				p_properties->MODE = MANPAGE;
+				p_properties->mode = MANPAGE;
 				need_help = true;
 			}
 			/*else if (argc >= 1 && !found_input_document)
@@ -149,12 +149,12 @@ PROPERTIES* create_properties(char* argv[], int argc)
 	printf("Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung !\n");
 	if (!found_out_put_document && !need_help)
 	{
-		if (p_properties->MODE == COMPRESS)
+		if (p_properties->mode == COMPRESS)
 		{
 			strcat(output_file_name, COMPRESS_NAME);
 			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
 		}
-		else if (p_properties->MODE == DECOMPRESS)
+		else if (p_properties->mode == DECOMPRESS)
 		{
 			strcat(output_file_name, DECOMPRESS_NAME);
 			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
@@ -204,7 +204,4 @@ char* init_output_filename(char* input_file_name)
 	char* output_file_name = NULL;
 	output_file_name = malloc(length);
 	return output_file_name;
-
-
-
 }
