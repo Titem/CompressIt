@@ -91,7 +91,7 @@ properties* create_properties(char* argv[],int argc)
 				{
 					printf("POINTER IS NULL -> INPUTFILENAME AS OUTPUTFILENAME!\n");
 					/*IMPLEMENIEREN*/
-
+					output_file_name = init_output_filename(input_file_name);
 					strcpy(output_file_name,input_file_name);
 
 
@@ -172,3 +172,13 @@ void delete_properties(properties (*p_properties))
 	p_properties = NULL;
 }
 
+char* init_output_filename(char* input_file_name)
+{
+	int length = strlen(input_file_name);
+	char* output_file_name = NULL;
+	output_file_name = malloc(length);
+	return output_file_name;
+
+
+
+}

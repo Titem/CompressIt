@@ -57,6 +57,10 @@ properties* create_properties(char* argv[], int argc);
 void delete_properties(properties(*p_properties));
 
 
+/*---------------------------------------------------------------------------------*/
+/*------INITIALISIERT DEN NAMEN DER AUSGABEDATEI WENN KEINE ANGEGEBEN WURDE--------*/
+/*---------------------------------------------------------------------------------*/
+char* init_output_filename(char* input_file_name);
 
 #endif	/* PROPERTIES_H */
 

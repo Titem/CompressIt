@@ -24,6 +24,12 @@ typedef struct{
 	short working_index;
 
 }freq_table;
+
+/*---------------------------------------------------------------------------------*/
+/*-----ERSTELLT EINE NEUE FREQTAB--------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+extern freq_table* create_frequency_table(FILE* input_stream);
+
 /*---------------------------------------------------------------------------------*/
 /*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
 /*---------------------------------------------------------------------------------*/
@@ -35,10 +41,17 @@ void update_frequency_table(freq_table* freq_tab_p, unsigned char character);
 /*---------------------------------------------------------------------------------*/
 void init_freq_table(freq_table* freq_tab_p);
 
+
 /*---------------------------------------------------------------------------------*/
 /*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-freqtab_init_working_index(freq_table* freq_tab_p);
+void freqtab_init_working_index(freq_table* freq_tab_p);
+
+
+/*---------------------------------------------------------------------------------*/
+/*-----GIBT DIE FREQUENCY TABELLE AUF DEM BILDSCHIRM AUS---------------------------*/
+/*---------------------------------------------------------------------------------*/
+extern void print_frequency_table(freq_table* freq_tab_p);
 
 
 #endif	/* FREQTAB_H */
