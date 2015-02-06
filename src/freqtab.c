@@ -41,12 +41,12 @@ extern FREQTAB* create_freqtab(FILE* input_stream)
 	if (freq_tab_p != NULL)
 	{
 
-		init_freq_table(freq_tab_p);
+		freqtab_init(freq_tab_p);
 		character_from_file = (char) fgetc(input_stream);
 		while (character_from_file != EOF)
 		{
 			/*character_from_file = check_offset(character_from_file);*/
-			update_frequency_table(freq_tab_p,character_from_file);
+			freqtab_update(freq_tab_p,character_from_file);
 			character_from_file = (char) fgetc(input_stream);
 			
 		}
@@ -78,7 +78,7 @@ extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
 {
 	int i = 0;
 	short tmp_working_index = freq_tab_p->working_index;
-	freqtab_element* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
+	FREQTAB_ELEMENT* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
 
 	for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i] == NULL; i++)
 	{

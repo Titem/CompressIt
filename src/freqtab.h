@@ -11,7 +11,7 @@
 #define	FREQTAB_H
 
 
-
+#include <stdbool.h>
 
 #include "freqtab_element.h"
 
