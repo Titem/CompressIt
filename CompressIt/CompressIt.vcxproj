@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ACE9078B-E948-4E2C-8303-816CB7C16F9E}</ProjectGuid>
+    <ProjectGuid>{A8D2ADD9-0855-4C77-970B-48130DA84281}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CompressIt</RootNamespace>
   </PropertyGroup>
@@ -49,11 +49,10 @@
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -79,28 +78,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\codetab.c" />
+    <ClCompile Include="..\src\codetab_element.c" />
+    <ClCompile Include="..\src\compressor.c" />
+    <ClCompile Include="..\src\content_coder.c" />
     <ClCompile Include="..\src\error.c" />
-    <ClCompile Include="..\src\frequency_table.c" />
-    <ClCompile Include="..\src\frequency_table_element.c" />
+    <ClCompile Include="..\src\freqtab.c" />
+    <ClCompile Include="..\src\freqtab_element.c" />
+    <ClCompile Include="..\src\htree.c" />
+    <ClCompile Include="..\src\htree_element.c" />
     <ClCompile Include="..\src\main.c" />
+    <ClCompile Include="..\src\pqueue.c" />
     <ClCompile Include="..\src\properties.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\codetab.h" />
+    <ClInclude Include="..\src\codetab_element.h" />
+    <ClInclude Include="..\src\compressor.h" />
+    <ClInclude Include="..\src\content_coder.h" />
     <ClInclude Include="..\src\error.h" />
+    <ClInclude Include="..\src\freqtab.h" />
+    <ClInclude Include="..\src\freqtab_element.h" />
     <ClInclude Include="..\src\frequency_table.h" />
-    <ClInclude Include="..\src\frequency_table_element.h" />
-    <ClInclude Include="..\src\main.h" />
+    <ClInclude Include="..\src\htree.h" />
+    <ClInclude Include="..\src\htree_element.h" />
+    <ClInclude Include="..\src\pqueue.h" />
     <ClInclude Include="..\src\properties.h" />
-    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="CompressIt.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="txt2.bin" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\src\bibel.txt" />
+    <Text Include="..\res\bibel.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
