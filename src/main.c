@@ -1,5 +1,5 @@
 #include "main.h"
-#define VisualStudio
+//#define VisualStudio
 #define DEBUG
 int main(int argc, char *argv[])
 {
@@ -28,14 +28,6 @@ int main(int argc, char *argv[])
 		/*frequency_table = create_frequency_table(read);*/
 		print_frequency_table(frequency_table);
 #endif 
-
-	
-
-
-
-
-
-
 
 
 /*-----------------------------CODE--------------------------------*/

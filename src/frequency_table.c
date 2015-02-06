@@ -26,7 +26,34 @@ freq_table* create_frequency_table(FILE* input_stream)
 		print_error(cant_malloc_memory);
 		exit(EXIT_FAILURE);
 	}
+
+	freqtab_init_working_index(freq_tab_p);
+
 	return freq_tab_p;
+}
+
+freqtab_init_working_index(freq_table* freq_tab_p)
+{
+	
+	short tmp_working_index = 0;
+
+	/*Was tun wenn datei leer ist, dies ist dann der Fall wenn der
+	working index bei 256 ist, die schleife vorher abbrechen*/
+	freq_tab_p->working_index = 256;
+
+	while (tmp_working_index < 256 && freq_tab_p->freq_table[tmp_working_index] != NULL)
+	{
+		tmp_working_index++;
+	}
+
+	if (tmp_working_index < 256)
+	{
+		freq_tab_p->working_index = tmp_working_index;
+	}
+
+
+
+
 }
 
 void init_freq_table(freq_table* freq_tab_p)
@@ -65,13 +92,17 @@ void delete_frequency_table(freq_table* freq_tab_p)
 freqtab_element*  frequency_table_get_element(freq_table* freq_tab_p)
 {
 	int i = 0;
+	int tmp_working_index = freq_tab_p->working_index;
 	freqtab_element* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
-	for (i = 0; i < MAX_CHARACTERS; i++)
+
+	for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i] == NULL; i++)
 	{
-
-
+		tmp_working_index++;
 	}
-	return freq_tab_p->freq_table[freq_tab_p->working_index];
+
+	freq_tab_p->working_index = tmp_working_index;
+
+	return tmp_p;
 }
 
 
@@ -93,25 +124,15 @@ void print_frequency_table(freq_table* freq_tab_p)
 {
 	long count_chars = 0;
 	int i = 0;
-	printf("Zeichen ---> Haeufigkeit\n");
+	printf("Zeichen ---> Haeufigkeit ---> NUMERIC\n");
 	printf("------------------------\n");
 	for (i = 0; i < MAX_CHARACTERS; i++)
 	{
 		if (freq_tab_p->freq_table[i] != NULL)
 		{
 			count_chars = count_chars + freq_tab_p->freq_table[i]->frequency;
-			printf("%c ---> %d \n", freq_tab_p->freq_table[i]->character,freq_tab_p->freq_table[i]->frequency);
+			printf("%c ---> %d ---> %d \n", freq_tab_p->freq_table[i]->character, freq_tab_p->freq_table[i]->frequency, freq_tab_p->freq_table[i]->character);
 		}
 	}
 	printf("Zeichen insgesamt : %d \n", count_chars);
-}
-
-//'ä''ü''ö'
-
-char check_offset(char character_from_file)
-{
-	return character_from_file = (character_from_file < 0)
-		? MAX_CHARACTERS - character_from_file
-		: character_from_file;
-
 }
