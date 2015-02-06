@@ -1,3 +1,18 @@
+/* 
+ * File:   error.h
+ * Author: Tim Buschmann
+ *         Artur Leinweber
+ *         Alexander Schmitz 
+ *
+ * Created on 6. Februar 2015, 16:16
+ */
+
+#ifndef ERROR_H
+#define	ERROR_H
+
+
+
+
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
@@ -29,3 +44,6 @@ extern void test_nullpointer_exception(FILE *file_p, char* file_name);
 /*---------------------GIBT DENN FEHLER AUF DEM BILDSCHIRM AUS---------------------*/
 /*---------------------------------------------------------------------------------*/
 void print_error(int error_message);
+
+
+#endif	/* ERROR_H */

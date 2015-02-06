@@ -1,6 +1,8 @@
 /* 
  * File:   htree.h
- * Author: Alexander Schmitz
+ * Author: Tim Buschmann
+ *         Artur Leinweber
+ *         Alexander Schmitz
  *
  * Created on 6. Februar 2015, 16:13
  */
