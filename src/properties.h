@@ -26,9 +26,6 @@ typedef enum
 typedef struct S_PROPERTIES PROPERTIES;
 
 
-
-
-
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE STRUCT UND LIEFERT EINEN PROPERTIES POINTER ZURÜCK-------*/
 /*---------------------------------------------------------------------------------*/
@@ -38,14 +35,22 @@ extern PROPERTIES* create_properties(char* argv[], int argc);
 /*---------------------------------------------------------------------------------*/
 /*------GIBT DEN SPEICHER WIEDER FREI BZW. LÖSCHT EINEN PROPERTIES POINTER---------*/
 /*---------------------------------------------------------------------------------*/
-
 extern void delete_properties(PROPERTIES(*p_properties));
 
-
+/*---------------------------------------------------------------------------------*/
+/*------LIEFERT DEN COMPRESS MODUS-------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
 extern MODE properties_get_mode(PROPERTIES* p_properties);
 
+
+/*---------------------------------------------------------------------------------*/
+/*------LIEFERT DEN INPUTSTREAM ZURÜCK---------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
 extern FILE* properties_get_input_stream(PROPERTIES* p_properties);
 
+/*---------------------------------------------------------------------------------*/
+/*------LIEFERT DEN OUTPUTSTREAM ZURÜCK--------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
 extern FILE* properties_get_output_stream(PROPERTIES* p_properties);
 
 #endif	/* PROPERTIES_H */
