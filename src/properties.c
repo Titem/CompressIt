@@ -106,6 +106,7 @@ properties* create_properties(char* argv[],int argc)
 
 					strcpy(output_file_name,input_file_name);
 
+
 				}
 			}
 			
