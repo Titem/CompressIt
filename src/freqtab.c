@@ -105,21 +105,24 @@ extern bool freqtab_is_emty(FREQTAB* freq_tab_p)
 extern void freqtab_print(FREQTAB* freq_tab_p)
 {
 	long count_chars = 0;
-
+	long count_element = 0;
 	int i = 0;
 
 	printf("Zeichen  ---> Haeufigkeit ---> NUMERIC\n");
-	printf("----------------------------------------\n");
+	printf("--------------------------------------\n");
 
 	for (i = 0; i < MAX_CHARACTERS; i++)
 	{
 		if (freq_tab_p->freq_table[i] != NULL)
 		{
+			count_element++;
 			count_chars = count_chars + freqtab_element_get_frequency(freq_tab_p->freq_table[i]);
 			printf("%c \t ---> %d \t  ---> %d \n", freqtab_elememt_get_char(freq_tab_p->freq_table[i]), freqtab_element_get_frequency(freq_tab_p->freq_table[i]), freqtab_elememt_get_char(freq_tab_p->freq_table[i]));
 		}
 	}
+	printf("--------------------------------------\n");
 	printf("Zeichen insgesamt : %d \n", count_chars);
+	printf("Zeichen einzelnt   : %d \n", count_element);
 }
 
 
