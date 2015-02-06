@@ -4,7 +4,7 @@
 
 freq_table* create_frequency_table(FILE* input_stream)
 {
-	char character_from_file;
+	unsigned char character_from_file;
 	freq_table* freq_tab_p;
 	freq_tab_p = malloc(sizeof(freq_table));
 
@@ -15,7 +15,7 @@ freq_table* create_frequency_table(FILE* input_stream)
 		character_from_file = fgetc(input_stream);
 		while (character_from_file != EOF)
 		{
-			character_from_file = check_offset(character_from_file);
+			/*character_from_file = check_offset(character_from_file);*/
 			update_frequency_table(freq_tab_p,character_from_file);
 			character_from_file = fgetc(input_stream);
 			
