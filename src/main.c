@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 	begin = clock();
 
 /*-----------------------------CODE--------------------------------*/
+
 	properties* properties;
 	properties = malloc(sizeof(properties));
 	/*FILE* read = fopen("C:/Users/Artur/Documents/Visual Studio 2013/Projects/CompressIt/src/bibel.txt", "rb");*/
