@@ -10,6 +10,8 @@
 #ifndef HTREE_H
 #define	HTREE_H
 
+#include <stdbool.h>
+
 #include "freqtab.h"
 #include "codetab_element.h"
 

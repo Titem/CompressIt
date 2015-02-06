@@ -1,5 +1,11 @@
 #include "compressor.h"
+
+
+
 #include "freqtab.h"
+#include "htree.h"
+#include "codetab.h"
+#include "content_coder.h"
 
 extern void compress(FILE* input_stream, FILE* output_stream)
 {
