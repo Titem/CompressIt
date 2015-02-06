@@ -1,5 +1,5 @@
 #include "main.h"
-//#define VisualStudio
+/* #define VisualStudio */
 #define DEBUG
 int main(int argc, char *argv[])
 {
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		print_frequency_table(frequency_table);
 #endif 
 
-
+	
 /*-----------------------------CODE--------------------------------*/
 	/*Timer beenden*/
 	end = clock();

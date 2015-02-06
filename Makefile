@@ -126,5 +126,3 @@ include nbproject/Makefile-impl.mk
 
 # include project make variables
 include nbproject/Makefile-variables.mk
-
-include ~/Makefile-ppr5.mk 
