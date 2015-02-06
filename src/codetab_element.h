@@ -11,7 +11,8 @@
 #define	CODETAB_ELEMENT_H
 
 
-typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT
+
+typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
 
 
 extern CODETAB_ELEMENT* creat_codetab_element(unsigned char character, 
