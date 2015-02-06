@@ -26,7 +26,7 @@ void delete_freqtab_element(FREQTAB_ELEMENT* freq)
 }
 
 
-char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
+unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
 {
 	return freq->character;
 }

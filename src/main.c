@@ -3,6 +3,8 @@
 #include <time.h>
 #include "compressor.h"
 #include "error.h"
+#include <stdio.h>
+#include <stdlib.h>
 /* #define VisualStudio */
 
 /*Jede C-Anwendung muss genau eine Main-Methode enthalten, in der angegeben ist, wo die Programmausführung beginnen soll.*/
@@ -28,10 +30,13 @@ int main(int argc, char *argv[])
 	{
 	case COMPRESS:
 		compress(properties_get_input_stream(properties), properties_get_output_stream(properties));
+		break;
 	case DECOMPRESS:
 		decompress(properties_get_input_stream(properties), properties_get_output_stream(properties));
+		break;
 	case MANPAGE:
 		print_error(help);
+		break;
 		/*Hilfestellung*/
 	}
 
@@ -42,11 +47,7 @@ int main(int argc, char *argv[])
 	end = clock();
 
 	printf("\nBenoetigte Zeit: %i ms", end - begin);
-
-#ifdef VisualStudio
-	getch();
-#endif
-
-	return 0;
+	getchar();
+	exit(EXIT_SUCCESS);
 }
 
