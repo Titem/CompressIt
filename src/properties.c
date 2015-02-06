@@ -1,6 +1,22 @@
 #include "properties.h"
 #include "error.h"
 
+/*Beschreibt ob codiert oder decodiert werden soll.*/
+char* const COMPPRESS_STATUS = "-c";
+char* const DECOMPRESS_STATUS = "-d";
+
+/*Beschreibt den Namen der Ausgabedatei, wenn keine angegeben wurde.*/
+char* const COMPRESS_NAME = ".hc";
+char* const DECOMPRESS_NAME = ".hd";
+
+/*Beschreibt das Argument für den Hilfe Aufruf.*/
+char* const HELP = "-h";
+
+/*Beschreibt den Lese- bzw- Schreibevorgang.*/
+char* const READ_BINARY = "rb";
+char* const WRITE_BINARY = "wb";
+
+
 
 properties* create_properties(char* argv[],int argc)
 {
@@ -91,7 +107,7 @@ properties* create_properties(char* argv[],int argc)
 				{
 					printf("POINTER IS NULL -> INPUTFILENAME AS OUTPUTFILENAME!\n");
 					/*IMPLEMENIEREN*/
-
+					output_file_name = init_output_filename(input_file_name);
 					strcpy(output_file_name,input_file_name);
 
 
@@ -172,3 +188,13 @@ void delete_properties(properties (*p_properties))
 	p_properties = NULL;
 }
 
+char* init_output_filename(char* input_file_name)
+{
+	int length = strlen(input_file_name);
+	char* output_file_name = NULL;
+	output_file_name = malloc(length);
+	return output_file_name;
+
+
+
+}
