@@ -38,7 +38,7 @@ properties* create_properties(char* argv[],int argc)
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-	printf("Analyse der Parameter");
+	printf("Analyse der Parameter !\n");
 	if (p_properties != NULL)
 	{
 		if ((argc == 1) || (argc == 2) || (argc > 4))
@@ -63,6 +63,7 @@ properties* create_properties(char* argv[],int argc)
 				{
 					input_file_name = *argv;
 					found_input_document = true;
+					printf("FOUND INPUT DOCUMENT AND STATUS -c !\n");
 				}
 				else
 				{
@@ -81,6 +82,7 @@ properties* create_properties(char* argv[],int argc)
 				{
 					input_file_name = *argv;
 					found_input_document = true;
+					printf("FOUND INPUT DOCUMENT AND STATUS -d !\n");
 				}
 				else
 				{
@@ -91,18 +93,19 @@ properties* create_properties(char* argv[],int argc)
 			
 			if (!found_out_put_document)
 			{
-				printf("MAYBE");
+				printf("DONT FOUND OUTPUT DOKUMENT!\n");
 				argc--;
 				argv++;
 				if (*argv != NULL)
 				{
-					printf("YES");
+					printf("FOUND OUTPUT DOCUMENT!\n");
 					output_file_name = *argv;
 					found_out_put_document = true;
 				}
 				else
 				{
-					printf("No");
+					printf("POINTER IS NULL -> INPUTFILENAME AS OUTPUTFILENAME!\n");
+					/*IMPLEMENIEREN*/
 
 					strcpy(output_file_name,input_file_name);
 
@@ -134,16 +137,18 @@ properties* create_properties(char* argv[],int argc)
 /*----------------------------------------------------------------------------------------------*/
 /*----Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung----*/
 /*----------------------------------------------------------------------------------------------*/
-	printf("Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung");
+	printf("Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung !\n");
 	if (!found_out_put_document)
 	{
 		if (p_properties->MODE == COMPRESS)
 		{
 			strcat(output_file_name, COMPRESS_NAME);
+			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
 		}
 		else if (p_properties->MODE == DECOMPRESS)
 		{
 			strcat(output_file_name, DECOMPRESS_NAME);
+			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
 		}	
 	}
 	else if (found_input_document && found_out_put_document && (strcmp(input_file_name, output_file_name) == 0))
@@ -155,22 +160,24 @@ properties* create_properties(char* argv[],int argc)
 /*---------------------------------------------------------------------------------*/
 /*----------------------FILE POINTER setzen und prüfen-----------------------------*/
 /*---------------------------------------------------------------------------------*/
-	printf("FILE POINTER setzen und prüfen");
+	printf("FILE POINTER setzen und prüfen !\n");
 
+	printf("FP READ Stream geöffnet !\n");
 	file_read = fopen(input_file_name, READ_BINARY);
 	test_nullpointer_exception(file_read, input_file_name);
 
-	//file_write = fopen(output_file_name, WRITE_BINARY);
-	//test_nullpointer_exception(file_write, output_file_name);
+	printf("FP WRITE Stream geöffnet !\n");
+	file_write = fopen(output_file_name, WRITE_BINARY);
+	test_nullpointer_exception(file_write, output_file_name);
 
 /*---------------------------------------------------------------------------------*/
 /*-------------FILE POINTER in die PROPERTIES STRUCT übernehmen--------------------*/
 /*---------------------------------------------------------------------------------*/
-	printf("FILE POINTER in die PROPERTIES STRUCT übernehmen");
+	printf("FILE POINTER in die PROPERTIES STRUCT übernehmen !\n");
 	p_properties->file_read = file_read;
 	p_properties->file_write = file_write;
 
-
+	printf("END OF OPERATION!\n");
 	return p_properties;
 }
 

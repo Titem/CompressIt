@@ -30,7 +30,7 @@ long freqtab_element_get_frequency(freqtab_element* freq)
 	return freq->frequency;
 }
 
-void freqtab_element_inc_frequency(freqtab_element* freq)
+extern void freqtab_element_inc_frequency(freqtab_element* freq)
 {
 	freq->frequency++;
 }

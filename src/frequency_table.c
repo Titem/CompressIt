@@ -4,7 +4,7 @@
 
 freq_table* create_frequency_table(FILE* input_stream)
 {
-	unsigned char character_from_file;
+	char character_from_file;
 	freq_table* freq_tab_p;
 	freq_tab_p = malloc(sizeof(freq_table));
 
@@ -38,7 +38,7 @@ void init_freq_table(freq_table* freq_tab_p)
 	}
 }
 
-void update_frequency_table(freq_table* freq_tab_p, char character)
+void update_frequency_table(freq_table* freq_tab_p, unsigned char character)
 {
 	if(freq_tab_p->freq_table[character] == NULL)
 	{
@@ -64,6 +64,13 @@ void delete_frequency_table(freq_table* freq_tab_p)
 /*????????????????????WELCHES ELEMENT AN WELCHEM INDEX ODER WIE ? UND WOFÜR IST WORKING INDEX?????????????????????*/
 freqtab_element*  frequency_table_get_element(freq_table* freq_tab_p)
 {
+	int i = 0;
+	freqtab_element* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
+	for (i = 0; i < MAX_CHARACTERS; i++)
+	{
+
+
+	}
 	return freq_tab_p->freq_table[freq_tab_p->working_index];
 }
 
