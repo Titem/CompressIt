@@ -15,11 +15,13 @@ typedef struct{
 
 }freqtab_element;
 
+#define ININIT_CHARCTER 1
+
 
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUES FREQUENCY TABLE ELEMENT---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-freqtab_element* create_freqtab_element(long frequency, char character);
+freqtab_element* create_freqtab_element(char character);
 
 
 /*---------------------------------------------------------------------------------*/
@@ -38,3 +40,9 @@ char freqtab_elememt_get_char(freqtab_element* freq);
 /*-----LIEFERT DIE HÄUFIGKEIT EINER FREQUENCY TABLE ELEMENT------------------------*/
 /*---------------------------------------------------------------------------------*/
 long freqtab_element_get_frequency(freqtab_element* freq);
+
+
+/*---------------------------------------------------------------------------------*/
+/*------ERHÖHT DIE HÄUFIGKEIT EINER FREQUENCY TABLE ELEMENT------------------------*/
+/*---------------------------------------------------------------------------------*/
+extern void freqtab_element_inc_frequency(freqtab_element* freq);

@@ -42,12 +42,14 @@ void update_frequency_table(freq_table* freq_tab_p, char character)
 {
 	if(freq_tab_p->freq_table[character] == NULL)
 	{
-		freq_tab_p->freq_table[character] = create_freqtab_element(INKREMENT_CHARCTER, character);
+		freq_tab_p->freq_table[character] = create_freqtab_element(character);
 	}
 	else
 	{
 		/*freq_tab_p->freq_table[character]->frequency = (freq_tab_p->freq_table[character]->frequency + INKREMENT_CHARCTER);*/
-		freq_tab_p->freq_table[character]->frequency++;
+		/*freq_tab_p->freq_table[character]->frequency++;*/
+		freqtab_element_inc_frequency(freq_tab_p->freq_table[character]);
+
 	}
 }
 
