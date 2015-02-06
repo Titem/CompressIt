@@ -11,6 +11,10 @@
 #define	COMPRESSOR_H
 
 
+extern void compress(FILE* input_stream, FILE* output_stream);
+
+extern void decompress(FILE* input_stream, FILE* output_stream);
+
 
 #endif	/* COMPRESSOR_H */
 
