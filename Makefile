@@ -45,10 +45,145 @@
 
 
 # Environment 
-MKDIR=mkdir
-CP=cp
-CCADMIN=CCadmin
+#MKDIR=mkdir
+#CP=cp
+#CCADMIN=CCadmin
+OBJPATH = build
+EXEPATH = dist
+EXE = huffman.exe
 
+# Compiler-Optionen
+GCC_OPTION = -c -g -DDEBUG -std=c99 -pedantic-errors
+
+# Konfiguration fuer Doxygen
+DOXYGEN_PATH = doxygen
+DOXYGEN_FILE = $(DOXYGEN_PATH)/html/index.html
+DOXYGEN_CFG = ~/ppr_doxygen.cfg
+
+# Konfiguration fuer Splint
+SPLINT_LOG = ./splint.log
+
+OBJS = $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o $(OBJPATH)/compressor.o \
+$(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o $(OBJPATH)/htree.o \
+$(OBJPATH)/freqtab.o $(OBJPATH)/pqueue.o \
+$(OBJPATH)/htree_element.o $(OBJPATH)/codetab_element.o $(OBJPATH)/main.o
+
+# Standardziel
+build : $(EXEPATH)/$(EXE)
+
+# Regel zum Ausfuehren des aktuellen Programms
+
+run : build
+	./$(EXEPATH)/$(EXE)
+
+build_all : $(SPLINT_LOG) $(EXEPATH)/$(EXE) $(DOXYGEN_FILE)
+clean_and_build : clean build
+
+# Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien
+$(EXEPATH)/$(EXE) : $(OBJS)
+	@echo ========================================================
+	@echo Erzeuge $(EXEPATH)/$(EXE)
+	@echo --------------------------------------------------------
+	mkdir -p $(EXEPATH)
+	gcc -o $(EXEPATH)/$(EXE) $(OBJS) $(CFLAGS)
+
+$(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/freqtab_element.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/freqtab_element.o src/freqtab_element.c
+	
+$(OBJPATH)/properties.o : src/properties.c src/properties.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/properties.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/properties.o src/properties.c
+
+$(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/content_coder.h src/codetab.h src/htree.h src/freqtab.h 
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/compressor.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/compressor.o src/compressor.c
+
+$(OBJPATH)/content_coder.o : src/content_coder.c src/content_coder.h src/codetab.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/content_coder.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/content_coder.o src/content_coder.c
+
+$(OBJPATH)/codetab.o : src/codetab.c src/codetab.h src/htree.h src/codetab_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/codetab.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab.o src/codetab.c
+
+$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
+	
+$(OBJPATH)/freqtab.o : src/freqtab.c src/freqtab.h src/freqtab_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/freqtab.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/freqtab.o src/freqtab.c
+
+$(OBJPATH)/pqueue.o : src/pqueue.c src/pqueue.h src/htree_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/pqueue.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/pqueue.o src/pqueue.c
+
+$(OBJPATH)/htree_element.o : src/htree_element.c src/htree_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree_element.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_element.o src/htree_element.c
+
+$(OBJPATH)/codetab_element.o : src/codetab_element.c src/codetab_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree_element.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab_element.o src/codetab_element.c
+
+$(OBJPATH)/main.o : src/main.c src/properties.h src/compressor.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/main.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/main.o src/main.c
+
+
+# ----------------------------------------------------------------------------
+# Regel zum Erzeugen der Splint Prüfung
+$(SPLINT_LOG) : *.c *.h
+	@echo ========================================================
+	@echo Fuehre statische Codepruefung durch
+	@echo --------------------------------------------------------
+	splint -weak -I $(STACK_PATH) \
+           -booltype BOOL -boolfalse FALSE -booltrue TRUE \
+           +predboolint +noret +usedef +infloops +casebreak \
+           -initallelements -incompletetype -fixedformalarray \
+           *.c > $(SPLINT_LOG)
+
+# ----------------------------------------------------------------------------
+# Regel zum Erzeugen der Projektdokumentation
+$(DOXYGEN_FILE) : *.c *.h
+	@echo ========================================================
+	@echo Erzeuge Doxygen-Dokumentation
+	@echo --------------------------------------------------------
+	doxygen $(DOXYGEN_CFG)
 
 # build
 build: .build-post
@@ -122,7 +257,7 @@ help: .help-post
 
 
 # include project implementation makefile
-include nbproject/Makefile-impl.mk
+#include nbproject/Makefile-impl.mk
 
 # include project make variables
-include nbproject/Makefile-variables.mk
+#include nbproject/Makefile-variables.mk

@@ -2,7 +2,7 @@
 #include "freqtab.h"
 #include <time.h>
 /* #define VisualStudio */
-#define DEBUG
+#define DEBUG1
 
 /*Jede C-Anwendung muss genau eine Main-Methode enthalten, in der angegeben ist, wo die Programmausführung beginnen soll.*/
 int main(int argc, char** argv);
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		properties = create_properties(argv, argc);
 		frequency_table = create_frequency_table(properties->file_read);
 	}
-#ifdef DEBUG
+#ifdef DEBUG1
 		/*frequency_table = create_frequency_table(read);*/
 		print_frequency_table(frequency_table);
 #endif 
