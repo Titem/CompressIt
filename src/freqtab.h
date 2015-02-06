@@ -7,8 +7,8 @@
  * Created on 6. Februar 2015, 16:16
  */
 
-#ifndef ERROR_H
-#define	ERROR_H
+#ifndef FREQTAB_H
+#define	FREQTAB_H
 
 
 
