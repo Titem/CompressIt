@@ -23,7 +23,7 @@ typedef struct S_FREQTAB FREQTAB;
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE FREQTAB--------------------------------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern FREQTAB* create_frequency_table(FILE* input_stream);
+extern FREQTAB* create_freqtable(FILE* input_stream);
 
 /*---------------------------------------------------------------------------------*/
 /*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/

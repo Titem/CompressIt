@@ -31,12 +31,13 @@ extern void delete_codetab(CODETAB* codetab)
     
 }
 
-extern codetab_get_code(CODETAB* codetab, unsigned char character)
+extern unsigned short codetab_get_code(CODETAB* codetab, 
+                                       unsigned char character)
 {
     
 }
 
-extern codetab_get_char(CODETAB* codetab, unsigned short code)
+extern unsigned char codetab_get_char(CODETAB* codetab, unsigned short code)
 {
     
 }

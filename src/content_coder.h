@@ -10,6 +10,9 @@
 #ifndef CONTENT_CODER_H
 #define	CONTENT_CODER_H
 
+#include <stdio.h>
+
+#include "codetab.h"
 
 extern void encode_content(FILE* input_stream, FILE* output_stream, 
                            CODETAB* codetab);
