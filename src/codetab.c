@@ -1,8 +1,8 @@
 
 
-#include "codetab.h";
+#include "codetab.h"
 
-#include "codetab_element.h";
+#include "codetab_element.h"
 
 struct S_CODETAB 
 {

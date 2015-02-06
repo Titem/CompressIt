@@ -16,7 +16,7 @@ typedef struct S_CODETAB CODETAB;
 
 
 
-extern CODETAB* create_codetab(htree HTREE*);
+extern CODETAB* create_codetab(HTREE* htree);
 
 extern CODETAB* read_codetab(FILE* input_stream);
 
