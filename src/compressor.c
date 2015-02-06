@@ -15,4 +15,7 @@ extern void compress(FILE* input_stream, FILE* output_stream)
 
 }
 
-extern void decompress(FILE* input_stream, FILE* output_stream);
+extern void decompress(FILE* input_stream, FILE* output_stream)
+{
+    
+}
