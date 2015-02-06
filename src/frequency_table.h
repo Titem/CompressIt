@@ -12,7 +12,7 @@ typedef struct{
 /*---------------------------------------------------------------------------------*/
 /*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-void update_frequency_table(freq_table* freq_tab_p, char character);
+void update_frequency_table(freq_table* freq_tab_p, unsigned char character);
 
 
 /*---------------------------------------------------------------------------------*/

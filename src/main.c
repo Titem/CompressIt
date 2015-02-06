@@ -1,5 +1,5 @@
 #include "main.h"
-#define VisualStudio
+/* #define VisualStudio */
 #define DEBUG
 int main(int argc, char *argv[])
 {
