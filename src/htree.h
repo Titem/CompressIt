@@ -13,7 +13,7 @@
 #include "freqtab.h"
 
 
-typedef S_HTREE HTREE
+typedef struct S_HTREE HTREE;
 
 
 extern HTREE* create_htree(FREQTAB* freqtab);
