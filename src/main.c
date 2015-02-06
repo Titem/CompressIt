@@ -1,5 +1,5 @@
 #include "main.h"
-#define VisualStudio
+/*#define VisualStudio */
 #define DEBUG
 int main(int argc, char *argv[])
 {
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	properties* properties;
 	properties = malloc(sizeof(properties));
 	/*FILE* read = fopen("C:/Users/Artur/Documents/Visual Studio 2013/Projects/CompressIt/src/bibel.txt", "rb");*/
-	freq_table* frequency_table;
+	freq_table* frequency_table = NULL;
 	frequency_table = malloc(sizeof(freq_table));
 	
 	if (properties != NULL && frequency_table != NULL)
