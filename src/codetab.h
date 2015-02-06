@@ -11,7 +11,7 @@
 #define	CODETAB_H
 
 
-typedef CODETAB struct S_CODETAB
+typedef CODETAB struct S_CODETAB;
 
 
 
