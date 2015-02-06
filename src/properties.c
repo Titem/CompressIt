@@ -21,7 +21,7 @@ struct S_PROPERTIES
 
 	FILE *file_read;
 	FILE *file_write;
-	MODE mode
+	MODE mode;
 
 };
 
