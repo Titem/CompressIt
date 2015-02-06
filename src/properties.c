@@ -159,12 +159,12 @@ extern PROPERTIES* create_properties(char* argv[], int argc)
 		if (p_properties->mode == COMPRESS)
 		{
 			strcat(output_file_name, COMPRESS_NAME);
-			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
+			printf("---> Der neue Dateiname heisst jetzt %s !<--- \n", output_file_name);
 		}
 		else if (p_properties->mode == DECOMPRESS)
 		{
 			strcat(output_file_name, DECOMPRESS_NAME);
-			printf("Der neue Dateiname heisst jetzt %s", output_file_name);
+			printf("---> Der neue Dateiname heisst jetzt %s !<--- \n!", output_file_name);
 		}	
 	}
 	else if (found_input_document && found_out_put_document && (strcmp(input_file_name, output_file_name) == 0) && !need_help)

@@ -121,8 +121,8 @@ extern void freqtab_print(FREQTAB* freq_tab_p)
 		}
 	}
 	printf("--------------------------------------\n");
-	printf("Zeichen insgesamt : %d \n", count_chars);
-	printf("Zeichen einzelnt  : %d \n", count_element);
+	printf("Zeichen insgesamt    : %d \n", count_chars);
+	printf("Zeichen verschieden  : %d \n", count_element);
 }
 
 
