@@ -10,6 +10,8 @@
 #ifndef HTREE_ELEMENT_H
 #define	HTREE_ELEMENT_H
 
+#include <stdbool.h>
+
 
 typedef struct S_HTREE_ELEMENT HTREE_ELEMENT;
 
