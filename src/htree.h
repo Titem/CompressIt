@@ -11,6 +11,7 @@
 #define	HTREE_H
 
 #include "freqtab.h"
+#include "codetab_element.h"
 
 
 typedef struct S_HTREE HTREE;
