@@ -32,20 +32,21 @@ typedef struct S_PROPERTIES PROPERTIES;
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE STRUCT UND LIEFERT EINEN PROPERTIES POINTER ZURÜCK-------*/
 /*---------------------------------------------------------------------------------*/
-PROPERTIES* create_properties(char* argv[], int argc);
+extern PROPERTIES* create_properties(char* argv[], int argc);
 
 
 /*---------------------------------------------------------------------------------*/
 /*------GIBT DEN SPEICHER WIEDER FREI BZW. LÖSCHT EINEN PROPERTIES POINTER---------*/
 /*---------------------------------------------------------------------------------*/
 
-void delete_properties(PROPERTIES(*p_properties));
+extern void delete_properties(PROPERTIES(*p_properties));
 
 
-/*---------------------------------------------------------------------------------*/
-/*------INITIALISIERT DEN NAMEN DER AUSGABEDATEI WENN KEINE ANGEGEBEN WURDE--------*/
-/*---------------------------------------------------------------------------------*/
-char* init_output_filename(char* input_file_name);
+extern MODE properties_get_mode(PROPERTIES* p_properties);
+
+extern FILE* properties_get_input_stream(PROPERTIES* p_properties);
+
+extern FILE* properties_get_output_stream(PROPERTIES* p_properties);
 
 #endif	/* PROPERTIES_H */
 

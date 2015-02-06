@@ -25,7 +25,14 @@ struct S_PROPERTIES
 
 };
 
-PROPERTIES* create_properties(char* argv[], int argc)
+
+/*---------------------------------------------------------------------------------*/
+/*------INITIALISIERT DEN NAMEN DER AUSGABEDATEI WENN KEINE ANGEGEBEN WURDE--------*/
+/*---------------------------------------------------------------------------------*/
+static char* init_output_filename(char* input_file_name);
+
+
+extern PROPERTIES* create_properties(char* argv[], int argc)
 {
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Dekleration von Variablen----------------------------*/
@@ -192,13 +199,29 @@ PROPERTIES* create_properties(char* argv[], int argc)
 	return p_properties;
 }
 
-void delete_properties(PROPERTIES(*p_properties))
+extern void delete_properties(PROPERTIES(*p_properties))
 {
 	free(p_properties);
 	p_properties = NULL;
 }
 
-char* init_output_filename(char* input_file_name)
+extern MODE properties_get_mode(PROPERTIES* p_properties)
+{
+    return p_properties->mode;
+}
+
+extern FILE* properties_get_input_stream(PROPERTIES* p_properties)
+{
+    return p_properties->file_read;
+}
+
+extern FILE* properties_get_output_stream(PROPERTIES* p_properties)
+{
+    return p_properties->file_write;
+}
+
+
+static char* init_output_filename(char* input_file_name)
 {
 	int length = strlen(input_file_name);
 	char* output_file_name = NULL;
