@@ -43,7 +43,7 @@ extern void test_nullpointer_exception(FILE *file_p, char* file_name);
 /*---------------------------------------------------------------------------------*/
 /*---------------------GIBT DENN FEHLER AUF DEM BILDSCHIRM AUS---------------------*/
 /*---------------------------------------------------------------------------------*/
-void print_error(int error_message);
+extern void print_error(int error_message);
 
 
 #endif	/* ERROR_H */

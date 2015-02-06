@@ -1,7 +1,7 @@
 #include "error.h"
 
 
-void print_error(int message)
+extern void print_error(int message)
 {
 
 	switch (message)
@@ -29,7 +29,7 @@ void print_error(int message)
 }
 
 
-void test_nullpointer_exception(FILE *file_p, char* file_name)
+extern void test_nullpointer_exception(FILE *file_p, char* file_name)
 {
 	errno = 0;
 	if (file_p == NULL)
