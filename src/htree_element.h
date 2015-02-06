@@ -11,11 +11,11 @@
 #define	HTREE_ELEMENT_H
 
 
-typedef S_HTREE_ELEMENT HTREE_ELEMENT;
+typedef struct S_HTREE_ELEMENT HTREE_ELEMENT;
 
-typedef S_HTREE_NODE HTREE_NODE;
+typedef struct S_HTREE_NODE HTREE_NODE;
 
-typedef S_HTREE_LEAF HTREE_LEAF;
+typedef struct S_HTREE_LEAF HTREE_LEAF;
 
 
 extern HTREE_ELEMENT* create_htree_node(HTREE_ELEMENT* left_child, 
