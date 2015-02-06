@@ -10,13 +10,12 @@
 #ifndef CODETAB_H
 #define	CODETAB_H
 
-#include <stdio.h>
 
-typedef struct S_CODETAB CODETAB;
-
+typedef CODETAB struct S_CODETAB
 
 
-extern CODETAB* create_codetab(HTREE* htree);
+
+extern CODETAB* create_codetab(htree HTREE*);
 
 extern CODETAB* read_codetab(FILE* input_stream);
 

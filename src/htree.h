@@ -11,7 +11,7 @@
 #define	HTREE_H
 
 
-typedef S_HTREE HTREE;
+typedef S_HTREE HTREE
 
 
 extern HTREE* create_htree(FREQTAB* freqtab);
