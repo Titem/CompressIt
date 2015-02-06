@@ -1,6 +1,17 @@
 #include "properties.h"
 #include "error.h"
 
+/*---------------------------------------------------------------------------------*/
+/*---------------DEKLERATION EINER PORPERTIES STRUCT-------------------------------*/
+/*---------------------------------------------------------------------------------*/
+struct S_PROPERTIES
+{
+	FILE *file_read;
+	FILE *file_write;
+	MODE MODE;
+};
+
+
 /*Beschreibt ob codiert oder decodiert werden soll.*/
 char* const COMPPRESS_STATUS = "-c";
 char* const DECOMPRESS_STATUS = "-d";
@@ -18,7 +29,7 @@ char* const WRITE_BINARY = "wb";
 
 
 
-properties* create_properties(char* argv[],int argc)
+PROPERTIES* create_properties(char* argv[], int argc)
 {
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Dekleration von Variablen----------------------------*/
@@ -33,8 +44,8 @@ properties* create_properties(char* argv[],int argc)
 	FILE *file_read = NULL;
 	FILE *file_write = NULL;
 
-	properties *p_properties;
-	p_properties = malloc(sizeof(properties));
+	PROPERTIES *p_properties;
+	p_properties = malloc(sizeof(PROPERTIES));
 
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
@@ -182,7 +193,7 @@ properties* create_properties(char* argv[],int argc)
 	return p_properties;
 }
 
-void delete_properties(properties (*p_properties))
+void delete_properties(PROPERTIES(*p_properties))
 {
 	free(p_properties);
 	p_properties = NULL;
@@ -194,7 +205,19 @@ char* init_output_filename(char* input_file_name)
 	char* output_file_name = NULL;
 	output_file_name = malloc(length);
 	return output_file_name;
+}
 
+MODE properties_get_mode(PROPERTIES* p_properties)
+{
+	return p_properties->MODE;
+}
 
+FILE* properties_get_input_stream(PROPERTIES* p_properties)
+{
+	return p_properties->file_read;
+}
 
+FILE* properties_get_output_stream(PROPERTIES* p_properties)
+{
+	return p_properties->file_write;
 }

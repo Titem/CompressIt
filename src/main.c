@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
 /*-----------------------------CODE--------------------------------*/
 
-	properties* properties;
+	PROPERTIES* properties;
 	properties = malloc(sizeof(properties));
 	/*FILE* read = fopen("C:/Users/Artur/Documents/Visual Studio 2013/Projects/CompressIt/src/bibel.txt", "rb");*/
 	freq_table* frequency_table;
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	if (properties != NULL && frequency_table != NULL)
 	{
 		properties = create_properties(argv, argc);
-		frequency_table = create_frequency_table(properties->file_read);
+		frequency_table = create_frequency_table(properties_get_input_stream(properties));
 	}
 #ifdef DEBUG
 		/*frequency_table = create_frequency_table(read);*/
