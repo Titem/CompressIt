@@ -1,5 +1,5 @@
 /* 
- * File:   compressor.h
+ * File:   properties.h
  * Author: Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz

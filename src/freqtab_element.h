@@ -1,3 +1,18 @@
+/* 
+ * File:   freqtab_element.h
+ * Author: Tim Buschmann
+ *         Artur Leinweber
+ *         Alexander Schmitz 
+ *
+ * Created on 6. Februar 2015, 16:16
+ */
+
+#ifndef ERROR_H
+#define	ERROR_H
+
+
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
@@ -46,3 +61,7 @@ long freqtab_element_get_frequency(freqtab_element* freq);
 /*------ERHÖHT DIE HÄUFIGKEIT EINER FREQUENCY TABLE ELEMENT------------------------*/
 /*---------------------------------------------------------------------------------*/
 extern void freqtab_element_inc_frequency(freqtab_element* freq);
+
+
+
+#endif	/* FREQTAB_ELEMENT_H */
