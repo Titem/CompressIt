@@ -1,5 +1,5 @@
 #include "properties.h"
-#include "frequency_table.h"
+#include "freqtab.h"
 #include <time.h>
 
 /*Jede C-Anwendung muss genau eine Main-Methode enthalten, in der angegeben ist, wo die Programmausführung beginnen soll.*/

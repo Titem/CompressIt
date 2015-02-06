@@ -1,4 +1,4 @@
-#include "frequency_table_element.h"
+#include "freqtab_element.h"
 
 freqtab_element* create_freqtab_element(char character)
 {

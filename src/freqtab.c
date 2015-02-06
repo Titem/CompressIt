@@ -1,4 +1,4 @@
-#include "frequency_table.h"
+#include "freqtab.h"
 #include "error.h"
 
 

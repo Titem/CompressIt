@@ -1,4 +1,4 @@
-#include "frequency_table_element.h"
+#include "freqtab_element.h"
 
 #define MAX_CHARACTERS 256
 
