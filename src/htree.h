@@ -10,6 +10,8 @@
 #ifndef HTREE_H
 #define	HTREE_H
 
+#include "freqtab.h"
+
 
 typedef struct S_HTREE HTREE;
 

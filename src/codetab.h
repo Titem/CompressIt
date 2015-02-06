@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 
+#include "htree.h"
+
 typedef struct S_CODETAB CODETAB;
 
 
