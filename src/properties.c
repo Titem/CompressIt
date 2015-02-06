@@ -103,6 +103,7 @@ properties* create_properties(char* argv[],int argc)
 				else
 				{
 					printf("No");
+
 					strcpy(output_file_name,input_file_name);
 
 				}
