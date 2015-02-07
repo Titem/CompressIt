@@ -26,10 +26,11 @@ int main(int argc, char** argv);
 
 
 
-/* ======================================================================== *
- * Funktionsdefinitionen                                                    *
- * ======================================================================== */
-
+/**
+ * main.c
+ * @param argc Test
+ * @param argv Test2
+ */
 int main(int argc, char *argv[])
 {
     /*Für die Zeit zuständig.*/

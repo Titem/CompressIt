@@ -24,14 +24,17 @@ $(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o $(OBJPATH)/htree.o $(OBJPATH)/fr
 $(OBJPATH)/freqtab.o $(OBJPATH)/pqueue.o \
 $(OBJPATH)/htree_element.o $(OBJPATH)/main.o
 
-# Standardziel
-build : $(EXEPATH)/$(EXE)
+# Es wird bei jedem normalen Build eine exe erzeugt und dann eine statische
+# Codepruefung durchgefuehrt.
+build : $(EXEPATH)/$(EXE) $(SPLINT_LOG)
 
 # Regel zum Ausfuehren des aktuellen Programms
 run : build
 	./$(EXEPATH)/$(EXE)
 
-build_all : $(SPLINT_LOG) $(EXEPATH)/$(EXE) $(DOXYGEN_FILE) 
+# Build zusammen mit Doxygen, falls es zu einem Splint Fehler kommt wird
+# abgebrochen .
+build_release : $(SPLINT_LOG) $(EXEPATH)/$(EXE)  $(DOXYGEN_FILE) 
 clean_and_build : clean build
 
 # Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien
@@ -143,15 +146,19 @@ $(SPLINT_LOG) : src/*.c src/*.h
 	@echo ========================================================
 	@echo Fuehre statische Codepruefung durch
 	@echo --------------------------------------------------------
-	splint -weak -I $(STACK_PATH) \
+	splint -weak \
            -booltype BOOL -boolfalse FALSE -booltrue TRUE \
            +predboolint +noret +usedef +infloops +casebreak \
            -initallelements -incompletetype -fixedformalarray \
-           *.c > $(SPLINT_LOG)
+           src/*.c
+
+# ----------------------------------------------------------------------------
+#Regel zum expliziten Erzeugung der Projektdokumentation
+doxygen : $(DOXYGEN_FILE)
 
 # ----------------------------------------------------------------------------
 # Regel zum Erzeugen der Projektdokumentation
-$(DOXYGEN_FILE) : *.c *.h
+$(DOXYGEN_FILE) : src/*.c src/*.h
 	@echo ========================================================
 	@echo Erzeuge Doxygen-Dokumentation
 	@echo --------------------------------------------------------
@@ -168,9 +175,6 @@ clean :
 	rm -f -r $(DOXYGEN_PATH)
 	rm -f $(SPLINT_LOG)
 
-#-----------------------------------------------------------------------------
-# Netbeans Makefile	
-
 
 #-----------------------------------------------------------------------------
 # Automatisches Testen
@@ -178,5 +182,4 @@ test1 :
 	@echo Test:
 	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
 	@echo Test durchgefuehrt
-
 
