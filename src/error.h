@@ -53,4 +53,7 @@ extern void test_nullpointer_exception(FILE *file_p, char* file_name);
 extern void print_error(int error_message);
 
 
+extern char* convert_char(char character);
+
+
 #endif	/* ERROR_H */

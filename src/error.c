@@ -70,3 +70,32 @@ extern void test_nullpointer_exception(FILE *file_p, char* file_name)
 		exit(EXIT_FAILURE);
 	}
 }
+
+
+extern char* convert_char(char character)
+{
+    char* converted_char = malloc(3);
+    
+    switch (character)
+    {
+    case '\n':
+        *converted_char = '\\';
+        converted_char++;
+        *converted_char = 'n';
+        converted_char--;
+        break;
+    case 13:
+        *converted_char = '\\';
+        converted_char++;
+        *converted_char = 'r';
+        converted_char--;
+        break;
+    default:
+        *converted_char = character;
+        converted_char++;
+        *converted_char = '\0';
+        converted_char--;
+    }
+    
+    return converted_char;
+}

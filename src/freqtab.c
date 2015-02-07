@@ -128,14 +128,14 @@ extern void freqtab_print(FREQTAB* freq_tab_p)
 
     printf("Zeichen  ---> Haeufigkeit ---> NUMERIC\n");
     printf("--------------------------------------\n");
-
+    fflush(stdout);
     for (i = 0; i < MAX_CHARACTERS; i++)
     {
 	if (freq_tab_p->freq_table[i] != NULL)
 	{
             count_element++;
             count_chars = count_chars + freqtab_element_get_frequency(freq_tab_p->freq_table[i]);
-            printf("%c \t ---> %d \t  ---> %d \n", freqtab_elememt_get_char(freq_tab_p->freq_table[i]), freqtab_element_get_frequency(freq_tab_p->freq_table[i]), freqtab_elememt_get_char(freq_tab_p->freq_table[i]));
+            printf("%s \t ---> %d \t  ---> %d \n", convert_char(freqtab_elememt_get_char(freq_tab_p->freq_table[i])), freqtab_element_get_frequency(freq_tab_p->freq_table[i]), freqtab_elememt_get_char(freq_tab_p->freq_table[i]));
 	}
     }
     printf("--------------------------------------\n");
