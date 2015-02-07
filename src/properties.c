@@ -176,7 +176,7 @@ extern PROPERTIES* create_properties(char* argv[], int argc)
 /*----------------------------------------------------------------------------------------------*/
 /*----Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung----*/
 /*----------------------------------------------------------------------------------------------*/
-	printf("Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung !\n");
+	printf("Pruefen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehoeriger Endung !\n");
 	if (!found_out_put_document && !need_help)
 	{
 		if (p_properties->mode == COMPRESS)
@@ -199,22 +199,22 @@ extern PROPERTIES* create_properties(char* argv[], int argc)
 	if (!need_help)
 	{
 		/*---------------------------------------------------------------------------------*/
-		/*----------------------FILE POINTER setzen und prüfen-----------------------------*/
+		/*----------------------FILE POINTER setzen und pruefen-----------------------------*/
 		/*---------------------------------------------------------------------------------*/
 		printf("FILE POINTER setzen und prüfen !\n");
 
-		printf("FP READ Stream geöffnet !\n");
+		printf("FP READ Stream geoeffnet !\n");
 		file_read = fopen(input_file_name, READ_BINARY);
 		test_nullpointer_exception(file_read, input_file_name);
 
-		printf("FP WRITE Stream geöffnet !\n");
+		printf("FP WRITE Stream geoeffnet !\n");
 		file_write = fopen(output_file_name, WRITE_BINARY);
 		test_nullpointer_exception(file_write, output_file_name);
 
 		/*---------------------------------------------------------------------------------*/
-		/*-------------FILE POINTER in die PROPERTIES STRUCT übernehmen--------------------*/
+		/*-------------FILE POINTER in die PROPERTIES STRUCT uebernehmen--------------------*/
 		/*---------------------------------------------------------------------------------*/
-		printf("FILE POINTER in die PROPERTIES STRUCT übernehmen !\n");
+		printf("FILE POINTER in die PROPERTIES STRUCT uebernehmen !\n");
 		p_properties->file_read = file_read;
 		p_properties->file_write = file_write;
 	}
