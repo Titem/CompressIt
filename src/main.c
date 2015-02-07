@@ -11,11 +11,6 @@
 #include "compressor.h"
 #include "error.h"
 
-/* #define VisualStudio */
-
-
-
-
 /* ======================================================================== *
  * Funktionsprototypen                                                      *
  * ======================================================================== */
@@ -34,15 +29,16 @@ int main(int argc, char** argv);
 int main(int argc, char *argv[])
 {
     /*Für die Zeit zuständig.*/
-    clock_t begin;
-    clock_t end;
+    clock_t begin = NULL;
+    clock_t end = NULL;
 
     /*Timer starten*/
     begin = clock();
 
 /*-----------------------------CODE--------------------------------*/
 
-    PROPERTIES* properties = create_properties(argv, argc);
+	PROPERTIES* properties = NULL;
+	properties = create_properties(argv, argc);
     MODE modus = properties_get_mode(properties);
 
     switch (modus)
@@ -68,7 +64,7 @@ int main(int argc, char *argv[])
     end = clock();
 
     printf("\nBenoetigte Zeit: %i ms", end - begin);
-    /* getchar(); */
+     /*getchar();*/ 
     exit(EXIT_SUCCESS);
 }
 
