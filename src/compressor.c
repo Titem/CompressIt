@@ -17,18 +17,18 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     HTREE* huffman_tree;
     CODETAB* code_table;
         
-    /*Häufigkeitstabelle erstellen.*/
+    /*Häufigkeitstabelle erstellen*/
     frequency_table = create_freqtab(input_stream);
 
-    /*Häufigkeitstabelle auf dem Bildschirm ausgeben.*/
+    /*Häufigkeitstabelle auf Bildschirm ausgeben*/
     freqtab_print(frequency_table);
     
     return;
 
-    /*Huffmanbaum erzeugen.*/
+    /*Huffmanbaum erstellen*/
     huffman_tree = create_htree(frequency_table);
         
-    /*Huffmanbaum auf Bildschirm ausgeben.*/
+    /*Huffmanbaum auf Bildschirm ausgeben*/
     htree_print(huffman_tree);
         
     /*Codebuch erstellen*/
