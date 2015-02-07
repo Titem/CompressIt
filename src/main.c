@@ -38,10 +38,9 @@ int main(int argc, char *argv[])
 /*-----------------------------CODE--------------------------------*/
 
 	PROPERTIES* properties = NULL;
-	properties = create_properties(argv, argc);
-    MODE modus = properties_get_mode(properties);
+	properties = create_properties(argv, argc); 
 
-    switch (modus)
+	switch (properties_get_mode(properties))
     {
         case COMPRESS:
             compress(properties_get_input_stream(properties), 
