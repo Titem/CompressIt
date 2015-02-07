@@ -41,25 +41,25 @@ typedef struct S_FREQTAB_ELEMENT FREQTAB_ELEMENT;
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUES FREQUENCY TABLE ELEMENT---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-FREQTAB_ELEMENT* create_freqtab_element(char character);
+extern FREQTAB_ELEMENT* create_freqtab_element(char character);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----LÖSCHT EIN FREQUENCY TABLE ELEMENT BZW GIBT DEN SPEICHER WIEDER FREI--------*/
 /*---------------------------------------------------------------------------------*/
-void delete_freqtab_element(FREQTAB_ELEMENT* freq);
+extern void delete_freqtab_element(FREQTAB_ELEMENT* freq);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----LIEFERT DAS ZEICHEN EINER FREQUENCY TABLE ELEMENT---------------------------*/
 /*---------------------------------------------------------------------------------*/
-unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq);
+extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq);
 
 
 /*---------------------------------------------------------------------------------*/
 /*-----LIEFERT DIE HÄUFIGKEIT EINER FREQUENCY TABLE ELEMENT------------------------*/
 /*---------------------------------------------------------------------------------*/
-long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq);
+extern long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq);
 
 
 /*---------------------------------------------------------------------------------*/
