@@ -27,8 +27,9 @@ struct S_FREQTAB{
 
 
 /* ======================================================================== *
- * Funktionsdefinitionen                                                    *
+ * Funktionsprototypen                                                      *
  * ======================================================================== */
+
 
 /*---------------------------------------------------------------------------------*/
 /*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
@@ -48,6 +49,11 @@ static void freqtab_init(FREQTAB* freq_tab_p);
 static void freqtab_init_working_index(FREQTAB* freq_tab_p);
 
 
+
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
 
 extern FREQTAB* create_freqtab(FILE* input_stream)
 {
