@@ -47,7 +47,7 @@ $(OBJPATH)/error.o : src/error.c src/error.h
 	@echo Erzeuge $(OBJPATH)/error.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/error.o src/error.c
+	gcc  $(GCC_OPTION) -o $(OBJPATH)/error.o src/error.c
 
 $(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h 
 	@echo ========================================================
