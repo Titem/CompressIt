@@ -177,6 +177,6 @@ clean :
 test1 : 
 	@echo Test:
 	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
-	@echo Test durchgeführt
+	@echo Test durchgefuehrt
 
 

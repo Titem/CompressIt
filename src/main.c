@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
     end = clock();
 
     printf("\nBenoetigte Zeit: %i ms", end - begin);
-    getchar();
+    /* getchar(); */
     exit(EXIT_SUCCESS);
 }
 
