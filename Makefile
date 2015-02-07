@@ -1,64 +1,20 @@
-#
-#  There exist several targets which are by default empty and which can be 
-#  used for execution of your targets. These targets are usually executed 
-#  before and after some main targets. They are: 
-#
-#     .build-pre:              called before 'build' target
-#     .build-post:             called after 'build' target
-#     .clean-pre:              called before 'clean' target
-#     .clean-post:             called after 'clean' target
-#     .clobber-pre:            called before 'clobber' target
-#     .clobber-post:           called after 'clobber' target
-#     .all-pre:                called before 'all' target
-#     .all-post:               called after 'all' target
-#     .help-pre:               called before 'help' target
-#     .help-post:              called after 'help' target
-#
-#  Targets beginning with '.' are not intended to be called on their own.
-#
-#  Main targets can be executed directly, and they are:
-#  
-#     build                    build a specific configuration
-#     clean                    remove built files from a configuration
-#     clobber                  remove all built files
-#     all                      build all configurations
-#     help                     print help mesage
-#  
-#  Targets .build-impl, .clean-impl, .clobber-impl, .all-impl, and
-#  .help-impl are implemented in nbproject/makefile-impl.mk.
-#
-#  Available make variables:
-#
-#     CND_BASEDIR                base directory for relative paths
-#     CND_DISTDIR                default top distribution directory (build artifacts)
-#     CND_BUILDDIR               default top build directory (object files, ...)
-#     CONF                       name of current configuration
-#     CND_PLATFORM_${CONF}       platform name (current configuration)
-#     CND_ARTIFACT_DIR_${CONF}   directory of build artifact (current configuration)
-#     CND_ARTIFACT_NAME_${CONF}  name of build artifact (current configuration)
-#     CND_ARTIFACT_PATH_${CONF}  path to build artifact (current configuration)
-#     CND_PACKAGE_DIR_${CONF}    directory of package (current configuration)
-#     CND_PACKAGE_NAME_${CONF}   name of package (current configuration)
-#     CND_PACKAGE_PATH_${CONF}   path to package (current configuration)
-#
-# NOCDDL
-
-
 # Environment 
-#MKDIR=mkdir
-#CP=cp
-#CCADMIN=CCadmin
 OBJPATH = build
 EXEPATH = dist
 EXE = huffman.exe
 
+CND_PLATFORM=Cygwin-Windows
+CND_DLIB_EXT=dll
+CND_CONF=Debug
+CND_DISTDIR=dist
+CND_BUILDDIR=build
 # Compiler-Optionen
 GCC_OPTION = -c -g -DDEBUG -std=c99 -pedantic-errors
 
 # Konfiguration fuer Doxygen
 DOXYGEN_PATH = doxygen
 DOXYGEN_FILE = $(DOXYGEN_PATH)/html/index.html
-DOXYGEN_CFG = ~/ppr_doxygen.cfg
+DOXYGEN_CFG = res/ppr_doxygen.cfg
 
 # Konfiguration fuer Splint
 SPLINT_LOG = ./splint.log
@@ -72,11 +28,10 @@ $(OBJPATH)/htree_element.o $(OBJPATH)/main.o
 build : $(EXEPATH)/$(EXE)
 
 # Regel zum Ausfuehren des aktuellen Programms
-
 run : build
 	./$(EXEPATH)/$(EXE)
 
-build_all : $(SPLINT_LOG) $(EXEPATH)/$(EXE) $(DOXYGEN_FILE)
+build_all : $(SPLINT_LOG) $(EXEPATH)/$(EXE) $(DOXYGEN_FILE) 
 clean_and_build : clean build
 
 # Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien
@@ -184,7 +139,7 @@ $(OBJPATH)/main.o : src/main.c src/properties.h src/compressor.h src/error.h src
 
 # ----------------------------------------------------------------------------
 # Regel zum Erzeugen der Splint Prüfung
-$(SPLINT_LOG) : *.c *.h
+$(SPLINT_LOG) : src/*.c src/*.h
 	@echo ========================================================
 	@echo Fuehre statische Codepruefung durch
 	@echo --------------------------------------------------------
@@ -201,4 +156,19 @@ $(DOXYGEN_FILE) : *.c *.h
 	@echo Erzeuge Doxygen-Dokumentation
 	@echo --------------------------------------------------------
 	doxygen $(DOXYGEN_CFG)
+
+# ----------------------------------------------------------------------------
+# Regel zum Loeschen aller erzeugten Dateien
+clean :
+	@echo ========================================================
+	@echo Loesche $(EXEPATH)/$(EXE), $(OBJS)
+	@echo --------------------------------------------------------
+	rm -f -r $(EXEPATH)
+	rm -f -r $(OBJPATH)
+	rm -f -r $(DOXYGEN_PATH)
+	rm -f $(SPLINT_LOG)
+
+#-----------------------------------------------------------------------------
+# Netbeans Makefile	
+
 
