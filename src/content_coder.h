@@ -10,9 +10,23 @@
 #ifndef CONTENT_CODER_H
 #define	CONTENT_CODER_H
 
+
+
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include <stdio.h>
 
 #include "codetab.h"
+
+
+
+
+/* ======================================================================== *
+ * Funktionsprototypen                                                      *
+ * ======================================================================== */
 
 extern void encode_content(FILE* input_stream, FILE* output_stream, 
                            CODETAB* codetab);

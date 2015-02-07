@@ -172,3 +172,11 @@ clean :
 # Netbeans Makefile	
 
 
+#-----------------------------------------------------------------------------
+# Automatisches Testen
+test1 : 
+	@echo Test:
+	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
+	@echo Test durchgeführt
+
+

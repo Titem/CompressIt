@@ -10,13 +10,31 @@
 #ifndef CODETAB_H
 #define	CODETAB_H
 
+
+
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include <stdio.h>
 
 #include "htree.h"
 
+
+
+
+/* ======================================================================== *
+ * Typdefinitionen                                                          *
+ * ======================================================================== */
 typedef struct S_CODETAB CODETAB;
 
 
+
+
+/* ======================================================================== *
+ * Funktionsprototypen                                                      *
+ * ======================================================================== */
 
 extern CODETAB* create_codetab(HTREE* htree);
 
@@ -30,6 +48,8 @@ extern unsigned short codetab_get_code(CODETAB* codetab,
                                        unsigned char character);
 
 extern unsigned char codetab_get_char(CODETAB* codetab, unsigned short code);
+
+extern void codetab_print(CODETAB* codetab);
 
 
 

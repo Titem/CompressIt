@@ -1,43 +1,69 @@
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include "freqtab_element.h"
 
-struct S_FREQTAB_ELEMENT{
+#include <stdlib.h>
 
-	long frequency;
-	char character;
 
+
+
+/* ======================================================================== *
+ * Strukturdefinitionen                                                     *
+ * ======================================================================== */
+
+struct S_FREQTAB_ELEMENT
+{
+    long frequency;
+    char character;
 };
 
-FREQTAB_ELEMENT* create_freqtab_element(char character)
+
+
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
+
+extern FREQTAB_ELEMENT* create_freqtab_element(char character)
 {
-	FREQTAB_ELEMENT* freq;
-	freq = malloc(sizeof(FREQTAB_ELEMENT));
+    FREQTAB_ELEMENT* freq;
+    freq = malloc(sizeof(FREQTAB_ELEMENT));
 
-	if (freq != NULL)
-	{
-		freq->character = character;
-		freq->frequency = ININIT_CHARCTER;
-	}
-	return freq;
-}
-
-void delete_freqtab_element(FREQTAB_ELEMENT* freq)
-{
-	free(freq);
-}
-
-
-unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
-{
-	return freq->character;
+    if (freq != NULL)
+    {
+	freq->character = character;
+	freq->frequency = ININIT_CHARCTER;
+    }
+    return freq;
 }
 
 
-long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq)
+
+extern void delete_freqtab_element(FREQTAB_ELEMENT* freq)
 {
-	return freq->frequency;
+    free(freq);
 }
+
+
+
+extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
+{
+    return freq->character;
+}
+
+
+
+extern long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq)
+{
+    return freq->frequency;
+}
+
+
 
 extern void freqtab_element_inc_frequency(FREQTAB_ELEMENT* freq)
 {
-	freq->frequency++;
+    freq->frequency++;
 }

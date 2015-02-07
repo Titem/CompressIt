@@ -1,8 +1,18 @@
 
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
 
 #include "codetab.h"
 
 #include "codetab_element.h"
+
+
+
+
+/* ======================================================================== *
+ * Strukturdefinitionen                                                     *
+ * ======================================================================== */
 
 struct S_CODETAB 
 {
@@ -10,6 +20,12 @@ struct S_CODETAB
     CODETAB_ELEMENT* element[256];
 };
 
+
+
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
 
 extern CODETAB* create_codetab(HTREE* htree)
 {
@@ -38,6 +54,11 @@ extern unsigned short codetab_get_code(CODETAB* codetab,
 }
 
 extern unsigned char codetab_get_char(CODETAB* codetab, unsigned short code)
+{
+    
+}
+
+extern void codetab_print(CODETAB* codetab)
 {
     
 }
