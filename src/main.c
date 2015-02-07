@@ -32,7 +32,6 @@ int main(int argc, char** argv);
 
 int main(int argc, char *argv[])
 {
-
     /*Für die Zeit zuständig.*/
     clock_t begin;
     clock_t end;

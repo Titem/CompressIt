@@ -77,7 +77,7 @@ extern PROPERTIES* create_properties(char* argv[], int argc)
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-	printf("Analyse der Parameter !\n");
+	printf("Analyse der Parameter!\n");
 	if (p_properties != NULL)
 	{
 		if ((argc == 1) || (argc == 2) || (argc > 4))
