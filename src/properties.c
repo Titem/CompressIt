@@ -1,4 +1,14 @@
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include "properties.h"
+
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "error.h"
 
 /*Beschreibt ob codiert oder decodiert werden soll.*/
@@ -16,6 +26,13 @@ char* const HELP = "-h";
 char* const READ_BINARY = "rb";
 char* const WRITE_BINARY = "wb";
 
+
+
+
+/* ======================================================================== *
+ * Strukturdefinitionen                                                     *
+ * ======================================================================== */
+
 struct S_PROPERTIES
 {
 
@@ -25,6 +42,12 @@ struct S_PROPERTIES
 
 };
 
+
+
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
 
 /*---------------------------------------------------------------------------------*/
 /*------INITIALISIERT DEN NAMEN DER AUSGABEDATEI WENN KEINE ANGEGEBEN WURDE--------*/

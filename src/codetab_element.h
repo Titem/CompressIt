@@ -10,11 +10,30 @@
 #ifndef CODETAB_ELEMENT_H
 #define	CODETAB_ELEMENT_H
 
+
+
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include <stdbool.h>
 
 
+
+
+/* ======================================================================== *
+ * Typdefinitionen                                                          *
+ * ======================================================================== */
+
 typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
 
+
+
+
+/* ======================================================================== *
+ * Funktionsprototypen                                                      *
+ * ======================================================================== */
 
 extern CODETAB_ELEMENT* creat_codetab_element(unsigned char character, 
                                               unsigned short code,

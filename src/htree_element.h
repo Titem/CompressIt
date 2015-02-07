@@ -10,8 +10,21 @@
 #ifndef HTREE_ELEMENT_H
 #define	HTREE_ELEMENT_H
 
+
+
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include <stdbool.h>
 
+
+
+
+/* ======================================================================== *
+ * Typdefinitionen                                                          *
+ * ======================================================================== */
 
 typedef struct S_HTREE_ELEMENT HTREE_ELEMENT;
 
@@ -19,6 +32,12 @@ typedef struct S_HTREE_NODE HTREE_NODE;
 
 typedef struct S_HTREE_LEAF HTREE_LEAF;
 
+
+
+
+/* ======================================================================== *
+ * Funktionsprototypen                                                      *
+ * ======================================================================== */
 
 extern HTREE_ELEMENT* create_htree_node(HTREE_ELEMENT* left_child, 
                                         HTREE_ELEMENT* right_child);

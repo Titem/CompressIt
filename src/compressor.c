@@ -1,7 +1,9 @@
 
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include "compressor.h"
-
-
 
 #include "freqtab.h"
 #include "htree.h"
@@ -10,6 +12,10 @@
 
 
 
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
 
 extern void compress(FILE* input_stream, FILE* output_stream)
 {
@@ -44,7 +50,6 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     encode_content(input_stream, output_stream, code_table);
 
 }
-
 
 
 

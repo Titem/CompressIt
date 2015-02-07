@@ -1,15 +1,27 @@
-#include "properties.h"
-#include "freqtab.h"
-#include <time.h>
-#include "compressor.h"
-#include "error.h"
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+#include "properties.h"
+#include "compressor.h"
+#include "error.h"
+
 /* #define VisualStudio */
 
 /*Jede C-Anwendung muss genau eine Main-Methode enthalten, in der angegeben ist, wo die Programmausführung beginnen soll.*/
 int main(int argc, char** argv);
 
+
+
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
 
 int main(int argc, char *argv[])
 {

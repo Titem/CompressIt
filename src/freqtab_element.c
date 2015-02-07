@@ -1,4 +1,18 @@
+
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include "freqtab_element.h"
+
+#include <stdlib.h>
+
+
+
+
+/* ======================================================================== *
+ * Strukturdefinitionen                                                     *
+ * ======================================================================== */
 
 struct S_FREQTAB_ELEMENT{
 
@@ -7,7 +21,14 @@ struct S_FREQTAB_ELEMENT{
 
 };
 
-FREQTAB_ELEMENT* create_freqtab_element(char character)
+
+
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
+
+extern FREQTAB_ELEMENT* create_freqtab_element(char character)
 {
 	FREQTAB_ELEMENT* freq;
 	freq = malloc(sizeof(FREQTAB_ELEMENT));
@@ -20,22 +41,28 @@ FREQTAB_ELEMENT* create_freqtab_element(char character)
 	return freq;
 }
 
-void delete_freqtab_element(FREQTAB_ELEMENT* freq)
+
+
+extern void delete_freqtab_element(FREQTAB_ELEMENT* freq)
 {
 	free(freq);
 }
 
 
-unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
+
+extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
 {
 	return freq->character;
 }
 
 
-long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq)
+
+extern long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq)
 {
 	return freq->frequency;
 }
+
+
 
 extern void freqtab_element_inc_frequency(FREQTAB_ELEMENT* freq)
 {
