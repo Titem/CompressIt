@@ -41,3 +41,8 @@ extern unsigned char codetab_get_char(CODETAB* codetab, unsigned short code)
 {
     
 }
+
+extern void codetab_print(CODETAB* codetab)
+{
+    
+}

@@ -27,5 +27,7 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree);
 
 extern bool htree_is_emty(HTREE* htree);
 
+extern void htree_print(HTREE* htree);
+
 #endif	/* HTREE_H */
 

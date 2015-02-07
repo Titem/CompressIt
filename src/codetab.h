@@ -31,6 +31,8 @@ extern unsigned short codetab_get_code(CODETAB* codetab,
 
 extern unsigned char codetab_get_char(CODETAB* codetab, unsigned short code);
 
+extern void codetab_print(CODETAB* codetab);
+
 
 
 #endif	/* CODETAB_H */
