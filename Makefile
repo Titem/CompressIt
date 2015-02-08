@@ -191,10 +191,10 @@ clean :
 
 #-----------------------------------------------------------------------------
 # Automatisches Testen
-test1 : 
+test1 : build
 	@echo Test:
 	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
 	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc ./res/bibel.txt.dc
-	diff bibel.txt bibel.txt.dc
+	#diff -s ./res/bibel.txt ./res/bibel.txt.dc 
 	@echo Test durchgefuehrt
 
