@@ -24,15 +24,14 @@
 /*---------------------------------------------------------------------------------*/
 /*-----------------------------------ENUM FÜR FEHLER-------------------------------*/
 /*---------------------------------------------------------------------------------*/
-enum error_message
-{
-	dont_found_input_document,
-	dont_found_compress_mode,
-	too_many_arguments,
-	cant_malloc_memory,
-	in_and_output_document_are_the_same,
-	help,
-	AND,
+enum error_message {
+    dont_found_input_document,
+    dont_found_compress_mode,
+    too_many_arguments,
+    cant_malloc_memory,
+    in_and_output_document_are_the_same,
+    help,
+    AND,
 };
 
 
