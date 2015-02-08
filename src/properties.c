@@ -248,7 +248,7 @@ extern FILE* properties_get_output_stream(PROPERTIES* p_properties)
 
 static char* init_output_filename(char* input_file_name)
 {
-	int length = strlen(input_file_name);
+	size_t length = strlen(input_file_name);
 	char* output_file_name = NULL;
 	output_file_name = malloc(length);
 	return output_file_name;
