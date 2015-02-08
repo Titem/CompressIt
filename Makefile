@@ -9,7 +9,7 @@ CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 # Compiler-Optionen
-GCC_OPTION = -c -g -DDEBUG -std=c99 -pedantic-errors
+GCC_OPTION = -c -g -DDEBUG -std=c89 -pedantic-errors
 
 # Konfiguration fuer Doxygen
 DOXYGEN_PATH = doxygen

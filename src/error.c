@@ -90,6 +90,12 @@ extern char* convert_char(unsigned char character)
         *converted_char = 'r';
         converted_char--;
         break;
+    case 228:
+        *converted_char = 'a';
+        converted_char++;
+        *converted_char = 'e';
+        converted_char--;
+        break;
     default:
         *converted_char = (char) character;
         converted_char++;
