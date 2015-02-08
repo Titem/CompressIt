@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 
     properties = NULL;
     properties = create_properties(argv, argc);
-
+    
     switch (properties_get_mode(properties))
     {
     case COMPRESS:

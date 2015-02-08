@@ -216,7 +216,7 @@ extern PROPERTIES* create_properties(char** argv, int argc)
         /*---------------------------------------------------------------------------------*/
         /*----------------------FILE POINTER setzen und pruefen-----------------------------*/
         /*---------------------------------------------------------------------------------*/
-        printf("FILE POINTER setzen und prüfen !\n");
+        printf("FILE POINTER setzen und pruefen !\n");
 
         printf("FP READ Stream geoeffnet !\n");
         file_read = fopen(input_file_name, READ_BINARY);

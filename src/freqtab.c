@@ -56,21 +56,19 @@ static void freqtab_init_working_index(FREQTAB* freq_tab_p);
 
 extern FREQTAB* create_freqtab(FILE* input_stream)
 {
-    unsigned char character_from_file;
+    int character_from_file;
     FREQTAB* freq_tab_p;
     freq_tab_p = malloc(sizeof (FREQTAB));
 
     if (freq_tab_p != NULL)
     {
-
         freqtab_init(freq_tab_p);
-        character_from_file = (unsigned char) fgetc(input_stream);
-        while ((int) character_from_file != EOF)
+        character_from_file = fgetc(input_stream);
+        while (character_from_file != EOF)
         {
             /*character_from_file = check_offset(character_from_file);*/
-            freqtab_update(freq_tab_p, character_from_file);
-            character_from_file = (unsigned char) fgetc(input_stream);
-
+            freqtab_update(freq_tab_p, (unsigned char) character_from_file);
+            character_from_file = fgetc(input_stream);
         }
     }
     else
@@ -79,6 +77,7 @@ extern FREQTAB* create_freqtab(FILE* input_stream)
         exit(EXIT_FAILURE);
     }
 
+    
     freqtab_init_working_index(freq_tab_p);
 
     return freq_tab_p;
@@ -119,7 +118,6 @@ extern void freqtab_print(FREQTAB* freq_tab_p)
 
     printf("Zeichen  ---> Haeufigkeit ---> NUMERIC\n");
     printf("--------------------------------------\n");
-    fflush(stdout);
     for (i = 0; i < MAX_CHARACTERS; i++)
     {
         if (freq_tab_p->freq_table[i] != NULL)
