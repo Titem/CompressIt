@@ -78,7 +78,7 @@ extern char* convert_char(unsigned char character)
 
     switch (character)
     {
-    case '\n':
+    case 10: /* \n */
         *converted_char = '\\';
         converted_char++;
         *converted_char = 'n';
@@ -87,7 +87,8 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         converted_char--;
         break;
-    case 13:
+   
+    case 13: /* \r */
         *converted_char = '\\';
         converted_char++;
         *converted_char = 'r';
@@ -96,8 +97,8 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         converted_char--;
         break;
-    /* ü */
-    case 252:
+    
+    case 252: /* ü */
         *converted_char = 'a';
         converted_char++;
         *converted_char = 'e';
@@ -106,8 +107,8 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         converted_char--;
         break;
-    /* Ü */
-    case 220:
+    
+    case 220: /* Ü */
         *converted_char = 'a';
         converted_char++;
         *converted_char = 'e';
@@ -116,8 +117,8 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         converted_char--;
         break;
-    /* ä */
-    case 228:
+    
+    case 228: /* ä */
         *converted_char = 'a';
         converted_char++;
         *converted_char = 'e';
@@ -126,8 +127,8 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         converted_char--;
         break;
-    /* Ä */    
-    case 196:
+       
+    case 196: /* Ä */ 
         *converted_char = 'a';
         converted_char++;
         *converted_char = 'e';
@@ -136,8 +137,8 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         converted_char--;
         break;
-    /* ö */
-    case 246:
+    
+    case 246: /* ö */
         *converted_char = 'e';
         converted_char++;
         *converted_char = 'a';
@@ -146,8 +147,8 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         converted_char--;
         break;
-    /* Ö */
-    case 214:
+    
+    case 214: /* Ö */
         *converted_char = 'e';
         converted_char++;
         *converted_char = 'a';
@@ -155,7 +156,8 @@ extern char* convert_char(unsigned char character)
         *converted_char = '\0';
         converted_char--;
         converted_char--;
-        break;        
+        break;   
+        
     default:
         *converted_char = (char) character;
         converted_char++;
