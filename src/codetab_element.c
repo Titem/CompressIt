@@ -5,6 +5,8 @@
 
 #include "codetab_element.h"
 
+#include <stdlib.h>
+
 
 
 
@@ -30,7 +32,7 @@ extern CODETAB_ELEMENT* creat_codetab_element(unsigned char character,
                                               unsigned short code,
                                               unsigned char code_length)
 {
-    
+    return NULL;
 }
 
 extern void delete_codetab_element(CODETAB_ELEMENT* codetab_element)
@@ -41,23 +43,23 @@ extern void delete_codetab_element(CODETAB_ELEMENT* codetab_element)
 extern bool codetab_element_is_bit_set(CODETAB_ELEMENT* codetab_element, 
                                        unsigned char position)
 {
-    
+    return false;
 }
 
 extern unsigned char codetab_element_get_char
                      (CODETAB_ELEMENT* codetab_element)
 {
-    
+    return 0;
 }
 
 extern unsigned char codetab_element_get_code
                      (CODETAB_ELEMENT* codetab_element)
 {
-    
+    return 0;
 }
 
 extern unsigned char codetab_element_get_code_length
                      (CODETAB_ELEMENT* codetab_element)
 {
-    
+    return 0;
 }
