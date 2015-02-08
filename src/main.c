@@ -11,6 +11,9 @@
 #include "compressor.h"
 #include "error.h"
 
+
+
+
 /* ======================================================================== *
  * Funktionsprototypen                                                      *
  * ======================================================================== */
@@ -21,6 +24,10 @@ int main(int argc, char** argv);
 
 
 
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
+
 /**
  * main.c
  * @param argc Test
@@ -29,7 +36,7 @@ int main(int argc, char** argv);
 int main(int argc, char *argv[])
 {
     PROPERTIES* properties;
-            
+
     /*Für die Zeit zuständig.*/
     clock_t begin = NULL;
     clock_t end = NULL;
@@ -37,35 +44,35 @@ int main(int argc, char *argv[])
     /*Timer starten*/
     begin = clock();
 
-/*-----------------------------CODE--------------------------------*/
+    /*-----------------------------CODE--------------------------------*/
 
-	properties = NULL;
-	properties = create_properties(argv, argc); 
+    properties = NULL;
+    properties = create_properties(argv, argc);
 
-	switch (properties_get_mode(properties))
+    switch (properties_get_mode(properties))
     {
-        case COMPRESS:
-            compress(properties_get_input_stream(properties), 
-                     properties_get_output_stream(properties));
-            break;
-        case DECOMPRESS:
-            decompress(properties_get_input_stream(properties), 
-                       properties_get_output_stream(properties));
-            break;
-	case MANPAGE:
-            print_error(help);
-            break;
-            /*Hilfestellung*/
+    case COMPRESS:
+        compress(properties_get_input_stream(properties),
+                 properties_get_output_stream(properties));
+        break;
+    case DECOMPRESS:
+        decompress(properties_get_input_stream(properties),
+                   properties_get_output_stream(properties));
+        break;
+    case MANPAGE:
+        print_error(help);
+        break;
+        /*Hilfestellung*/
     }
 
 
-	
-/*-----------------------------CODE--------------------------------*/
+
+    /*-----------------------------CODE--------------------------------*/
     /*Timer beenden*/
     end = clock();
 
     printf("\nBenoetigte Zeit: %i ms", (int) (end - begin));
-     /*getchar();*/ 
+    /*getchar();*/
     exit(EXIT_SUCCESS);
 }
 
