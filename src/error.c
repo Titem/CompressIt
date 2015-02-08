@@ -97,7 +97,7 @@ extern char* convert_char(unsigned char character)
         converted_char--;
         break;
     default:
-        *converted_char = character;
+        *converted_char = (char) character;
         converted_char++;
         *converted_char = '\0';
         converted_char--;
