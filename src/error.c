@@ -90,12 +90,48 @@ extern char* convert_char(unsigned char character)
         *converted_char = 'r';
         converted_char--;
         break;
+    /* ü */
+    case 252:
+        *converted_char = 'a';
+        converted_char++;
+        *converted_char = 'e';
+        converted_char--;
+        break;
+    /* Ü */
+    case 220:
+        *converted_char = 'a';
+        converted_char++;
+        *converted_char = 'e';
+        converted_char--;
+        break;
+    /* ä */
     case 228:
         *converted_char = 'a';
         converted_char++;
         *converted_char = 'e';
         converted_char--;
         break;
+    /* Ä */    
+    case 196:
+        *converted_char = 'a';
+        converted_char++;
+        *converted_char = 'e';
+        converted_char--;
+        break;
+    /* ö */
+    case 246:
+        *converted_char = 'e';
+        converted_char++;
+        *converted_char = 'a';
+        converted_char--;
+        break;
+    /* Ö */
+    case 214:
+        *converted_char = 'e';
+        converted_char++;
+        *converted_char = 'a';
+        converted_char--;
+        break;        
     default:
         *converted_char = (char) character;
         converted_char++;
