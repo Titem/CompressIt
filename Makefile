@@ -34,8 +34,18 @@ run : build
 
 # Build zusammen mit Doxygen, falls es zu einem Splint Fehler kommt wird
 # abgebrochen .
-build_release : $(SPLINT_LOG) $(EXEPATH)/$(EXE)  $(DOXYGEN_FILE) 
+build_release : $(SPLINT_LOG) $(EXEPATH)/$(EXE)  $(DOXYGEN_FILE)
+	
 clean_and_build : clean build
+	
+# ----------------------------------------------------------------------------
+#Regel zum expliziten Erzeugung der Projektdokumentation
+doxygen : $(DOXYGEN_FILE)
+	
+# ----------------------------------------------------------------------------
+#Regel zum expliziten Erzeugung der Splintpruefung
+splint : $(SPLINT_LOG)
+	
 
 # Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien
 $(EXEPATH)/$(EXE) : $(OBJS)
@@ -150,11 +160,7 @@ $(SPLINT_LOG) : src/*.c src/*.h
            -booltype BOOL -boolfalse FALSE -booltrue TRUE \
            +predboolint +noret +usedef +infloops +casebreak \
            -initallelements -incompletetype -fixedformalarray \
-           +posix-lib src/*.c
-
-# ----------------------------------------------------------------------------
-#Regel zum expliziten Erzeugung der Projektdokumentation
-doxygen : $(DOXYGEN_FILE)
+           +posix-lib src/*.c	
 
 # ----------------------------------------------------------------------------
 # Regel zum Erzeugen der Projektdokumentation
