@@ -3,11 +3,6 @@ OBJPATH = build
 EXEPATH = dist
 EXE = huffman.exe
 
-CND_PLATFORM=Cygwin-Windows
-CND_DLIB_EXT=dll
-CND_CONF=Debug
-CND_DISTDIR=dist
-CND_BUILDDIR=build
 # Compiler-Optionen
 GCC_OPTION = -c -g -DDEBUG -std=c89 -pedantic-errors
 
@@ -19,10 +14,10 @@ DOXYGEN_CFG = res/ppr_doxygen.cfg
 # Konfiguration fuer Splint
 SPLINT_LOG = ./splint.log
 
-OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o $(OBJPATH)/compressor.o \
-$(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o $(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o \
-$(OBJPATH)/freqtab.o $(OBJPATH)/pqueue.o \
-$(OBJPATH)/htree_element.o $(OBJPATH)/main.o
+OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o \
+$(OBJPATH)/compressor.o $(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o \
+$(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o $(OBJPATH)/freqtab.o \
+$(OBJPATH)/pqueue.o $(OBJPATH)/htree_element.o $(OBJPATH)/main.o
 
 # Es wird bei jedem normalen Build eine exe erzeugt und dann eine statische
 # Codepruefung durchgefuehrt.
@@ -46,7 +41,7 @@ doxygen : $(DOXYGEN_FILE)
 #Regel zum expliziten Erzeugung der Splintpruefung
 splint : $(SPLINT_LOG)
 	
-
+# ----------------------------------------------------------------------------
 # Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien
 $(EXEPATH)/$(EXE) : $(OBJS)
 	@echo ========================================================
@@ -54,6 +49,16 @@ $(EXEPATH)/$(EXE) : $(OBJS)
 	@echo --------------------------------------------------------
 	mkdir -p $(EXEPATH)
 	gcc $(OBJS) -o $(EXEPATH)/$(EXE) 
+
+# ----------------------------------------------------------------------------	
+# Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien fuer gdb 
+debug :
+	@echo ========================================================
+	@echo Erzeuge $(EXEPATH)/$(EXE) $(OBJS)
+	@echo --------------------------------------------------------
+	mkdir -p $(EXEPATH)
+	gcc $(OBJS) -o $(EXEPATH)/$(EXE) 
+
 
 $(OBJPATH)/error.o : src/error.c src/error.h 
 	@echo ========================================================
@@ -170,6 +175,8 @@ $(DOXYGEN_FILE) : src/*.c src/*.h
 	@echo --------------------------------------------------------
 	doxygen $(DOXYGEN_CFG)
 
+
+
 # ----------------------------------------------------------------------------
 # Regel zum Loeschen aller erzeugten Dateien
 clean :
@@ -187,5 +194,7 @@ clean :
 test1 : 
 	@echo Test:
 	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc ./res/bibel.txt.dc
+	diff bibel.txt bibel.txt.dc
 	@echo Test durchgefuehrt
 
