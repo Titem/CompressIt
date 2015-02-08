@@ -31,7 +31,7 @@ enum error_message {
     cant_malloc_memory,
     in_and_output_document_are_the_same,
     help,
-    AND,
+    AND
 };
 
 
