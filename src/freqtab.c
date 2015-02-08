@@ -16,10 +16,11 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
-struct S_FREQTAB
-{
-    FREQTAB_ELEMENT* freq_table[MAX_CHARACTERS];
-    short working_index;
+struct S_FREQTAB{
+
+	FREQTAB_ELEMENT* freq_table[MAX_CHARACTERS];
+	short working_index;
+
 };
 
 
@@ -56,40 +57,40 @@ static void freqtab_init_working_index(FREQTAB* freq_tab_p);
 
 extern FREQTAB* create_freqtab(FILE* input_stream)
 {
-    unsigned char character_from_file;
-    FREQTAB* freq_tab_p;
-    freq_tab_p = malloc(sizeof(FREQTAB));
+	unsigned char character_from_file;
+	FREQTAB* freq_tab_p;
+	freq_tab_p = malloc(sizeof(FREQTAB));
 
-    if (freq_tab_p != NULL)
-    {
-
-	freqtab_init(freq_tab_p);
-	character_from_file = (unsigned char) fgetc(input_stream);
-	while ((int) character_from_file != EOF)
+	if (freq_tab_p != NULL)
 	{
-            /*character_from_file = check_offset(character_from_file);*/
-            freqtab_update(freq_tab_p,character_from_file);
-            character_from_file = (unsigned char) fgetc(input_stream);			
+
+		freqtab_init(freq_tab_p);
+		character_from_file = (unsigned char) fgetc(input_stream);
+		while ((int) character_from_file != EOF)
+		{
+			/*character_from_file = check_offset(character_from_file);*/
+			freqtab_update(freq_tab_p,character_from_file);
+			character_from_file = (unsigned char) fgetc(input_stream);
+			
+		}
 	}
-        
-    }
-    else
-    {
-	print_error(cant_malloc_memory);
-	exit(EXIT_FAILURE);
-    }
+	else
+	{
+		print_error(cant_malloc_memory);
+		exit(EXIT_FAILURE);
+	}
 
-    freqtab_init_working_index(freq_tab_p);
+	freqtab_init_working_index(freq_tab_p);
 
-    return freq_tab_p;
+	return freq_tab_p;
 }
 
 
 
 extern void delete_freqtab(FREQTAB* freq_tab_p)
 {
-    free(freq_tab_p);	
-    freq_tab_p = NULL;
+	free(freq_tab_p);	
+	freq_tab_p = NULL;
 }
 
 
