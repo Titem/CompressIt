@@ -57,7 +57,7 @@ static void freqtab_init_working_index(FREQTAB* freq_tab_p);
 
 extern FREQTAB* create_freqtab(FILE* input_stream)
 {
-	char character_from_file;
+	unsigned char character_from_file;
 	FREQTAB* freq_tab_p;
 	freq_tab_p = malloc(sizeof(FREQTAB));
 
@@ -65,12 +65,12 @@ extern FREQTAB* create_freqtab(FILE* input_stream)
 	{
 
 		freqtab_init(freq_tab_p);
-		character_from_file = (char) fgetc(input_stream);
-		while (character_from_file != EOF)
+		character_from_file = (unsigned char) fgetc(input_stream);
+		while ((int) character_from_file != EOF)
 		{
 			/*character_from_file = check_offset(character_from_file);*/
 			freqtab_update(freq_tab_p,character_from_file);
-			character_from_file = (char) fgetc(input_stream);
+			character_from_file = (unsigned char) fgetc(input_stream);
 			
 		}
 	}
@@ -135,12 +135,12 @@ extern void freqtab_print(FREQTAB* freq_tab_p)
 	{
             count_element++;
             count_chars = count_chars + freqtab_element_get_frequency(freq_tab_p->freq_table[i]);
-            printf("%s \t ---> %d \t  ---> %d \n", convert_char(freqtab_elememt_get_char(freq_tab_p->freq_table[i])), freqtab_element_get_frequency(freq_tab_p->freq_table[i]), freqtab_elememt_get_char(freq_tab_p->freq_table[i]));
+            printf("%s \t ---> %d \t  ---> %d \n", convert_char(freqtab_elememt_get_char(freq_tab_p->freq_table[i])), (int) freqtab_element_get_frequency(freq_tab_p->freq_table[i]), (int) freqtab_elememt_get_char(freq_tab_p->freq_table[i]));
 	}
     }
     printf("--------------------------------------\n");
-    printf("Zeichen insgesamt    : %d \n", count_chars);
-    printf("Zeichen verschieden  : %d \n", count_element);
+    printf("Zeichen insgesamt    : %d \n", (int) count_chars);
+    printf("Zeichen verschieden  : %d \n", (int) count_element);
 }
 
 

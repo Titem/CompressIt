@@ -41,7 +41,7 @@ typedef struct S_FREQTAB_ELEMENT FREQTAB_ELEMENT;
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUES FREQUENCY TABLE ELEMENT---------------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern FREQTAB_ELEMENT* create_freqtab_element(char character);
+extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character);
 
 
 /*---------------------------------------------------------------------------------*/
@@ -59,7 +59,7 @@ extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq);
 /*---------------------------------------------------------------------------------*/
 /*-----LIEFERT DIE HÄUFIGKEIT EINER FREQUENCY TABLE ELEMENT------------------------*/
 /*---------------------------------------------------------------------------------*/
-extern long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq);
+extern unsigned long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq);
 
 
 /*---------------------------------------------------------------------------------*/

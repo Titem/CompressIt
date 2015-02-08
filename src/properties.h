@@ -27,9 +27,10 @@
 
 typedef enum
 {
-	COMPRESS,
-	DECOMPRESS,
-	MANPAGE
+    UNDEFINED,
+    COMPRESS,
+    DECOMPRESS,
+    MANPAGE
 }MODE;
 /*---------------------------------------------------------------------------------*/
 /*---------------DEKLERATION EINER PORPERTIES STRUCT-------------------------------*/

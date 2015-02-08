@@ -69,9 +69,13 @@ extern PROPERTIES* create_properties(char* argv[], int argc)
 	FILE *file_read = NULL;
 	FILE *file_write = NULL;
 
-	PROPERTIES *p_properties;
+	PROPERTIES *p_properties = NULL;
 	p_properties = malloc(sizeof(PROPERTIES));
 
+        p_properties->file_read = NULL;
+        p_properties->file_write = NULL;
+        p_properties->mode = UNDEFINED;
+        
 /*---------------------------------------------------------------------------------*/
 /*----------------------------Analyse der Paramter---------------------------------*/
 /*---------------------------------------------------------------------------------*/
@@ -220,7 +224,7 @@ extern PROPERTIES* create_properties(char* argv[], int argc)
 	return p_properties;
 }
 
-extern void delete_properties(PROPERTIES(*p_properties))
+extern void delete_properties(PROPERTIES* p_properties)
 {
 	free(p_properties);
 	p_properties = NULL;
