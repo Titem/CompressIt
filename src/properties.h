@@ -47,7 +47,7 @@ typedef struct S_PROPERTIES PROPERTIES;
 /*---------------------------------------------------------------------------------*/
 /*-----ERSTELLT EINE NEUE STRUCT UND LIEFERT EINEN PROPERTIES POINTER ZURÜCK-------*/
 /*---------------------------------------------------------------------------------*/
-extern PROPERTIES* create_properties(char* argv[], int argc);
+extern PROPERTIES* create_properties(char** argv, int argc);
 
 
 /*---------------------------------------------------------------------------------*/

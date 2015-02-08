@@ -66,7 +66,7 @@ static char* init_output_filename(char* input_file_name);
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern PROPERTIES* create_properties(char* argv[], int argc)
+extern PROPERTIES* create_properties(char** argv, int argc)
 {
     /*---------------------------------------------------------------------------------*/
     /*----------------------------Dekleration von Variablen----------------------------*/

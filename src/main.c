@@ -33,7 +33,7 @@ int main(int argc, char** argv);
  * @param argc Test
  * @param argv Test2
  */
-int main(int argc, char *argv[])
+int main(int argc, char** argv)
 {
     PROPERTIES* properties;
 
@@ -64,8 +64,6 @@ int main(int argc, char *argv[])
         break;
         /*Hilfestellung*/
     }
-
-
 
     /*-----------------------------CODE--------------------------------*/
     /*Timer beenden*/
