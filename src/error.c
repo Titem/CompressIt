@@ -72,7 +72,7 @@ extern void test_nullpointer_exception(FILE *file_p, char* file_name)
 }
 
 
-extern char* convert_char(char character)
+extern char* convert_char(unsigned char character)
 {
     char* converted_char = malloc(3);
     
@@ -91,7 +91,7 @@ extern char* convert_char(char character)
         converted_char--;
         break;
     default:
-        *converted_char = character;
+        *converted_char = (char) character;
         converted_char++;
         *converted_char = '\0';
         converted_char--;

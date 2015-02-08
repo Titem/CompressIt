@@ -16,8 +16,8 @@
 
 struct S_FREQTAB_ELEMENT
 {
-    long frequency;
-    char character;
+    unsigned long frequency;
+    unsigned char character;
 };
 
 
@@ -27,7 +27,7 @@ struct S_FREQTAB_ELEMENT
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern FREQTAB_ELEMENT* create_freqtab_element(char character)
+extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character)
 {
     FREQTAB_ELEMENT* freq;
     freq = malloc(sizeof(FREQTAB_ELEMENT));
@@ -56,7 +56,7 @@ extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
 
 
 
-extern long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq)
+extern unsigned long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq)
 {
     return freq->frequency;
 }

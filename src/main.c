@@ -28,6 +28,8 @@ int main(int argc, char** argv);
  */
 int main(int argc, char *argv[])
 {
+    PROPERTIES* properties;
+            
     /*Für die Zeit zuständig.*/
     clock_t begin = NULL;
     clock_t end = NULL;
@@ -37,7 +39,7 @@ int main(int argc, char *argv[])
 
 /*-----------------------------CODE--------------------------------*/
 
-	PROPERTIES* properties = NULL;
+	properties = NULL;
 	properties = create_properties(argv, argc); 
 
 	switch (properties_get_mode(properties))
@@ -62,7 +64,7 @@ int main(int argc, char *argv[])
     /*Timer beenden*/
     end = clock();
 
-    printf("\nBenoetigte Zeit: %i ms", end - begin);
+    printf("\nBenoetigte Zeit: %i ms", (int) (end - begin));
      /*getchar();*/ 
     exit(EXIT_SUCCESS);
 }

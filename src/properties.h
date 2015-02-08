@@ -27,9 +27,10 @@
 
 typedef enum
 {
-	COMPRESS,
-	DECOMPRESS,
-	MANPAGE
+    UNDEFINED,
+    COMPRESS,
+    DECOMPRESS,
+    MANPAGE
 }MODE;
 /*---------------------------------------------------------------------------------*/
 /*---------------DEKLERATION EINER PORPERTIES STRUCT-------------------------------*/
@@ -52,7 +53,7 @@ extern PROPERTIES* create_properties(char* argv[], int argc);
 /*---------------------------------------------------------------------------------*/
 /*------GIBT DEN SPEICHER WIEDER FREI BZW. LÖSCHT EINEN PROPERTIES POINTER---------*/
 /*---------------------------------------------------------------------------------*/
-extern void delete_properties(PROPERTIES(*p_properties));
+extern void delete_properties(PROPERTIES* p_properties);
 
 /*---------------------------------------------------------------------------------*/
 /*------LIEFERT DEN COMPRESS MODUS-------------------------------------------------*/
