@@ -49,6 +49,11 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree,
     return NULL;
 }
 
+extern unsigned short htree_get_deepness(HTREE* htree)
+{
+    return 0;
+}
+
 extern void htree_print(HTREE* htree)
 {
     
