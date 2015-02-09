@@ -52,6 +52,8 @@ extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child,
 
 extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element);
 
+extern unsigned short htree_element_get_deepness(HTREE_ELEMENT* htree_element);
+
 extern void htree_element_print(HTREE_ELEMENT* htree_element);
 
 extern HTREE_ELEMENT* htree_node_get_left(HTREE_ELEMENT* htree_node);

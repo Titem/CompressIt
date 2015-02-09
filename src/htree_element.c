@@ -38,6 +38,7 @@ struct S_HTREE_ELEMENT
         HTREE_NODE node;
     } element;
     bool is_leaf;
+    unsigned short deepness;
 };
 
 
@@ -73,6 +74,11 @@ extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child,
 extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
 {
     return false;
+}
+
+extern unsigned short htree_element_get_deepness(HTREE_ELEMENT* htree_element)
+{
+    return 0;
 }
 
 extern void htree_element_print(HTREE_ELEMENT* htree_element)
