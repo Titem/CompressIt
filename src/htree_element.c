@@ -111,12 +111,12 @@ extern unsigned long htree_node_get_weight(HTREE_ELEMENT* htree_weight)
     return 0;
 }
 
-extern unsigned char htree_node_get_char(HTREE_ELEMENT* htree_leaf)
+extern unsigned char htree_leaf_get_char(HTREE_ELEMENT* htree_leaf)
 {
     return 0;
 }
 
-extern unsigned long htree_node_get_frequency(HTREE_ELEMENT* htree_leaf)
+extern unsigned long htree_leaf_get_frequency(HTREE_ELEMENT* htree_leaf)
 {
     return 0;
 }
