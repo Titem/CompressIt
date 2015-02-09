@@ -44,7 +44,7 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     codetab_print(code_table);
         
     /*Codebuch an den Anfang der Datei schreiben*/
-    wirte_codetab(output_stream, code_table);
+    write_codetab(output_stream, code_table);
         
     /*Inhalt komprimieren*/
     encode_content(input_stream, output_stream, code_table);
