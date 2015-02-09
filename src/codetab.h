@@ -18,6 +18,7 @@
  * ======================================================================== */
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "htree.h"
 
@@ -47,7 +48,9 @@ extern void delete_codetab(CODETAB* codetab);
 extern unsigned short codetab_get_code(CODETAB* codetab, 
                                        unsigned char character);
 
-extern unsigned char codetab_get_char(CODETAB* codetab, unsigned short code);
+extern bool codetab_search_char(CODETAB* codetab, bool bit);
+
+extern unsigned char codetab_get_char(CODETAB* codetab);
 
 extern void codetab_print(CODETAB* codetab);
 

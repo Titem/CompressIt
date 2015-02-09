@@ -53,7 +53,12 @@ extern unsigned short codetab_get_code(CODETAB* codetab,
     return 0;
 }
 
-extern unsigned char codetab_get_char(CODETAB* codetab, unsigned short code)
+extern bool codetab_search_char(CODETAB* codetab, bool bit)
+{
+    return false;
+}
+
+extern unsigned char codetab_get_char(CODETAB* codetab)
 {
     return 0;
 }
