@@ -42,14 +42,11 @@ extern void delete_htree(HTREE* htree)
     
 }
 
-extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
+extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree,
+                                                  unsigned short code,
+                                                  unsigned char code_length)
 {
     return NULL;
-}
-
-extern bool htree_is_emty(HTREE* htree)
-{
-    return false;
 }
 
 extern void htree_print(HTREE* htree)

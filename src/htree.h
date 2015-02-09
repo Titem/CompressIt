@@ -42,9 +42,9 @@ extern HTREE* create_htree(FREQTAB* freqtab);
 
 extern void delete_htree(HTREE* htree);
 
-extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree);
-
-extern bool htree_is_emty(HTREE* htree);
+extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree, 
+                                                  unsigned short code,
+                                                  unsigned char code_length);
 
 extern void htree_print(HTREE* htree);
 
