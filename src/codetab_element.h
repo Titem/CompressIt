@@ -36,8 +36,8 @@ typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
  * ======================================================================== */
 
 extern CODETAB_ELEMENT* create_codetab_element(unsigned char character, 
-                                              unsigned short code,
-                                              unsigned char code_length);
+                                               unsigned short code,
+                                               unsigned char code_length);
 
 extern void delete_codetab_element(CODETAB_ELEMENT* codetab_element);
 
