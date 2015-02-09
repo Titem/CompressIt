@@ -37,7 +37,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
     return NULL;
 }
 
-extern void wirte_codetab(FILE* output_stream, CODETAB* codetab)
+extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 {
     
 }
@@ -47,10 +47,10 @@ extern void delete_codetab(CODETAB* codetab)
     
 }
 
-extern unsigned short codetab_get_code(CODETAB* codetab, 
-                                       unsigned char character)
+extern CODETAB_ELEMENT* codetab_get_code(CODETAB* codetab, 
+                                         unsigned char character)
 {
-    return 0;
+    return NULL;
 }
 
 extern bool codetab_search_char(CODETAB* codetab, bool bit)
