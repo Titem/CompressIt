@@ -93,7 +93,7 @@
 													"left": 245,
 													"top": 271,
 													"width": 456,
-													"height": 11,
+													"height": 22,
 													"autoResize": false,
 													"underline": false,
 													"text": "htree_leaf erstellen mit Character und Frequency des gezogenen freqtab_element",
@@ -165,7 +165,7 @@
 											"left": 240,
 											"top": 264,
 											"width": 466,
-											"height": 23,
+											"height": 34,
 											"autoResize": false,
 											"stereotypeLabel": {
 												"$ref": "ZZSHVcVae0+5FLDdgPnpIQAA"
@@ -204,7 +204,7 @@
 									"nameCompartment": {
 										"$ref": "LoRCIo7taE2xzsqdUT6h0AAA"
 									},
-									"wordWrap": false
+									"wordWrap": true
 								},
 								{
 									"_type": "UMLControlNodeView",
@@ -921,7 +921,7 @@
 									"nameCompartment": {
 										"$ref": "Z6NuxlL2rESyBlnXi8SKnwAA"
 									},
-									"wordWrap": false
+									"wordWrap": true
 								},
 								{
 									"_type": "UMLActionView",
@@ -1098,7 +1098,7 @@
 									"nameCompartment": {
 										"$ref": "McDa2x0990ymPnL5cI5RCAAA"
 									},
-									"wordWrap": false
+									"wordWrap": true
 								},
 								{
 									"_type": "UMLActionView",
