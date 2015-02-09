@@ -35,7 +35,7 @@ typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-extern CODETAB_ELEMENT* creat_codetab_element(unsigned char character, 
+extern CODETAB_ELEMENT* create_codetab_element(unsigned char character, 
                                               unsigned short code,
                                               unsigned char code_length);
 
