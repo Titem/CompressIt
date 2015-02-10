@@ -92,8 +92,8 @@ extern void delete_freqtab(FREQTAB* freq_tab_p)
 
 extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
 {
-    int i = 0;
-    short tmp_working_index = freq_tab_p->working_index;
+    unsigned short i = 0;
+    unsigned short tmp_working_index = freq_tab_p->working_index;
     FREQTAB_ELEMENT* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
 
     for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i] == NULL; i++)
@@ -142,7 +142,7 @@ extern void freqtab_print(FREQTAB* freq_tab_p)
 
 static void freqtab_init_working_index(FREQTAB* freq_tab_p)
 {
-    short tmp_working_index = 0;
+    unsigned short tmp_working_index = 0;
 
     /*Was tun wenn datei leer ist, dies ist dann der Fall wenn der
     working index bei 256 ist, die schleife vorher abbrechen*/
