@@ -19,7 +19,8 @@
 struct S_FREQTAB
 {
     FREQTAB_ELEMENT* freq_table[MAX_CHARACTERS];
-    short working_index;
+    unsigned short working_index;
+    unsigned long content_length;
 
 };
 
@@ -110,6 +111,11 @@ extern bool freqtab_is_emty(FREQTAB* freq_tab_p)
     return !(freq_tab_p->working_index < 256);
 }
 
+extern unsigned long freqtab_get_content_length(FREQTAB* freq_tab_p)
+{
+    return freq_tab_p->content_length;
+}
+
 extern void freqtab_print(FREQTAB* freq_tab_p)
 {
     long count_chars = 0;
@@ -128,8 +134,10 @@ extern void freqtab_print(FREQTAB* freq_tab_p)
         }
     }
     printf("--------------------------------------\n");
-    printf("Zeichen insgesamt    : %d \n", (int) count_chars);
+    printf("Zeichen insgesamt    : %d \n", (int)count_chars);
+    printf("NEW:Zeichen insgesamt  : %d \n", (int)freq_tab_p->content_length);
     printf("Zeichen verschieden  : %d \n", (int) count_element);
+
 }
 
 static void freqtab_init_working_index(FREQTAB* freq_tab_p)
@@ -172,8 +180,9 @@ static void freqtab_update(FREQTAB* freq_tab_p, unsigned char character)
         /*freq_tab_p->freq_table[character]->frequency++;*/
         freqtab_element_inc_frequency(freq_tab_p->freq_table[character]);
     }
+    /*Zählt die Anzahl der Häufigkeiten der Character.*/
+    freq_tab_p->content_length++;
 }
-
 
 
 

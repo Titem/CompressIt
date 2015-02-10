@@ -37,7 +37,7 @@ typedef struct S_CODETAB CODETAB;
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-extern CODETAB* create_codetab(HTREE* htree);
+extern CODETAB* create_codetab(HTREE* htree, unsigned long content_length);
 
 extern CODETAB* read_codetab(FILE* input_stream);
 
