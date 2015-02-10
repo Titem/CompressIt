@@ -10,6 +10,7 @@
 #include "properties.h"
 #include "compressor.h"
 #include "error.h"
+#define DEBUG
 
 
 
@@ -70,7 +71,9 @@ int main(int argc, char** argv)
     end = clock();
 
     printf("\nBenoetigte Zeit: %i ms", (int) (end - begin));
-    /*getchar();*/
+#ifdef DEBUG
+    getchar();
+#endif
     exit(EXIT_SUCCESS);
 }
 
