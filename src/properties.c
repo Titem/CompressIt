@@ -92,7 +92,11 @@ extern PROPERTIES* create_properties(char** argv, int argc)
     /*---------------------------------------------------------------------------------*/
     /*----------------------------Analyse der Paramter---------------------------------*/
     /*---------------------------------------------------------------------------------*/
+
+#ifdef DEBUG_HUFFMAN
     printf("Analyse der Parameter!\n");
+#endif DEBUG_HUFFMAN
+
     if (p_properties != NULL)
     {
         if ((argc == 1) || (argc == 2) || (argc > 4))
@@ -117,7 +121,10 @@ extern PROPERTIES* create_properties(char** argv, int argc)
                     {
                         input_file_name = *argv;
                         found_input_document = true;
+#ifdef DEBUG_HUFFMAN
                         printf("FOUND INPUT DOCUMENT AND STATUS -c !\n");
+#endif DEBUG_HUFFMAN
+
                     }
                     else
                     {
@@ -136,7 +143,10 @@ extern PROPERTIES* create_properties(char** argv, int argc)
                     {
                         input_file_name = *argv;
                         found_input_document = true;
+#ifdef DEBUG_HUFFMAN
                         printf("FOUND INPUT DOCUMENT AND STATUS -d !\n");
+#endif DEBUG_HUFFMAN
+
                     }
                     else
                     {
@@ -147,18 +157,27 @@ extern PROPERTIES* create_properties(char** argv, int argc)
 
                 if (!found_out_put_document)
                 {
+#ifdef DEBUG_HUFFMAN
                     printf("DONT FOUND OUTPUT DOKUMENT!\n");
+#endif DEBUG_HUFFMAN
+
                     argc--;
                     argv++;
                     if (*argv != NULL)
                     {
+#ifdef DEBUG_HUFFMAN
                         printf("FOUND OUTPUT DOCUMENT!\n");
+#endif DEBUG_HUFFMAN
+
                         output_file_name = *argv;
                         found_out_put_document = true;
                     }
                     else
                     {
+#ifdef DEBUG_HUFFMAN
                         printf("POINTER IS NULL -> INPUTFILENAME AS OUTPUTFILENAME!\n");
+#endif DEBUG_HUFFMAN
+
                         /*IMPLEMENIEREN*/
                         output_file_name = init_output_filename(input_file_name);
                         strcpy(output_file_name, input_file_name);
@@ -191,19 +210,24 @@ extern PROPERTIES* create_properties(char** argv, int argc)
     /*----------------------------------------------------------------------------------------------*/
     /*----Prüfen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehöriger Endung----*/
     /*----------------------------------------------------------------------------------------------*/
+#ifdef DEBUG_HUFFMAN
     printf("Pruefen ob Ausgabedatei vorhanden ist, wenn nein, neue erstellen mit zugehoeriger Endung !\n");
+#endif DEBUG_HUFFMAN
+
     if (!found_out_put_document && !need_help)
     {
         if (p_properties->mode == COMPRESS)
         {
             strcat(output_file_name, COMPRESS_NAME);
-            printf("---> Der neue Dateiname heisst jetzt %s !<--- \n", output_file_name);
         }
         else if (p_properties->mode == DECOMPRESS)
         {
             strcat(output_file_name, DECOMPRESS_NAME);
-            printf("---> Der neue Dateiname heisst jetzt %s !<--- \n!", output_file_name);
         }
+#ifdef DEBUG_HUFFMAN
+        printf("---> Der neue Dateiname heisst jetzt: %s !<--- \n!", output_file_name);
+#endif DEBUG_HUFFMAN
+
     }
     else if (found_input_document && found_out_put_document && (strcmp(input_file_name, output_file_name) == 0) && !need_help)
     {
@@ -216,24 +240,37 @@ extern PROPERTIES* create_properties(char** argv, int argc)
         /*---------------------------------------------------------------------------------*/
         /*----------------------FILE POINTER setzen und pruefen-----------------------------*/
         /*---------------------------------------------------------------------------------*/
-        printf("FILE POINTER setzen und pruefen !\n");
 
+#ifdef DEBUG_HUFFMAN
+        printf("FILE POINTER setzen und pruefen !\n");
         printf("FP READ Stream geoeffnet !\n");
+#endif DEBUG_HUFFMAN
+
         file_read = fopen(input_file_name, READ_BINARY);
         test_nullpointer_exception(file_read, input_file_name);
 
+#ifdef DEBUG_HUFFMAN
         printf("FP WRITE Stream geoeffnet !\n");
+#endif DEBUG_HUFFMAN
+
+
         file_write = fopen(output_file_name, WRITE_BINARY);
         test_nullpointer_exception(file_write, output_file_name);
 
         /*---------------------------------------------------------------------------------*/
         /*-------------FILE POINTER in die PROPERTIES STRUCT uebernehmen--------------------*/
         /*---------------------------------------------------------------------------------*/
+#ifdef DEBUG_HUFFMAN
         printf("FILE POINTER in die PROPERTIES STRUCT uebernehmen !\n");
+#endif DEBUG_HUFFMAN
+
         p_properties->file_read = file_read;
         p_properties->file_write = file_write;
     }
-    printf("END OF OPERATION!\n");
+#ifdef DEBUG_HUFFMAN
+    printf("END OF PROPERTIES!\n");
+#endif DEBUG_HUFFMAN
+
     return p_properties;
 }
 

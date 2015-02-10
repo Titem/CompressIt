@@ -10,7 +10,7 @@
 #include "properties.h"
 #include "compressor.h"
 #include "error.h"
-#define DEBUG
+/*#define DEBUG_HUFFMAN*/
 
 
 
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
     end = clock();
 
     printf("\nBenoetigte Zeit: %i ms", (int) (end - begin));
-#ifdef DEBUG
+#ifdef DEBUG_HUFFMAN
     getchar();
 #endif
     exit(EXIT_SUCCESS);

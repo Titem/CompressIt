@@ -26,24 +26,30 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     /*Häufigkeitstabelle erstellen*/
     frequency_table = create_freqtab(input_stream);
 
+#ifdef DEBUG_HUFFMAN
     /*Häufigkeitstabelle auf Bildschirm ausgeben*/
     freqtab_print(frequency_table);
-    
+#endif
+
     return;
 
     /*Huffmanbaum erstellen*/
     huffman_tree = create_htree(frequency_table);
-        
+
+#ifdef DEBUG_HUFFMAN      
     /*Huffmanbaum auf Bildschirm ausgeben*/
     htree_print(huffman_tree);
-        
+#endif
+
     /*Codebuch erstellen*/
     code_table = create_codetab(huffman_tree, 
                                 freqtab_get_content_length(frequency_table));
         
+#ifdef DEBUG_HUFFMAN
     /*Codebuch auf Bildschirm ausgeben*/
     codetab_print(code_table);
-        
+#endif
+
     /*Codebuch an den Anfang der Datei schreiben*/
     write_codetab(output_stream, code_table);
         
