@@ -61,6 +61,7 @@ extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p);
 
 extern bool freqtab_is_emty(FREQTAB* freq_tab_p);
 
+extern unsigned long freqtab_get_content_length(FREQTAB* freq_tab_p);
 
 /*---------------------------------------------------------------------------------*/
 /*-----GIBT DIE FREQUENCY TABELLE AUF DEM BILDSCHIRM AUS---------------------------*/
