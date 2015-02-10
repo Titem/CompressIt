@@ -162,6 +162,10 @@ static void freqtab_init_working_index(FREQTAB* freq_tab_p)
 static void freqtab_init(FREQTAB* freq_tab_p)
 {
     int i = 0;
+    /*Contentlength auf 0 initalisieren.*/
+    freq_tab_p->content_length = 0;
+
+    /*Die freqtab bzw. den Vector mit NULL initalisieren.*/
     for (i = 0; i < MAX_CHARACTERS; i++)
     {
         freq_tab_p->freq_table[i] = NULL;
