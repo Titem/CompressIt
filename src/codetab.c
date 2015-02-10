@@ -27,7 +27,7 @@ struct S_CODETAB
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern CODETAB* create_codetab(HTREE* htree)
+extern CODETAB* create_codetab(HTREE* htree, unsigned long content_length)
 {
     return NULL;
 }
