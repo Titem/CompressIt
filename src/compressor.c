@@ -38,7 +38,8 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     htree_print(huffman_tree);
         
     /*Codebuch erstellen*/
-    code_table = create_codetab(huffman_tree);
+    code_table = create_codetab(huffman_tree, 
+                                freqtab_get_content_length(frequency_table));
         
     /*Codebuch auf Bildschirm ausgeben*/
     codetab_print(code_table);
