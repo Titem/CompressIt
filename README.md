@@ -1,8 +1,9 @@
 CompressIt
 ==========
-
 Implementierung der Huffman-Kodierung zum komprimieren einer Datei
 
+Modulübersicht
+--------------
 ![ModulDiagramm](Konzept/Diagramme/png/CompressIt__Modulübersicht_0.png)
 
 Compress
