@@ -1,4 +1,4 @@
-﻿
+
 /* ======================================================================== *
  * Header-Dateien                                                           *
  * ======================================================================== */
@@ -6,9 +6,10 @@
 #include "pqueue.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
-#define LEFT(position) ((((position) * 2) + 1));
-#define RIGHT(position) ((((position) * 2) + 2));
+#define LEFT(position) ((((position) * 2) + 1))
+#define RIGHT(position) ((((position) * 2) + 2))
 
 
 /* ======================================================================== *
@@ -25,6 +26,8 @@ struct S_PQUEUE
 static void pqueue_heapify(PQUEUE* pqueue, unsigned char index);
 
 static void pqueue_build_heap(PQUEUE* pqueue);
+
+static void pqueue_swap(PQUEUE* pqueue, unsigned char index1, unsigned char index2);
 
 
 /* ======================================================================== *
@@ -53,41 +56,28 @@ extern void pqueue_insert_htree_element(PQUEUE* pqueue,
     /*Element in den Heap einf�gen.*/
     /*Bei Index 0 Anfangen*/
 
-    //heap_vektor[heap_elements] = element;
+    pqueue->entry[pqueue->number_of_entries] = htree_element;
 
     /*Anzahl der Heap Elemente hochzaehlen.*/
-    heap_elements++;
-
-    /*Pr�fung ob mehr Speicher reserviert werden muss.*/
-    test_for_enlarging_memory();
-
-    /*Bei Index 1 anfangen. Entspricht dem ROOT Index.*/
-    /*heap_vektor[heap_elements] = element;*/
+    pqueue->number_of_entries++;
 
     /*BUILD*/
-    build_heap();
+    pqueue_build_heap(pqueue);
 }
 
 extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
 {
-  /*  bool heap_extrahiert;
-    int last_index;
-    if (heap_elements == 0)
+    unsigned char last_index;
+    
+    HTREE_ELEMENT* min_element = pqueue->entry[0];
+    last_index = pqueue->number_of_entries - 1;
+    pqueue_swap(pqueue, 0, last_index);
+    pqueue->number_of_entries--;
+    if (0 != last_index)
     {
-        heap_extrahiert = false;
+        pqueue_heapify(pqueue, 0);
     }
-    else
-    {
-        *min_element = heap_vektor[ROOT_INDEX];
-        last_index = heap_elements - 1;
-        swap(ROOT_INDEX, last_index);
-        heap_elements--;
-        if (ROOT_INDEX != last_index)
-        {
-            heapify(ROOT_INDEX);
-        }
-        heap_extrahiert = true;
-    }*/
+    
     return NULL;
 }
 
@@ -99,25 +89,27 @@ extern unsigned char pqueue_get_number_of_entries(PQUEUE* pqueue)
 
 static void pqueue_heapify(PQUEUE* pqueue, unsigned char index)
 {
- /*   do
+    unsigned char min;
+    printf("Heap sortieren!");
+    do
     {
-        int min = i;
-        if ((LEFT(i) < heap_elements) && (heap_vektor[LEFT(i)] < heap_vektor[min]))
+        min = index;
+        if ((LEFT(index) < pqueue->number_of_entries) && (pqueue->entry[LEFT(index)] < pqueue->entry[min]))
         {
-            min = LEFT(i);
+            min = LEFT(index);
         }
-        if ((RIGHT(i) < heap_elements) && (heap_vektor[RIGHT(i)] < heap_vektor[min]))
+        if ((RIGHT(index) < pqueue->number_of_entries) && (pqueue->entry[RIGHT(index)] < pqueue->entry[min]))
         {
-            min = RIGHT(i);
+            min = RIGHT(index);
         }
-        if (min == i)
+        if (min == index)
         {
             break;
         }
 
-        swap(i, min);
-        i = min;
-    } while (true);*/
+        pqueue_swap(pqueue, index, min);
+        index = min;
+    } while (true);
 }
 
 static void pqueue_build_heap(PQUEUE* pqueue)
@@ -132,7 +124,7 @@ static void pqueue_build_heap(PQUEUE* pqueue)
     }
 }
 
-static void swap(PQUEUE* pqueue, unsigned char index1, unsigned char index2)
+static void pqueue_swap(PQUEUE* pqueue, unsigned char index1, unsigned char index2)
 {
     HTREE_ELEMENT* temp = pqueue->entry[index1];
     pqueue->entry[index1] = pqueue->entry[index2];

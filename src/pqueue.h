@@ -1,4 +1,4 @@
-﻿/* 
+/* 
  * File:   pqueue.h
  * Author: Tim Buschmann
  *         Artur Leinweber
