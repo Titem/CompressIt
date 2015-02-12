@@ -214,3 +214,4 @@ nb-configuration.xml
 /res/bibel.txt.hc
 /doxygen
 /res/ppr_doxygen.cfg
+/res/*.dc
