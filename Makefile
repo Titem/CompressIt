@@ -120,14 +120,14 @@ $(OBJPATH)/htree_leaf.o : src/htree_leaf.c src/htree_leaf.h
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree_leaf.c
 	
 $(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h 
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_node.o src/htree_node.c
 	
 	
 $(OBJPATH)/properties.o : src/properties.c src/properties.h src/error.h
