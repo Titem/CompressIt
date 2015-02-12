@@ -19,9 +19,8 @@
 struct S_CODETAB 
 {
     unsigned char length;
-    unsigned char working_index;
+    unsigned short working_index;
     CODETAB_ELEMENT* char_index[256];
-    bool is_emty;
 };
 
 
