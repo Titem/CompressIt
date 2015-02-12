@@ -47,7 +47,7 @@ Liefert TRUE wenn das Minimum entfernt wurde und FALSE wenn kein Element mehr ex
 evtl. den Speicherplatz verkleinern.*/
 extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue);
 
-extern unsigned char pqueue_get_number_of_entries(PQUEUE* pqueue);
+extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue);
 
 
 #endif	/* PQUEUE_H */

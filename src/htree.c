@@ -6,6 +6,7 @@
 #include "htree.h"
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "freqtab.h"
 #include "freqtab_element.h"
@@ -267,15 +268,42 @@ extern void htree_print(HTREE* htree)
 static void htree_prep_codetab_element(HTREE* htree)
 {
     CODETAB_ELEMENT* codetab_element;
-    bool* code[256];
-    unsigned char index;
-    
+    bool code[256];
+    bool** new_code;
+    unsigned char index = 0;
+
     /* Wurzelknoten auswählen */
     HTREE_ELEMENT* htree_element = htree->root_node;
     
-    while (htree_element_is_leaf(htree_element))
+    while (!htree_element_is_leaf(htree_element))
     {
-            
-        /* Wurzelknoten auswählen */
+        if (htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree_element)))
+        {
+            htree_element = htree_node_get_left((HTREE_NODE*)htree_element_get_element(htree_element));
+            code[index] = false;
+            index++;
+        }
+        else if(htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree_element)))
+        {
+            htree_element = htree_node_get_right((HTREE_NODE*)htree_element_get_element(htree_element));
+            code[index] = true;
+            index++;
+        }
+        else
+        {
+            delete_htree_element(&htree_element);
+            htree_element = htree->root_node;
+            index = 0;
+        }
     }
+    
+    new_code = malloc(sizeof(bool) * index);
+            
+
+    memcpy(code,new_code,sizeof(bool) * index);
+    
+    codetab_element = create_codetab_element(htree_leaf_get_char((HTREE_LEAF*)htree_element_get_element(htree_element)),
+                                             new_code, index);
+    
+    htree->prep_codetab_element = codetab_element;
 }

@@ -23,11 +23,11 @@ struct S_PQUEUE
 };
 
 
-static void pqueue_heapify(PQUEUE* pqueue, unsigned char index);
+static void pqueue_heapify(PQUEUE* pqueue, unsigned short index);
 
 static void pqueue_build_heap(PQUEUE* pqueue);
 
-static void pqueue_swap(PQUEUE* pqueue, unsigned char index1, unsigned char index2);
+static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2);
 
 
 /* ======================================================================== *
@@ -67,7 +67,7 @@ extern void pqueue_insert_htree_element(PQUEUE* pqueue,
 
 extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
 {
-    unsigned char last_index;
+    unsigned short last_index;
     
     HTREE_ELEMENT* min_element = pqueue->entry[0];
     last_index = pqueue->number_of_entries - 1;
@@ -78,18 +78,18 @@ extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
         pqueue_heapify(pqueue, 0);
     }
     
-    return NULL;
+    return min_element;
 }
 
-extern unsigned char pqueue_get_number_of_entries(PQUEUE* pqueue)
+extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue)
 {
     return pqueue->number_of_entries;
 }
 
 
-static void pqueue_heapify(PQUEUE* pqueue, unsigned char index)
+static void pqueue_heapify(PQUEUE* pqueue, unsigned short index)
 {
-    unsigned char min;
+    unsigned short min;
     printf("Heap sortieren!");
     do
     {
@@ -114,7 +114,7 @@ static void pqueue_heapify(PQUEUE* pqueue, unsigned char index)
 
 static void pqueue_build_heap(PQUEUE* pqueue)
 {
-    unsigned char i;
+    unsigned short i;
     if (pqueue->number_of_entries > 0)
     {
         for (i = ((pqueue->number_of_entries / 2) - 1); i >= 0; i--)
@@ -124,7 +124,7 @@ static void pqueue_build_heap(PQUEUE* pqueue)
     }
 }
 
-static void pqueue_swap(PQUEUE* pqueue, unsigned char index1, unsigned char index2)
+static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2)
 {
     HTREE_ELEMENT* temp = pqueue->entry[index1];
     pqueue->entry[index1] = pqueue->entry[index2];
