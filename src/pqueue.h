@@ -42,7 +42,7 @@ extern void delete_pqueue(PQUEUE* pqueue);
 extern void pqueue_insert_htree_element(PQUEUE* pqueue, 
                                         HTREE_ELEMENT* htree_element);
 
-extern HTREE_ELEMENT* pqueue_get_min_entrie(PQUEUE* pqueue);
+extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue);
 
 extern unsigned char pqueue_get_number_of_entries(PQUEUE* pqueue);
 
