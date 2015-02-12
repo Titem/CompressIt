@@ -92,6 +92,8 @@
     <ClCompile Include="..\src\freqtab_element.c" />
     <ClCompile Include="..\src\htree.c" />
     <ClCompile Include="..\src\htree_element.c" />
+    <ClCompile Include="..\src\htree_leaf.c" />
+    <ClCompile Include="..\src\htree_node.c" />
     <ClCompile Include="..\src\main.c" />
     <ClCompile Include="..\src\pqueue.c" />
     <ClCompile Include="..\src\properties.c" />
@@ -106,6 +108,8 @@
     <ClInclude Include="..\src\freqtab_element.h" />
     <ClInclude Include="..\src\htree.h" />
     <ClInclude Include="..\src\htree_element.h" />
+    <ClInclude Include="..\src\htree_leaf.h" />
+    <ClInclude Include="..\src\htree_node.h" />
     <ClInclude Include="..\src\pqueue.h" />
     <ClInclude Include="..\src\properties.h" />
   </ItemGroup>
