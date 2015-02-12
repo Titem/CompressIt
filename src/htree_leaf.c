@@ -3,9 +3,8 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "htree_element.h"
+#include "htree_leaf.h"
 
-#include <stdbool.h>
 #include <stdlib.h>
 
 
@@ -15,10 +14,10 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
-struct S_HTREE_ELEMENT
+struct S_HTREE_LEAF
 {
-    HTREE_TYPE type;
-    void* element;
+    unsigned char character;
+    unsigned long frequency;
 };
 
 
@@ -28,33 +27,27 @@ struct S_HTREE_ELEMENT
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern HTREE_ELEMENT* create_htree_element(HTREE_TYPE type, void* element)
+extern HTREE_LEAF* create_htree_leaf(unsigned char character,
+                                     unsigned long frequency)
 {
     return NULL;
 }
 
 
-extern void delete_htree_element(HTREE_ELEMENT* htree_element)
+extern void delete_htree_leaf(HTREE_LEAF* htree_leaf)
 {
     
 }
 
 
-extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child, 
-                                           HTREE_ELEMENT* right_child)
+extern unsigned char htree_leaf_get_char(HTREE_LEAF* htree_leaf)
 {
-    return NULL;
+    return 0;
 }
 
 
-extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
+extern unsigned long htree_leaf_get_frequency(HTREE_LEAF* htree_leaf)
 {
-    return false;
-}
-
-
-extern void htree_element_print(HTREE_ELEMENT* htree_element)
-{
-    
+    return 0;
 }
 
