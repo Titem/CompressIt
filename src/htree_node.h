@@ -38,7 +38,7 @@ typedef struct S_HTREE_NODE HTREE_NODE;
 extern HTREE_NODE* create_htree_node(HTREE_ELEMENT* left_child, 
                                      HTREE_ELEMENT* right_child);
 
-extern void delete_htree_node(HTREE_NODE* htree_node);
+extern void delete_htree_node(HTREE_NODE** htree_node);
 
 extern HTREE_ELEMENT* htree_node_get_left(HTREE_NODE* htree_node);
 

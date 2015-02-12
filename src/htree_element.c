@@ -8,6 +8,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#include "htree_node.h"
+#include "htree_leaf.h"
+
 
 
 
@@ -30,13 +33,28 @@ struct S_HTREE_ELEMENT
 
 extern HTREE_ELEMENT* create_htree_element(HTREE_TYPE type, void* element)
 {
-    return NULL;
+    HTREE_ELEMENT* new_htree_element = malloc(sizeof(HTREE_ELEMENT));
+    
+    new_htree_element->type = type;
+    new_htree_element->element = element;
+    
+    return new_htree_element;
 }
 
 
-extern void delete_htree_element(HTREE_ELEMENT* htree_element)
+extern void delete_htree_element(HTREE_ELEMENT** htree_element)
 {
+    if ((*htree_element)->type == NODE)
+    {
+        delete_htree_node((HTREE_NODE**)(&((*htree_element)->element)));
+    }
+    else
+    {
+        delete_htree_leaf((HTREE_LEAF**)(&((*htree_element)->element)));
+    }
     
+    free(*htree_element);
+    *htree_element = NULL;
 }
 
 

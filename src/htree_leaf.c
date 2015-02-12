@@ -31,24 +31,28 @@ struct S_HTREE_LEAF
 extern HTREE_LEAF* create_htree_leaf(unsigned char character,
                                      unsigned long frequency)
 {
-    return NULL;
+    HTREE_LEAF* new_htree_leaf = malloc(sizeof(HTREE_LEAF));
+    new_htree_leaf->character = character;
+    new_htree_leaf->frequency = frequency;
+    return new_htree_leaf;
 }
 
 
-extern void delete_htree_leaf(HTREE_LEAF* htree_leaf)
+extern void delete_htree_leaf(HTREE_LEAF** htree_leaf)
 {
-    
+    free(*htree_leaf);
+    *htree_leaf = NULL;
 }
 
 
 extern unsigned char htree_leaf_get_char(HTREE_LEAF* htree_leaf)
 {
-    return 0;
+    return htree_leaf->character;
 }
 
 
 extern unsigned long htree_leaf_get_frequency(HTREE_LEAF* htree_leaf)
 {
-    return 0;
+    return htree_leaf->frequency;
 }
 
