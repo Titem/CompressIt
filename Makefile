@@ -17,7 +17,8 @@ SPLINT_LOG = ./splint.log
 OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o \
 $(OBJPATH)/compressor.o $(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o \
 $(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o $(OBJPATH)/freqtab.o \
-$(OBJPATH)/pqueue.o $(OBJPATH)/htree_element.o $(OBJPATH)/main.o
+$(OBJPATH)/pqueue.o $(OBJPATH)/htree_element.o $(OBJPATH)/htree_node.o \
+$(OBJPATH)/htree_leaf.o $(OBJPATH)/main.o
 
 # Es wird bei jedem normalen Build eine exe erzeugt und dann eine statische
 # Codepruefung durchgefuehrt.
@@ -108,6 +109,20 @@ $(OBJPATH)/codetab_element.o : src/codetab_element.c
 
 
 $(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h src/freqtab.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
+
+$(OBJPATH)/htree_leaf.o : src/htree_leaf.c src/htree_leaf.h 
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/htree.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
+	
+$(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h 
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
