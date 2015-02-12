@@ -17,8 +17,8 @@
 struct S_CODETAB_ELEMENT
 {
     unsigned char character;
-    unsigned short code;
-    unsigned char code_length;
+    unsigned bool** code;
+    unsigned char length;
 };
 
 
