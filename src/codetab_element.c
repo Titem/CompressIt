@@ -29,8 +29,8 @@ struct S_CODETAB_ELEMENT
  * ======================================================================== */
 
 extern CODETAB_ELEMENT* create_codetab_element(unsigned char character, 
-                                              unsigned short code,
-                                              unsigned char code_length)
+                                               bool** code,
+                                               unsigned char code_length)
 {
     return NULL;
 }
@@ -52,10 +52,9 @@ extern unsigned char codetab_element_get_char
     return 0;
 }
 
-extern unsigned char codetab_element_get_code
-                     (CODETAB_ELEMENT* codetab_element)
+extern bool** codetab_element_get_code(CODETAB_ELEMENT* codetab_element)
 {
-    return 0;
+    return NULL;
 }
 
 extern unsigned char codetab_element_get_code_length
