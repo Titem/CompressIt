@@ -49,10 +49,11 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     HTREE_ELEMENT* new_htree_element;
     HTREE_ELEMENT* htree_element_left;
     HTREE_ELEMENT* htree_element_right;
-    
-    while (freqtab_is_emty(freqtab))
+    rintf("PQUEUE Number of Elements vor insert: %i", (int)pqueue_get_number_of_entries(pqueue));
+    while (!freqtab_is_emty(freqtab))
     {
         /* freqtab_element aus freqtab entnehmen */
+        /*HIER IST DER FEHLER freqtab_element is NULL.*/
         freqtab_element = freqtab_get_element(freqtab);
     
         /* htree_leaf erstellen mit character und frequency des entnommenen 
@@ -65,6 +66,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
         pqueue_insert_htree_element(pqueue, new_htree_element);
     
     }
+    printf("PQUEUE Number of Elements nach insert: %i", (int)pqueue_get_number_of_entries(pqueue));
     
     while (pqueue_get_number_of_entries(pqueue) >= 2)
     {
@@ -78,7 +80,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     
         /* zusammengeführtes htree_element der pqueue hinzufügen */
         pqueue_insert_htree_element(pqueue, new_htree_element);
-    
+        
     }
     
     printf("PQUEUE Number of Elements: %i", (int) pqueue_get_number_of_entries(pqueue));
