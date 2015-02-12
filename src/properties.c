@@ -274,10 +274,10 @@ extern PROPERTIES* create_properties(char** argv, int argc)
     return p_properties;
 }
 
-extern void delete_properties(PROPERTIES* p_properties)
+extern void delete_properties(PROPERTIES** p_properties)
 {
-    free(p_properties);
-    p_properties = NULL;
+    free(*p_properties);
+    *p_properties = NULL;
 }
 
 extern MODE properties_get_mode(PROPERTIES* p_properties)
