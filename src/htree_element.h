@@ -43,7 +43,7 @@ typedef enum
 
 extern HTREE_ELEMENT* create_htree_element(HTREE_TYPE type, void* element);
 
-extern void delete_htree_element(HTREE_ELEMENT* htree_element);
+extern void delete_htree_element(HTREE_ELEMENT** htree_element);
 
 extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child, 
                                            HTREE_ELEMENT* right_child);
