@@ -47,7 +47,7 @@ extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character);
 /*---------------------------------------------------------------------------------*/
 /*-----LÖSCHT EIN FREQUENCY TABLE ELEMENT BZW GIBT DEN SPEICHER WIEDER FREI--------*/
 /*---------------------------------------------------------------------------------*/
-extern void delete_freqtab_element(FREQTAB_ELEMENT* freq);
+extern void delete_freqtab_element(FREQTAB_ELEMENT** freq);
 
 
 /*---------------------------------------------------------------------------------*/
