@@ -5,6 +5,8 @@
 
 #include "codetab.h"
 
+#include <stdbool.h>
+
 #include "codetab_element.h"
 
 
@@ -17,7 +19,9 @@
 struct S_CODETAB 
 {
     unsigned char length;
-    CODETAB_ELEMENT* element[256];
+    unsigned char working_index;
+    CODETAB_ELEMENT* char_index[256];
+    bool is_emty;
 };
 
 
@@ -27,43 +31,58 @@ struct S_CODETAB
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern CODETAB* create_codetab(HTREE* htree, unsigned long content_length)
+extern CODETAB* create_codetab(HTREE* htree)
 {
     return NULL;
 }
+
 
 extern CODETAB* read_codetab(FILE* input_stream)
 {
     return NULL;
 }
 
+
 extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 {
-    
+
 }
+
 
 extern void delete_codetab(CODETAB* codetab)
 {
     
 }
 
-extern CODETAB_ELEMENT* codetab_get_code(CODETAB* codetab, 
-                                         unsigned char character)
+
+extern bool** codetab_get_code(CODETAB* codetab, 
+                               unsigned char character)
 {
     return NULL;
 }
 
-extern bool codetab_search_char(CODETAB* codetab, bool bit)
+
+extern unsigned char codetab_get_code_length(CODETAB* codetab, 
+                                                unsigned char character)
+{
+    return 0;
+}
+
+
+extern CODETAB_ELEMENT* codetab_get_element(CODETAB* codetab)
+{
+    return NULL;
+}
+
+
+extern bool codetab_is_emty(CODETAB* codetab)
 {
     return false;
 }
 
-extern unsigned char codetab_get_char(CODETAB* codetab)
-{
-    return 0;
-}
 
 extern void codetab_print(CODETAB* codetab)
 {
     
 }
+

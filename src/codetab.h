@@ -45,12 +45,15 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab);
 
 extern void delete_codetab(CODETAB* codetab);
 
-extern CODETAB_ELEMENT* codetab_get_code(CODETAB* codetab, 
-                                         unsigned char character);
+extern bool** codetab_get_code(CODETAB* codetab, 
+                               unsigned char character);
 
-extern bool codetab_search_char(CODETAB* codetab, bool bit);
+extern unsigned char codetab_get_code_length(CODETAB* codetab, 
+                                                unsigned char character);
 
-extern unsigned char codetab_get_char(CODETAB* codetab);
+extern CODETAB_ELEMENT* codetab_get_element(CODETAB* codetab);
+
+extern bool codetab_is_emty(CODETAB* codetab);
 
 extern void codetab_print(CODETAB* codetab);
 
