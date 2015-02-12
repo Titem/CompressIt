@@ -42,9 +42,10 @@ extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character)
 
 
 
-extern void delete_freqtab_element(FREQTAB_ELEMENT* freq)
+extern void delete_freqtab_element(FREQTAB_ELEMENT** freq)
 {
-    free(freq);
+    free(*freq);
+    *freq = NULL;
 }
 
 
