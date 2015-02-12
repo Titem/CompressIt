@@ -12,6 +12,8 @@
 #include "codetab.h"
 #include "codetab_element.h"
 #include "htree_element.h"
+#include "htree_leaf.h"
+#include "htree_node.h"
 #include "pqueue.h"
 
 
