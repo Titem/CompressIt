@@ -5,6 +5,7 @@
 
 #include "htree_leaf.h"
 
+#include <stdbool.h>
 #include <stdlib.h>
 
 
