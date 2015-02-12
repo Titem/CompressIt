@@ -1,4 +1,4 @@
-
+﻿
 /* ======================================================================== *
  * Header-Dateien                                                           *
  * ======================================================================== */
@@ -49,7 +49,23 @@ extern void delete_pqueue(PQUEUE** pqueue)
 extern void pqueue_insert_htree_element(PQUEUE* pqueue, 
                                         HTREE_ELEMENT* htree_element)
 {
-    
+    /*INSERT*/
+    /*Element in den Heap einf�gen.*/
+    /*Bei Index 0 Anfangen*/
+
+    //heap_vektor[heap_elements] = element;
+
+    /*Anzahl der Heap Elemente hochzaehlen.*/
+    heap_elements++;
+
+    /*Pr�fung ob mehr Speicher reserviert werden muss.*/
+    test_for_enlarging_memory();
+
+    /*Bei Index 1 anfangen. Entspricht dem ROOT Index.*/
+    /*heap_vektor[heap_elements] = element;*/
+
+    /*BUILD*/
+    build_heap();
 }
 
 extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
