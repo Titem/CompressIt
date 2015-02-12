@@ -84,10 +84,10 @@ extern FREQTAB* create_freqtab(FILE* input_stream)
     return freq_tab_p;
 }
 
-extern void delete_freqtab(FREQTAB* freq_tab_p)
+extern void delete_freqtab(FREQTAB** freq_tab_p)
 {
-    free(freq_tab_p);
-    freq_tab_p = NULL;
+    free(*freq_tab_p);
+    *freq_tab_p = NULL;
 }
 
 extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
