@@ -248,15 +248,35 @@ extern bool htree_search_char(HTREE* htree, bool bit)
 
 extern unsigned char htree_get_char(HTREE* htree)
 {
-    return 0;
+    /* char aus dem Element lesen auf den der tree_pointer zeigt */
+    unsigned char character = htree_leaf_get_char(((HTREE_LEAF*)htree_element_get_element(htree->tree_pointer)));
+    
+    /* tree_pointer auf Wutzelknoten zurücksetzen */
+    htree->tree_pointer = htree->root_node;
+    
+    return character; 
 }
+
 
 extern void htree_print(HTREE* htree)
 {
     
 }
 
+
 static void htree_prep_codetab_element(HTREE* htree)
 {
+    CODETAB_ELEMENT* codetab_element;
+    bool* code[256];
+    unsigned char index;
     
+    /* Wurzelknoten auswählen */
+    HTREE_ELEMENT* htree_element = htree->root_node;
+    
+    while (htree_element_is_leaf(htree_element))
+    {
+        if ()
+            
+        /* Wurzelknoten auswählen */
+    }
 }
