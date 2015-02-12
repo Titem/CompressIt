@@ -19,6 +19,8 @@
 
 #include <stdbool.h>
 
+#include "htree_element.h"
+
 
 
 

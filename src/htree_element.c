@@ -65,6 +65,12 @@ extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child,
 }
 
 
+extern void* htree_element_get_element(HTREE_ELEMENT* htree_element)
+{
+    return htree_element->element;
+}
+
+
 extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
 {
     return false;
