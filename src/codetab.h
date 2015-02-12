@@ -14,18 +14,6 @@
 
 
 /* ======================================================================== *
- * Header-Dateien                                                           *
- * ======================================================================== */
-
-#include <stdio.h>
-#include <stdbool.h>
-
-#include "htree.h"
-
-
-
-
-/* ======================================================================== *
  * Typdefinitionen                                                          *
  * ======================================================================== */
 typedef struct S_CODETAB CODETAB;
@@ -34,10 +22,23 @@ typedef struct S_CODETAB CODETAB;
 
 
 /* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
+#include <stdio.h>
+#include <stdbool.h>
+
+#include "htree.h"
+#include "codetab_element.h"
+
+
+
+
+/* ======================================================================== *
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-extern CODETAB* create_codetab(HTREE* htree, unsigned long content_length);
+extern CODETAB* create_codetab(HTREE* htree);
 
 extern CODETAB* read_codetab(FILE* input_stream);
 

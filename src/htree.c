@@ -7,10 +7,11 @@
 
 #include <stdlib.h>
 
+#include "freqtab.h"
+#include "codetab.h"
 #include "codetab_element.h"
 #include "htree_element.h"
 #include "pqueue.h"
-#include "freqtab.h"
 
 
 
