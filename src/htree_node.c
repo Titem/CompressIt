@@ -39,28 +39,33 @@ extern HTREE_NODE* create_htree_node(HTREE_ELEMENT* left_child,
     
     if (left_child != NULL)
     {
-        if (left_child->type == NODE)
+        if (htree_element_is_leaf(left_child))
         {
             weight += 
-                htree_node_get_weight((HTREE_NODE*)(left_child->element));
+                htree_leaf_get_frequency
+                    ((HTREE_LEAF*)htree_element_get_element(left_child));
+            
         }
         else
         {
             weight += 
-                htree_leaf_get_frequency((HTREE_LEAF*)(left_child->element));
+                htree_node_get_weight
+                    ((HTREE_NODE*)htree_element_get_element(left_child));
         }
     }
     if (right_child != NULL)
     {
-        if (right_child->type == NODE)
+        if (htree_element_is_leaf(right_child))
         {
             weight += 
-                htree_node_get_weight(((HTREE_NODE*)(right_child->element)));
+                htree_leaf_get_frequency
+                    ((HTREE_LEAF*)htree_element_get_element(right_child));
         }
         else
         {
             weight += 
-                htree_leaf_get_frequency((HTREE_LEAF*)(right_child->element));
+                htree_node_get_weight
+                    ((HTREE_NODE*)htree_element_get_element(right_child));
         }
     }
     
@@ -102,6 +107,20 @@ extern bool htree_node_has_left(HTREE_NODE* htree_node)
 extern bool htree_node_has_right(HTREE_NODE* htree_node)
 {
     return htree_node->right_child != NULL;
+}
+
+
+extern void htree_node_set_left(HTREE_NODE* htree_node, 
+                                HTREE_ELEMENT* htree_element)
+{
+    htree_node->left_child = htree_element;
+}
+
+
+extern void htree_node_set_right(HTREE_NODE* htree_node, 
+                                 HTREE_ELEMENT* htree_element)
+{
+    htree_node->right_child = htree_element;
 }
 
 

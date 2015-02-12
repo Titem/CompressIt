@@ -19,6 +19,8 @@
 
 #include <stdbool.h>
 
+#include "htree_element.h"
+
 
 
 
@@ -47,6 +49,12 @@ extern HTREE_ELEMENT* htree_node_get_right(HTREE_NODE* htree_node);
 extern bool htree_node_has_left(HTREE_NODE* htree_node);
 
 extern bool htree_node_has_right(HTREE_NODE* htree_node);
+
+extern void htree_node_set_left(HTREE_NODE* htree_node, 
+                                HTREE_ELEMENT* htree_element);
+
+extern void htree_node_set_right(HTREE_NODE* htree_node, 
+                                 HTREE_ELEMENT* htree_element);
 
 extern unsigned long htree_node_get_weight(HTREE_NODE* htree_node);
 

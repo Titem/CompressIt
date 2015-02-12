@@ -48,6 +48,8 @@ extern void delete_htree_element(HTREE_ELEMENT** htree_element);
 extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child, 
                                            HTREE_ELEMENT* right_child);
 
+extern void* htree_element_get_element(HTREE_ELEMENT* htree_element);
+
 extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element);
 
 extern void htree_element_print(HTREE_ELEMENT* htree_element);

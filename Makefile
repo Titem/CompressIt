@@ -108,7 +108,7 @@ $(OBJPATH)/codetab_element.o : src/codetab_element.c
 	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab_element.o src/codetab_element.c
 
 
-$(OBJPATH)/htree.o : src/htree.c src/htree.h src/freqtab.h src/codetab.h src/codetab_element.h src/htree_element.h src/pqueue.h src/htree_leaf.h src/htree_node.h
+$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h src/freqtab.h src/freqtab_element.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
@@ -117,14 +117,14 @@ $(OBJPATH)/htree.o : src/htree.c src/htree.h src/freqtab.h src/codetab.h src/cod
 
 $(OBJPATH)/htree_leaf.o : src/htree_leaf.c src/htree_leaf.h 
 	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/htree_leaf.o
+	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_leaf.o src/htree_leaf.c
 	
-$(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h src/htree_leaf.h
+$(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h 
 	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/htree_node.o
+	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_node.o src/htree_node.c

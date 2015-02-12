@@ -61,13 +61,25 @@ extern void delete_htree_element(HTREE_ELEMENT** htree_element)
 extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child, 
                                            HTREE_ELEMENT* right_child)
 {
-    return NULL;
+    HTREE_ELEMENT* new_htree_element = malloc(sizeof(HTREE_ELEMENT));
+    
+    new_htree_element->element = 
+            (void*) create_htree_node(left_child, right_child);
+    new_htree_element->type = NODE;
+    
+    return new_htree_element;
+}
+
+
+extern void* htree_element_get_element(HTREE_ELEMENT* htree_element)
+{
+    return htree_element->element;
 }
 
 
 extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
 {
-    return false;
+    return htree_element->type == LEAF;
 }
 
 
