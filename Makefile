@@ -108,7 +108,7 @@ $(OBJPATH)/codetab_element.o : src/codetab_element.c
 	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab_element.o src/codetab_element.c
 
 
-$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h src/freqtab.h
+$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h src/freqtab.h src/freqtab_element.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------

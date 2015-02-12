@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "freqtab.h"
+#include "freqtab_element.h"
 #include "codetab.h"
 #include "codetab_element.h"
 #include "htree_element.h"
@@ -36,7 +37,33 @@ struct S_HTREE
 
 extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
 {
-    return NULL;
+    FREQTAB_ELEMENT* freqtab_element;
+    
+    while (freqtab_is_emty(freqtab))
+    {
+        /* freqtab_element aus freqtab entnehmen */
+        freqtab_element = freqtab_get_element(freqtab);
+    
+        /* htree_leaf erstellen mit character und frequency des entnommenen 
+         * freqtab_element */
+        create_htree_element(LEAF, (void*) create_htree_leaf
+                (freqtab_element_get_char(freqtab_element), 
+                 freqtab_element_get_frequency(freqtab_element)));
+    
+    /* neuen htree_leaf der pqueue hinzufügen */
+    
+    }
+    
+    /* 2 htree_elemente mit minimalem Gewicht aus der pqueue entnehmen */
+    
+    /* die zwei entnommenen htree_elemente zusammenführen */
+    
+    /* zusammengeführtes htree_element der pqueue hinzufügen */
+    
+    
+    /* letztes htree_element aus pqueue entnehmen */
+    
+    /* htree erzeugen mit dem letzten htree_element als root */
 }
 
 extern HTREE* create_htree_from_codetab(CODETAB* codetab)
