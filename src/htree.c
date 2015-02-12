@@ -275,7 +275,6 @@ static void htree_prep_codetab_element(HTREE* htree)
     
     while (htree_element_is_leaf(htree_element))
     {
-        if ()
             
         /* Wurzelknoten auswählen */
     }
