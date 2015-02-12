@@ -21,7 +21,6 @@ struct S_FREQTAB
     FREQTAB_ELEMENT* freq_table[MAX_CHARACTERS];
     unsigned short working_index;
     unsigned long content_length;
-
 };
 
 

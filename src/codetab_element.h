@@ -14,19 +14,19 @@
 
 
 /* ======================================================================== *
- * Header-Dateien                                                           *
+ * Typdefinitionen                                                          *
  * ======================================================================== */
 
-#include <stdbool.h>
+typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
 
 
 
 
 /* ======================================================================== *
- * Typdefinitionen                                                          *
+ * Header-Dateien                                                           *
  * ======================================================================== */
 
-typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
+#include <stdbool.h>
 
 
 
