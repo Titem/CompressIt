@@ -23,6 +23,7 @@ struct S_HTREE_ELEMENT
 {
     HTREE_TYPE type;
     void* element;
+    bool killed;
 };
 
 
@@ -38,6 +39,7 @@ extern HTREE_ELEMENT* create_htree_element(HTREE_TYPE type, void* element)
     
     new_htree_element->type = type;
     new_htree_element->element = element;
+    new_htree_element->killed = false;
     
     return new_htree_element;
 }
@@ -84,12 +86,24 @@ extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
 }
 
 
+extern bool htree_element_is_killed(HTREE_ELEMENT* htree_element)
+{
+    return htree_element->killed;
+}
+
+
+extern void htree_element_kill(HTREE_ELEMENT* htree_element)
+{
+    htree_element->killed = true;
+}
+
+
 extern void htree_element_print(HTREE_ELEMENT* htree_element)
 {
     static int deepness = 0;
     
     int i;
-    if (htree_element != NULL)
+    if (htree_element != NULL && !htree_element->killed)
     {
         for (i = 0; i < deepness; i++)
         {

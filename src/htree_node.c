@@ -65,13 +65,15 @@ extern HTREE_ELEMENT* htree_node_get_right(HTREE_NODE* htree_node)
 
 extern bool htree_node_has_left(HTREE_NODE* htree_node)
 {
-    return htree_node->left_child != NULL;
+    return htree_node->left_child != NULL
+           && !htree_element_is_killed(htree_node->left_child);
 }
 
 
 extern bool htree_node_has_right(HTREE_NODE* htree_node)
 {
-    return htree_node->right_child != NULL;
+    return htree_node->right_child != NULL
+           && !htree_element_is_killed(htree_node->right_child);
 }
 
 
