@@ -86,7 +86,7 @@ extern bool* codetab_get_code(CODETAB* codetab, unsigned char character)
 }
 
 
-extern unsigned char codetab_get_code_length(CODETAB* codetab,                                                unsigned char character)
+extern unsigned char codetab_get_code_length(CODETAB* codetab, unsigned char character)
 {
     return codetab_element_get_code_length(codetab->char_index[character]);
 }
@@ -127,7 +127,7 @@ static void codetab_get_next_index(CODETAB* codetab)
 extern void codetab_print(CODETAB* codetab)
 {
     unsigned short i = 0;
-    int x = 0;
+    unsigned short x = 0;
     int count = 0;
     bool* code;
     for (i = 0; i < 256; i++)
@@ -138,7 +138,7 @@ extern void codetab_print(CODETAB* codetab)
             printf("%c  ", codetab_element_get_char(codetab->char_index[i]));
             
             code = codetab_element_get_code(codetab->char_index[i]);
-            for (x = 0; x < codetab_get_code_length(codetab, i); x++)
+            for (x = 0; x < codetab_get_code_length(codetab,(unsigned char) i); x++)
             {
                 printf("%u", *code);
                 code++;
@@ -146,7 +146,7 @@ extern void codetab_print(CODETAB* codetab)
             printf("\n");
         }
     }
-    printf("Anzahl Element: %u\n", count);
+    printf("Anzahl Element: %i\n", count);
 }
 
 
