@@ -44,7 +44,9 @@ extern CODETAB* create_codetab(HTREE* htree)
         new_codetab_element = htree_get_codetab_element(htree);
         new_codetab->char_index[codetab_element_get_char(new_codetab_element)] 
                 = new_codetab_element;
+/*
         htree_print(htree);
+*/
     }
     
     return new_codetab;
@@ -111,28 +113,40 @@ extern bool codetab_is_empty(CODETAB* codetab)
 
 static void codetab_get_next_index(CODETAB* codetab)
 {
-    unsigned short i;
-    
-    i = codetab->working_index;
     
     /* Naechstes codetab Element auswählen */
-    while(codetab->working_index < 256 && codetab->char_index[i] == NULL) 
+    while(codetab->working_index < 256 && codetab->char_index[codetab->working_index + 1] == NULL) 
     {
         codetab->working_index++;
+        
     }
+    codetab->working_index++;
 }
 
 
 extern void codetab_print(CODETAB* codetab)
 {
-    int i = 0;
-    while (!codetab_is_empty(codetab))
+    unsigned short i = 0;
+    int x = 0;
+    int count = 0;
+    for (i = 0; i < 256; i++)
     {
-        printf("%u\n", i);
-        codetab_get_next_index(codetab);
-        i++;
-        
+        if (codetab->char_index[i] != NULL)
+        {
+            count++;
+            printf("%c  ", codetab_element_get_char(codetab->char_index[i]));
+            
+            bool* code = codetab_element_get_code(codetab->char_index[i]);
+            for (x = 0; x < codetab_get_code_length(codetab, i); x++)
+            {
+                printf("%u", *code);
+                code++;
+            }
+            printf("\n");
+        }
     }
+    printf("Anzahl Element: %u\n", count);
 }
+
 
 
