@@ -22,8 +22,8 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
     /*Aktuelle <position in der Bitqueue*/
     unsigned char shift_count = 0;
     int character;
-    bool* code = {false};
-    unsigned char bitqueue;
+    bool* code = NULL;
+    unsigned char bitqueue = 0;
     
     /* content_length in output_stream schreiben */
     fwrite(&content_length, sizeof(unsigned long), 1, output_stream);
@@ -41,10 +41,10 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
             }
             
             /* code für gelesenes Zeichen anfordern */
-            code = codetab_get_code(codetab, character);
+            code = codetab_get_code(codetab, (unsigned char) character);
             
             /* code_length für gelesenes Zeichen anfordern */
-            code_length = codetab_get_code_length(codetab, character);
+            code_length = codetab_get_code_length(codetab, (unsigned char) character);
         }
         
         if (shift_count == 7)
@@ -95,7 +95,7 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
     bool is_char_found = false;
     unsigned long content_length;
     unsigned char character;
-    unsigned char bitqueue;
+    unsigned char bitqueue = 0;
     int byte;
     bool bit;
     

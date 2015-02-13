@@ -69,6 +69,7 @@ extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child,
     new_htree_element->element = 
             (void*) create_htree_node(left_child, right_child);
     new_htree_element->type = NODE;
+    new_htree_element->killed = false;
     
     return new_htree_element;
 }
