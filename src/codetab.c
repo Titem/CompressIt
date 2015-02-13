@@ -7,7 +7,6 @@
 
 #include <stdbool.h>
 #include <stdlib.h>
-#include <limits.h>
 #include <string.h>
 
 #include "codetab_element.h"
@@ -37,7 +36,17 @@ extern CODETAB* create_codetab(HTREE* htree)
 {
     CODETAB* new_codetab = malloc(sizeof(CODETAB));
     CODETAB_ELEMENT* new_codetab_element;
+    
+    int i;
+    
     new_codetab->working_index = 0;
+    new_codetab->length = 0;
+    
+    for(i = 0; i < 256; i++)
+    {
+        new_codetab->char_index[i] = NULL;
+    }
+    
     codetab_get_next_index(new_codetab);
     while (!htree_is_emty(htree))
     {
@@ -129,7 +138,8 @@ extern void codetab_print(CODETAB* codetab)
     unsigned short i = 0;
     unsigned short x = 0;
     int count = 0;
-    bool* code;
+    bool* code = NULL;
+    
     for (i = 0; i < 256; i++)
     {
         if (codetab->char_index[i] != NULL)
