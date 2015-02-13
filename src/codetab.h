@@ -44,7 +44,7 @@ extern CODETAB* read_codetab(FILE* input_stream);
 
 extern void write_codetab(FILE* output_stream, CODETAB* codetab);
 
-extern void delete_codetab(CODETAB* codetab);
+extern void delete_codetab(CODETAB** codetab);
 
 extern bool** codetab_get_code(CODETAB* codetab, 
                                unsigned char character);

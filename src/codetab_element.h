@@ -11,7 +11,7 @@
 #define	CODETAB_ELEMENT_H
 
 
-
+#include "codetab_element.h"
 
 /* ======================================================================== *
  * Typdefinitionen                                                          *
@@ -30,7 +30,6 @@ typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
 
 
 
-
 /* ======================================================================== *
  * Funktionsprototypen                                                      *
  * ======================================================================== */
@@ -39,7 +38,7 @@ extern CODETAB_ELEMENT* create_codetab_element(unsigned char character,
                                                bool** code,
                                                unsigned char code_length);
 
-extern void delete_codetab_element(CODETAB_ELEMENT* codetab_element);
+extern void delete_codetab_element(CODETAB_ELEMENT** codetab_element);
 
 extern bool codetab_element_is_bit_set(CODETAB_ELEMENT* codetab_element, 
                                        unsigned char position);
