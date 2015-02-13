@@ -37,18 +37,16 @@ extern CODETAB* create_codetab(HTREE* htree)
 {
     CODETAB* new_codetab = malloc(sizeof(CODETAB));
     CODETAB_ELEMENT* new_codetab_element;
+    new_codetab->working_index = 0;
+    codetab_get_next_index(new_codetab);
     while (!htree_is_emty(htree))
     {
-        
         new_codetab_element = htree_get_codetab_element(htree);
-        printf("%c \n", codetab_element_get_char(new_codetab_element));
-        
         new_codetab->char_index[codetab_element_get_char(new_codetab_element)] 
                 = new_codetab_element;
         htree_print(htree);
-        printf("T\n");
-        fflush(stdout);
     }
+    
     return new_codetab;
 }
 

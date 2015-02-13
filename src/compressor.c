@@ -46,13 +46,13 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     
     /*Codebuch erstellen*/
     code_table = create_codetab(huffman_tree);
-    return;
+
 #ifdef DEBUG_HUFFMAN
     /*Codebuch auf Bildschirm ausgeben*/
     codetab_print(code_table);
     fflush(stdout);
 #endif
-    
+        return;
     /*Codebuch an den Anfang der Datei schreiben*/
     write_codetab(output_stream, code_table);
         
