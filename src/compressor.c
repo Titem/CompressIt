@@ -41,15 +41,14 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     htree_print(huffman_tree);
 #endif
 
-    return;
     /*Codebuch erstellen*/
     code_table = create_codetab(huffman_tree);
-        
+
 #ifdef DEBUG_HUFFMAN
     /*Codebuch auf Bildschirm ausgeben*/
     codetab_print(code_table);
 #endif
-
+    return;
     /*Codebuch an den Anfang der Datei schreiben*/
     write_codetab(output_stream, code_table);
         
