@@ -22,7 +22,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
     /*Aktuelle <position in der Bitqueue*/
     unsigned char shift_count = 0;
     int character;
-    bool** code = {false};
+    bool* code = {false};
     unsigned char bitqueue;
     
     /* content_length in output_stream schreiben */

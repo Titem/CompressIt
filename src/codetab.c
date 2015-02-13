@@ -78,7 +78,7 @@ extern void delete_codetab(CODETAB** codetab)
 }
 
 
-extern bool** codetab_get_code(CODETAB* codetab, unsigned char character)
+extern bool* codetab_get_code(CODETAB* codetab, unsigned char character)
 {
     return codetab_element_get_code(codetab->char_index[character]);
 }
