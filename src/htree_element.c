@@ -102,6 +102,7 @@ extern void htree_element_print(HTREE_ELEMENT* htree_element)
         }
         else
         {
+            printf("[NODE]\n");
             deepness++;
             htree_element_print(htree_node_get_left((HTREE_NODE*)(htree_element->element)));
             htree_element_print(htree_node_get_right((HTREE_NODE*)(htree_element->element)));
