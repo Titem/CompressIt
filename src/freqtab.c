@@ -96,19 +96,19 @@ extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
     unsigned short tmp_working_index = freq_tab_p->working_index;
     FREQTAB_ELEMENT* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
 
-    for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i] == NULL; i++)
+    for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i + 1] == NULL; i++)
     {
         tmp_working_index++;
     }
 
-    freq_tab_p->working_index = tmp_working_index;
+    freq_tab_p->working_index = tmp_working_index + 1;
 
     return tmp_p;
 }
 
 extern bool freqtab_is_emty(FREQTAB* freq_tab_p)
 {
-    return !(freq_tab_p->working_index < 256);
+    return freq_tab_p->working_index >= 256;
 }
 
 extern unsigned long freqtab_get_content_length(FREQTAB* freq_tab_p)
