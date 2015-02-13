@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A8D2ADD9-0855-4C77-970B-48130DA84281}</ProjectGuid>
+    <ProjectGuid>{B6CE799F-B731-4891-838B-A8035AAA8E27}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CompressIt</RootNamespace>
   </PropertyGroup>
@@ -54,15 +54,11 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <CompileAs>CompileAsC</CompileAs>
-      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -82,6 +78,9 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="..\res\bibel.txt" />
+  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\codetab.c" />
     <ClCompile Include="..\src\codetab_element.c" />
@@ -114,9 +113,6 @@
     <ClInclude Include="..\src\pqueue.h" />
     <ClInclude Include="..\src\pqueue_element.h" />
     <ClInclude Include="..\src\properties.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\res\bibel.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
