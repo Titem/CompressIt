@@ -66,7 +66,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
 extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 {
-
+    
 }
 
 
