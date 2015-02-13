@@ -62,6 +62,8 @@ extern PQUEUE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue);
 
 extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue);
 
-extern void heap_print(PQUEUE* pqueue);
+extern void pqueue_print(PQUEUE* pqueue);
+
+
 #endif	/* PQUEUE_H */
 

@@ -67,6 +67,8 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     }
     printf("PQUEUE Number of Elements nach insert: %i", (int)pqueue_get_number_of_entries(pqueue));
     
+    pqueue_print(pqueue);
+    
     while (pqueue_get_number_of_entries(pqueue) >= 2)
     {
         /* 2 htree_elemente mit minimalem Gewicht aus der pqueue entnehmen */

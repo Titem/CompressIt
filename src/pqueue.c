@@ -142,15 +142,15 @@ static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short in
 }
 
 /*--------------------------------HEAP-AUF-DEM-TERMINAL-AUSGEBEN--------------------*/
-extern void heap_print(PQUEUE* pqueue)
+extern void pqueue_print(PQUEUE* pqueue)
 {
     if (pqueue->number_of_entries >  0)
     {
         /*Heap auf dem Terminal ausgeben.*/
-        printf("Heap: (%i Elemente)\n", pqueue->number_of_entries);
+        printf("Heap: (%cu Elemente)\n", pqueue->number_of_entries);
 
         /*CODE*/
-        printf("|-- %c\n", (pqueue_element_get_weight(pqueue->entry[ROOT_INDEX])));
+        printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[ROOT_INDEX])));
         print_out_heap(pqueue,ROOT_INDEX, STEP_INDEX);
     }
     else
@@ -169,14 +169,14 @@ static void print_out_heap(PQUEUE* pqueue,int position, int step)
     if (left < pqueue->number_of_entries)
     {
         print_step(step);
-        printf("|-- %c\n", (pqueue_element_get_weight(pqueue->entry[left])));
+        printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[left])));
         print_out_heap(pqueue,left, step + STEP_INDEX);
     }
 
     if (right < pqueue->number_of_entries)
     {
         print_step(step);
-        printf("|-- %c\n", (pqueue_element_get_weight(pqueue->entry[right])));
+        printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[right])));
         print_out_heap(pqueue,right, step + STEP_INDEX);
     }
 }
