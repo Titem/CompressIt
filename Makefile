@@ -180,7 +180,7 @@ $(SPLINT_LOG) : src/*.c src/*.h
            -booltype BOOL -boolfalse FALSE -booltrue TRUE \
            +predboolint +noret +usedef +infloops +casebreak \
            -initallelements -incompletetype -fixedformalarray \
-           +posix-lib +exportlocal src/*.c	
+           +posix-lib src/*.c	
 
 # ----------------------------------------------------------------------------
 # Regel zum Erzeugen der Projektdokumentation
