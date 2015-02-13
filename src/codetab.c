@@ -57,7 +57,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
         LENGTH,
         CODE
                 
-    } ;
+    } STATE;
     
     while 
     return NULL;
