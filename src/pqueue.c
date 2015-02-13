@@ -124,12 +124,12 @@ static void pqueue_heapify(PQUEUE* pqueue, unsigned short index)
 
 static void pqueue_build_heap(PQUEUE* pqueue)
 {
-    unsigned short i;
+    short i;
     if (pqueue->number_of_entries > 0)
     {
-        for (i = ((pqueue->number_of_entries / 2) - 1); i >= 0; i--)
+        for (i = ((((short)pqueue->number_of_entries) / 2) - 1); i >= 0; i--)
         {
-            pqueue_heapify(pqueue, i);
+            pqueue_heapify(pqueue, (unsigned short)i);
         }
     }
 }
