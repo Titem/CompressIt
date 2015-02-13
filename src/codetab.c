@@ -129,6 +129,7 @@ extern void codetab_print(CODETAB* codetab)
     unsigned short i = 0;
     int x = 0;
     int count = 0;
+    bool* code;
     for (i = 0; i < 256; i++)
     {
         if (codetab->char_index[i] != NULL)
@@ -136,7 +137,7 @@ extern void codetab_print(CODETAB* codetab)
             count++;
             printf("%c  ", codetab_element_get_char(codetab->char_index[i]));
             
-            bool* code = codetab_element_get_code(codetab->char_index[i]);
+            code = codetab_element_get_code(codetab->char_index[i]);
             for (x = 0; x < codetab_get_code_length(codetab, i); x++)
             {
                 printf("%u", *code);
