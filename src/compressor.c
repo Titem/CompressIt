@@ -10,7 +10,7 @@
 #include "codetab.h"
 #include "content_coder.h"
 
-
+#define DEBUG_HUFFMAN
 
 
 /* ======================================================================== *

@@ -100,7 +100,6 @@ extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue)
 static void pqueue_heapify(PQUEUE* pqueue, unsigned short index)
 {
     unsigned short min;
-    printf("Heap sortieren! \n");
     do
     {
         min = index;
