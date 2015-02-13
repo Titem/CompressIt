@@ -56,8 +56,6 @@ extern void htree_node_set_left(HTREE_NODE* htree_node,
 extern void htree_node_set_right(HTREE_NODE* htree_node, 
                                  HTREE_ELEMENT* htree_element);
 
-extern unsigned long htree_node_get_weight(HTREE_NODE* htree_node);
-
 
 #endif	/* HTREE_NODE_H */
 

@@ -47,8 +47,8 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     PQUEUE* pqueue = create_pqueue();
     FREQTAB_ELEMENT* freqtab_element;
     HTREE_ELEMENT* new_htree_element;
-    HTREE_ELEMENT* htree_element_left;
-    HTREE_ELEMENT* htree_element_right;
+    PQUEUE_ELEMENT* pqueue_element_left;
+    PQUEUE_ELEMENT* pqueue_element_right;
     printf("PQUEUE Number of Elements vor insert: %i", (int)pqueue_get_number_of_entries(pqueue));
     while (!freqtab_is_emty(freqtab))
     {
@@ -59,11 +59,10 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
         /* htree_leaf erstellen mit character und frequency des entnommenen 
          * freqtab_element */
         new_htree_element = create_htree_element(LEAF, (void*) create_htree_leaf
-                (freqtab_elememt_get_char(freqtab_element), 
-                 freqtab_element_get_frequency(freqtab_element)));
+                (freqtab_elememt_get_char(freqtab_element)));
     
         /* neuen htree_leaf der pqueue hinzufügen */
-        pqueue_insert_htree_element(pqueue, new_htree_element);
+        pqueue_insert_htree_element(pqueue, new_htree_element, freqtab_element_get_frequency(freqtab_element));
     
     }
     printf("PQUEUE Number of Elements nach insert: %i", (int)pqueue_get_number_of_entries(pqueue));
@@ -71,21 +70,21 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     while (pqueue_get_number_of_entries(pqueue) >= 2)
     {
         /* 2 htree_elemente mit minimalem Gewicht aus der pqueue entnehmen */
-        htree_element_left = pqueue_get_min_entry(pqueue);
-        htree_element_right = pqueue_get_min_entry(pqueue);
+        pqueue_element_left = pqueue_get_min_entry(pqueue);
+        pqueue_element_right = pqueue_get_min_entry(pqueue);
     
         /* die zwei entnommenen htree_elemente zusammenführen */
-        new_htree_element = merge_htree_elements(htree_element_left,
-                                                 htree_element_right);
+        new_htree_element = merge_htree_elements(pqueue_element_get_htree_element(pqueue_element_left),
+                                                 pqueue_element_get_htree_element(pqueue_element_right));
     
         /* zusammengeführtes htree_element der pqueue hinzufügen */
-        pqueue_insert_htree_element(pqueue, new_htree_element);
+        pqueue_insert_htree_element(pqueue, new_htree_element, pqueue_element_get_weight(pqueue_element_left) + pqueue_element_get_weight(pqueue_element_right));
         
     }
     
     printf("PQUEUE Number of Elements: %i", (int) pqueue_get_number_of_entries(pqueue));
     /* letztes htree_element aus pqueue entnehmen */
-    new_htree_element = pqueue_get_min_entry(pqueue);
+    new_htree_element = pqueue_element_get_htree_element(pqueue_get_min_entry(pqueue));
     
     /* htree erzeugen mit dem letzten htree_element als root */
     new_htree->root_node = new_htree_element;
@@ -165,12 +164,12 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
         if (bit)
         {
             /* rechtes Kind erzeugen und anhängen */
-            htree_node_set_right((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(LEAF, create_htree_leaf(codetab_element_get_char(codetab_element), 0)));
+            htree_node_set_right((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(LEAF, create_htree_leaf(codetab_element_get_char(codetab_element))));
         }
         else
         {
             /* linkes Kind erzeugen und anhängen */
-            htree_node_set_left((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(LEAF, create_htree_leaf(codetab_element_get_char(codetab_element), 0)));
+            htree_node_set_left((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(LEAF, create_htree_leaf(codetab_element_get_char(codetab_element))));
         }
         
     }

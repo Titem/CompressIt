@@ -21,7 +21,6 @@ struct S_HTREE_NODE
 {
     HTREE_ELEMENT* left_child;
     HTREE_ELEMENT* right_child;
-    unsigned long weight;
 };
 
 
@@ -35,41 +34,7 @@ extern HTREE_NODE* create_htree_node(HTREE_ELEMENT* left_child,
                                      HTREE_ELEMENT* right_child)
 {
     HTREE_NODE* new_htree_node = malloc(sizeof(HTREE_NODE));
-    unsigned long weight = 0;
     
-    if (left_child != NULL)
-    {
-        if (htree_element_is_leaf(left_child))
-        {
-            weight += 
-                htree_leaf_get_frequency
-                    ((HTREE_LEAF*)htree_element_get_element(left_child));
-            
-        }
-        else
-        {
-            weight += 
-                htree_node_get_weight
-                    ((HTREE_NODE*)htree_element_get_element(left_child));
-        }
-    }
-    if (right_child != NULL)
-    {
-        if (htree_element_is_leaf(right_child))
-        {
-            weight += 
-                htree_leaf_get_frequency
-                    ((HTREE_LEAF*)htree_element_get_element(right_child));
-        }
-        else
-        {
-            weight += 
-                htree_node_get_weight
-                    ((HTREE_NODE*)htree_element_get_element(right_child));
-        }
-    }
-    
-    new_htree_node->weight = weight;
     new_htree_node->left_child = left_child;
     new_htree_node->right_child = right_child;
     
@@ -121,11 +86,5 @@ extern void htree_node_set_right(HTREE_NODE* htree_node,
                                  HTREE_ELEMENT* htree_element)
 {
     htree_node->right_child = htree_element;
-}
-
-
-extern unsigned long htree_node_get_weight(HTREE_NODE* htree_node)
-{
-    return htree_node->weight;
 }
 

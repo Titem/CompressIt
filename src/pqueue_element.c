@@ -27,7 +27,7 @@ struct S_PQUEUE_ELEMENT
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern PQUEUE_ELEMENT* create_pqueue_element(HTREE_ELEMENT htree_element, 
+extern PQUEUE_ELEMENT* create_pqueue_element(HTREE_ELEMENT* htree_element, 
                                              unsigned long weight)
 {
     PQUEUE_ELEMENT* new_pqueue_element = malloc(sizeof(PQUEUE_ELEMENT));
