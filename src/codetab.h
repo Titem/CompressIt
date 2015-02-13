@@ -54,7 +54,7 @@ extern unsigned char codetab_get_code_length(CODETAB* codetab,
 
 extern CODETAB_ELEMENT* codetab_get_element(CODETAB* codetab);
 
-extern bool codetab_is_emty(CODETAB* codetab);
+extern bool codetab_is_empty(CODETAB* codetab);
 
 extern void codetab_print(CODETAB* codetab);
 

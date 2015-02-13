@@ -7,6 +7,8 @@
 
 #include <stdbool.h>
 #include <stdlib.h>
+#include <limits.h>
+#include <string.h>
 
 #include "codetab_element.h"
 #include "codetab.h"
@@ -34,19 +36,30 @@ static void codetab_get_next_index(CODETAB* codetab);
 extern CODETAB* create_codetab(HTREE* htree)
 {
     CODETAB* new_codetab = malloc(sizeof(CODETAB));
-    
     CODETAB_ELEMENT* new_codetab_element;
-    new_codetab_element = htree_get_codetab_element(htree);
-    
-    new_codetab->char_index[codetab_element_get_char(new_codetab_element)] 
-            = new_codetab_element;
-    
+    while (!htree_is_emty(htree))
+    {
+        new_codetab_element = htree_get_codetab_element(htree);
+        printf("%c", codetab_element_get_char(new_codetab_element));
+        
+        new_codetab->char_index[codetab_element_get_char(new_codetab_element)] 
+                = new_codetab_element;
+    }
     return new_codetab;
 }
 
 
 extern CODETAB* read_codetab(FILE* input_stream)
 {
+    unsigned char queue_usage =
+    typedef enum {
+        CHAR,
+        LENGTH,
+        CODE
+                
+    } ;
+    
+    while 
     return NULL;
 }
 
@@ -90,7 +103,7 @@ extern CODETAB_ELEMENT* codetab_get_element(CODETAB* codetab)
 }
 
 
-extern bool codetab_is_emty(CODETAB* codetab)
+extern bool codetab_is_empty(CODETAB* codetab)
 {
     return codetab->working_index > 255;
 }
@@ -102,16 +115,23 @@ static void codetab_get_next_index(CODETAB* codetab)
     i = codetab->working_index;
     
     /* Naechstes codetab Element auswählen */
-    while(i < codetab->working_index || codetab->char_index[i] != NULL) 
+    while(codetab->working_index < 256 && codetab->char_index[i] == NULL) 
     {
-        i++;
+        codetab->working_index++;
     }
 }
 
 
 extern void codetab_print(CODETAB* codetab)
 {
-    
+    int i = 0;
+    while (!codetab_is_empty(codetab))
+    {
+        printf("%u\n", i);
+        codetab_get_next_index(codetab);
+        i++;
+        
+    }
 }
 
 

@@ -53,7 +53,7 @@ $(EXEPATH)/$(EXE) : $(OBJS)
 
 # ----------------------------------------------------------------------------
 # Aufruf des Linkers: erzeugt exe-Datei aus .o-Dateien fuer gdb
-Debug : $(OBJS)
+debug : $(OBJS)
 	@echo ========================================================
 	@echo Erzeuge Debug $(EXEPATH)/$(EXE) $(OBJS)
 	@echo --------------------------------------------------------
