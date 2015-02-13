@@ -49,7 +49,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     HTREE_ELEMENT* new_htree_element;
     HTREE_ELEMENT* htree_element_left;
     HTREE_ELEMENT* htree_element_right;
-    rintf("PQUEUE Number of Elements vor insert: %i", (int)pqueue_get_number_of_entries(pqueue));
+    printf("PQUEUE Number of Elements vor insert: %i", (int)pqueue_get_number_of_entries(pqueue));
     while (!freqtab_is_emty(freqtab))
     {
         /* freqtab_element aus freqtab entnehmen */
