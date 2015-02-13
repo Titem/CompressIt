@@ -31,9 +31,10 @@ static void pqueue_build_heap(PQUEUE* pqueue);
 
 static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2);
 
-static void print_out_heap(PQUEUE* pqueue, int position, int step);
+static void print_out_heap(PQUEUE* pqueue, unsigned short position, 
+                                           unsigned short step);
 
-static void print_step(int step);
+static void print_step(unsigned short step);
 
 
 
@@ -123,7 +124,7 @@ static void pqueue_heapify(PQUEUE* pqueue, unsigned short index)
 
 static void pqueue_build_heap(PQUEUE* pqueue)
 {
-    short i;
+    unsigned short i;
     if (pqueue->number_of_entries > 0)
     {
         for (i = ((pqueue->number_of_entries / 2) - 1); i >= 0; i--)
@@ -146,7 +147,7 @@ extern void pqueue_print(PQUEUE* pqueue)
     if (pqueue->number_of_entries >  0)
     {
         /*Heap auf dem Terminal ausgeben.*/
-        printf("Heap: (%i Elemente)\n", (unsigned int) pqueue->number_of_entries);
+        printf("Heap: (%u Elemente)\n", (unsigned int) pqueue->number_of_entries);
 
         /*CODE*/
         printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[ROOT_INDEX])));
@@ -158,10 +159,11 @@ extern void pqueue_print(PQUEUE* pqueue)
     }
 }
 
-static void print_out_heap(PQUEUE* pqueue,int position, int step)
+static void print_out_heap(PQUEUE* pqueue, unsigned short position, 
+                                           unsigned short step)
 {
-    int left;
-    int right;
+    unsigned short left;
+    unsigned short right;
     left = LEFT(position);
     right = RIGHT(position);
 
@@ -180,9 +182,9 @@ static void print_out_heap(PQUEUE* pqueue,int position, int step)
     }
 }
 
-static void print_step(int step)
+static void print_step(unsigned short step)
 {
-    int i;
+    unsigned short i;
     for (i = 0; i < step * BLANKS; i++)
     {
         printf(" ");
