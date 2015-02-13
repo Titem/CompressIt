@@ -29,6 +29,7 @@ extern void compress(FILE* input_stream, FILE* output_stream)
 #ifdef DEBUG_HUFFMAN
     /*Häufigkeitstabelle auf Bildschirm ausgeben*/
     freqtab_print(frequency_table);
+    fflush(stdout);
 #endif
 
     
@@ -39,16 +40,19 @@ extern void compress(FILE* input_stream, FILE* output_stream)
 #ifdef DEBUG_HUFFMAN      
     /*Huffmanbaum auf Bildschirm ausgeben*/
     htree_print(huffman_tree);
+    fflush(stdout);
 #endif
 
+    
     /*Codebuch erstellen*/
     code_table = create_codetab(huffman_tree);
-
+    return;
 #ifdef DEBUG_HUFFMAN
     /*Codebuch auf Bildschirm ausgeben*/
     codetab_print(code_table);
+    fflush(stdout);
 #endif
-    return;
+    
     /*Codebuch an den Anfang der Datei schreiben*/
     write_codetab(output_stream, code_table);
         

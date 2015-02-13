@@ -27,6 +27,7 @@
 struct S_HTREE
 {
     CODETAB_ELEMENT* prep_codetab_element;
+    HTREE_ELEMENT* prep_htree_element;
     HTREE_ELEMENT* tree_pointer;
     HTREE_ELEMENT* root_node;
 };
@@ -120,7 +121,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
     root_node = create_htree_element(NODE, create_htree_node(NULL, NULL));
     htree_element = root_node;
     
-    while (!codetab_is_emty(codetab))
+    while (!codetab_is_empty(codetab))
     {
         /*codetab_element aus codetab entnehmen */
         codetab_element = codetab_get_element(codetab);
@@ -209,6 +210,8 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
         /* nächsten codetab_element vorbereiten */
         htree_prep_codetab_element(htree);
     }
+    
+    delete_htree_element(&(htree->prep_htree_element));
     
     return prep_codetab_element;
 }
@@ -311,10 +314,12 @@ static void htree_prep_codetab_element(HTREE* htree)
     new_code = malloc(sizeof(bool) * index);
             
 
-    memcpy(code,new_code,sizeof(bool) * index);
+    memcpy(new_code, code, sizeof(bool) * index);
     
     codetab_element = create_codetab_element(htree_leaf_get_char((HTREE_LEAF*)htree_element_get_element(htree_element)),
                                              new_code, index);
     
     htree->prep_codetab_element = codetab_element;
+    
+    htree->prep_htree_element = htree_element;
 }

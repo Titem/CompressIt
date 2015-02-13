@@ -51,6 +51,7 @@ extern CODETAB* create_codetab(HTREE* htree)
 
 extern CODETAB* read_codetab(FILE* input_stream)
 {
+    /*
     unsigned char queue_usage =
     typedef enum {
         CHAR,
@@ -60,6 +61,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
     } ;
     
     while 
+     */
     return NULL;
 }
 

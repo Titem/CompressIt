@@ -35,7 +35,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
             /* Zeichen aus Imputstream lesen */
             character = fgetc(input_stream);
             
-            if (character = EOF)
+            if (character == EOF)
             {
                 break;
             }
@@ -63,7 +63,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
         }
         
         /* Bitqueue nach links schieben */
-        bitqueue =<< 1;
+        bitqueue <<= 1;
         
         /* shift_count erhöhen */
         shift_count++;
@@ -76,7 +76,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
     while (shift_count < 7)
     {
         /* Bitqueue nach links schieben */
-        bitqueue =<< 1;
+        bitqueue <<= 1;
         
         /* shift_count erhöhen */
         shift_count++;
