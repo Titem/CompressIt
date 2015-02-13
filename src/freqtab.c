@@ -89,7 +89,7 @@ extern void delete_freqtab(FREQTAB** freq_tab_p)
     *freq_tab_p = NULL;
 }
 
-/*Hier ist der fehler.*/
+
 extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
 {
     unsigned short i = 0;
