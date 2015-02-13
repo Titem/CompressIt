@@ -148,7 +148,7 @@ static void freqtab_init_working_index(FREQTAB* freq_tab_p)
     working index bei 256 ist, die schleife vorher abbrechen*/
     freq_tab_p->working_index = 256;
 
-    while (tmp_working_index < 256 && freq_tab_p->freq_table[tmp_working_index] != NULL)
+    while (tmp_working_index < 256 && freq_tab_p->freq_table[tmp_working_index] == NULL)
     {
         tmp_working_index++;
     }
