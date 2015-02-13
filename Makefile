@@ -18,7 +18,7 @@ OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o \
 $(OBJPATH)/compressor.o $(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o \
 $(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o $(OBJPATH)/freqtab.o \
 $(OBJPATH)/pqueue.o $(OBJPATH)/htree_element.o $(OBJPATH)/htree_node.o \
-$(OBJPATH)/htree_leaf.o $(OBJPATH)/main.o
+$(OBJPATH)/htree_leaf.o $(OBJPATH)/pqueue_element.o $(OBJPATH)/main.o
 
 # Es wird bei jedem normalen Build eine exe erzeugt und dann eine statische
 # Codepruefung durchgefuehrt.
@@ -99,6 +99,12 @@ $(OBJPATH)/pqueue.o : src/pqueue.c src/pqueue.h src/htree_element.h
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/pqueue.o src/pqueue.c
 
+$(OBJPATH)/pqueue_element.o : src/pqueue_element.c src/pqueue_element.h src/htree_element.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/pqueue_element.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc $(GCC_OPTION) -o $(OBJPATH)/pqueue_element.o src/pqueue_element.c
 
 $(OBJPATH)/codetab_element.o : src/codetab_element.c
 	@echo ========================================================
