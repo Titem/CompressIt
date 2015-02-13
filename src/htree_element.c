@@ -7,6 +7,7 @@
 
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "htree_node.h"
 #include "htree_leaf.h"
@@ -85,6 +86,28 @@ extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
 
 extern void htree_element_print(HTREE_ELEMENT* htree_element)
 {
+    static int deepness = 0;
     
+    int i;
+    if (htree_element != NULL)
+    {
+        for (i = 0; i < deepness; i++)
+        {
+            printf("    ");
+        }
+        printf("|--");
+        if(htree_element->type == LEAF)
+        {
+            printf("[%c]\n", htree_leaf_get_char((HTREE_LEAF*)(htree_element->element)));
+        }
+        else
+        {
+            printf("[NODE]\n");
+            deepness++;
+            htree_element_print(htree_node_get_left((HTREE_NODE*)(htree_element->element)));
+            htree_element_print(htree_node_get_right((HTREE_NODE*)(htree_element->element)));
+            deepness--;
+        }
+    }
 }
 

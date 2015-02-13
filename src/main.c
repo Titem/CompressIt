@@ -56,14 +56,18 @@ int main(int argc, char** argv)
         compress(properties_get_input_stream(properties),
                  properties_get_output_stream(properties));
         break;
+        
     case DECOMPRESS:
         decompress(properties_get_input_stream(properties),
                    properties_get_output_stream(properties));
         break;
+        
     case MANPAGE:
         print_error(help);
         break;
-        /*Hilfestellung*/
+        
+    default:
+        printf("Hier stimmt was nicht!");
     }
 
     /*-----------------------------CODE--------------------------------*/

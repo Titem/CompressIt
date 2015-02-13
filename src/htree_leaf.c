@@ -18,7 +18,6 @@
 struct S_HTREE_LEAF
 {
     unsigned char character;
-    unsigned long frequency;
 };
 
 
@@ -28,12 +27,10 @@ struct S_HTREE_LEAF
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern HTREE_LEAF* create_htree_leaf(unsigned char character,
-                                     unsigned long frequency)
+extern HTREE_LEAF* create_htree_leaf(unsigned char character)
 {
     HTREE_LEAF* new_htree_leaf = malloc(sizeof(HTREE_LEAF));
     new_htree_leaf->character = character;
-    new_htree_leaf->frequency = frequency;
     return new_htree_leaf;
 }
 
@@ -48,11 +45,5 @@ extern void delete_htree_leaf(HTREE_LEAF** htree_leaf)
 extern unsigned char htree_leaf_get_char(HTREE_LEAF* htree_leaf)
 {
     return htree_leaf->character;
-}
-
-
-extern unsigned long htree_leaf_get_frequency(HTREE_LEAF* htree_leaf)
-{
-    return htree_leaf->frequency;
 }
 
