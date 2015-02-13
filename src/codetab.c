@@ -45,6 +45,9 @@ extern CODETAB* create_codetab(HTREE* htree)
         
         new_codetab->char_index[codetab_element_get_char(new_codetab_element)] 
                 = new_codetab_element;
+        htree_print(htree);
+        printf("T\n");
+        fflush(stdout);
     }
     return new_codetab;
 }
@@ -52,7 +55,6 @@ extern CODETAB* create_codetab(HTREE* htree)
 
 extern CODETAB* read_codetab(FILE* input_stream)
 {
-    
 
     enum {
         CHAR,
