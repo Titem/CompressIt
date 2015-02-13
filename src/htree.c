@@ -285,7 +285,10 @@ static void htree_prep_codetab_element(HTREE* htree)
     bool code[256];
     bool** new_code;
     unsigned char index = 0;
-
+    
+    HTREE_ELEMENT* parent = NULL;
+    bool child_direction;
+    
     /* Wurzelknoten auswählen */
     HTREE_ELEMENT* htree_element = htree->root_node;
     
@@ -293,19 +296,32 @@ static void htree_prep_codetab_element(HTREE* htree)
     {
         if (htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree_element)))
         {
+            child_direction = false;
+            parent = htree_element;
             htree_element = htree_node_get_left((HTREE_NODE*)htree_element_get_element(htree_element));
             code[index] = false;
             index++;
         }
         else if(htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree_element)))
         {
+            child_direction = true;
+            parent = htree_element;
             htree_element = htree_node_get_right((HTREE_NODE*)htree_element_get_element(htree_element));
             code[index] = true;
             index++;
         }
         else
         {
+            if (child_direction)
+            {
+                htree_node_set_right((HTREE_NODE*)htree_element_get_element(parent),NULL);
+            }
+            else
+            {
+                htree_node_set_left((HTREE_NODE*)htree_element_get_element(parent),NULL);
+            }
             delete_htree_element(&htree_element);
+            parent = NULL;
             htree_element = htree->root_node;
             index = 0;
         }

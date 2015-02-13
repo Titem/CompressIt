@@ -91,6 +91,42 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
 extern void decode_content(FILE* input_stream, FILE* output_stream,
                            HTREE* htree)
 {
+    unsigned char shift_count = 0;
+    bool is_char_found = false;
+    unsigned long content_length;
+    unsigned char character;
+    unsigned char bitqueue;
+    int byte;
+    bool bit;
     
+    /* content_length aus input_stream lesen */
+    fread(&content_length, sizeof(unsigned long), 1, input_stream);
+    
+    while (true)
+    {
+        if (is_char_found)
+        {
+            /* gesuchtes Zeichen von htree anfordern */
+            character = htree_get_char(htree);
+            
+            /**/
+            fputc(character, output_stream);
+            content_length--;
+        }
+        if (shift_count == 7)
+        {
+            byte = fgetc(input_stream);
+            if (byte == EOF)
+            {
+                break;
+            }
+            bitqueue = (unsigned char) byte;
+            shift_count = 0;
+        }
+        bit = bitqueue >= 128;
+        is_char_found = htree_search_char(htree, bit);
+        bitqueue <<= 1;
+        shift_count++;
+    }
 }
 
