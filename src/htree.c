@@ -262,7 +262,7 @@ extern unsigned char htree_get_char(HTREE* htree)
 
 extern void htree_print(HTREE* htree)
 {
-    
+    htree_element_print(htree->root_node);
 }
 
 
