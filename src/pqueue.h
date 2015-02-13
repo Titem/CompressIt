@@ -28,6 +28,8 @@ typedef struct S_PQUEUE PQUEUE;
 
 #include "htree_element.h"
 
+#include "pqueue_element.h"
+
 
 
 
@@ -40,12 +42,13 @@ extern PQUEUE* create_pqueue(void);
 extern void delete_pqueue(PQUEUE** pqueue);
 
 extern void pqueue_insert_htree_element(PQUEUE* pqueue, 
-                                        HTREE_ELEMENT* htree_element);
+                                        HTREE_ELEMENT* htree_element,
+                                        unsigned long weight);
 
 /* char *min_element ist das Zeichen bzw. das Char Array in dem die Zeichenkette bzw. das Minimum zur�ckgegeben wird.
 Liefert TRUE wenn das Minimum entfernt wurde und FALSE wenn kein Element mehr existiert
 evtl. den Speicherplatz verkleinern.*/
-extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue);
+extern PQUEUE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue);
 
 extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue);
 

@@ -36,7 +36,7 @@ typedef struct S_PQUEUE_ELEMENT PQUEUE_ELEMENT;
  * ======================================================================== */
 
 extern PQUEUE_ELEMENT* create_pqueue_element(HTREE_ELEMENT htree_element, 
-                                            unsigned long weight);
+                                             unsigned long weight);
 
 extern void delete_pqueue_element(PQUEUE_ELEMENT** pqueue_element);
 

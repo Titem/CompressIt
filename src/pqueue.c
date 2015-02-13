@@ -19,8 +19,10 @@
 struct S_PQUEUE
 {
     unsigned short number_of_entries;
-    HTREE_ELEMENT* entry[256]; 
+    PQUEUE_ELEMENT* entry[256]; 
 };
+
+
 
 
 static void pqueue_heapify(PQUEUE* pqueue, unsigned short index);
@@ -28,6 +30,8 @@ static void pqueue_heapify(PQUEUE* pqueue, unsigned short index);
 static void pqueue_build_heap(PQUEUE* pqueue);
 
 static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2);
+
+
 
 
 /* ======================================================================== *
@@ -50,13 +54,15 @@ extern void delete_pqueue(PQUEUE** pqueue)
 }
 
 extern void pqueue_insert_htree_element(PQUEUE* pqueue, 
-                                        HTREE_ELEMENT* htree_element)
+                                        HTREE_ELEMENT* htree_element,
+                                        unsigned long weight)
 {
     /*INSERT*/
     /*Element in den Heap einf�gen.*/
     /*Bei Index 0 Anfangen*/
 
-    pqueue->entry[pqueue->number_of_entries] = htree_element;
+    pqueue->entry[pqueue->number_of_entries] 
+            = create_pqueue_element(htree_element, weight);
 
     /*Anzahl der Heap Elemente hochzaehlen.*/
     pqueue->number_of_entries++;
@@ -65,11 +71,11 @@ extern void pqueue_insert_htree_element(PQUEUE* pqueue,
     pqueue_build_heap(pqueue);
 }
 
-extern HTREE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
+extern PQUEUE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
 {
     unsigned short last_index;
     
-    HTREE_ELEMENT* min_element = pqueue->entry[0];
+    PQUEUE_ELEMENT* min_element = pqueue->entry[0];
     last_index = pqueue->number_of_entries - 1;
     pqueue_swap(pqueue, 0, last_index);
     pqueue->number_of_entries--;
@@ -94,11 +100,11 @@ static void pqueue_heapify(PQUEUE* pqueue, unsigned short index)
     do
     {
         min = index;
-        if ((LEFT(index) < pqueue->number_of_entries) && (pqueue->entry[LEFT(index)] < pqueue->entry[min]))
+        if ((LEFT(index) < pqueue->number_of_entries) && (pqueue_element_get_weight(pqueue->entry[LEFT(index)]) < pqueue_element_get_weight(pqueue->entry[min])))
         {
             min = LEFT(index);
         }
-        if ((RIGHT(index) < pqueue->number_of_entries) && (pqueue->entry[RIGHT(index)] < pqueue->entry[min]))
+        if ((RIGHT(index) < pqueue->number_of_entries) && (pqueue_element_get_weight(pqueue->entry[RIGHT(index)]) < pqueue_element_get_weight(pqueue->entry[min])))
         {
             min = RIGHT(index);
         }
@@ -126,7 +132,7 @@ static void pqueue_build_heap(PQUEUE* pqueue)
 
 static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2)
 {
-    HTREE_ELEMENT* temp = pqueue->entry[index1];
+    PQUEUE_ELEMENT* temp = pqueue->entry[index1];
     pqueue->entry[index1] = pqueue->entry[index2];
     pqueue->entry[index2] = temp;
 }
