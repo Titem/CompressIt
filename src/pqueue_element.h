@@ -28,6 +28,8 @@ typedef struct S_PQUEUE_ELEMENT PQUEUE_ELEMENT;
 
 #include <stdbool.h>
 
+#include "htree_element.h"
+
 
 
 
