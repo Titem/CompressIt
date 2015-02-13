@@ -284,7 +284,7 @@ static void htree_prep_codetab_element(HTREE* htree)
 {
     CODETAB_ELEMENT* codetab_element;
     bool code[256];
-    bool** new_code;
+    bool* new_code;
     unsigned char index = 0;
     
     /* Wurzelknoten auswählen */

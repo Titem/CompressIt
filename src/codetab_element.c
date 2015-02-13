@@ -17,7 +17,7 @@
 struct S_CODETAB_ELEMENT
 {
     unsigned char character;
-    bool** code;
+    bool* code;
     unsigned char length;
 };
 
@@ -29,7 +29,7 @@ struct S_CODETAB_ELEMENT
  * ======================================================================== */
 
 extern CODETAB_ELEMENT* create_codetab_element(unsigned char character, 
-                                               bool** code,
+                                               bool* code,
                                                unsigned char code_length)
 {
     CODETAB_ELEMENT* new_codetab_element = malloc(sizeof(CODETAB_ELEMENT));
@@ -50,7 +50,7 @@ extern void delete_codetab_element(CODETAB_ELEMENT** codetab_element)
 extern bool codetab_element_is_bit_set(CODETAB_ELEMENT* codetab_element, 
                                        unsigned char position)
 {      
-    return *codetab_element->code[position];
+    return codetab_element->code[position];
 }
 
 extern unsigned char codetab_element_get_char
@@ -59,7 +59,7 @@ extern unsigned char codetab_element_get_char
     return codetab_element->character;
 }
 
-extern bool** codetab_element_get_code(CODETAB_ELEMENT* codetab_element)
+extern bool* codetab_element_get_code(CODETAB_ELEMENT* codetab_element)
 {
     return codetab_element->code;
 }
