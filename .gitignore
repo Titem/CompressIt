@@ -215,3 +215,5 @@ nb-configuration.xml
 /doxygen
 /res/ppr_doxygen.cfg
 /res/*.dc
+#CodeBlocks
+*.cbp
