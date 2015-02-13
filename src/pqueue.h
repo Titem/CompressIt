@@ -32,10 +32,20 @@ typedef struct S_PQUEUE PQUEUE;
 
 
 
+/*Index der Wurzel bzw. des Minimums oder Maximums eines Heaps.*/
+#define ROOT_INDEX 0
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+/*Beschreibt die Stufenschrittweite zwischen den einzelnen Elementen im Heap.*/
+#define STEP_INDEX 1
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+/*Anzahl der Leerzeichen, die den Abstand zwischen den Elementen im Heap bestimmen.*/
+#define BLANKS 4
 
 /* ======================================================================== *
  * Funktionsprototypen                                                      *
  * ======================================================================== */
+
+
 
 extern PQUEUE* create_pqueue(void);
 
@@ -52,6 +62,6 @@ extern PQUEUE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue);
 
 extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue);
 
-
+extern void heap_print(PQUEUE* pqueue);
 #endif	/* PQUEUE_H */
 

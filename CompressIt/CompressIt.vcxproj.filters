@@ -57,6 +57,9 @@
     <ClCompile Include="..\src\htree_leaf.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\pqueue_element.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\properties.h">
@@ -96,6 +99,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\src\htree_leaf.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pqueue_element.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
