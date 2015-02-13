@@ -49,7 +49,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     HTREE_ELEMENT* new_htree_element;
     PQUEUE_ELEMENT* pqueue_element_left;
     PQUEUE_ELEMENT* pqueue_element_right;
-    printf("PQUEUE Number of Elements vor insert: %i", (int)pqueue_get_number_of_entries(pqueue));
+    printf("PQUEUE Number of Elements vor insert: %i\n\n", (int)pqueue_get_number_of_entries(pqueue));
     while (!freqtab_is_emty(freqtab))
     {
         /* freqtab_element aus freqtab entnehmen */
@@ -65,7 +65,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
         pqueue_insert_htree_element(pqueue, new_htree_element, freqtab_element_get_frequency(freqtab_element));
     
     }
-    printf("PQUEUE Number of Elements nach insert: %i", (int)pqueue_get_number_of_entries(pqueue));
+    printf("\nPQUEUE Number of Elements nach insert: %i \n\n", (int)pqueue_get_number_of_entries(pqueue));
     
     pqueue_print(pqueue);
     
@@ -84,7 +84,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
         
     }
     
-    printf("PQUEUE Number of Elements: %i", (int) pqueue_get_number_of_entries(pqueue));
+    printf("\n\nPQUEUE Number of Elements: %i\n\n", (int) pqueue_get_number_of_entries(pqueue));
     /* letztes htree_element aus pqueue entnehmen */
     new_htree_element = pqueue_element_get_htree_element(pqueue_get_min_entry(pqueue));
     
@@ -264,6 +264,7 @@ extern unsigned char htree_get_char(HTREE* htree)
 
 extern void htree_print(HTREE* htree)
 {
+    printf("\nBinär Baum:\n");
     htree_element_print(htree->root_node);
 }
 

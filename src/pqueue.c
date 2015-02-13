@@ -146,7 +146,7 @@ extern void pqueue_print(PQUEUE* pqueue)
     if (pqueue->number_of_entries >  0)
     {
         /*Heap auf dem Terminal ausgeben.*/
-        printf("Heap: (%cu Elemente)\n", pqueue->number_of_entries);
+        printf("Heap: (%i Elemente)\n", (unsigned int) pqueue->number_of_entries);
 
         /*CODE*/
         printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[ROOT_INDEX])));
