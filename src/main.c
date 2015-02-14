@@ -74,7 +74,7 @@ int main(int argc, char** argv)
     /*Timer beenden*/
     end = clock();
 
-    printf("\nBenoetigte Zeit: %i ms", (int) (end - begin));
+    printf("\nBenoetigte Zeit: %i ms\n\n", (int) (end - begin));
 #ifdef DEBUG_HUFFMAN
     getchar();
 #endif

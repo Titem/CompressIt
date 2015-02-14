@@ -32,8 +32,8 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     fflush(stdout);
 #endif
 
-	/*Inputstream zurücksetzen*/
-	rewind(input_stream);
+    /*Inputstream zurücksetzen*/
+    rewind(input_stream);
 
     /*Huffmanbaum erstellen*/
     huffman_tree = create_htree_from_freqtab(frequency_table);
@@ -79,7 +79,8 @@ extern void decompress(FILE* input_stream, FILE* output_stream)
     /*Codebuch auf Bildschirm ausgeben*/
     codetab_print(code_table);
 #endif
-	return;
+    
+    return;
     /*Huffmanbaum erstellen*/
     huffman_tree = create_htree_from_codetab(code_table);
     
