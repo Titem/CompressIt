@@ -79,7 +79,7 @@ extern void decompress(FILE* input_stream, FILE* output_stream)
     /*Codebuch auf Bildschirm ausgeben*/
     codetab_print(code_table);
 #endif
-    
+	return;
     /*Huffmanbaum erstellen*/
     huffman_tree = create_htree_from_codetab(code_table);
     

@@ -83,7 +83,157 @@ extern CODETAB* read_codetab(FILE* input_stream)
                 
     } STATE;
     
-    return NULL;
+	/*Init*/
+	unsigned char code_length = 0;
+	unsigned char queue_usage = 0;
+	unsigned char char_shift = 0;
+	unsigned char length_shift = 0;
+	unsigned char code_index = 0;
+	unsigned char count = 0;
+	unsigned char bitqueue = 0;
+	unsigned char character = 0;
+	bool bit = false;
+	bool* code = NULL;
+	CODETAB_ELEMENT* new_codetab_element = NULL;
+	CODETAB* new_codetab = malloc(sizeof(CODETAB));
+	new_codetab->length = fgetc(input_stream);
+	new_codetab->working_index = 0;
+
+	{
+		int i;
+		for (i = 0; i < 256; i++)
+		{
+			new_codetab->char_index[i] = NULL;
+		}
+	}
+
+	STATE = CHAR;
+
+	/* Init */
+	char_shift = 0;
+
+	while (count < new_codetab->length)
+	{
+		if (queue_usage == 0)
+		{
+			if (feof(input_stream))
+			{
+				printf("Datei ungültig!");
+				exit(1);
+			}
+			bitqueue = fgetc(input_stream);
+			queue_usage = 8;
+		}
+
+		switch (STATE)
+		{
+		case CHAR:
+			/*MSB filtern.*/
+			bit = bitqueue >= 128;
+
+			bitqueue <<= 1;
+			/*Gelesenes MSB der Bitqueue als LSB hinzufügen*/
+
+			/*Platz für das nächste Bit vorbereiten*/
+
+
+			/*Füllstand der Bitqueue*/
+			queue_usage--;
+
+			/*Nächstes Bit für die Bitqueue vorbereiten*/
+			if (bit)
+			{
+				character += 1;
+			}
+			character <<= 1;
+
+			/*Aktuelle Position in dem Char*/
+			char_shift++;
+
+			if (char_shift == 8)
+			{
+				STATE = LENGTH;
+				char_shift = 0;
+			}
+
+			break;
+
+		case LENGTH:
+			/*MSB filtern.*/
+			bit = bitqueue >= 128;
+
+			bitqueue <<= 1;
+			/*Gelesenes MSB der Bitqueue als LSB hinzufügen*/
+			
+			/*Platz für das nächste Bit vorbereiten*/
+
+
+			/*Füllstand der Bitqueue*/
+			queue_usage--;
+
+			/*Nächstes Bit für die Bitqueue vorbereiten*/
+
+			if (bit)
+			{
+				bitqueue += 1;
+			}
+
+			code_length <<= 1;
+
+			/*Aktuelle Position in dem Char*/
+			length_shift++;
+
+			if (length_shift == 8)
+			{
+				STATE = CODE;
+				length_shift = 0;
+				code = malloc(sizeof(bool) * code_length);
+			}
+
+
+			break;
+
+		case CODE:
+			/*MSB filtern.*/
+			bit = bitqueue >= 128;
+
+			bitqueue <<= 1;
+			/*Gelesenes MSB der Bitqueue als LSB hinzufügen*/
+			
+			/*Platz für das nächste Bit vorbereiten*/
+
+
+			/*Füllstand der Bitqueue*/
+			queue_usage--;
+
+			code[code_index] = bit;
+
+			/*Aktuelle Position in dem Char*/
+			code_index++;
+
+			if (code_index == new_codetab->length - 1)
+			{
+				STATE = CHAR;
+				char_shift = 0;
+
+				new_codetab_element = create_codetab_element(character, code, code_length);
+
+				new_codetab->char_index[character] = new_codetab_element;
+
+				/*count++;*/
+			}
+			if (code_index == new_codetab->length /*&& count < codetab->length*/)
+			{
+				count++;
+			}
+			break;
+		}
+
+	}
+
+	codetab_get_next_index(new_codetab);
+
+    return new_codetab;
 }
 
 
@@ -95,6 +245,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 		CODE
 
 	} STATE;
+	
 	/*Init*/
 	unsigned char code_length = 0;
 	unsigned char queue_usage = 0;

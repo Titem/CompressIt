@@ -32,7 +32,7 @@ extern CODETAB_ELEMENT* create_codetab_element(unsigned char character,
                                                bool* code,
                                                unsigned char code_length)
 {
-    CODETAB_ELEMENT* new_codetab_element = malloc(sizeof(CODETAB_ELEMENT));
+	CODETAB_ELEMENT* new_codetab_element = malloc(sizeof(CODETAB_ELEMENT));
     
     new_codetab_element->character = character;
     new_codetab_element->code = code;
