@@ -53,15 +53,15 @@ extern CODETAB* create_codetab(HTREE* htree)
     {
 		
         new_codetab_element = htree_get_codetab_element(htree);
-		//DEBUG
+		/*DEBUG*/
 		count++;
-		//printf("Count: %i \t|   {%c}\n",count,codetab_element_get_char(new_codetab_element));
+		/*printf("Count: %i \t|   {%c}\n",count,codetab_element_get_char(new_codetab_element));*/
 
 
         new_codetab->char_index[codetab_element_get_char(new_codetab_element)] 
                 = new_codetab_element;
-		//DEBUG
-        /*htree_print(htree);*/
+		/*DEBUG*/
+                /*htree_print(htree);*/
 
 		/* codetab_elemente zaehlen */
 		new_codetab->length++;
@@ -93,7 +93,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
 	unsigned char bitqueue = 0;
 	unsigned char character = 0;
 	bool bit = false;
-	bool* code = NULL;
+	bool code[256];
 	CODETAB_ELEMENT* new_codetab_element = NULL;
 	CODETAB* new_codetab = malloc(sizeof(CODETAB));
 	new_codetab->length = fgetc(input_stream);
@@ -121,7 +121,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
 				printf("Datei ungültig!");
 				exit(1);
 			}
-			bitqueue = fgetc(input_stream);
+			bitqueue = (unsigned char) fgetc(input_stream);
 			queue_usage = 8;
 		}
 
@@ -130,14 +130,15 @@ extern CODETAB* read_codetab(FILE* input_stream)
 		case CHAR:
 			/*MSB filtern.*/
 			bit = bitqueue >= 128;
-
+                        
+                        
+			/*MSB aus Bitqueue entnehmen*/
 			bitqueue <<= 1;
 			/*Gelesenes MSB der Bitqueue als LSB hinzufügen*/
 
-			/*Platz für das nächste Bit vorbereiten*/
 
 
-			/*Füllstand der Bitqueue*/
+			/*Füllstand der Bitqueue verringern */
 			queue_usage--;
 
 			/*Nächstes Bit für die Bitqueue vorbereiten*/
@@ -187,7 +188,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
 			{
 				STATE = CODE;
 				length_shift = 0;
-				code = malloc(sizeof(bool) * code_length);
+				
 			}
 
 
@@ -208,24 +209,25 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
 			code[code_index] = bit;
 
-			/*Aktuelle Position in dem Char*/
+			/*Aktuelle Position im Code*/
 			code_index++;
 
 			if (code_index == new_codetab->length - 1)
 			{
 				STATE = CHAR;
 				char_shift = 0;
-
+                                /* Muesste hier nicht mit memcpy gearbeitet werden ?*/
+                                /*memcpy(new_code, code, sizeof(bool) * code_length); */
 				new_codetab_element = create_codetab_element(character, code, code_length);
-
+                                
 				new_codetab->char_index[character] = new_codetab_element;
 
 				/*count++;*/
 			}
 			if (code_index == new_codetab->length /*&& count < codetab->length*/)
 			{
-				count++;
-			}
+                            count++;
+                        }
 			break;
 		}
 
