@@ -205,13 +205,13 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
      * lokaler Variable zwischenspeichern */
     CODETAB_ELEMENT* prep_codetab_element = htree->prep_codetab_element;
     
+	htree_element_kill(htree->prep_htree_element);
+
     if (!htree_is_emty(htree))
     {
         /* nächsten codetab_element vorbereiten */
         htree_prep_codetab_element(htree);
     }
-    
-    htree_element_kill(htree->prep_htree_element);
     
     return prep_codetab_element;
 }
