@@ -136,7 +136,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
         {
             if (htree_element_is_leaf(htree_element))
             {
-                printf("HTREE.c hier stimmt was nicht!");
+                printf("Hier stimmt was nicht!\nModul: htree.c\tFunktion: create_htree_from_codetab\n\n");
                 exit(EXIT_FAILURE);
             }
             
@@ -229,16 +229,16 @@ extern bool htree_search_char(HTREE* htree, bool bit)
 {
     if (htree_element_is_leaf(htree->tree_pointer))
     {
-        printf("htree.c htree_search_char(): hier stimmt was nicht!");
+        printf("Hier stimmt was nicht! #0\nModul: htree.c\tFunktion: htree_search_char\n\n");
         exit(EXIT_FAILURE);
     }
     
     if (bit)
     {
         /* @TODO: Wird das benötigt */
-        if (htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
+        if (!htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
         {
-            printf("htree.c htree_search_char(): hier stimmt was nicht!");
+            printf("Hier stimmt was nicht! #1\nModul: htree.c\tFunktion: htree_search_char\n\n");
             exit(EXIT_FAILURE);
         }
         
@@ -248,9 +248,9 @@ extern bool htree_search_char(HTREE* htree, bool bit)
     else
     {
         /* @TODO: Wird das benötigt */
-        if (htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
+        if (!htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
         {
-            printf("htree.c htree_search_char(): hier stimmt was nicht!");
+            printf("Hier stimmt was nicht! #2\nModul: htree.c\tFunktion: htree_search_char\n\n");
             exit(EXIT_FAILURE);
         }
         

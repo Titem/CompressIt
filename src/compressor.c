@@ -88,8 +88,8 @@ extern void decompress(FILE* input_stream, FILE* output_stream)
     /*Huffmanbaum auf Bildschirm ausgeben*/
     htree_print(huffman_tree);
 #endif
-    return;
+    
     /*Inhalt dekomprimieren*/
     decode_content(input_stream, output_stream, huffman_tree);
-    
+    return;
 }
