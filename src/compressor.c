@@ -52,10 +52,10 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     codetab_print(code_table);
     fflush(stdout);
 #endif
-        return;
+      
     /*Codebuch an den Anfang der Datei schreiben*/
     write_codetab(output_stream, code_table);
-        
+	return;
     /*Inhalt komprimieren*/
     encode_content(input_stream, output_stream, code_table, 
                    freqtab_get_content_length(frequency_table));
