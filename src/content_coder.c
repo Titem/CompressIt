@@ -21,7 +21,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
     unsigned long code_length = 0;
     /*Aktuelle <position in der Bitqueue*/
     unsigned char shift_count = 0;
-    int character;
+    int character = 0;
     bool* code = NULL;
     unsigned char bitqueue = 0;
     
@@ -59,7 +59,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
         /* MSB des Codes in die Bitqueue einfügen (an LSB Stelle) */
         if (code[code_length - 1])
         {
-            bitqueue = bitqueue & 1;
+            bitqueue += 1;
         }
         
         /* Bitqueue nach links schieben */
