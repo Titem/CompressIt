@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "codetab_element.h"
 #include "codetab.h"
@@ -56,6 +57,8 @@ extern CODETAB* create_codetab(HTREE* htree)
 /*
         htree_print(htree);
 */
+		/* codetab_elemente zaehlen */
+		new_codetab->length++;
     }
     
     return new_codetab;
@@ -78,7 +81,152 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
 extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 {
-    
+	enum {
+		CHAR,
+		LENGTH,
+		CODE
+
+	} STATE;
+	/*Init*/
+	unsigned char code_length = 0;
+	unsigned char queue_usage = 0;
+	unsigned char char_shift = 8;
+	unsigned char length_shift = 8;
+	unsigned char code_index = 0;
+	unsigned char count = 0;
+	unsigned char bitqueue = 0;
+	unsigned char character = 0;
+	bool bit = false;
+	bool* code = NULL;
+	STATE = CHAR;
+
+
+	codetab_get_next_index(codetab);
+	fputc(codetab->length, output_stream);
+	
+	
+	while (count < codetab->length)
+	{
+		if (queue_usage == 8)
+		{
+			fputc(bitqueue, output_stream);
+			queue_usage = 0;
+		}
+
+		switch (STATE)
+		{
+		case CHAR:
+			if (char_shift == 8)
+			{
+				character = codetab_element_get_char(codetab->char_index[codetab->working_index]);
+				char_shift = 0;
+			}
+			/*MSB filtern.*/
+			bit = character >= 128;
+			
+			/*Gelesenes MSB der Bitqueue als LSB hinzufügen*/
+			if (bit)
+			{
+				bitqueue += 1;
+			}
+			/*Platz für das nächste Bit vorbereiten*/
+			bitqueue <<= 1;
+			
+			/*Füllstand der Bitqueue*/
+			queue_usage++;
+			
+			/*Nächstes Bit für die Bitqueue vorbereiten*/
+			character <<= 1;
+			
+			/*Aktuelle Position in dem Char*/
+			char_shift++;
+
+			if (char_shift == 8)
+			{
+				STATE = LENGTH;
+			}
+
+			break;
+
+		case LENGTH:
+			if (length_shift == 8)
+			{
+				code_length = codetab_element_get_code_length(codetab->char_index[codetab->working_index]);
+				length_shift = 0;
+			}
+
+			/*MSB filtern.*/
+			bit = code_length >= 128;
+
+			/*Gelesenes MSB der Bitqueue als LSB hinzufügen*/
+			if (bit)
+			{
+				bitqueue += 1;
+			}
+			/*Platz für das nächste Bit vorbereiten*/
+			bitqueue <<= 1;
+
+			/*Füllstand der Bitqueue*/
+			queue_usage++;
+
+			/*Nächstes Bit für die Bitqueue vorbereiten*/
+			code_length <<= 1;
+
+			/*Aktuelle Position in dem Char*/
+			length_shift++;
+
+			if (length_shift == 8)
+			{
+				STATE = CODE;
+			}
+
+
+			break;
+
+		case CODE:
+			if (code_index = code_length -1)
+			{
+				code_index = 0;
+			}
+
+			/*MSB filtern.*/
+			bit = code[code_index];
+
+			/*Gelesenes MSB der Bitqueue als LSB hinzufügen*/
+			if (bit)
+			{
+				bitqueue += 1;
+			}
+			/*Platz für das nächste Bit vorbereiten*/
+			bitqueue <<= 1;
+
+			/*Füllstand der Bitqueue*/
+			queue_usage++;
+
+			/*Aktuelle Position in dem Char*/
+			code_index++;
+
+			if (code_index == code_length -1 && count != codetab->length)
+			{
+				STATE = CHAR;
+				count++;
+				codetab_get_next_index(codetab);
+			}
+			break;
+		}
+
+	}
+
+
+	/*Padding Bits*/
+	while (queue_usage < 8)
+	{
+		bitqueue <<= 1;
+		queue_usage++;
+	}
+
+	fputc(bitqueue, output_stream);
+
 }
 
 
