@@ -6,6 +6,7 @@
 #include "content_coder.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 
 
@@ -55,21 +56,22 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
             /* shift_count zurücksetzen */
             shift_count = 0;
         }
-        
+        code_length--;
         /* MSB des Codes in die Bitqueue einfügen (an LSB Stelle) */
-        if (code[code_length - 1])
+        bitqueue <<= 1;
+        if (code[code_length])
         {
             bitqueue += 1;
         }
         
         /* Bitqueue nach links schieben */
-        bitqueue <<= 1;
+        
         
         /* shift_count erhöhen */
         shift_count++;
         
         /* code_length erniedrigen */
-        code_length--;
+        
     }
     
     /* Padding-Bits einfügen */
@@ -91,7 +93,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
 extern void decode_content(FILE* input_stream, FILE* output_stream,
                            HTREE* htree)
 {
-    unsigned char shift_count = 0;
+    unsigned char shift_count = 8;
     bool is_char_found = false;
     unsigned long content_length;
     unsigned char character;
@@ -101,9 +103,25 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
     
     /* content_length aus input_stream lesen */
     fread(&content_length, sizeof(unsigned long), 1, input_stream);
-    
-    while (true)
+    printf("Content Länge:%lu\n", content_length);
+    while (content_length > 0)
     {
+        if (shift_count == 8)
+        {
+            if (byte == EOF)
+            {
+                printf("Datei ungültig! #0\n");
+                printf("Position Output-Stream: %lu\n", ftell(input_stream));
+                exit(EXIT_FAILURE);
+            }
+            byte = fgetc(input_stream);
+            bitqueue = (unsigned char) byte;
+            shift_count = 0;
+        }
+        bit = bitqueue >= 128;
+        is_char_found = htree_search_char(htree, bit);
+        bitqueue <<= 1;
+        shift_count++;
         if (is_char_found)
         {
             /* gesuchtes Zeichen von htree anfordern */
@@ -113,20 +131,13 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
             fputc(character, output_stream);
             content_length--;
         }
-        if (shift_count == 7)
-        {
-            byte = fgetc(input_stream);
-            if (byte == EOF)
-            {
-                break;
-            }
-            bitqueue = (unsigned char) byte;
-            shift_count = 0;
-        }
-        bit = bitqueue >= 128;
-        is_char_found = htree_search_char(htree, bit);
-        bitqueue <<= 1;
-        shift_count++;
+    }
+    
+    if (!feof(input_stream))
+    {
+        printf("Datei ungültig! #1\n");
+        printf("Position Output-Stream: %lu\n", ftell(input_stream));
+        exit(EXIT_FAILURE);
     }
 }
 
