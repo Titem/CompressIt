@@ -61,7 +61,7 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     encode_content(input_stream, output_stream, code_table, 
                    freqtab_get_content_length(frequency_table));
 
-	return;
+    return;
 
 }
 
