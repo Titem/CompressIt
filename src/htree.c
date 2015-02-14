@@ -119,10 +119,11 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
     
     /* Wurzel erstellen */
     root_node = create_htree_element(NODE, create_htree_node(NULL, NULL));
-    htree_element = root_node;
     
     while (!codetab_is_empty(codetab))
     {
+        htree_element = root_node;
+        
         /*codetab_element aus codetab entnehmen */
         codetab_element = codetab_get_element(codetab);
         
@@ -131,7 +132,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
                 
         length = codetab_element_get_code_length(codetab_element);
         
-        while (index >= length - 2)
+        while (index < length - 1)
         {
             if (htree_element_is_leaf(htree_element))
             {
@@ -144,7 +145,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
             
             if (bit)
             {
-                if (htree_node_has_right(((HTREE_NODE*)htree_element_get_element(htree_element))))
+                if (!htree_node_has_right(((HTREE_NODE*)htree_element_get_element(htree_element))))
                 {
                     /* rechtes Kind erzeugen und anhängen */
                     htree_node_set_right((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(NODE, create_htree_node(NULL, NULL)));
@@ -155,7 +156,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
             }
             else
             {
-                if (htree_node_has_left(((HTREE_NODE*)htree_element_get_element(htree_element))))
+                if (!htree_node_has_left(((HTREE_NODE*)htree_element_get_element(htree_element))))
                 {
                     /* linkes Kind erzeugen und anhängen */
                     htree_node_set_left((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(NODE, create_htree_node(NULL, NULL)));
@@ -164,7 +165,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
                 /* linkes Kind auswählen */
                 htree_element = htree_node_get_left(((HTREE_NODE*)htree_element_get_element(htree_element)));
             }
-            
+
             index++;
         }
         
