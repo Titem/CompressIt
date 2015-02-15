@@ -60,6 +60,8 @@ debug : $(OBJS)
 	mkdir -p $(EXEPATH)
 	gcc -g $(OBJS) -o $(EXEPATH)/$(EXE)
 
+Debug : debug
+cleanDebug: clean
 
 $(OBJPATH)/error.o : src/error.c src/error.h
 	@echo ========================================================
@@ -196,8 +198,6 @@ $(DOXYGEN_FILE) : src/*.c src/*.h
 	@echo --------------------------------------------------------
 	doxygen $(DOXYGEN_CFG)
 
-
-
 # ----------------------------------------------------------------------------
 # Regel zum Loeschen aller erzeugten Dateien
 clean :
@@ -209,14 +209,56 @@ clean :
 	rm -f -r $(DOXYGEN_PATH)
 	rm -f $(SPLINT_LOG)
 
-
+test : build test2
 #-----------------------------------------------------------------------------
 # Automatisches Testen
-test1 : build
+test1 :
 	@echo Test1: komprimieren von .res/bibel.txt
 	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
 	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc ./res/bibel.txt.dc
-	#diff -s ./res/bibel.txt ./res/bibel.txt.dc
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
+	diff -s ./res/bibel.txt ./res/bibel.txt.hc.hd
+	@echo Test durchgefuehrt
+	rm ./res/bibel.txt.hc ./res/bibel.txt.hc.hd
+
+test2 :
+	@echo Test1: komprimieren von .res/one_char.txt
+	./$(EXEPATH)/$(EXE) -c ./res/one_char.txt
+	@echo Test2: dekomprimieren von .res/one_char.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/one_char.txt.hc
+	diff -s ./res/one_char.txt ./res/one_char.txt.hc.hd
+	@echo Test durchgefuehrt
+	rm ./res/one_char.txt .res/one_char.txt.hc ./res/one_char.txt.hc.hd
+
+test3 : build
+	@echo Test1: komprimieren von .res/bibel.txt
+	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
+	@echo Test2: dekomprimieren von .res/bibel.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
+	diff -s ./res/bibel.txt ./res/bibel.txt.dc
 	@echo Test durchgefuehrt
 
+test4 : build
+	@echo Test1: komprimieren von .res/bibel.txt
+	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
+	@echo Test2: dekomprimieren von .res/bibel.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
+	diff -s ./res/bibel.txt ./res/bibel.txt.dc
+	@echo Test durchgefuehrt
+
+test5 : build
+	@echo Test1: komprimieren von .res/bibel.txt
+	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
+	@echo Test2: dekomprimieren von .res/bibel.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
+	diff -s ./res/bibel.txt ./res/bibel.txt.dc
+	@echo Test durchgefuehrt
+	rm ./res/bibel.txt.hc ./res/bibel.txt.dc
+
+test5 : build
+	@echo Test1: komprimieren von .res/bibel.txt
+	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
+	@echo Test2: dekomprimieren von .res/bibel.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
+	diff -s ./res/bibel.txt ./res/bibel.txt.dc
+	@echo Test durchgefuehrt
