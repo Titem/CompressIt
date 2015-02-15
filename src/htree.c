@@ -299,6 +299,11 @@ static void htree_prep_codetab_element(HTREE* htree)
     /* Wurzelknoten auswählen */
     HTREE_ELEMENT* htree_element = htree->root_node;
     
+    if (htree_element_is_leaf(htree_element))
+    {
+        index++;
+    }
+    
     while (!htree_element_is_killed(htree_element) && !htree_element_is_leaf(htree_element))
     {
         if (htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree_element)))
