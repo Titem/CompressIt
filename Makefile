@@ -186,7 +186,7 @@ $(SPLINT_LOG) : src/*.c src/*.h
 	@echo --------------------------------------------------------
 	splint -weak \
            -booltype BOOL -boolfalse FALSE -booltrue TRUE \
-           +predboolint +noret +usedef -infloops +casebreak \
+           +predboolint +noret +usedef +infloops +casebreak \
            -initallelements -incompletetype -fixedformalarray \
            +posix-lib src/*.c
 

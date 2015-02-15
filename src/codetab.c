@@ -79,37 +79,36 @@ extern CODETAB* read_codetab(FILE* input_stream)
 {
     CODETAB_ELEMENT* new_codetab_element;
     CODETAB* new_codetab;
-
+    
     enum
     {
         CHAR,
         LENGTH,
         CODE
     } state = CHAR;
-
-
+    
     /* Werte Init */
     unsigned char character = 0;
     unsigned char code_length = 0;
     bool* code = NULL;
-
-
+    
     /* Werte-Shift / Werte-Position */
     unsigned char char_shift = 0;
     unsigned char length_shift = 0;
     unsigned char code_index = 0;
-
+    
     /* Bitqueue Init */
+    int byte = 0;
     unsigned char bitqueue = 0;
     unsigned char queue_usage = 0;
     bool bit = false;
-
+    
     /* Zählervariable Init */
     unsigned char count = 0;
-
-
+    
+    
     new_codetab = malloc(sizeof(CODETAB));
-
+    
     new_codetab->length = (unsigned char) fgetc(input_stream);
     new_codetab->working_index = 0;
     {
@@ -121,13 +120,13 @@ extern CODETAB* read_codetab(FILE* input_stream)
     }
 
 
-
+    
     while (count < new_codetab->length)
     {
         if (queue_usage == 0)
         {
-            bitqueue = (unsigned char) fgetc(input_stream);
-            if (bitqueue == EOF)
+            byte = fgetc(input_stream);
+            if (byte == EOF)
             {
                 printf("Datei ungültig! #0\n"
                        "Die Code-Tabelle endet zu früh!\n"
@@ -135,6 +134,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
                 printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
                 exit(EXIT_FAILURE);
             }
+            bitqueue = (unsigned char) byte;
             queue_usage = 8;
         }
 
@@ -191,18 +191,18 @@ extern CODETAB* read_codetab(FILE* input_stream)
             {
                 code_length += 1;
             }
-
-
+            
+            
 
             /*Aktuelle Position in dem Char*/
             length_shift++;
-
+            
             if (length_shift == 8)
             {
                 state = CODE;
                 length_shift = 0;
-
-                code = malloc(sizeof(bool) * code_length);
+                
+                code = malloc(sizeof(bool) * code_length);  
             }
 
             break;
@@ -242,7 +242,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
         }
 
     }
-
+    
     codetab_get_next_index(new_codetab);
 
     return new_codetab;
@@ -456,9 +456,8 @@ extern void codetab_print(CODETAB* codetab)
     unsigned short x = 0;
     int count = 0;
     bool* code = NULL;
-    long padding_bits = 0;
+    unsigned long padding_bits = 0;
 
-    printf("Codetabelle: \n");
     for (i = 0; i < 256; i++)
     {
         if (codetab->char_index[i] != NULL)
@@ -480,7 +479,7 @@ extern void codetab_print(CODETAB* codetab)
     padding_bits = 8 - ((padding_bits + 8) % 8);
 
     printf("Anzahl Element: count %i und Code_Length %i\n", count, codetab->length);
-    printf("Anzahl der Padding Bits: %i \n", padding_bits);
+    printf("Anzahl der Padding Bits: %lu \n", padding_bits);
 }
 
 
