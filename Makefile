@@ -209,56 +209,56 @@ clean :
 	rm -f -r $(DOXYGEN_PATH)
 	rm -f $(SPLINT_LOG)
 
-test : build test1 test2
+test : build test1 test2 test3 test4 test5
 #-----------------------------------------------------------------------------
 # Automatisches Testen
+
+# Test mit der gesamten Bibel
 test1 :
-	@echo Test1: komprimieren von .res/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
-	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc ./res/bibel.txt.hc.hd
-	diff -s ./res/bibel.txt ./res/bibel.txt.hc.hd
+	@echo Test1: komprimieren von .res/tests/bibel.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/bibel.txt
+	@echo Test1: dekomprimieren von .res/tests/bibel.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
+	diff -s ./res/tests/bibel.txt ./res/tests/bibel.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/bibel.txt.hc ./res/bibel.txt.hc.hd
+	rm ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
 
+# Test mit nur einem Char in einer Datei
 test2 :
-	@echo Test1: komprimieren von .res/one_char.txt
-	./$(EXEPATH)/$(EXE) -c ./res/one_char.txt
-	@echo Test2: dekomprimieren von .res/one_char.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/one_char.txt.hc ./res/one_char.txt.hc.hd
-	diff -s ./res/one_char.txt ./res/one_char.txt.hc.hd
+	@echo Test2: komprimieren von .res/tests/one_char.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/one_char.txt
+	@echo Test2: dekomprimieren von .res/tests/one_char.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
+	diff -s ./res/tests/one_char.txt ./res/tests/one_char.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/one_char.txt.hc ./res/one_char.txt.hc.hd
+	rm ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
 
-test3 : build
-	@echo Test1: komprimieren von .res/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
-	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
-	diff -s ./res/bibel.txt ./res/bibel.txt.dc
+# Test mit allen ASCII Zeichen in einer Datei
+test3 :
+	@echo Test3: komprimieren von .res/tests/all_chars.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/all_chars.txt
+	@echo Test3: dekomprimieren von .res/tests/all_chars.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
+	diff -s ./res/tests/all_chars.txt ./res/tests/all_chars.txt.hc.hd
 	@echo Test durchgefuehrt
+	rm ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
 
-test4 : build
-	@echo Test1: komprimieren von .res/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
-	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
-	diff -s ./res/bibel.txt ./res/bibel.txt.dc
+# Test mit einer .exe
+test4 :
+	@echo Test4: komprimieren von ./res/tests/two_char.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/two_char.txt
+	@echo Test4: dekomprimieren von .res/tests/two_char.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
+	diff -s ./res/tests/two_char.txt ./res/tests/two_char.txt.hc.hd
 	@echo Test durchgefuehrt
+	rm ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
 
-test5 : build
-	@echo Test1: komprimieren von .res/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
-	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
-	diff -s ./res/bibel.txt ./res/bibel.txt.dc
+# Test mit einer .exe
+test5 :
+	@echo Test5: komprimieren von ./res/tests/huffman.exe
+	./$(EXEPATH)/$(EXE) -c ./res/tests/huffman.exe ./res/tests/huffman.exe.hc
+	@echo Test5: dekomprimieren von ./res/tests/huffman.exe.hc
+	./$(EXEPATH)/$(EXE) -d ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
+	diff -s ./dist/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/bibel.txt.hc ./res/bibel.txt.dc
-
-test6 : build
-	@echo Test1: komprimieren von .res/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
-	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
-	diff -s ./res/bibel.txt ./res/bibel.txt.dc
-	@echo Test durchgefuehrt
+	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
