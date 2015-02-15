@@ -179,7 +179,7 @@ $(OBJPATH)/main.o : src/main.c src/properties.h src/compressor.h src/error.h src
 
 
 # ----------------------------------------------------------------------------
-# Regel zum Erzeugen der Splint Prüfung
+# Regel zum Erzeugen der Splint PrÃ¼fung
 $(SPLINT_LOG) : src/*.c src/*.h
 	@echo ========================================================
 	@echo Fuehre statische Codepruefung durch
@@ -228,7 +228,7 @@ test2 :
 	./$(EXEPATH)/$(EXE) -d ./res/one_char.txt.hc
 	diff -s ./res/one_char.txt ./res/one_char.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/one_char.txt .res/one_char.txt.hc ./res/one_char.txt.hc.hd
+	rm .res/one_char.txt.hd.hc ./res/one_char.txt.hc.hd
 
 test3 : build
 	@echo Test1: komprimieren von .res/bibel.txt
