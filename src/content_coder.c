@@ -20,6 +20,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
 {
     /*Codelaenge des Codes*/
     unsigned long code_length = 0;
+    unsigned long code_index = 0;
     /*Aktuelle <position in der Bitqueue*/
     unsigned char shift_count = 0;
     int character = 0;
@@ -31,7 +32,7 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
 
     while (true)
     {
-        if (code_length == 0)
+        if (code_index == 0)
         {
             /* Zeichen aus Imputstream lesen */
             character = fgetc(input_stream);
@@ -46,24 +47,9 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
 
             /* code_length für gelesenes Zeichen anfordern */
             code_length = codetab_get_code_length(codetab, (unsigned char) character);
+            code_index = code_length;
         }
 
-        /* code_length erniedrigen */
-        code_length--;
-
-        /* Platz in der Bitqueue vorbereiten */
-        bitqueue <<= 1;
-
-        /* MSB des Codes in die Bitqueue einfügen (an LSB Stelle) */
-        if (code[code_length])
-        {
-            bitqueue += 1;
-        }
-
-
-
-        /* shift_count erhöhen */
-        shift_count++;
         if (shift_count == 8)
         {
             /* Byte aus Bitqueue wegschreiben */
@@ -74,20 +60,38 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
         }
 
 
+        /* Platz in der Bitqueue vorbereiten */
+        bitqueue <<= 1;
+        /* shift_count erhöhen */
+        shift_count++;
+        /* MSB des Codes in die Bitqueue einfügen (an LSB Stelle) */
+        if (code[code_length - code_index])
+        {
+            bitqueue += 1;
+        }
+        /* code_length erniedrigen */
+        code_index--;
+
+
     }
 
-    /* Padding-Bits einfügen */
-    while (shift_count < 8)
+    /* Padding-Bits einfügen (nur wenn nötig)*/
+    if(shift_count != 0)
     {
+        while (shift_count < 8)
+        {
         /* Bitqueue nach links schieben */
         bitqueue <<= 1;
 
         /* shift_count erhöhen */
         shift_count++;
+        }
+        /* Byte aus Bitqueue wegschreiben */
+        fputc(bitqueue, output_stream);
     }
 
-    /* Byte aus Bitqueue wegschreiben */
-    fputc(bitqueue, output_stream);
+
+
 
     /*MD5 Prüfsumme*/
 }
