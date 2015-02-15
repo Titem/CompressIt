@@ -136,7 +136,9 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
         {
             if (htree_element_is_leaf(htree_element))
             {
-                printf("Hier stimmt was nicht!\nModul: htree.c\tFunktion: create_htree_from_codetab\n\n");
+                printf("Datei ungültig! #0\n"
+                       "Die Codetabelle enthält einen ungültigen Eintrag!\n"
+                       "Modul: htree.c\tFunktion: create_htree_from_codetab\n\n");
                 exit(EXIT_FAILURE);
             }
             
@@ -229,7 +231,9 @@ extern bool htree_search_char(HTREE* htree, bool bit)
 {
     if (htree_element_is_leaf(htree->tree_pointer))
     {
-        printf("Hier stimmt was nicht! #0\nModul: htree.c\tFunktion: htree_search_char\n\n");
+        printf("Datei ungültig! #0\n"
+               "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
+               "Modul: htree.c\tFunktion: htree_search_char\n\n");
         exit(EXIT_FAILURE);
     }
     
@@ -238,7 +242,9 @@ extern bool htree_search_char(HTREE* htree, bool bit)
         /* @TODO: Wird das benötigt */
         if (!htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
         {
-            printf("Hier stimmt was nicht! #1\nModul: htree.c\tFunktion: htree_search_char\n\n");
+            printf("Datei ungültig! #1\n"
+                   "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
+                   "Modul: htree.c\tFunktion: htree_search_char\n\n");
             exit(EXIT_FAILURE);
         }
         
@@ -250,7 +256,9 @@ extern bool htree_search_char(HTREE* htree, bool bit)
         /* @TODO: Wird das benötigt */
         if (!htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
         {
-            printf("Hier stimmt was nicht! #2\nModul: htree.c\tFunktion: htree_search_char\n\n");
+            printf("Datei ungültig! #2\n"
+                   "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
+                   "Modul: htree.c\tFunktion: htree_search_char\n\n");
             exit(EXIT_FAILURE);
         }
         

@@ -129,8 +129,11 @@ extern CODETAB* read_codetab(FILE* input_stream)
         {
             if (feof(input_stream))
             {
-                printf("Datei ungültig!\n");
-                exit(1);
+                printf("Datei ungültig! #0\n"
+                       "Die Code-Tabelle endet zu früh!\n"
+                       "Modul: codetab.c\tFunktion: read_codetab\n\n");
+                printf("Position Output-Stream: %lu\n\n", ftell(input_stream));
+                exit(EXIT_FAILURE);
             }
             bitqueue = (unsigned char) fgetc(input_stream);
             queue_usage = 8;
@@ -245,26 +248,6 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
     return new_codetab;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
