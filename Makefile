@@ -214,9 +214,9 @@ clean :
 # Automatisches Testen
 test1 : build
 	@echo Test1: komprimieren von .res/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/onechar.txt
+	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
 	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/onechar.txt.hc ./res/onechar.txt.dc
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc ./res/bibel.txt.dc
 	#diff -s ./res/bibel.txt ./res/bibel.txt.dc
 	@echo Test durchgefuehrt
 
