@@ -89,10 +89,6 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
         /* Byte aus Bitqueue wegschreiben */
         fputc(bitqueue, output_stream);
     }
-
-
-
-
     /*MD5 Prüfsumme*/
 }
 
@@ -104,7 +100,7 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
     unsigned long content_length;
     unsigned char character;
     unsigned char bitqueue = 0;
-    int byte;
+    int byte = 0;
     bool bit = false;
 
     /* content_length aus input_stream lesen */
@@ -114,16 +110,16 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
     {
         if (shift_count == 8)
         {
-            byte = fgetc(input_stream);
+
             if (byte == EOF)
             {
-                printf("Datei ungültig! #0\n"
+                /*printf("Datei ungültig! #0\n"
                        "Der Inhalt der komprimierten Datei endet früher als erlaubt!\n"
                        "Modul: content_coder.c\t Funktion: decode_content\n\n");
                 printf("Position Output-Stream: %lu\n\n", ftell(input_stream));
-                exit(EXIT_FAILURE);
+                exit(EXIT_FAILURE);*/
             }
-
+             byte = fgetc(input_stream);
             bitqueue = (unsigned char) byte;
             shift_count = 0;
         }
@@ -147,8 +143,8 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
         printf("Datei ungültig! #1\n"
                "Der Inhalt der komprimierten Datei ist länger als erlaubt!\n"
                "Modul: content_coder.c\t Funktion: decode_content\n\n");
-        printf("Position Output-Stream: %lu\n\n", ftell(input_stream));
-        exit(EXIT_FAILURE);
+        printf("Position Output-Stream: %lu\n\n",(unsigned long) ftell(input_stream));
+        /*exit(EXIT_FAILURE);*/
     }
 }
 
