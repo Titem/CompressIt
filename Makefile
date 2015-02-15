@@ -209,14 +209,14 @@ clean :
 	rm -f -r $(DOXYGEN_PATH)
 	rm -f $(SPLINT_LOG)
 
-test : build test2
+test : build test1 test2
 #-----------------------------------------------------------------------------
 # Automatisches Testen
 test1 :
 	@echo Test1: komprimieren von .res/bibel.txt
 	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
 	@echo Test2: dekomprimieren von .res/bibel.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/bibel.txt.hc ./res/bibel.txt.hc.hd
 	diff -s ./res/bibel.txt ./res/bibel.txt.hc.hd
 	@echo Test durchgefuehrt
 	rm ./res/bibel.txt.hc ./res/bibel.txt.hc.hd
@@ -225,10 +225,10 @@ test2 :
 	@echo Test1: komprimieren von .res/one_char.txt
 	./$(EXEPATH)/$(EXE) -c ./res/one_char.txt
 	@echo Test2: dekomprimieren von .res/one_char.txt.hc
-	./$(EXEPATH)/$(EXE) -d ./res/one_char.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/one_char.txt.hc ./res/one_char.txt.hc.hd
 	diff -s ./res/one_char.txt ./res/one_char.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm .res/one_char.txt.hd.hc ./res/one_char.txt.hc.hd
+	rm ./res/one_char.txt.hc ./res/one_char.txt.hc.hd
 
 test3 : build
 	@echo Test1: komprimieren von .res/bibel.txt
@@ -255,7 +255,7 @@ test5 : build
 	@echo Test durchgefuehrt
 	rm ./res/bibel.txt.hc ./res/bibel.txt.dc
 
-test5 : build
+test6 : build
 	@echo Test1: komprimieren von .res/bibel.txt
 	./$(EXEPATH)/$(EXE) -c ./res/bibel.txt
 	@echo Test2: dekomprimieren von .res/bibel.txt.hc
