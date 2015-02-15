@@ -243,7 +243,7 @@ test3 :
 	@echo Test durchgefuehrt
 	rm ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
 
-# Test mit einer .exe
+# Test mit 2 Chars
 test4 :
 	@echo Test4: komprimieren von ./res/tests/two_char.txt
 	./$(EXEPATH)/$(EXE) -c ./res/tests/two_char.txt
