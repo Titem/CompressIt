@@ -110,8 +110,10 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
         {
             if (byte == EOF)
             {
-                printf("Datei ungültig! #0\n");
-                printf("Position Output-Stream: %lu\n", ftell(input_stream));
+                printf("Datei ungültig! #0\n"
+                       "Der Inhalt der komprimierten Datei endet früher als erlaubt!\n"
+                       "Modul: content_coder.c\t Funktion: decode_content\n\n");
+                printf("Position Output-Stream: %lu\n\n", ftell(input_stream));
                 exit(EXIT_FAILURE);
             }
             byte = fgetc(input_stream);
@@ -135,8 +137,10 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
     
     if (!feof(input_stream))
     {
-        printf("Datei ungültig! #1\n");
-        printf("Position Output-Stream: %lu\n", ftell(input_stream));
+        printf("Datei ungültig! #1\n"
+               "Der Inhalt der komprimierten Datei ist länger als erlaubt!\n"
+               "Modul: content_coder.c\t Funktion: decode_content\n\n");
+        printf("Position Output-Stream: %lu\n\n", ftell(input_stream));
         exit(EXIT_FAILURE);
     }
 }
