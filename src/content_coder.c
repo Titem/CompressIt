@@ -138,7 +138,7 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
         }
     }
 
-    if (!feof(input_stream))
+    if (fgetc(input_stream) != EOF)
     {
         printf("Datei ungültig! #1\n"
                "Der Inhalt der komprimierten Datei ist länger als erlaubt!\n"
