@@ -93,7 +93,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
     /* Werte Init */
     unsigned char character = 0;
     unsigned char code_length = 0;
-    bool* code;
+    bool* code = {false};
     
     /* Werte-Shift / Werte-Position */
     unsigned char char_shift = 0;
