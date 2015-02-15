@@ -41,15 +41,10 @@ extern CODETAB* create_codetab(HTREE* htree)
     CODETAB* new_codetab = malloc(sizeof (CODETAB));
     CODETAB_ELEMENT* new_codetab_element;
     int count = 0;
-    int i;
 
     new_codetab->working_index = 0;
     new_codetab->length = 0;
-
-    for (i = 0; i < 256; i++)
-    {
-        new_codetab->char_index[i] = NULL;
-    }
+    memset(new_codetab->char_index, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
 
     while (!htree_is_emty(htree))
@@ -111,15 +106,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
     
     new_codetab->length = (unsigned char) fgetc(input_stream);
     new_codetab->working_index = 0;
-    {
-        int i;
-        for (i = 0; i < 256; i++)
-        {
-            new_codetab->char_index[i] = NULL;
-        }
-    }
-
-
+    memset(new_codetab->char_index, 0, sizeof(CODETAB_ELEMENT*) * 256);
     
     while (count < new_codetab->length)
     {
@@ -169,9 +156,10 @@ extern CODETAB* read_codetab(FILE* input_stream)
                 state = LENGTH;
                 char_shift = 0;
             }
-
             break;
 
+            
+            
         case LENGTH:
             /*MSB filtern.*/
             bit = bitqueue >= 128;
@@ -204,9 +192,10 @@ extern CODETAB* read_codetab(FILE* input_stream)
                 
                 code = malloc(sizeof(bool) * code_length);  
             }
-
             break;
 
+            
+            
         case CODE:
             /*MSB filtern.*/
             bit = bitqueue >= 128;
@@ -235,9 +224,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
                 new_codetab->char_index[character] = new_codetab_element;
 
                 count++;
-
             }
-
             break;
         }
 
@@ -318,9 +305,10 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
                 code_length = codetab_element_get_code_length(codetab->char_index[codetab->working_index]);
                 length_shift = 0;
             }
-
             break;
 
+            
+            
         case LENGTH:
             /*MSB filtern.*/
             bit = code_length >= 128;
@@ -350,10 +338,10 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
                 code_length = codetab_element_get_code_length(codetab->char_index[codetab->working_index]);
                 code_index = 0;
             }
-
-
             break;
 
+            
+            
         case CODE:
             /*MSB filtern.*/
             bit = code[code_index];
@@ -373,17 +361,16 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
             /*Aktuelle Position in dem Char*/
             code_index++;
 
-            if (code_index == code_length && count < codetab->length - 1)
+            
+            if (code_index == code_length)
             {
+                if (count < codetab->length - 1)
+                {
+                    codetab_get_next_index(codetab);
+                    character = codetab_element_get_char(codetab->char_index[codetab->working_index]);
+                }
                 state = CHAR;
-                codetab_get_next_index(codetab);
-                character = codetab_element_get_char(codetab->char_index[codetab->working_index]);
                 char_shift = 0;
-
-                /*count++;*/
-            }
-            if (code_index == code_length /*&& count < codetab->length*/)
-            {
                 count++;
             }
             break;
