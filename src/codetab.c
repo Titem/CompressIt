@@ -86,14 +86,11 @@ extern CODETAB* read_codetab(FILE* input_stream)
         LENGTH,
         CODE
     } state = CHAR;
-
-    /* Coodbook Länge */
-    unsigned char length;
     
     /* Werte Init */
     unsigned char character = 0;
     unsigned char code_length = 0;
-    bool* code = {false};
+    bool* code = NULL;
     
     /* Werte-Shift / Werte-Position */
     unsigned char char_shift = 0;
@@ -101,6 +98,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
     unsigned char code_index = 0;
     
     /* Bitqueue Init */
+    int byte = 0;
     unsigned char bitqueue = 0;
     unsigned char queue_usage = 0;
     bool bit = false;
@@ -111,7 +109,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
     
     new_codetab = malloc(sizeof(CODETAB));
     
-    new_codetab->length = fgetc(input_stream);
+    new_codetab->length = (unsigned char) fgetc(input_stream);
     new_codetab->working_index = 0;
     {
         int i;
@@ -127,15 +125,16 @@ extern CODETAB* read_codetab(FILE* input_stream)
     {
         if (queue_usage == 0)
         {
-            bitqueue = (unsigned char) fgetc(input_stream);
-            if (bitqueue == EOF)
+            byte = fgetc(input_stream);
+            if (byte == EOF)
             {
                 printf("Datei ungültig! #0\n"
                        "Die Code-Tabelle endet zu früh!\n"
                        "Modul: codetab.c\tFunktion: read_codetab\n\n");
-                printf("Position Output-Stream: %lu\n\n", ftell(input_stream));
+                printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
                 exit(EXIT_FAILURE);
             }
+            bitqueue = (unsigned char) byte;
             queue_usage = 8;
         }
 
@@ -457,7 +456,7 @@ extern void codetab_print(CODETAB* codetab)
     unsigned short x = 0;
     int count = 0;
     bool* code = NULL;
-    long padding_bits = 0;
+    unsigned long padding_bits = 0;
 
     for (i = 0; i < 256; i++)
     {
@@ -480,7 +479,7 @@ extern void codetab_print(CODETAB* codetab)
     padding_bits = 8 - ((padding_bits + 8) % 8);
 
     printf("Anzahl Element: count %i und Code_Length %i\n", count, codetab->length);
-    printf("Anzahl der Padding Bits: %i \n", padding_bits);
+    printf("Anzahl der Padding Bits: %lu \n", padding_bits);
 }
 
 
