@@ -450,7 +450,6 @@ extern bool codetab_is_empty(CODETAB* codetab)
 
 static void codetab_get_next_index(CODETAB* codetab)
 {
-
     /* Naechstes codetab Element auswählen */
     while (codetab->working_index < 256 && codetab->char_index[codetab->working_index + 1] == NULL)
     {
