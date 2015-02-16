@@ -216,7 +216,7 @@ test : build test1 test2 test3 test4 test5
 # Test mit der gesamten Bibel
 test1 :
 	@echo Test1: komprimieren von .res/tests/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/tests/bibel.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/bibel.txt ./res/tests/bibel.txt.hc
 	@echo Test1: dekomprimieren von .res/tests/bibel.txt.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
 	diff -s ./res/tests/bibel.txt ./res/tests/bibel.txt.hc.hd
@@ -226,7 +226,7 @@ test1 :
 # Test mit nur einem Char in einer Datei
 test2 :
 	@echo Test2: komprimieren von .res/tests/one_char.txt
-	./$(EXEPATH)/$(EXE) -c ./res/tests/one_char.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/one_char.txt ./res/tests/one_char.txt.hc
 	@echo Test2: dekomprimieren von .res/tests/one_char.txt.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
 	diff -s ./res/tests/one_char.txt ./res/tests/one_char.txt.hc.hd
@@ -236,7 +236,7 @@ test2 :
 # Test mit allen ASCII Zeichen in einer Datei
 test3 :
 	@echo Test3: komprimieren von .res/tests/all_chars.txt
-	./$(EXEPATH)/$(EXE) -c ./res/tests/all_chars.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/all_chars.txt ./res/tests/all_chars.txt.hc
 	@echo Test3: dekomprimieren von .res/tests/all_chars.txt.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
 	diff -s ./res/tests/all_chars.txt ./res/tests/all_chars.txt.hc.hd
@@ -259,6 +259,6 @@ test5 :
 	./$(EXEPATH)/$(EXE) -c ./res/tests/huffman.exe ./res/tests/huffman.exe.hc
 	@echo Test5: dekomprimieren von ./res/tests/huffman.exe.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
-	diff -s ./dist/huffman.exe ./res/tests/huffman.exe.hc.hd
+	diff ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo Test durchgefuehrt
 	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
