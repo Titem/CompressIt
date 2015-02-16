@@ -64,10 +64,6 @@ extern CODETAB* create_codetab(HTREE* htree)
         new_codetab->length++;
     }
 
-    if(new_codetab->length > 0)
-    {
-        new_codetab->length--;
-    }
 
     /* Working Index auf erstes Element setzen */
     while(new_codetab->working_index < 256 && new_codetab->char_index[new_codetab->working_index] == NULL)
@@ -118,11 +114,11 @@ extern CODETAB* read_codetab(FILE* input_stream)
                "Modul: codetab.c\tFunktion: read_codetab\n\n");
         exit(EXIT_FAILURE);
     }
-    
+
     new_codetab->working_index = 0;
     memset(new_codetab->char_index, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
-    while (count < new_codetab->length + 1)
+    while (count < new_codetab->length)
     {
         if (queue_usage == 0)
         {
@@ -285,7 +281,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
                "Modul: codetab.c\tFunktion: write_codetab\n\n");
         exit(EXIT_FAILURE);
     }
-    
+
     /* fprintf(output_stream, codetab->length);  */
     fflush(output_stream);
 
@@ -293,7 +289,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
     character = codetab_element_get_char(codetab->char_index[codetab->working_index]);
     char_shift = 0;
 
-    while (count < codetab->length + 1)
+    while (count < codetab->length)
     {
         if (queue_usage == 8)
         {
@@ -391,7 +387,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 
             if (code_index == code_length)
             {
-                if (count < codetab->length)
+                if (count < codetab->length - 1)
                 {
                     codetab_get_next_index(codetab);
                     character = codetab_element_get_char(codetab->char_index[codetab->working_index]);

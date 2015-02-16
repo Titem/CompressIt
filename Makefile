@@ -209,7 +209,7 @@ clean :
 	rm -f -r $(DOXYGEN_PATH)
 	rm -f $(SPLINT_LOG)
 
-test : build test6 test2 test3 test4 test5 test6
+test : build test1 test2 test3 test4 test5 test6
 #-----------------------------------------------------------------------------
 # Automatisches Testen
 
