@@ -221,7 +221,7 @@ test1 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
 	diff -s ./res/tests/bibel.txt ./res/tests/bibel.txt.hc.hd
 	@echo Test durchgefuehrt
-	#rm ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
+	rm ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
 
 # Test mit nur einem Char in einer Datei
 test2 :
@@ -231,7 +231,7 @@ test2 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
 	diff -s ./res/tests/one_char.txt ./res/tests/one_char.txt.hc.hd
 	@echo Test durchgefuehrt
-	#rm ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
+	rm ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
 
 # Test mit allen ASCII Zeichen in einer Datei
 test3 :
@@ -241,7 +241,7 @@ test3 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
 	diff -s ./res/tests/all_chars.txt ./res/tests/all_chars.txt.hc.hd
 	@echo Test durchgefuehrt
-	#rm ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
+	rm ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
 
 # Test mit 2 Chars
 test4 :
@@ -251,7 +251,7 @@ test4 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
 	diff -s ./res/tests/two_char.txt ./res/tests/two_char.txt.hc.hd
 	@echo Test durchgefuehrt
-	#rm ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
+	rm ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
 
 # Test mit einer .exe
 test5 :
@@ -261,8 +261,7 @@ test5 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
 	diff ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo Test durchgefuehrt
-	#rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
-
+	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
 # Test mit einer .exe
 test6 :
 	@echo Test5: komprimieren von ./res/tests/chars-full.txt
