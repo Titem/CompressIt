@@ -268,7 +268,7 @@ test6 :
 	@echo Test6: komprimieren von ./res/tests/chars-full.txt
 	./$(EXEPATH)/$(EXE) -c ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc
 	@echo Test6: dekomprimieren von ./res/tests/chars-full.txt
-	./$(EXEPATH)/$(EXE) -d ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc.hd
+	./$(EXEPATH)/$(EXE) -d ./res/tests/chars-full.txt.hc ./res/tests/chars-full.txt.hc.hd
 	diff ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc.hd
 	@echo Test durchgefuehrt
 	#rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
