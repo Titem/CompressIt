@@ -112,7 +112,13 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
     new_codetab = malloc(sizeof(CODETAB));
 
-    fread(&(new_codetab->length), sizeof(unsigned short), 1, input_stream);
+    if (fread(&(new_codetab->length), sizeof(unsigned short), 1, input_stream) != 1)
+    {
+        printf("Hier stimmt was nicht!\n"
+               "Modul: codetab.c\tFunktion: read_codetab\n\n");
+        exit(EXIT_FAILURE);
+    }
+    
     new_codetab->working_index = 0;
     memset(new_codetab->char_index, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
@@ -273,7 +279,13 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
     bool bit = false;
     bool* code = NULL;
 
-    fwrite(&(codetab->length), sizeof(unsigned short), 1, output_stream);
+    if (fwrite(&(codetab->length), sizeof(unsigned short), 1, output_stream) != 1)
+    {
+        printf("Hier stimmt was nicht!\n"
+               "Modul: codetab.c\tFunktion: write_codetab\n\n");
+        exit(EXIT_FAILURE);
+    }
+    
     /* fprintf(output_stream, codetab->length);  */
     fflush(output_stream);
 
