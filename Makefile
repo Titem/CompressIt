@@ -262,6 +262,7 @@ test5 :
 	diff ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo Test durchgefuehrt
 	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
+	
 # Test mit einer .exe
 test6 :
 	@echo Test6: komprimieren von ./res/tests/chars-full.txt

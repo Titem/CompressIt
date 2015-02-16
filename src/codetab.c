@@ -489,7 +489,7 @@ extern void codetab_print(CODETAB* codetab)
 
     padding_bits = 8 - ((padding_bits + 8) % 8);
 
-    printf("Anzahl Element: count %i und Code_Length %i\n", count, (int) codetab->length);
+    printf("Anzahl Element: count %i und codetab->length %i\n", count, (int) codetab->length);
     printf("Anzahl der Padding Bits: %lu \n", padding_bits);
 }
 
