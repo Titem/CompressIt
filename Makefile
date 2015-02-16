@@ -209,7 +209,7 @@ clean :
 	rm -f -r $(DOXYGEN_PATH)
 	rm -f $(SPLINT_LOG)
 
-test : build test1 test2 test3 test4 test5 test6
+test : build test6 test2 test3 test4 test5 test6
 #-----------------------------------------------------------------------------
 # Automatisches Testen
 
@@ -264,9 +264,9 @@ test5 :
 	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
 # Test mit einer .exe
 test6 :
-	@echo Test5: komprimieren von ./res/tests/chars-full.txt
+	@echo Test6: komprimieren von ./res/tests/chars-full.txt
 	./$(EXEPATH)/$(EXE) -c ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc
-	@echo Test5: dekomprimieren von ./res/tests/huffman.exe.hc
+	@echo Test6: dekomprimieren von ./res/tests/chars-full.txt
 	./$(EXEPATH)/$(EXE) -d ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc.hd
 	diff ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc.hd
 	@echo Test durchgefuehrt
