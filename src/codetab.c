@@ -112,7 +112,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
     new_codetab = malloc(sizeof(CODETAB));
 
-    new_codetab->length = (unsigned char) fgetc(input_stream);
+    fread(&(new_codetab->length), sizeof(unsigned short), 1, input_stream);
     new_codetab->working_index = 0;
     memset(new_codetab->char_index, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
@@ -273,7 +273,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
     bool bit = false;
     bool* code = NULL;
 
-    fputc(codetab->length, output_stream);
+    fwrite(&(codetab->length), sizeof(unsigned short), 1, output_stream);
     /* fprintf(output_stream, codetab->length);  */
     fflush(output_stream);
 
@@ -481,7 +481,7 @@ extern void codetab_print(CODETAB* codetab)
 
     padding_bits = 8 - ((padding_bits + 8) % 8);
 
-    printf("Anzahl Element: count %i und Code_Length %i\n", count, codetab->length);
+    printf("Anzahl Element: count %i und Code_Length %i\n", count, (int) codetab->length);
     printf("Anzahl der Padding Bits: %lu \n", padding_bits);
 }
 

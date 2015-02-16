@@ -216,42 +216,42 @@ test : build test1 test2 test3 test4 test5
 # Test mit der gesamten Bibel
 test1 :
 	@echo Test1: komprimieren von .res/tests/bibel.txt
-	./$(EXEPATH)/$(EXE) -c ./res/tests/bibel.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/bibel.txt ./res/tests/bibel.txt.hc
 	@echo Test1: dekomprimieren von .res/tests/bibel.txt.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
 	diff -s ./res/tests/bibel.txt ./res/tests/bibel.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
+	#rm ./res/tests/bibel.txt.hc ./res/tests/bibel.txt.hc.hd
 
 # Test mit nur einem Char in einer Datei
 test2 :
 	@echo Test2: komprimieren von .res/tests/one_char.txt
-	./$(EXEPATH)/$(EXE) -c ./res/tests/one_char.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/one_char.txt ./res/tests/one_char.txt.hc
 	@echo Test2: dekomprimieren von .res/tests/one_char.txt.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
 	diff -s ./res/tests/one_char.txt ./res/tests/one_char.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
+	#rm ./res/tests/one_char.txt.hc ./res/tests/one_char.txt.hc.hd
 
 # Test mit allen ASCII Zeichen in einer Datei
 test3 :
 	@echo Test3: komprimieren von .res/tests/all_chars.txt
-	./$(EXEPATH)/$(EXE) -c ./res/tests/all_chars.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/all_chars.txt ./res/tests/all_chars.txt.hc
 	@echo Test3: dekomprimieren von .res/tests/all_chars.txt.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
 	diff -s ./res/tests/all_chars.txt ./res/tests/all_chars.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
+	#rm ./res/tests/all_chars.txt.hc ./res/tests/all_chars.txt.hc.hd
 
 # Test mit 2 Chars
 test4 :
 	@echo Test4: komprimieren von ./res/tests/two_char.txt
-	./$(EXEPATH)/$(EXE) -c ./res/tests/two_char.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/two_char.txt ./res/tests/two_char.txt.hc
 	@echo Test4: dekomprimieren von .res/tests/two_char.txt.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
 	diff -s ./res/tests/two_char.txt ./res/tests/two_char.txt.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
+	#rm ./res/tests/two_char.txt.hc ./res/tests/two_char.txt.hc.hd
 
 # Test mit einer .exe
 test5 :
@@ -261,4 +261,4 @@ test5 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
 	diff -s ./dist/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo Test durchgefuehrt
-	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
+	#rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
