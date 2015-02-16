@@ -404,11 +404,10 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 
 
     /*Padding Bits*/
-    while (queue_usage < 8)
+    while (queue_usage > 0 && queue_usage < 8)
     {
         bitqueue <<= 1;
         queue_usage++;
-        printf("Padding\n");
     }
 
     fputc(bitqueue, output_stream);

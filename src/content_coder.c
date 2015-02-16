@@ -82,22 +82,17 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
     }
 
     /* Padding-Bits einfügen (nur wenn nötig)*/
-    if(shift_count != 0)
+
+    while (shift_count > 0 && shift_count < 8)
     {
-        while (shift_count < 8)
-        {
         /* Bitqueue nach links schieben */
         bitqueue <<= 1;
 
         /* shift_count erhöhen */
         shift_count++;
-        }
-        /* Byte aus Bitqueue wegschreiben */
-        fputc(bitqueue, output_stream);
     }
-
-
-
+        /* Byte aus Bitqueue wegschreiben */
+    fputc(bitqueue, output_stream);
 
     /*MD5 Prüfsumme*/
 }
@@ -122,8 +117,9 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
         printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
         exit(EXIT_FAILURE);
     }
-    
+    #ifdef DEBUG_HUFFMAN
     printf("Content Länge:%lu\n", content_length);
+    #endif
     while (content_length > 0)
     {
         if (shift_count == 8)

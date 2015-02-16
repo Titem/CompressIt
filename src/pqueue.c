@@ -19,7 +19,7 @@
 struct S_PQUEUE
 {
     unsigned short number_of_entries;
-    PQUEUE_ELEMENT* entry[256]; 
+    PQUEUE_ELEMENT* entry[256];
 };
 
 
@@ -31,7 +31,7 @@ static void pqueue_build_heap(PQUEUE* pqueue);
 
 static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2);
 
-static void print_out_heap(PQUEUE* pqueue, unsigned short position, 
+static void print_out_heap(PQUEUE* pqueue, unsigned short position,
                                            unsigned short step);
 
 static void print_step(unsigned short step);
@@ -46,9 +46,9 @@ static void print_step(unsigned short step);
 extern PQUEUE* create_pqueue(void)
 {
     PQUEUE* new_pqueue = malloc(sizeof(PQUEUE));
-    
+
     new_pqueue->number_of_entries = 0;
-    
+
     return new_pqueue;
 }
 
@@ -58,7 +58,7 @@ extern void delete_pqueue(PQUEUE** pqueue)
     *pqueue = NULL;
 }
 
-extern void pqueue_insert_htree_element(PQUEUE* pqueue, 
+extern void pqueue_insert_htree_element(PQUEUE* pqueue,
                                         HTREE_ELEMENT* htree_element,
                                         unsigned long weight)
 {
@@ -66,7 +66,7 @@ extern void pqueue_insert_htree_element(PQUEUE* pqueue,
     /*Element in den Heap einf�gen.*/
     /*Bei Index 0 Anfangen*/
 
-    pqueue->entry[pqueue->number_of_entries] 
+    pqueue->entry[pqueue->number_of_entries]
             = create_pqueue_element(htree_element, weight);
 
     /*Anzahl der Heap Elemente hochzaehlen.*/
@@ -79,7 +79,7 @@ extern void pqueue_insert_htree_element(PQUEUE* pqueue,
 extern PQUEUE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
 {
     unsigned short last_index;
-    
+
     PQUEUE_ELEMENT* min_element = pqueue->entry[0];
     last_index = pqueue->number_of_entries - 1;
     pqueue_swap(pqueue, 0, last_index);
@@ -88,7 +88,7 @@ extern PQUEUE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue)
     {
         pqueue_heapify(pqueue, 0);
     }
-    
+
     return min_element;
 }
 
@@ -159,7 +159,7 @@ extern void pqueue_print(PQUEUE* pqueue)
     }
 }
 
-static void print_out_heap(PQUEUE* pqueue, unsigned short position, 
+static void print_out_heap(PQUEUE* pqueue, unsigned short position,
                                            unsigned short step)
 {
     unsigned short left;
@@ -169,14 +169,18 @@ static void print_out_heap(PQUEUE* pqueue, unsigned short position,
 
     if (left < pqueue->number_of_entries)
     {
+
         print_step(step);
+
         printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[left])));
         print_out_heap(pqueue,left, step + STEP_INDEX);
     }
 
     if (right < pqueue->number_of_entries)
     {
+
         print_step(step);
+
         printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[right])));
         print_out_heap(pqueue,right, step + STEP_INDEX);
     }
