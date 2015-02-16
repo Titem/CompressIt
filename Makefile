@@ -259,6 +259,6 @@ test5 :
 	./$(EXEPATH)/$(EXE) -c ./res/tests/huffman.exe ./res/tests/huffman.exe.hc
 	@echo Test5: dekomprimieren von ./res/tests/huffman.exe.hc
 	./$(EXEPATH)/$(EXE) -d ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
-	diff -s ./dist/huffman.exe ./res/tests/huffman.exe.hc.hd
+	diff ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo Test durchgefuehrt
 	#rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
