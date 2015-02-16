@@ -262,8 +262,8 @@ test5 :
 	diff ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo Test durchgefuehrt
 	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
-	
-# Test mit einer .exe
+
+# Test mit einer Datei mit "Fakultaet" von Zeichen
 test6 :
 	@echo Test6: komprimieren von ./res/tests/chars-full.txt
 	./$(EXEPATH)/$(EXE) -c ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc
@@ -271,4 +271,4 @@ test6 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/chars-full.txt.hc ./res/tests/chars-full.txt.hc.hd
 	diff ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc.hd
 	@echo Test durchgefuehrt
-	#rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
+	rm ./res/tests/chars-full.txt.hc ./res/tests/chars-full.txt.hc.hd
