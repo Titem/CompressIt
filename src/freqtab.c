@@ -6,6 +6,7 @@
 #include "freqtab.h"
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "error.h"
 
@@ -18,8 +19,9 @@
 
 struct S_FREQTAB
 {
-    FREQTAB_ELEMENT* freq_table[MAX_CHARACTERS];
+    unsigned short length;
     unsigned short working_index;
+    FREQTAB_ELEMENT* char_map[MAX_CHARACTERS];
     unsigned long content_length;
 };
 
@@ -36,12 +38,11 @@ struct S_FREQTAB
 static void freqtab_update(FREQTAB* freq_tab_p, unsigned char character);
 
 
-/*---------------------------------------------------------------------------------*/
-/*-----DEN FREQTAB MIT NULL INITIALISIERN------------------------------------------*/
-/*---------------------------------------------------------------------------------*/
-static void freqtab_init(FREQTAB* freq_tab_p);
 
-
+/*---------------------------------------------------------------------------------*/
+/*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
+/*---------------------------------------------------------------------------------*/
+static void freqtab_next_working_index(FREQTAB* freq_tab_p);
 /*---------------------------------------------------------------------------------*/
 /*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
 /*---------------------------------------------------------------------------------*/
@@ -56,136 +57,122 @@ static void freqtab_init_working_index(FREQTAB* freq_tab_p);
 
 extern FREQTAB* create_freqtab(FILE* input_stream)
 {
+    FREQTAB* new_freqtab = malloc(sizeof (FREQTAB));
     int character_from_file;
-    FREQTAB* freq_tab_p;
-    freq_tab_p = malloc(sizeof (FREQTAB));
-
-    if (freq_tab_p != NULL)
-    {
-        freqtab_init(freq_tab_p);
-        character_from_file = fgetc(input_stream);
-        while (character_from_file != EOF)
-        {
-            /*character_from_file = check_offset(character_from_file);*/
-            freqtab_update(freq_tab_p, (unsigned char) character_from_file);
-            character_from_file = fgetc(input_stream);
-        }
-    }
-    else
+    
+    if (new_freqtab == NULL)
     {
         print_error(cant_malloc_memory);
         exit(EXIT_FAILURE);
     }
 
+    new_freqtab->length = 0;
+    new_freqtab->working_index = 0;
+    new_freqtab->content_length = 0;
+    memset(new_freqtab->char_map, 0, sizeof(FREQTAB_ELEMENT*) * 256);
     
-    freqtab_init_working_index(freq_tab_p);
-
-    return freq_tab_p;
-}
-
-extern void delete_freqtab(FREQTAB** freq_tab_p)
-{
-    free(*freq_tab_p);
-    *freq_tab_p = NULL;
-}
-
-
-extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freq_tab_p)
-{
-    unsigned short i = 0;
-    unsigned short tmp_working_index = freq_tab_p->working_index;
-    FREQTAB_ELEMENT* tmp_p = freq_tab_p->freq_table[freq_tab_p->working_index];
-
-    for (i = tmp_working_index; i < 256 && freq_tab_p->freq_table[i + 1] == NULL; i++)
+    character_from_file = fgetc(input_stream);
+    while (character_from_file != EOF)
     {
-        tmp_working_index++;
+        new_freqtab->content_length++;
+        freqtab_update(new_freqtab, (unsigned char) character_from_file);
+        character_from_file = fgetc(input_stream);
     }
+    
+    freqtab_init_working_index(new_freqtab);
 
-    freq_tab_p->working_index = tmp_working_index + 1;
+    return new_freqtab;
+}
+
+
+
+extern void delete_freqtab(FREQTAB** freqtab)
+{
+    
+    free(*freqtab);
+    *freqtab = NULL;
+}
+
+
+extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freqtab)
+{
+    FREQTAB_ELEMENT* tmp_p = freqtab->char_map[freqtab->working_index];
+
+    freqtab_next_working_index(freqtab);
 
     return tmp_p;
 }
 
-extern bool freqtab_is_emty(FREQTAB* freq_tab_p)
+
+
+extern bool freqtab_is_emty(FREQTAB* freqtab)
 {
-    return freq_tab_p->working_index >= 256;
+    return freqtab->working_index >= 256;
 }
 
-extern unsigned long freqtab_get_content_length(FREQTAB* freq_tab_p)
+
+
+extern unsigned long freqtab_get_content_length(FREQTAB* freqtab)
 {
-    return freq_tab_p->content_length;
+    return freqtab->content_length;
 }
 
-extern void freqtab_print(FREQTAB* freq_tab_p)
+
+
+extern void freqtab_print(FREQTAB* freqtab)
 {
-    long count_chars = 0;
-    long count_element = 0;
     int i = 0;
 
     printf("Zeichen  ---> Haeufigkeit ---> NUMERIC\n");
     printf("--------------------------------------\n");
     for (i = 0; i < MAX_CHARACTERS; i++)
     {
-        if (freq_tab_p->freq_table[i] != NULL)
+        if (freqtab->char_map[i] != NULL)
         {
-            count_element++;
-            count_chars = count_chars + freqtab_element_get_frequency(freq_tab_p->freq_table[i]);
-            printf("%s \t ---> %d \t  ---> %d \n", convert_char(freqtab_elememt_get_char(freq_tab_p->freq_table[i])), (int) freqtab_element_get_frequency(freq_tab_p->freq_table[i]), (int) freqtab_elememt_get_char(freq_tab_p->freq_table[i]));
+            printf("%s \t ---> %d \t  ---> %d \n", convert_char(freqtab_elememt_get_char(freqtab->char_map[i])), (int) freqtab_element_get_frequency(freqtab->char_map[i]), (int) freqtab_elememt_get_char(freqtab->char_map[i]));
         }
     }
     printf("--------------------------------------\n");
-    printf("Zeichen insgesamt    : %d \n", (int)count_chars);
-    printf("NEW:Zeichen insgesamt  : %d \n", (int)freq_tab_p->content_length);
-    printf("Zeichen verschieden  : %d \n", (int) count_element);
+    printf("Zeichen insgesamt:   %lu\n", freqtab->content_length);
+    printf("Zeichen verschieden: %d\n", freqtab->length);
 
 }
 
-static void freqtab_init_working_index(FREQTAB* freq_tab_p)
+
+
+static void freqtab_init_working_index(FREQTAB* freqtab)
 {
-    unsigned short tmp_working_index = 0;
-
-    /*Was tun wenn datei leer ist, dies ist dann der Fall wenn der
-    working index bei 256 ist, die schleife vorher abbrechen*/
-    freq_tab_p->working_index = 256;
-
-    while (tmp_working_index < 256 && freq_tab_p->freq_table[tmp_working_index] == NULL)
+    while (freqtab->working_index < 256 && freqtab->char_map[freqtab->working_index] == NULL)
     {
-        tmp_working_index++;
-    }
-
-    if (tmp_working_index < 256)
-    {
-        freq_tab_p->working_index = tmp_working_index;
+        freqtab->working_index++;
     }
 }
 
-static void freqtab_init(FREQTAB* freq_tab_p)
-{
-    int i = 0;
-    /*Contentlength auf 0 initalisieren.*/
-    freq_tab_p->content_length = 0;
 
-    /*Die freqtab bzw. den Vector mit NULL initalisieren.*/
-    for (i = 0; i < MAX_CHARACTERS; i++)
+
+static void freqtab_next_working_index(FREQTAB* freqtab)
+{
+    if (freqtab->working_index < 256)
     {
-        freq_tab_p->freq_table[i] = NULL;
+        freqtab->working_index++;
     }
+    
+    freqtab_init_working_index(freqtab);
 }
 
-static void freqtab_update(FREQTAB* freq_tab_p, unsigned char character)
+
+
+static void freqtab_update(FREQTAB* freqtab, unsigned char character)
 {
-    if (freq_tab_p->freq_table[character] == NULL)
+    if (freqtab->char_map[character] == NULL)
     {
-        freq_tab_p->freq_table[character] = create_freqtab_element(character);
+        freqtab->length++;
+        freqtab->char_map[character] = create_freqtab_element(character);
     }
     else
     {
-        /*freq_tab_p->freq_table[character]->frequency = (freq_tab_p->freq_table[character]->frequency + INKREMENT_CHARCTER);*/
-        /*freq_tab_p->freq_table[character]->frequency++;*/
-        freqtab_element_inc_frequency(freq_tab_p->freq_table[character]);
+        freqtab_element_inc_frequency(freqtab->char_map[character]);
     }
-    /*Zählt die Anzahl der Häufigkeiten der Character.*/
-    freq_tab_p->content_length++;
 }
 
 
