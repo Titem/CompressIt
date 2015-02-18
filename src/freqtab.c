@@ -94,6 +94,7 @@ extern void delete_freqtab(FREQTAB** freqtab)
 }
 
 
+
 extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freqtab)
 {
     FREQTAB_ELEMENT* tmp_p = freqtab->char_map[freqtab->working_index];

@@ -94,7 +94,7 @@ extern bool codetab_element_is_bit_set(CODETAB_ELEMENT* codetab_element,
  * 
  * @param codetab_element Zeiger auf Code-Tabellen-Element, dessen 
  *                        Schriftzeichen zurückgeliefert werden soll.
- * @return Schriftzeichen, des übergeben Code-Tabbel-Elementes
+ * @return Schriftzeichen, des übergeben Code-Tabellen-Elementes
  */
 extern unsigned char codetab_element_get_char
                      (CODETAB_ELEMENT* codetab_element);

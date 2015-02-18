@@ -29,42 +29,46 @@ struct S_FREQTAB_ELEMENT
 
 extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character)
 {
-    FREQTAB_ELEMENT* freq;
-    freq = malloc(sizeof(FREQTAB_ELEMENT));
+    FREQTAB_ELEMENT* new_freqtab_element = malloc(sizeof(FREQTAB_ELEMENT));
 
-    if (freq != NULL)
+    if (new_freqtab_element == NULL)
     {
-	freq->character = character;
-	freq->frequency = ININIT_CHARCTER;
+	print_error(cant_malloc_memory);
+        exit(EXIT_FAILURE);
     }
-    return freq;
+    
+    new_freqtab_element->character = character;
+    new_freqtab_element->frequency = ININIT_CHARCTER;
+    
+    return new_freqtab_element;
 }
 
 
 
-extern void delete_freqtab_element(FREQTAB_ELEMENT** freq)
+extern void delete_freqtab_element(FREQTAB_ELEMENT** freqtab_element)
 {
-    free(*freq);
-    *freq = NULL;
+    free(*freqtab_element);
+    *freqtab_element = NULL;
 }
 
 
 
-extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freq)
+extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freqtab_element)
 {
-    return freq->character;
+    return freqtab_element->character;
 }
 
 
 
-extern unsigned long freqtab_element_get_frequency(FREQTAB_ELEMENT* freq)
+extern unsigned long freqtab_element_get_frequency(FREQTAB_ELEMENT* freqtab_element)
 {
-    return freq->frequency;
+    return freqtab_element->frequency;
 }
 
 
 
-extern void freqtab_element_inc_frequency(FREQTAB_ELEMENT* freq)
+extern void freqtab_element_inc_frequency(FREQTAB_ELEMENT* freqtab_element)
 {
-    freq->frequency++;
+    freqtab_element->frequency++;
 }
+
