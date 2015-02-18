@@ -45,13 +45,60 @@ typedef struct S_PQUEUE_ELEMENT PQUEUE_ELEMENT;
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
+/**
+ * Diese Funktion erstellt ein neues Prioritäts-Warteschlangen-Element auf dem 
+ * Heap, das ein übergebenenes Huffman-Baum-Element mit dem dazugehörigen
+ * übergebenen Gewicht speichert und gibt einen Zeiger auf dieses
+ * neu erstellte Element zurück.
+ * 
+ * @param htree_element Zeiger auf Huffman-Baum-Element, der in dem neu 
+ *                      erstellten Prioritäts-Warteschlangen-Element 
+ *                      gespeichert wird  
+ * @param weight positive Ganzzahl [0 bis MAX_ULONG], welche das Gewicht 
+ *               repräsentiert, das in dem neu erstellten
+ *               Prioritäts-Wartenschlangen-Element gespeichert wird
+ * @return Zeiger auf das neu erstellte Prioritäts-Warteschlangen-Element
+ */
 extern PQUEUE_ELEMENT* create_pqueue_element(HTREE_ELEMENT* htree_element, 
                                              unsigned long weight);
 
+
+
+/**
+ * Diese Funktion löscht das übergebene Prioritäts-Warteschlangen-Element 
+ * vom Heap und gibt den Speicher wieder frei.
+ * 
+ * @param pqueue_element Zeiger auf die Adresse des 
+ *                       Prioritäts-Warteschlangen-Elementes, das gelöscht 
+ *                       werden soll
+ */
 extern void delete_pqueue_element(PQUEUE_ELEMENT** pqueue_element);
 
+
+
+/**
+ * Diese Funktion liefert das Gewicht (reziproke Priorität) des übergeben
+ * Prioritäts-Warteschlangen-Elementes zurück.
+ * 
+ * @param pqueue Zeiger auf das Prioritäts-Warteschlangen-Element, dessen
+ *               Gewicht zurückgeliefert werden soll
+ * @return positive Ganzzahl [0 bis MAX_ULONG], welche das Gewicht 
+ *         repräsentiert, das in dem übergeben 
+ *         Prioritäts-Warteschlangen-Element gespeichert ist
+ */
 extern unsigned long pqueue_element_get_weight(PQUEUE_ELEMENT* pqueue);
 
+
+
+/**
+ * Diese Funktion liefert das Huffman-Baum-Element des übergeben
+ * Prioritäts-Warteschlangen-Elementes zurück.
+ * 
+ * @param pqueue Zeiger auf das Prioritäts-Warteschlangen-Element, dessen
+ *               Huffman-Baum-element zurückgeliefert werden soll
+ * @return Zeiger auf das Huffman-Baum-Element, welches in dem übergeben
+ *         Prioritäts-Warteschlangen-Element gespeichert ist
+ */
 extern HTREE_ELEMENT* pqueue_element_get_htree_element(PQUEUE_ELEMENT* pqueue);
 
 
