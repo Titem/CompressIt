@@ -328,7 +328,7 @@ test5 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
 	@echo
 	@echo vergleichen von Quell-Datei und dekomprimierter Datei
-	diff ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
+	diff -s ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
 	@echo
 	@echo loeschen der Dateien
 	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
@@ -352,7 +352,7 @@ test6 :
 	./$(EXEPATH)/$(EXE) -d ./res/tests/chars-full.txt.hc ./res/tests/chars-full.txt.hc.hd
 	@echo
 	@echo vergleichen von Quell-Datei und dekomprimierter Datei
-	diff ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc.hd
+	diff -s ./res/tests/chars-full.txt ./res/tests/chars-full.txt.hc.hd
 	@echo
 	@echo loeschen der Dateien
 	rm ./res/tests/chars-full.txt.hc ./res/tests/chars-full.txt.hc.hd
