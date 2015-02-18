@@ -214,7 +214,7 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
 
 	htree_element_kill(htree->prep_htree_element);
 
-    if (!htree_is_emty(htree))
+    if (!htree_is_empty(htree))
     {
         /* nächsten codetab_element vorbereiten */
         htree_prep_codetab_element(htree);
@@ -224,7 +224,7 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
 }
 
 
-extern bool htree_is_emty(HTREE* htree)
+extern bool htree_is_empty(HTREE* htree)
 {
     return htree->root_node == NULL
            || htree_element_is_killed(htree->root_node);

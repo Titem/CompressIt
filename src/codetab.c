@@ -56,7 +56,7 @@ extern CODETAB* create_codetab(HTREE* htree)
     memset(new_codetab->char_map, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
     /* Codetab-Elemente abholen und einfügen */
-    while (!htree_is_emty(htree))
+    while (!htree_is_empty(htree))
     {
         new_codetab_element = htree_get_codetab_element(htree);
         new_codetab->char_map[codetab_element_get_char(new_codetab_element)]
