@@ -57,6 +57,7 @@ typedef enum
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
+
 extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, void* element);
 
 extern void delete_htree_element(HTREE_ELEMENT** htree_element);

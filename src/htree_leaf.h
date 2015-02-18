@@ -33,10 +33,38 @@ typedef struct S_HTREE_LEAF HTREE_LEAF;
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
+/**
+ * Diese Funktion erstellt ein neues Huffman-Baum-Blatt mit dem
+ * übergebenen Schriftzeichen auf dem Heap und gibt einen Zeiger auf dieses
+ * neu erstellte Huffman-Baum-Blatt zurück.
+ * 
+ * @param character Schriftzeichen, das in dem neu erstellten 
+ *                  Huffman-Baum-Blatt gespeichert ist
+ * @return Zeiger auf das neu erstellte Huffman-Baum-Blatt
+ */
 extern HTREE_LEAF* create_htree_leaf(unsigned char character);
 
+
+
+/**
+ * Diese Funktion löscht ein übergebenes Huffman-Baum-Blatt vom Heap 
+ * und gibt den Speicher wieder frei.
+ * 
+ * @param htree_leaf Zeiger auf die Adresse des Huffman-Baum-Blattes, 
+ *                   das gelöscht werden soll
+ */
 extern void delete_htree_leaf(HTREE_LEAF** htree_leaf);
 
+
+
+/**
+ * Diese Funktion liefert das Schriftzeichen des überbenen 
+ * Huffman-Baum-Blattes zurück.
+ * 
+ * @param htree_leaf Zeiger auf das Huffman-Baum-Blatt, dessen Schriftzeichen
+ *                   zurückgeliefert werden soll
+ * @return Schriftzeichen des übergeben Huffman-Baum-Blattes
+ */
 extern unsigned char htree_leaf_get_char(HTREE_LEAF* htree_leaf);
 
 
