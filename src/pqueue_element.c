@@ -39,6 +39,7 @@ extern PQUEUE_ELEMENT* create_pqueue_element(HTREE_ELEMENT* htree_element,
 }
 
 
+
 extern void delete_pqueue_element(PQUEUE_ELEMENT** pqueue_element)
 {
     free(*pqueue_element);
@@ -46,10 +47,12 @@ extern void delete_pqueue_element(PQUEUE_ELEMENT** pqueue_element)
 }
 
 
+
 extern unsigned long pqueue_element_get_weight(PQUEUE_ELEMENT* pqueue_element)
 {
     return pqueue_element->weight;
 }
+
 
 
 extern HTREE_ELEMENT* pqueue_element_get_htree_element(PQUEUE_ELEMENT* pqueue_element)
