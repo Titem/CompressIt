@@ -20,6 +20,10 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert ein Code-Tabellen-Element.
+ * Variablen diesen Datentyps beinhalten Code-Tabellen-Element. 
+ */
 typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
 
 

@@ -21,6 +21,10 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert einen Huffman-Baum.
+ * Variablen diesen Datentyps beinhalten Huffman-Bäume. 
+ */
 typedef struct S_HTREE HTREE;
 
 

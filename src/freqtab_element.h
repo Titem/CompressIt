@@ -21,9 +21,10 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
-/*---------------------------------------------------------------------------------*/
-/*-----STRUCT DEFINITION FÜR FREQUENCY TABLE ELEMENT-------------------------------*/
-/*---------------------------------------------------------------------------------*/
+/**
+ * Dieser Datentyp repräsentiert ein Häufigkeits-Tabellen-Element.
+ * Variablen diesen Datentyps beinhalten Häufigkeits-Tabellen-Elemente. 
+ */
 typedef struct S_FREQTAB_ELEMENT FREQTAB_ELEMENT;
 
 

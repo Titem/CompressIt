@@ -20,6 +20,12 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert eine Auswahl, in welchem Betriebsmodus die 
+ * Anwendung ausgeführt wird.
+ * Variablen diesen Datentyps können vier Zustände annehmen 
+ * (undefiniert, komprimieren, dekomprimieren, Manpage anzeigen). 
+ */
 typedef enum
 {
     UNDEFINED,
@@ -27,9 +33,12 @@ typedef enum
     DECOMPRESS,
     MANPAGE
 }MODE;
-/*---------------------------------------------------------------------------------*/
-/*---------------DEKLERATION EINER PORPERTIES STRUCT-------------------------------*/
-/*---------------------------------------------------------------------------------*/
+
+
+/**
+ * Dieser Datentyp repräsentiert eine Eigenschaftsliste.
+ * Variablen diesen Datentyps beinhalten Eigenschaftslisten. 
+ */
 typedef struct S_PROPERTIES PROPERTIES;
 
 

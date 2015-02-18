@@ -20,6 +20,10 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert eine Häufigkeits-Tabelle.
+ * Variablen diesen Datentyps beinhalten Häufigkeits-Tabellen. 
+ */
 typedef struct S_FREQTAB FREQTAB;
 
 

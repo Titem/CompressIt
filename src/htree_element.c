@@ -21,7 +21,7 @@
 
 struct S_HTREE_ELEMENT
 {
-    HTREE_TYPE type;
+    HTREE_ELEMENT_TYPE type;
     void* element;
     bool killed;
 };
@@ -33,7 +33,7 @@ struct S_HTREE_ELEMENT
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern HTREE_ELEMENT* create_htree_element(HTREE_TYPE type, void* element)
+extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, void* element)
 {
     HTREE_ELEMENT* new_htree_element = malloc(sizeof(HTREE_ELEMENT));
     

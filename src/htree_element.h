@@ -22,13 +22,24 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert ein Huffman-Baum-Element.
+ * Variablen diesen Datentyps beinhalten Huffman-Baum-Elemente. 
+ */
 typedef struct S_HTREE_ELEMENT HTREE_ELEMENT;
 
+
+/**
+ * Dieser Datentyp repräsentiert eine Auswahl um welchen Typ von 
+ * Huffman-Baum-Element es sich handelt.
+ * Variablen diesen Datentyps können zwei Zustände annehmen, entweder Knoten oder
+ * Blatt. 
+ */
 typedef enum
 {
     NODE,
     LEAF
-} HTREE_TYPE;
+} HTREE_ELEMENT_TYPE;
 
 
 
@@ -46,7 +57,7 @@ typedef enum
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-extern HTREE_ELEMENT* create_htree_element(HTREE_TYPE type, void* element);
+extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, void* element);
 
 extern void delete_htree_element(HTREE_ELEMENT** htree_element);
 

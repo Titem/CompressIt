@@ -20,6 +20,10 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert ein Huffman-Baum-Blatt.
+ * Variablen diesen Datentyps beinhalten Huffman-Baum-Blätter. 
+ */
 typedef struct S_HTREE_LEAF HTREE_LEAF;
 
 

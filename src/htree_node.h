@@ -32,6 +32,10 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert einen Huffman-Baum-Knoten.
+ * Variablen diesen Datentyps beinhalten Huffman-Baum-Knoten. 
+ */
 typedef struct S_HTREE_NODE HTREE_NODE;
 
 

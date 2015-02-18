@@ -21,6 +21,10 @@
  * Typdefinitionen                                                          *
  * ======================================================================== */
 
+/**
+ * Dieser Datentyp repräsentiert ein Prioritäts-Warteschlangen-Element.
+ * Variablen diesen Datentyps beinhalten Prioritäts-Warteschlangen-Elemente. 
+ */
 typedef struct S_PQUEUE_ELEMENT PQUEUE_ELEMENT;
 
 
