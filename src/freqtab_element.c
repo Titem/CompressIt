@@ -7,6 +7,8 @@
 
 #include <stdlib.h>
 
+#include "error.h"
+
 
 
 

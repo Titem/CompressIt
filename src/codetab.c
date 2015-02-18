@@ -426,7 +426,7 @@ extern void codetab_print(CODETAB* codetab)
         }
     }
     printf("=================================================\n");
-    printf("Anzahl Element: %i\n", codetab->length);
+    printf("Anzahl Element: %i\n", (int) codetab->length);
 }
 
 

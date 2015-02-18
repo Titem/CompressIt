@@ -104,5 +104,4 @@ extern unsigned long freqtab_element_get_frequency(FREQTAB_ELEMENT* freqtab_elem
 extern void freqtab_element_inc_frequency(FREQTAB_ELEMENT* freqtab_element);
 
 
-
 #endif	/* FREQTAB_ELEMENT_H */

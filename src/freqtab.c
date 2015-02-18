@@ -106,7 +106,7 @@ extern FREQTAB_ELEMENT* freqtab_get_element(FREQTAB* freqtab)
 
 
 
-extern bool freqtab_is_emty(FREQTAB* freqtab)
+extern bool freqtab_is_empty(FREQTAB* freqtab)
 {
     return freqtab->working_index >= 256;
 }
@@ -135,7 +135,7 @@ extern void freqtab_print(FREQTAB* freqtab)
     }
     printf("--------------------------------------\n");
     printf("Zeichen insgesamt:   %lu\n", freqtab->content_length);
-    printf("Zeichen verschieden: %d\n", freqtab->length);
+    printf("Zeichen verschieden: %i\n", (int) freqtab->length);
 
 }
 

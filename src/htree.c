@@ -60,7 +60,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     #ifdef DEBUG_HUFFMAN
     printf("PQUEUE Number of Elements vor insert: %i\n\n", (int)pqueue_get_number_of_entries(pqueue));
     #endif
-    while (!freqtab_is_emty(freqtab))
+    while (!freqtab_is_empty(freqtab))
     {
         /* freqtab_element aus freqtab entnehmen */
         /*HIER IST DER FEHLER freqtab_element is NULL.*/
