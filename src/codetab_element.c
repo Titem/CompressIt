@@ -41,11 +41,15 @@ extern CODETAB_ELEMENT* create_codetab_element(unsigned char character,
     return new_codetab_element;
 }
 
+
+
 extern void delete_codetab_element(CODETAB_ELEMENT** codetab_element)
 {
     free(*codetab_element);
     *codetab_element = NULL;
 }
+
+
 
 extern bool codetab_element_is_bit_set(CODETAB_ELEMENT* codetab_element, 
                                        unsigned char position)
@@ -53,16 +57,22 @@ extern bool codetab_element_is_bit_set(CODETAB_ELEMENT* codetab_element,
     return codetab_element->code[position];
 }
 
+
+
 extern unsigned char codetab_element_get_char
                      (CODETAB_ELEMENT* codetab_element)
 {
     return codetab_element->character;
 }
 
+
+
 extern bool* codetab_element_get_code(CODETAB_ELEMENT* codetab_element)
 {
     return codetab_element->code;
 }
+
+
 
 extern unsigned char codetab_element_get_code_length
                      (CODETAB_ELEMENT* codetab_element)

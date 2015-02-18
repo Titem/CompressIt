@@ -65,7 +65,6 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
             shift_count = 0;
         }
 
-
         /* Platz in der Bitqueue vorbereiten */
         bitqueue <<= 1;
         /* shift_count erhöhen */
@@ -77,24 +76,18 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
         }
         /* code_length erniedrigen */
         code_index--;
-
-
     }
 
     /* Padding-Bits einfügen (nur wenn nötig)*/
-
     while (shift_count > 0 && shift_count < 8)
     {
         /* Bitqueue nach links schieben */
         bitqueue <<= 1;
-
         /* shift_count erhöhen */
         shift_count++;
     }
-        /* Byte aus Bitqueue wegschreiben */
+    /* Byte aus Bitqueue wegschreiben */
     fputc(bitqueue, output_stream);
-
-    /*MD5 Prüfsumme*/
 }
 
 extern void decode_content(FILE* input_stream, FILE* output_stream,
