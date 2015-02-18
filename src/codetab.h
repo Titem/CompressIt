@@ -92,7 +92,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab);
  * Diese Funktion löscht eine übergebene Code-Tabelle vom Heap und gibt den
  * Speicher wieder frei.
  *  
- * @param codetab Zeiger auf die Adresse der Code-Tabelle die gelöscht werden
+ * @param codetab Zeiger auf die Adresse der Code-Tabelle, die gelöscht werden
  *                soll
  */
 extern void delete_codetab(CODETAB** codetab);
