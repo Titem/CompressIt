@@ -127,10 +127,11 @@ extern unsigned char codetab_get_code_length(CODETAB* codetab,
 
 
 /**
- * Diese Funktion entnimmt ein Code-Tabellen-Element aus der Code-Tabelle
- * und liefert einen Zeiger auf das entnommene Element zurück.
+ * Diese Funktion entnimmt ein Code-Tabellen-Element aus der übergebenen 
+ * Code-Tabelle und liefert einen Zeiger auf das entnommene Element zurück.
  * 
- * @param codetab Code-Tabelle der ein Element entnommen werden soll
+ * @param codetab Zeiger auf die Code-Tabelle, 
+ *                der ein Element entnommen werden soll
  * @return Zeiger auf entnommenes Code-Tabellen-Element
  */
 extern CODETAB_ELEMENT* codetab_get_element(CODETAB* codetab);
@@ -141,7 +142,7 @@ extern CODETAB_ELEMENT* codetab_get_element(CODETAB* codetab);
  * Diese Funktion liefert einen Wahrheitswert zurück, der angibt, ob die 
  * übergebene Code-Tabelle noch Elemente enthält, oder leer ist.
  * 
- * @param codetab Zeiger auf die Code-Tabelle die abgefragt werden soll 
+ * @param codetab Zeiger auf die Code-Tabelle, die abgefragt werden soll 
  * @return Wahrheitswert, der gangibt ob die Code-Tabelle leer ist
  *         (true = Code-Tabelle enthält KEINE Elemente (leer);
  *          false = Code-Tabelle enthält noch Elemente)

@@ -64,6 +64,7 @@ extern CODETAB_ELEMENT* create_codetab_element(unsigned char character,
 /**
  * Diese Funktion löscht das übergebene Code-Tabellen-Element vom Heap 
  * und gibt den Speicher wieder frei.
+ * 
  * @param codetab_element Zeiger auf die Adresse des Code-Tabellen-Elementes,
  *                        das gelöscht werden soll
  */
