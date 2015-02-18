@@ -25,6 +25,10 @@ struct S_PQUEUE
 
 
 
+/* ======================================================================== *
+ * Funktionsprototypen                                                      *
+ * ======================================================================== */
+
 static void pqueue_heapify(PQUEUE* pqueue, unsigned short index);
 
 static void pqueue_build_heap(PQUEUE* pqueue);

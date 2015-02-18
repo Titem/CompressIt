@@ -27,6 +27,13 @@ struct S_CODETAB
     CODETAB_ELEMENT* char_index[256];
 };
 
+
+
+
+/* ======================================================================== *
+ * Funktionsprototypen                                                      *
+ * ======================================================================== */
+
 static void codetab_get_next_index(CODETAB* codetab);
 
 
