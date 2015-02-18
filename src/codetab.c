@@ -24,7 +24,7 @@ struct S_CODETAB
 {
     unsigned short length;
     unsigned short working_index;
-    CODETAB_ELEMENT* char_index[256];
+    CODETAB_ELEMENT* char_map[256];
 };
 
 
@@ -53,13 +53,13 @@ extern CODETAB* create_codetab(HTREE* htree)
     /* Initialisieren */
     new_codetab->working_index = 0;
     new_codetab->length = 0;
-    memset(new_codetab->char_index, 0, sizeof(CODETAB_ELEMENT*) * 256);
+    memset(new_codetab->char_map, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
     /* Codetab-Elemente abholen und einfügen */
     while (!htree_is_emty(htree))
     {
         new_codetab_element = htree_get_codetab_element(htree);
-        new_codetab->char_index[codetab_element_get_char(new_codetab_element)]
+        new_codetab->char_map[codetab_element_get_char(new_codetab_element)]
                 = new_codetab_element;
         new_codetab->length++;
     }
@@ -114,7 +114,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
     }
 
     new_codetab->working_index = 0;
-    memset(new_codetab->char_index, 0, sizeof(CODETAB_ELEMENT*) * 256);
+    memset(new_codetab->char_map, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
     while (count < new_codetab->length)
     {
@@ -199,7 +199,7 @@ extern CODETAB* read_codetab(FILE* input_stream)
                 code_index = 0;
 
                 new_codetab_element = create_codetab_element(character, code, code_length);
-                new_codetab->char_index[character] = new_codetab_element;
+                new_codetab->char_map[character] = new_codetab_element;
 
                 count++;
             }
@@ -225,7 +225,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
     } state = CHAR;
 
     /* Werte Init */
-    unsigned char character = codetab_element_get_char(codetab->char_index[codetab->working_index]);
+    unsigned char character = codetab_element_get_char(codetab->char_map[codetab->working_index]);
     unsigned char code_length = 0;
     bool* code = NULL;
     
@@ -276,7 +276,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
             if (char_shift == 8)
             {
                 state = LENGTH;
-                code_length = codetab_element_get_code_length(codetab->char_index[codetab->working_index]);
+                code_length = codetab_element_get_code_length(codetab->char_map[codetab->working_index]);
                 length_shift = 0;
             }
             break;
@@ -300,8 +300,8 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
             if (length_shift == 8)
             {
                 state = CODE;
-                code = codetab_element_get_code(codetab->char_index[codetab->working_index]);
-                code_length = codetab_element_get_code_length(codetab->char_index[codetab->working_index]);
+                code = codetab_element_get_code(codetab->char_map[codetab->working_index]);
+                code_length = codetab_element_get_code_length(codetab->char_map[codetab->working_index]);
                 code_index = 0;
             }
             break;
@@ -326,7 +326,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
                 if (count < codetab->length - 1)
                 {   state = CHAR;
                     codetab_next_working_index(codetab);
-                    character = codetab_element_get_char(codetab->char_index[codetab->working_index]);
+                    character = codetab_element_get_char(codetab->char_map[codetab->working_index]);
                     char_shift = 0;
                 }
                 count++;
@@ -353,9 +353,9 @@ extern void delete_codetab(CODETAB** codetab)
     
     for (i = 0; i < 256; i++)
     {
-        if ((*codetab)->char_index[i] != NULL)
+        if ((*codetab)->char_map[i] != NULL)
         {
-            delete_codetab_element(&((*codetab)->char_index[i]));
+            delete_codetab_element(&((*codetab)->char_map[i]));
         }
     }
     
@@ -367,14 +367,14 @@ extern void delete_codetab(CODETAB** codetab)
 
 extern bool* codetab_get_code(CODETAB* codetab, unsigned char character)
 {
-    return codetab_element_get_code(codetab->char_index[character]);
+    return codetab_element_get_code(codetab->char_map[character]);
 }
 
 
 
 extern unsigned char codetab_get_code_length(CODETAB* codetab, unsigned char character)
 {
-    return codetab_element_get_code_length(codetab->char_index[character]);
+    return codetab_element_get_code_length(codetab->char_map[character]);
 }
 
 
@@ -387,7 +387,7 @@ extern CODETAB_ELEMENT* codetab_get_element(CODETAB* codetab)
     /* working_index auf naechstes codetab_element setzen */
     codetab_next_working_index(codetab);
 
-    return codetab->char_index[old_working_index];
+    return codetab->char_map[old_working_index];
 }
 
 
@@ -409,14 +409,14 @@ extern void codetab_print(CODETAB* codetab)
            "=================================================\n");
     for (i = 0; i < 256; i++)
     {
-        if (codetab->char_index[i] != NULL)
+        if (codetab->char_map[i] != NULL)
         {
             printf("%c\t%i\t%i\t", 
-                   codetab_element_get_char(codetab->char_index[i]), 
-                   (int) codetab_element_get_char(codetab->char_index[i]), 
-                   codetab_element_get_code_length(codetab->char_index[i]));
+                   codetab_element_get_char(codetab->char_map[i]), 
+                   (int) codetab_element_get_char(codetab->char_map[i]), 
+                   codetab_element_get_code_length(codetab->char_map[i]));
 
-            code = codetab_element_get_code(codetab->char_index[i]);
+            code = codetab_element_get_code(codetab->char_map[i]);
             for (x = 0; x < codetab_get_code_length(codetab, (unsigned char) i); x++)
             {
                 printf("%u", *code);
@@ -433,10 +433,9 @@ extern void codetab_print(CODETAB* codetab)
 
 static void codetab_init_working_index(CODETAB* codetab)
 {
-    while (codetab->working_index < 256 && codetab->char_index[codetab->working_index] == NULL)
+    while (codetab->working_index < 256 && codetab->char_map[codetab->working_index] == NULL)
     {
         codetab->working_index++;
-
     }
 }
 
