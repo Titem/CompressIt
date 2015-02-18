@@ -1,10 +1,15 @@
 /* 
- * File:   htree_element.h
- * Author: Tim Buschmann
+ * @file htree_element.h
+ * 
+ * Dieses Modul repräsentiert ein Huffman-Baum-Element also ein Bestandteil
+ * eines Huffman-Baumes. Ein solches Element kann entweder ein 
+ * Knoten (htree_node) sein oder ein Blatt (htree_leaf).
+ * Ein Huffman-Baum-Element stellt in etwa eine abstrakte Generalisierung eines
+ * Huffman-Baum-Knotens und einem Huffman-Baum-Blattes da.
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:15
  */
 
 #ifndef HTREE_ELEMENT_H

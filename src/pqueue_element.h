@@ -1,10 +1,14 @@
 /* 
- * File:   htree_element.h
- * Author: Tim Buschmann
+ * @file pqueue_element.h
+ * 
+ * Dieses Modul repräsentiert ein Prioritäts-Warteschlangen-Element also einen
+ * Eintrag in der Prioritäts-Warteschlange. Ein solcher Eintrag enthält das
+ * wartende Huffman-Baum-Element sowie das Gewicht dieses Element, durch das
+ * sich die Priorität also die Position in der Warteschlange ergibt. 
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:15
  */
 
 #ifndef PQUEUE_ELEMENT_H

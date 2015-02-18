@@ -1,10 +1,12 @@
 /* 
- * File:   error.h
- * Author: Tim Buschmann
+ * @file error.h
+ * 
+ * Dieses Modul enthält alle Fehlermeldungs-Texte und soinstige Funktionen
+ * zur Fehlerhandhabung.
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz 
- *
- * Created on 6. Februar 2015, 16:16
  */
 
 #ifndef ERROR_H

@@ -1,10 +1,13 @@
 /* 
- * File:   htree_element.h
- * Author: Tim Buschmann
+ * @file htree_leaf.h
+ * 
+ * Dieses Modul repräsentiert ein Huffman-Baum-Blatt.
+ * Ein solches Blatt enthält das Schriftzeichen, welches an der Position,
+ * an der sich das Blatt im Baum befindet, abgelegt ist.
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:15
  */
 
 #ifndef HTREE_LEAF_H

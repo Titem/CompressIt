@@ -1,10 +1,13 @@
 /* 
- * File:   freqtab.h
- * Author: Tim Buschmann
+ * @file freqtab.h
+ * 
+ * Dieses Modul repräsentiert eine Häufigkeits-Tabelle.
+ * Eine Häufigkeits-Tabelle beinhaltet die Häufigkeiten, mit der jedes 
+ * verwendete Schriftzeichen im Inhalt der zu komprimierenden Datei vorkommt. 
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz 
- *
- * Created on 6. Februar 2015, 16:16
  */
 
 #ifndef FREQTAB_H

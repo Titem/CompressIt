@@ -1,10 +1,13 @@
 /* 
- * File:   compressor.h
- * Author: Tim Buschmann
+ * @file compressor.h
+ * 
+ * Dieses Modul repräsentiert den Komprimierungs-Controller, der nacheinander
+ * die einzelnen Schritte bei der Komprimierung sowie Dekomprimierung 
+ * ansteuert.
+ * 
+ * author: Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:26
  */
 
 #ifndef COMPRESSOR_H

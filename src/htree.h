@@ -1,10 +1,15 @@
 /* 
- * File:   htree.h
- * Author: Tim Buschmann
+ * @file htree.h
+ * 
+ * Dieses Modul repräseintiert einen Huffman-Baum. 
+ * Ein Huffman-Baum enthält die Zeichen, die im Inhalt einer zu 
+ * komprimierenden Datei vorkommen. Diese Zeichen sind dabei als Blätter im
+ * Huffman-Baum so angeordnet, dass der Weg von der Wurzel zu den Blättern 
+ * die Kodierung des jeweiligen Zeichens repräsentiert.  
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:13
  */
 
 #ifndef HTREE_H

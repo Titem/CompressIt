@@ -1,10 +1,15 @@
 /* 
- * File:   codetab.h
- * Author: Tim Buschmann
+ * @file codetab.h
+ * 
+ * Dieses Modul repräsentiert eine Code-Tabelle.
+ * Eine Code-Tabelle, auch Codebuch genannt, beinhaltet die Codes für die 
+ * verwendeten Schriftzeichen. Die Code-Tabelle wird am Anfang der 
+ * komprimierten Datei abgelegt um das spätere Dekomprimieren (Dekodieren)
+ * zu ermöglichen.
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:15
  */
 
 #ifndef CODETAB_H

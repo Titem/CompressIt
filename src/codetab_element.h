@@ -1,10 +1,13 @@
 /* 
- * File:   codetab_element.h
- * Author: Tim Buschmann
+ * @file codetab_element.h
+ * 
+ * Dieses Modul repräsentiert ein Code-Tabellen-Element also einen Eintrag 
+ * in der Code-Tabelle. Ein solcher Eintrag enthält den Code mit seiner 
+ * Code-Länge und das Zeichen, welches durch den Code repräsentiert wird. 
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:16
  */
 
 #ifndef CODETAB_ELEMENT_H

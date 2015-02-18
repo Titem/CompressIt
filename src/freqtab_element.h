@@ -1,10 +1,14 @@
 /* 
- * File:   freqtab_element.h
- * Author: Tim Buschmann
+ * @file freqtab_element.h
+ * 
+ * Dieses Modul repräsentiert ein Häufigkeits-Tabellen-Element also einen
+ * Eintrag in der Häufigkeits-Tabelle. Ein solcher Eintrag enthällt die 
+ * Häufigkeit, mit der ein bestimmtes Schriftzeichen im Inhalt der zu 
+ * komprimierenden Datei vorkommt, und dieses Zeichen selber.
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz 
- *
- * Created on 6. Februar 2015, 16:16
  */
 
 #ifndef FREQTAB_ELEMENT_H

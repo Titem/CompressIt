@@ -1,10 +1,13 @@
 /* 
- * File:   properties.h
- * Author: Tim Buschmann
+ * @file properties.h
+ * 
+ * Dieses Modul repräsentiert eine Einstellungsliste mit allen Einstellungen,
+ * die für das Ausführen des Programmes notwendig sind, enthält. 
+ * Die Einstellungen werden aus den Programm-Aufruf-Parametern ermittelt. 
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:26
  */
 
 #ifndef PROPERTIES_H

@@ -1,10 +1,12 @@
 /* 
- * File:   content_coder.h
- * Author: Tim Buschmann
+ * @file content_coder.h
+ * 
+ * Dieses Modul repräsentiert das kodiersystem, welches den zu 
+ * komprimierenden/dekomprimierenden Inhalt enkodiert/dekodiert.
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:16
  */
 
 #ifndef CONTENT_CODER_H

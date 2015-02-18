@@ -1,10 +1,14 @@
 /* 
- * File:   htree_element.h
- * Author: Tim Buschmann
+ * @file htree_node.h
+ * 
+ * Dieses Modul repräsentiert einen Huffman-Baum-Knoten.
+ * Ein solcher Knoten kann vielfach im Huffman-Baum vorkommen und beschreibt 
+ * die Gabelungen in der Baumstruktur. Ein Knoten kann dabei zwei weitere 
+ * Kind-elemente enthalten die ein Blatt oder wiederum ein Knoten sein können.
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:15
  */
 
 #ifndef HTREE_NODE_H

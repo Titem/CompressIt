@@ -1,10 +1,18 @@
 /* 
- * File:   pqueue.h
- * Author: Tim Buschmann
+ * @file pqueue.h
+ * 
+ * Dieses Modul repräsentiert eine Prioritäts-Warteschlange für 
+ * Huffman-Baum-Elemente. In dieser Warteschlange warten beim erstellen 
+ * eines Huffman-Baumes die einzelnen Huffman-Baum-Elemente auf ihr 
+ * Zusammengefügtwerden (Merge). 
+ * Die Warteschalnge kann wartende Huffman-Baum-Elemente aufnehmen. Intern 
+ * werden die wartenden Huffman-Baum-Elemente in die Reihenfolge gebracht,
+ * sodass das Element mit dem niedrigsten Gewicht der Wartescxhlange zuerst 
+ * entnommen werden kann um es dem Merge-Prozess zuzuführen.  
+ * 
+ * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
- *
- * Created on 6. Februar 2015, 16:14
  */
 
 #ifndef PQUEUE_H
