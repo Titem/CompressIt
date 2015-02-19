@@ -57,41 +57,93 @@ typedef struct S_PROPERTIES PROPERTIES;
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-/*---------------------------------------------------------------------------------*/
-/*-----ERSTELLT EINE NEUE STRUCT UND LIEFERT EINEN PROPERTIES POINTER ZURÜCK-------*/
-/*---------------------------------------------------------------------------------*/
+/**
+ * Diese Funktion erstellt eine neue Parameterliste auf dem Heap auf Basis
+ * der übergebenen Aufruf-Parameter und liefert einen Zeiger auf die neu 
+ * erstellte Parameterliste zurück.
+ * 
+ * @param argv Zeiger auf ein Zeichenketten-Array, welches die Aufruf-Parameter
+ *             enthält
+ * @param argc positive Ganzzahl [0 bis MAX_INT], welche die Anzahl der
+ *             übergebenen Aufruf-Parameter repräsentiert
+ * @return Zeiger auf die neu erstellte Parameterliste
+ */
 extern PROPERTIES* create_properties(char** argv, int argc);
 
 
-/*---------------------------------------------------------------------------------*/
-/*------GIBT DEN SPEICHER WIEDER FREI BZW. LÖSCHT EINEN PROPERTIES POINTER---------*/
-/*---------------------------------------------------------------------------------*/
+
+/**
+ * Diese Funktion löscht eine übergebene Parameterliste vom Heap und gibt den
+ * Speicher wieder frei.
+ * 
+ * @param p_properties Zeiger auf die Adresse der Parameterliste, 
+ *                     die gelöscht werden soll
+ */
 extern void delete_properties(PROPERTIES** p_properties);
 
-/*---------------------------------------------------------------------------------*/
-/*------LIEFERT DEN COMPRESS MODUS-------------------------------------------------*/
-/*---------------------------------------------------------------------------------*/
+
+
+/**
+ * Diese Funktion liefert den Betriebs-Modus der Anwendung, der in der
+ * Parameterliste enthalten ist, zurück.
+ * 
+ * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                     zurückgeliefert werden soll
+ * @return Zustandsauswahl um welchen Betriebs-modus es sich handelt
+ *         (komprimieren, dekomprimieren, manpage anzeigen, undefiniert)
+ */
 extern MODE properties_get_mode(PROPERTIES* p_properties);
 
-/*---------------------------------------------------------------------------------*/
-/*------LIEFERT DEN INPUTSTREAM ZURÜCK---------------------------------------------*/
-/*---------------------------------------------------------------------------------*/
+
+
+/**
+ * Diese Funktion liefert einen Zeiger auf den Datei-Namen der Quell-Datei,
+ * der in der übergebenen Parameterliste gespeichert ist, zurück.
+ * 
+ * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                     zurückgeliefert werden soll
+ * @return Zeiger auf eine Zeichenkette, die den Datei-Namen der Quell-Datei
+ *         enthält
+ */
 extern char* properties_get_input_filename(PROPERTIES* p_properties);
 
-/*---------------------------------------------------------------------------------*/
-/*------LIEFERT DEN INPUTSTREAM ZURÜCK---------------------------------------------*/
-/*---------------------------------------------------------------------------------*/
+
+
+/**
+ * Diese Funktion liefert einen Zeiger auf den Eingangs-Datenstrom, 
+ * der in der übergebenen Parameterliste gespeichert ist, zurück.
+ * 
+ * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                     zurückgeliefert werden soll
+ * @return Zeiger auf Eingangs-Datenstrom
+ */
 extern FILE* properties_get_input_stream(PROPERTIES* p_properties);
 
-/*---------------------------------------------------------------------------------*/
-/*------LIEFERT DEN OUTPUTSTREAM ZURÜCK--------------------------------------------*/
-/*---------------------------------------------------------------------------------*/
+
+
+/**
+ * Diese Funktion liefert einen Zeiger auf den Datei-Namen der Ziel-Datei,
+ * der in der übergebenen Parameterliste gespeichert ist, zurück.
+ * 
+ * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                     zurückgeliefert werden soll
+ * @return Zeiger auf eine Zeichenkette, die den Datei-Namen der Ziel-Datei
+ *         enthält
+ */
 extern char* properties_get_output_filename(PROPERTIES* p_properties);
 
-/*---------------------------------------------------------------------------------*/
-/*------LIEFERT DEN OUTPUTSTREAM ZURÜCK--------------------------------------------*/
-/*---------------------------------------------------------------------------------*/
+
+
+/**
+ * Diese Funktion liefert einen Zeiger auf den Ausgangs-Datenstrom,
+ * der in der übergebenen Parameterliste gespeichert ist, zurück.
+ * 
+ * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                     zurückgeliefert werden soll
+ * @return Zeiger auf Ausgangs-Datenstrom
+ */
 extern FILE* properties_get_output_stream(PROPERTIES* p_properties);
+
 
 #endif	/* PROPERTIES_H */
 

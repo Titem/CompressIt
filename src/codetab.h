@@ -49,7 +49,7 @@ typedef struct S_CODETAB CODETAB;
  * ======================================================================== */
 
 /**
- * Diese Funktion erstellt eine neue Code-Tabelle auf dem Heap auf basis
+ * Diese Funktion erstellt eine neue Code-Tabelle auf dem Heap auf Basis
  * eines übergebenen Huffman-Baumes und liefert einen Zeiger auf die neu 
  * erstellte Code-Tabelle zurück.
  * 
