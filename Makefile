@@ -214,7 +214,7 @@ clean :
 
 
 
-test : build test1 test2 test3 test4 test5 test6
+test : build test1 test2 test3 test4 test5 test6 test7
 #-----------------------------------------------------------------------------
 # Automatisches Testen
 
@@ -356,6 +356,21 @@ test6 :
 	@echo
 	@echo loeschen der Dateien
 	rm ./res/tests/chars-full.txt.hc ./res/tests/chars-full.txt.hc.hd
+	@echo
+	@echo Test erfolgreich durchgefuehrt!
+	@echo
+	@echo
+	@echo
+
+
+
+# Test für die Ausgabe der Manpage
+test7 :
+	@echo Test7: 
+	@echo ======
+	@echo
+	@echo Aufruf der Manpage
+	./$(EXEPATH)/$(EXE) -h 
 	@echo
 	@echo Test erfolgreich durchgefuehrt!
 	@echo
