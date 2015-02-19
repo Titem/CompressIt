@@ -20,7 +20,17 @@
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-/*Jede C-Anwendung muss genau eine Main-Methode enthalten, in der angegeben ist, wo die Programmausführung beginnen soll.*/
+/**
+ * Dies ist die Hauptfunktion des Projektes CompressIt. Mit dieser Funktion
+ * wird die Anwendung gestartet. Wird die Anwendung fehlerfrei ausgeführt
+ * liefert diese Funktion EXIT_SUCCESS (0) zurück.
+ * 
+ * @param argc Anzahl 
+ * @param argv Test2
+ * @return Ganzzahl, die einen Fehler-Code repräsentiert
+ *         (Wird die Anwendung fehlerfrei ausgeführt ist dieser Rückgabewert 
+ *          EXIT_SUCCESS (0).)
+ */
 int main(int argc, char** argv);
 
 
@@ -30,26 +40,19 @@ int main(int argc, char** argv);
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-/**
- * main.c
- * @param argc Test
- * @param argv Test2
- */
 int main(int argc, char** argv)
 {
-    PARAMETERLIST* parameterlist;
+    PARAMETERLIST* parameterlist = create_parameterlist(argv, argc);
+    
+    
     #ifdef DEBUG_HUFFMAN
     /*Für die Zeit zuständig.*/
     clock_t begin = NULL;
     clock_t end = NULL;
-
     /*Timer starten*/
     begin = clock();
     #endif
-    /*-----------------------------CODE--------------------------------*/
 
-    parameterlist = NULL;
-    parameterlist = create_parameterlist(argv, argc);
 
     switch (parameterlist_get_run_mode(parameterlist))
     {
@@ -70,15 +73,16 @@ int main(int argc, char** argv)
     default:
         printf("Hier stimmt was nicht!");
     }
-#ifdef DEBUG_HUFFMAN
-    /*-----------------------------CODE--------------------------------*/
+    
+    
+    #ifdef DEBUG_HUFFMAN
     /*Timer beenden*/
     end = clock();
-
     printf("\nBenoetigte Zeit: %i ms\n\n", (int) (end - begin));
-
     getchar();
-#endif
+    #endif
+
+    
     exit(EXIT_SUCCESS);
 }
 
