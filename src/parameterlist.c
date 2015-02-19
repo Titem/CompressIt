@@ -82,6 +82,10 @@ const char* WRITE_BINARY = "wb";
  * Diese Funktion erstellt einen Dateinamen als String auf dem Heap,
  * welcher aus dem Dateinamen und dem angehangenen Mime-Typ besteht und
  * liefert einen Zeiger auf diesen neu erstellten String zurück.
+ * 
+ * @param filename Zeiger auf die Zeichenkette, die den Dateinamen enthält
+ * @param mime_type Zeiger auf die Zeichenkette, die den Mime-Typ enthält
+ * @return Zeiger auf die neu erstellte Zeichenkette
  */
 static char* parameterlist_get_new_filename(char* filename, const char* mime_type);
 

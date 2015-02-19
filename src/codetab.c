@@ -53,8 +53,26 @@ struct S_CODETAB
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
+/**
+ * Diese Funktion initialisiert den Arbeits-Index der 
+ * übergebenen Code-Tabelle, indem sie diesen auf den erste gültige
+ * Index setzt, hinter dem sich ein gültiges Code-Tabellen-Element verbirgt.
+ * 
+ * @param codetab Zeiger auf die Code-Tabelle, dessen Arbeits-Index
+ *                initialisiert werden soll
+ */
 static void codetab_init_working_index(CODETAB* codetab);
 
+
+
+/**
+ * Diese Funktion setzt den Arbeits-Index der übergebenen Code-Tabelle
+ * auf den nächstem gültigen Index, indem sie diesen auf den nächsten gültige
+ * Index setzt, hinter dem sich ein gültiges Code-Tabellen-Element verbirgt.
+ *  
+ * @param codetab Zeiger auf die Code-Tabelle, dessen Arbeits-Index 
+ *                auf den nächsten gültigen Index erhöht werden soll.
+ */
 static void codetab_next_working_index(CODETAB* codetab);
 
 

@@ -62,6 +62,14 @@ struct S_HTREE
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
+/**
+ * Diese Funktion bereitet ein Code-Tabellen-Element für die Rückgabe durch die
+ * Funktion htree_get_codetab_element vor auf Basis eines Blattes des
+ * übergebenen Huffman-Baumes.
+ *  
+ * @param htree Zeiger auf den Huffman-Baum, dessen Blatt vorlage für das
+ *              vorzubereitende Code-tabellen_element ist.
+ */
 static void htree_prep_codetab_element(HTREE* htree);
 
 

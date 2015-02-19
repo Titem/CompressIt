@@ -56,21 +56,41 @@ struct S_FREQTAB
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-/*---------------------------------------------------------------------------------*/
-/*-----FÜGT EIN NEUES ELEMENT IN DIE FREQTAB HINZU---------------------------------*/
-/*---------------------------------------------------------------------------------*/
-static void freqtab_update(FREQTAB* freq_tab_p, unsigned char character);
+/**
+ * Diese Funktion aktualisiert die Häufigkeitstabelle indem es für das 
+ * übergebene Schriftzeichen in der übergebenen Häufigkeits-Tabelle
+ * die Häufigkeit um 1 erhöht.
+ *   
+ * @param freqtab Zeiger auf die Häufigkeits-Tabelle, die aktualisiert 
+ *                werden soll
+ * @param character Schriftzeichen, für das die Häufigkeit erhöht werden soll
+ */
+static void freqtab_update(FREQTAB* freqtab, unsigned char character);
 
 
 
-/*---------------------------------------------------------------------------------*/
-/*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
-/*---------------------------------------------------------------------------------*/
-static void freqtab_next_working_index(FREQTAB* freq_tab_p);
-/*---------------------------------------------------------------------------------*/
-/*-----INITIALISIERT DEN WORKING INDEX DER FREQTAB---------------------------------*/
-/*---------------------------------------------------------------------------------*/
-static void freqtab_init_working_index(FREQTAB* freq_tab_p);
+/**
+ * Diese Funktion initialisiert den Arbeits-Index der übergebenen 
+ * Häufigkeits-Tabelle, indem sie diesen auf den erste gültige Index setzt, 
+ * hinter dem sich ein gültiges Häufigkeits-Tabellen-Element verbirgt.
+ * 
+ * @param freqtab Zeiger auf die Code-Tabelle, dessen Arbeits-Index
+ *                initialisiert werden soll
+ */
+static void freqtab_init_working_index(FREQTAB* freqtab);
+
+
+
+/**
+ * Diese Funktion setzt den Arbeits-Index der übergebenen Häufigkeits-Tabelle
+ * auf den nächstem gültigen Index, indem sie diesen auf den nächsten gültige
+ * Index setzt, hinter dem sich ein gültiges Häufigkeits-Tabellen-Element 
+ * verbirgt.
+ * 
+ * @param freqtab Zeiger auf die Häufigkeits-Tabelle, dessen Arbeits-Index 
+ *                auf den nächsten gültigen Index erhöht werden soll.
+ */
+static void freqtab_next_working_index(FREQTAB* freqtab);
 
 
 
