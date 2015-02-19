@@ -12,9 +12,23 @@
 
 
 
+/* ======================================================================== *
+ * Makros                                                                   *
+ * ======================================================================== */
 
+/**
+ * Dieses Makro liefert für einen übergebenen Index innerhalb eines 
+ * Binären-Heap-Arrays den Index des linken Kindes zurück.
+ */
 #define GET_LEFT_CHILD_INDEX(INDEX) ((((INDEX) * 2) + 1))
+
+/**
+ * Dieses Makro liefert für einen übergebenen Index innerhalb eines 
+ * Binären-Heap-Arrays den Index des rechten Kindes zurück.
+ */
 #define GET_RIGHT_CHILD_INDEX(INDEX) ((((INDEX) * 2) + 2))
+
+
 
 
 /* ======================================================================== *
@@ -249,7 +263,7 @@ static void pqueue_print_element(PQUEUE* pqueue, unsigned short index)
     unsigned short left_child_index = GET_LEFT_CHILD_INDEX(index); 
     unsigned short right_child_index = GET_RIGHT_CHILD_INDEX(index);
 
-    int i;
+    unsigned short i;
     
     for (i = 0; i <= step; i++)
     {

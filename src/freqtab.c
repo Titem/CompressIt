@@ -41,7 +41,7 @@ struct S_FREQTAB
      * Der Index des Arrays ist gleichzeitig das Schriftzeichen, dem das
      * Häufigkeits-Tabellen-Element zugeordnet ist.
      */
-    FREQTAB_ELEMENT* char_map[MAX_CHARACTERS];
+    FREQTAB_ELEMENT* char_map[256];
     
     /**
      * Diese Variable speichert die Länge des Inhaltes, auf dessen Basis diese
@@ -171,7 +171,7 @@ extern void freqtab_print(FREQTAB* freqtab)
 
     printf("Zeichen  ---> Haeufigkeit ---> NUMERIC\n");
     printf("--------------------------------------\n");
-    for (i = 0; i < MAX_CHARACTERS; i++)
+    for (i = 0; i < 256; i++)
     {
         if (freqtab->char_map[i] != NULL)
         {
