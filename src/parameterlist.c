@@ -3,7 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "properties.h"
+#include "parameterlist.h"
 
 #include <stdbool.h>
 #include <stdlib.h>
@@ -18,9 +18,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
-struct S_PROPERTIES
+struct S_PARAMETERLIST
 {
-    MODE mode;
+    RUN_MODE run_mode;
     char* input_filename;
     FILE* input_file;
     char* output_filename;
@@ -59,7 +59,7 @@ const char* WRITE_BINARY = "wb";
  * welcher aus dem Dateinamen und dem angehangenen Mime-Typ besteht und
  * liefert einen Zeiger auf diesen neu erstellten String zurück.
  */
-static char* get_new_filename(char* filename, const char* mime_type);
+static char* parameterlist_get_new_filename(char* filename, const char* mime_type);
 
 
 
@@ -68,7 +68,7 @@ static char* get_new_filename(char* filename, const char* mime_type);
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern PROPERTIES* create_properties(char** argv, int argc)
+extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 {
     bool found_input_document = false;
     bool found_output_document = false;
@@ -80,19 +80,19 @@ extern PROPERTIES* create_properties(char** argv, int argc)
     FILE *file_read = NULL;
     FILE *file_write = NULL;
 
-    PROPERTIES *p_properties = malloc(sizeof (PROPERTIES));
+    PARAMETERLIST *new_parameterlist = malloc(sizeof(PARAMETERLIST));
 
-    if (p_properties == NULL)
+    if (new_parameterlist == NULL)
     {
         print_error(cant_malloc_memory);
         exit(EXIT_FAILURE);
     }
     
-    p_properties->mode = UNDEFINED;
-    p_properties->input_filename = NULL;
-    p_properties->input_file = NULL;
-    p_properties->output_filename = NULL;
-    p_properties->output_file = NULL;
+    new_parameterlist->run_mode = UNDEFINED;
+    new_parameterlist->input_filename = NULL;
+    new_parameterlist->input_file = NULL;
+    new_parameterlist->output_filename = NULL;
+    new_parameterlist->output_file = NULL;
     
 
     
@@ -115,7 +115,7 @@ extern PROPERTIES* create_properties(char** argv, int argc)
 
         if (!found_input_document && strcmp(*argv, COMPPRESS_FLAG) == 0)
         {
-            p_properties->mode = COMPRESS;
+            new_parameterlist->run_mode = COMPRESS;
             argc--;
             argv++;
 
@@ -136,7 +136,7 @@ extern PROPERTIES* create_properties(char** argv, int argc)
 
         if (!found_input_document && strcmp(*argv, DECOMPRESS_FLAG) == 0)
         {
-            p_properties->mode = DECOMPRESS;
+            new_parameterlist->run_mode = DECOMPRESS;
             argc--;
             argv++;
 
@@ -156,7 +156,7 @@ extern PROPERTIES* create_properties(char** argv, int argc)
         
         if (strcmp(*argv, HELP_FLAG) == 0)
         {
-            p_properties->mode = MANPAGE;
+            new_parameterlist->run_mode = MANPAGE;
             need_help = true;
         }
         /*else if (argc >= 1 && !found_input_document)
@@ -190,13 +190,13 @@ extern PROPERTIES* create_properties(char** argv, int argc)
                     printf("POINTER IS NULL -> INPUTFILENAME AS OUTPUTFILENAME!\n");
                 #endif
 
-                if (p_properties->mode == COMPRESS)
+                if (new_parameterlist->run_mode == COMPRESS)
                 {
-                    output_filename = get_new_filename(input_filename, COMPRESS_MIME_TYPE);
+                    output_filename = parameterlist_get_new_filename(input_filename, COMPRESS_MIME_TYPE);
                 }
                 else
                 {
-                    output_filename = get_new_filename(input_filename, DECOMPRESS_MIME_TYPE);
+                    output_filename = parameterlist_get_new_filename(input_filename, DECOMPRESS_MIME_TYPE);
                 }
                 
             }
@@ -232,62 +232,62 @@ extern PROPERTIES* create_properties(char** argv, int argc)
         printf("FILE POINTER in die PROPERTIES STRUCT uebernehmen !\n");
 #endif
 
-        p_properties->input_file = file_read;
-        p_properties->output_file = file_write;
+        new_parameterlist->input_file = file_read;
+        new_parameterlist->output_file = file_write;
     }
 #ifdef DEBUG_HUFFMAN
     printf("END OF PROPERTIES!\n");
 #endif
 
-    return p_properties;
+    return new_parameterlist;
 }
 
 
 
-extern void delete_properties(PROPERTIES** p_properties)
+extern void delete_parameterlist(PARAMETERLIST** parameterlist)
 {
-    free(*p_properties);
-    *p_properties = NULL;
+    free(*parameterlist);
+    *parameterlist = NULL;
 }
 
 
 
-extern MODE properties_get_mode(PROPERTIES* p_properties)
+extern RUN_MODE parameterlist_get_run_mode(PARAMETERLIST* parameterlist)
 {
-    return p_properties->mode;
+    return parameterlist->run_mode;
 }
 
 
 
-extern char* properties_get_input_filename(PROPERTIES* p_properties)
+extern char* parameterlist_get_input_filename(PARAMETERLIST* parameterlist)
 {
-    return p_properties->input_filename;
+    return parameterlist->input_filename;
 }
 
 
 
-extern FILE* properties_get_input_stream(PROPERTIES* p_properties)
+extern FILE* parameterlist_get_input_stream(PARAMETERLIST* parameterlist)
 {
-    return p_properties->input_file;
+    return parameterlist->input_file;
 }
 
 
 
-extern char* properties_get_output_filename(PROPERTIES* p_properties)
+extern char* parameterlist_get_output_filename(PARAMETERLIST* parameterlist)
 {
-    return p_properties->output_filename;
+    return parameterlist->output_filename;
 }
 
 
 
-extern FILE* properties_get_output_stream(PROPERTIES* p_properties)
+extern FILE* parameterlist_get_output_stream(PARAMETERLIST* parameterlist)
 {
-    return p_properties->output_file;
+    return parameterlist->output_file;
 }
 
 
 
-static char* get_new_filename(char* filename, const char* mime_type)
+static char* parameterlist_get_new_filename(char* filename, const char* mime_type)
 {
     size_t length = strlen(filename);
     char* new_filename = malloc(sizeof(char) * (length + 4));

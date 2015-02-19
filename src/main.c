@@ -8,7 +8,7 @@
 #ifdef DEBUG_HUFFMAN
 #include <time.h>
 #endif
-#include "properties.h"
+#include "parameterlist.h"
 #include "compressor.h"
 #include "error.h"
 /*#define DEBUG_HUFFMAN*/
@@ -37,7 +37,7 @@ int main(int argc, char** argv);
  */
 int main(int argc, char** argv)
 {
-    PROPERTIES* properties;
+    PARAMETERLIST* parameterlist;
     #ifdef DEBUG_HUFFMAN
     /*Für die Zeit zuständig.*/
     clock_t begin = NULL;
@@ -48,19 +48,19 @@ int main(int argc, char** argv)
     #endif
     /*-----------------------------CODE--------------------------------*/
 
-    properties = NULL;
-    properties = create_properties(argv, argc);
+    parameterlist = NULL;
+    parameterlist = create_parameterlist(argv, argc);
 
-    switch (properties_get_mode(properties))
+    switch (parameterlist_get_run_mode(parameterlist))
     {
     case COMPRESS:
-        compress(properties_get_input_stream(properties),
-                 properties_get_output_stream(properties));
+        compress(parameterlist_get_input_stream(parameterlist),
+                 parameterlist_get_output_stream(parameterlist));
         break;
 
     case DECOMPRESS:
-        decompress(properties_get_input_stream(properties),
-                   properties_get_output_stream(properties));
+        decompress(parameterlist_get_input_stream(parameterlist),
+                   parameterlist_get_output_stream(parameterlist));
         break;
 
     case MANPAGE:

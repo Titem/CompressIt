@@ -1,17 +1,18 @@
 /* 
- * @file properties.h
+ * @file parameterlist.h
  * 
- * Dieses Modul repräsentiert eine Einstellungsliste mit allen Einstellungen,
- * die für das Ausführen des Programmes notwendig sind, enthält. 
- * Die Einstellungen werden aus den Programm-Aufruf-Parametern ermittelt. 
+ * Dieses Modul repräsentiert eine Parameterliste mit allen Parametern,
+ * die für das Ausführen des Programmes notwendig sind. 
+ * Die Parameter der Parameterliste werden aus den 
+ * Programm-Aufruf-Parametern ermittelt. 
  * 
  * @author Tim Buschmann
  *         Artur Leinweber
  *         Alexander Schmitz
  */
 
-#ifndef PROPERTIES_H
-#define	PROPERTIES_H
+#ifndef PARAMETERLIST_H
+#define	PARAMETERLIST_H
 
 
 
@@ -21,7 +22,7 @@
  * ======================================================================== */
 
 /**
- * Dieser Datentyp repräsentiert eine Auswahl, in welchem Betriebsmodus die 
+ * Dieser Datentyp repräsentiert eine Auswahl, in welchem Betriebs-Modus die 
  * Anwendung ausgeführt wird.
  * Variablen diesen Datentyps können vier Zustände annehmen 
  * (undefiniert, komprimieren, dekomprimieren, Manpage anzeigen). 
@@ -32,14 +33,14 @@ typedef enum
     COMPRESS,
     DECOMPRESS,
     MANPAGE
-}MODE;
+}RUN_MODE;
 
 
 /**
- * Dieser Datentyp repräsentiert eine Eigenschaftsliste.
- * Variablen diesen Datentyps beinhalten Eigenschaftslisten. 
+ * Dieser Datentyp repräsentiert eine Parameterliste.
+ * Variablen diesen Datentyps beinhalten Parameterlisten. 
  */
-typedef struct S_PROPERTIES PROPERTIES;
+typedef struct S_PARAMETERLIST PARAMETERLIST;
 
 
 
@@ -68,7 +69,7 @@ typedef struct S_PROPERTIES PROPERTIES;
  *             übergebenen Aufruf-Parameter repräsentiert
  * @return Zeiger auf die neu erstellte Parameterliste
  */
-extern PROPERTIES* create_properties(char** argv, int argc);
+extern PARAMETERLIST* create_parameterlist(char** argv, int argc);
 
 
 
@@ -76,10 +77,10 @@ extern PROPERTIES* create_properties(char** argv, int argc);
  * Diese Funktion löscht eine übergebene Parameterliste vom Heap und gibt den
  * Speicher wieder frei.
  * 
- * @param p_properties Zeiger auf die Adresse der Parameterliste, 
- *                     die gelöscht werden soll
+ * @param parameterlist Zeiger auf die Adresse der Parameterliste, 
+ *                      die gelöscht werden soll
  */
-extern void delete_properties(PROPERTIES** p_properties);
+extern void delete_parameterlist(PARAMETERLIST** parameterlist);
 
 
 
@@ -87,12 +88,12 @@ extern void delete_properties(PROPERTIES** p_properties);
  * Diese Funktion liefert den Betriebs-Modus der Anwendung, der in der
  * Parameterliste enthalten ist, zurück.
  * 
- * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
- *                     zurückgeliefert werden soll
+ * @param parameterlist Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                      zurückgeliefert werden soll
  * @return Zustandsauswahl um welchen Betriebs-modus es sich handelt
  *         (komprimieren, dekomprimieren, manpage anzeigen, undefiniert)
  */
-extern MODE properties_get_mode(PROPERTIES* p_properties);
+extern RUN_MODE parameterlist_get_run_mode(PARAMETERLIST* parameterlist);
 
 
 
@@ -100,12 +101,12 @@ extern MODE properties_get_mode(PROPERTIES* p_properties);
  * Diese Funktion liefert einen Zeiger auf den Datei-Namen der Quell-Datei,
  * der in der übergebenen Parameterliste gespeichert ist, zurück.
  * 
- * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
- *                     zurückgeliefert werden soll
+ * @param parameterlist Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                      zurückgeliefert werden soll
  * @return Zeiger auf eine Zeichenkette, die den Datei-Namen der Quell-Datei
  *         enthält
  */
-extern char* properties_get_input_filename(PROPERTIES* p_properties);
+extern char* parameterlist_get_input_filename(PARAMETERLIST* parameterlist);
 
 
 
@@ -113,11 +114,11 @@ extern char* properties_get_input_filename(PROPERTIES* p_properties);
  * Diese Funktion liefert einen Zeiger auf den Eingangs-Datenstrom, 
  * der in der übergebenen Parameterliste gespeichert ist, zurück.
  * 
- * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
- *                     zurückgeliefert werden soll
+ * @param parameterlist Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                      zurückgeliefert werden soll
  * @return Zeiger auf Eingangs-Datenstrom
  */
-extern FILE* properties_get_input_stream(PROPERTIES* p_properties);
+extern FILE* parameterlist_get_input_stream(PARAMETERLIST* parameterlist);
 
 
 
@@ -125,12 +126,12 @@ extern FILE* properties_get_input_stream(PROPERTIES* p_properties);
  * Diese Funktion liefert einen Zeiger auf den Datei-Namen der Ziel-Datei,
  * der in der übergebenen Parameterliste gespeichert ist, zurück.
  * 
- * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
- *                     zurückgeliefert werden soll
+ * @param parameterlist Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                      zurückgeliefert werden soll
  * @return Zeiger auf eine Zeichenkette, die den Datei-Namen der Ziel-Datei
  *         enthält
  */
-extern char* properties_get_output_filename(PROPERTIES* p_properties);
+extern char* parameterlist_get_output_filename(PARAMETERLIST* parameterlist);
 
 
 
@@ -138,12 +139,12 @@ extern char* properties_get_output_filename(PROPERTIES* p_properties);
  * Diese Funktion liefert einen Zeiger auf den Ausgangs-Datenstrom,
  * der in der übergebenen Parameterliste gespeichert ist, zurück.
  * 
- * @param p_properties Zeiger auf die Parameterliste, aus der eine Eigenschaft
- *                     zurückgeliefert werden soll
+ * @param parameterlist Zeiger auf die Parameterliste, aus der eine Eigenschaft
+ *                      zurückgeliefert werden soll
  * @return Zeiger auf Ausgangs-Datenstrom
  */
-extern FILE* properties_get_output_stream(PROPERTIES* p_properties);
+extern FILE* parameterlist_get_output_stream(PARAMETERLIST* parameterlist);
 
 
-#endif	/* PROPERTIES_H */
+#endif	/* PARAMETERLIST_H */
 

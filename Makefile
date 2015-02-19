@@ -14,7 +14,7 @@ DOXYGEN_CFG = res/ppr_doxygen.cfg
 # Konfiguration fuer Splint
 SPLINT_LOG = ./splint.log
 
-OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/properties.o \
+OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/parameterlist.o \
 $(OBJPATH)/compressor.o $(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o \
 $(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o $(OBJPATH)/freqtab.o \
 $(OBJPATH)/pqueue.o $(OBJPATH)/htree_element.o $(OBJPATH)/htree_node.o \
@@ -138,12 +138,12 @@ $(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_node.o src/htree_node.c
 
 
-$(OBJPATH)/properties.o : src/properties.c src/properties.h src/error.h
+$(OBJPATH)/parameterlist.o : src/parameterlist.c src/parameterlist.h src/error.h
 	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/properties.o
+	@echo Erzeuge $(OBJPATH)/parameterlist.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
-	gcc $(GCC_OPTION) -o $(OBJPATH)/properties.o src/properties.c
+	gcc $(GCC_OPTION) -o $(OBJPATH)/parameterlist.o src/parameterlist.c
 
 
 $(OBJPATH)/codetab.o : src/codetab.c src/codetab.h src/codetab_element.h
@@ -170,7 +170,7 @@ $(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/freqtab.h src/ht
 	gcc $(GCC_OPTION) -o $(OBJPATH)/compressor.o src/compressor.c
 
 
-$(OBJPATH)/main.o : src/main.c src/properties.h src/compressor.h src/error.h src/freqtab.h
+$(OBJPATH)/main.o : src/main.c src/parameterlist.h src/compressor.h src/error.h src/freqtab.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/main.o
 	@echo --------------------------------------------------------
