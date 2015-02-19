@@ -16,6 +16,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau eines Häufigkeits-Tabellen-Elementes.
+ */
 struct S_FREQTAB_ELEMENT
 {
     unsigned long frequency;

@@ -15,6 +15,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau eines Huffman-Baum-Blattes.
+ */
 struct S_HTREE_LEAF
 {
     unsigned char character;

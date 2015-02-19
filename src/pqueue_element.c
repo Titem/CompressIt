@@ -14,6 +14,10 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau eines 
+ * Prioritäts-Warteschlangen-Elementes.
+ */
 struct S_PQUEUE_ELEMENT
 {
     unsigned long weight;

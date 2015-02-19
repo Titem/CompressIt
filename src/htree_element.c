@@ -19,6 +19,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau eines Huffman-Baum-Elementes.
+ */
 struct S_HTREE_ELEMENT
 {
     HTREE_ELEMENT_TYPE type;

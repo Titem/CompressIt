@@ -17,6 +17,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau eines Huffman-Baum-Knotens.
+ */
 struct S_HTREE_NODE
 {
     HTREE_ELEMENT* left_child;

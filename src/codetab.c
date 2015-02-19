@@ -20,6 +20,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau einer Code-Tabelle.
+ */
 struct S_CODETAB
 {
     unsigned short length;

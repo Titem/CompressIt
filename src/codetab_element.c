@@ -14,6 +14,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau eines Code-Tabellen-Elementes.
+ */
 struct S_CODETAB_ELEMENT
 {
     unsigned char character;

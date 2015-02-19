@@ -18,6 +18,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau einer Parameterliste.
+ */
 struct S_PARAMETERLIST
 {
     RUN_MODE run_mode;

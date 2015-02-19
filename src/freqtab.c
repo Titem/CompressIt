@@ -17,6 +17,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau einer Häufigkeits-Tabelle.
+ */
 struct S_FREQTAB
 {
     unsigned short length;

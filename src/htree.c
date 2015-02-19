@@ -24,6 +24,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau eines Huffman-Baumes.
+ */
 struct S_HTREE
 {
     CODETAB_ELEMENT* prep_codetab_element;

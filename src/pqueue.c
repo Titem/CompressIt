@@ -16,6 +16,9 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
+/** 
+ * Diese Struktur beschreibt den Aufbau einer Prioritäts-Warteschlange.
+ */
 struct S_PQUEUE
 {
     unsigned short number_of_entries;
