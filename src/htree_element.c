@@ -87,13 +87,13 @@ extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
 }
 
 
-extern bool htree_element_is_killed(HTREE_ELEMENT* htree_element)
+extern bool htree_element_is_removed(HTREE_ELEMENT* htree_element)
 {
     return htree_element->killed;
 }
 
 
-extern void htree_element_kill(HTREE_ELEMENT* htree_element)
+extern void htree_element_remove(HTREE_ELEMENT* htree_element)
 {
     htree_element->killed = true;
 }

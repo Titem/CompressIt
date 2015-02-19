@@ -212,7 +212,7 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
      * lokaler Variable zwischenspeichern */
     CODETAB_ELEMENT* prep_codetab_element = htree->prep_codetab_element;
 
-	htree_element_kill(htree->prep_htree_element);
+	htree_element_remove(htree->prep_htree_element);
 
     if (!htree_is_empty(htree))
     {
@@ -227,7 +227,7 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
 extern bool htree_is_empty(HTREE* htree)
 {
     return htree->root_node == NULL
-           || htree_element_is_killed(htree->root_node);
+           || htree_element_is_removed(htree->root_node);
 }
 
 
@@ -308,7 +308,7 @@ static void htree_prep_codetab_element(HTREE* htree)
         index++;
     }
 
-    while (!htree_element_is_killed(htree_element) && !htree_element_is_leaf(htree_element))
+    while (!htree_element_is_removed(htree_element) && !htree_element_is_leaf(htree_element))
     {
         if (htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree_element)))
         {
@@ -324,7 +324,7 @@ static void htree_prep_codetab_element(HTREE* htree)
         }
         else
         {
-            htree_element_kill(htree_element);
+            htree_element_remove(htree_element);
             htree_element = htree->root_node;
             index = 0;
         }
