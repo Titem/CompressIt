@@ -8,6 +8,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+
+
+
 #define GET_LEFT_CHILD_INDEX(INDEX) ((((INDEX) * 2) + 1))
 #define GET_RIGHT_CHILD_INDEX(INDEX) ((((INDEX) * 2) + 2))
 
@@ -43,16 +47,59 @@ struct S_PQUEUE
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
+/**
+ * Diese Funktion stellt durch umschichten des internen Haufens die 
+ * Heap-Bedingung des internen Heaps der übergebenen 
+ * Prioritäts-Warteschlange wieder her.
+ * 
+ * @param pqueue Zeiger auf die Prioritäts-Warteschlange, für dessen intenen
+ *               Heap, die Heap-Bedingung wiederhergestellt werden soll
+ * @param index positive Ganzzahl [0 bis 255], die den Index repräsentiert
+ *              ab dem mit dem umschichten des internen Haufens begonnen werden
+ *              soll
+ */
 static void pqueue_heapify(PQUEUE* pqueue, unsigned short index);
 
+
+
+/**
+ * Diese Funktion baut den internen Heap der übergebenen 
+ * Prioritäts-Warteschalnge auf.
+ * 
+ * @param pqueue Zeiger auf die Prioritäts-Warteschlange, dessen interner Heap
+ *               aufgebaut werden soll
+ */
 static void pqueue_build_heap(PQUEUE* pqueue);
 
+
+
+/**
+ * Diese Funktion vertauscht die Warte-Position von zwei wartende Elemente 
+ * innerhalb der übergebenen Prioritäts-Warteschlange.
+ * 
+ * @param pqueue Zeiger auf die Prioritäts-Warteschlange, inder zwei 
+ *               wartende Elemente ihre Warte-position tauschen sollen.
+ * @param index1 positive Ganzzahl [0 bis 255], die den Index des einen zu 
+ *               tauschenden Elementes repräsentiert
+ * @param index2 positive Ganzzahl [0 bis 255], die den Index des anderen zu
+ *               tauschenden Elementes repräsentiert
+ */
 static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2);
 
-static void print_out_heap(PQUEUE* pqueue, unsigned short position,
-                                           unsigned short step);
 
-static void print_step(unsigned short step);
+
+/**
+ * Diese Funktion gibt ein einzelnes Element mit übergebenen Index 
+ * der internen Heap-Struktur der übergebenen Prioritäts-Warteschlange 
+ * auf dem bildschirm aus.
+ * 
+ * @param pqueue Zeiger auf die Prioritäts-Warteschalnge, aus der das Element
+ *               mit dem übergebenen Index auf dem Bildschirm ausgegeben
+ *               werden soll 
+ * @param index positive Ganzzahl [0 bis 255], welche den Index des Elementes
+ *              repräsentiert, das auf dem Bildschirm ausgegeben werden soll
+ */
+static void pqueue_print_element(PQUEUE* pqueue, unsigned short index);
 
 
 
@@ -122,14 +169,15 @@ extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue)
 
 extern void pqueue_print(PQUEUE* pqueue)
 {
+    printf("Heap der Prioritäts-Warteschalnge:\n"
+           "==================================\n");
+    
     if (pqueue->number_of_entries >  0)
     {
         /*Heap auf dem Terminal ausgeben.*/
-        printf("Heap: (%u Elemente)\n", (unsigned int) pqueue->number_of_entries);
-
-        /*CODE*/
-        printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[ROOT_INDEX])));
-        print_out_heap(pqueue, ROOT_INDEX, STEP_INDEX);
+        pqueue_print_element(pqueue, 0);
+        printf("\nAnzahl der Elemente: %u\n\n", 
+               (unsigned int) pqueue->number_of_entries);
     }
     else
     {
@@ -193,38 +241,34 @@ static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short in
 
 
 
-static void print_out_heap(PQUEUE* pqueue, unsigned short position,
-                                           unsigned short step)
+static void pqueue_print_element(PQUEUE* pqueue, unsigned short index)
 {
-    unsigned short left;
-    unsigned short right;
-    left = GET_LEFT_CHILD_INDEX(position);
-    right = GET_RIGHT_CHILD_INDEX(position);
+    static unsigned short step = 0;
+    
+    unsigned short left_child_index = GET_LEFT_CHILD_INDEX(index); 
+    unsigned short right_child_index = GET_RIGHT_CHILD_INDEX(index);
 
-    if (left < pqueue->number_of_entries)
+    int i;
+    
+    for (i = 0; i <= step; i++)
     {
-
-        print_step(step);
-
-        printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[left])));
-        print_out_heap(pqueue,left, step + STEP_INDEX);
+        printf("    ");
+    }
+    
+    printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[index])));
+    
+    if (left_child_index < pqueue->number_of_entries)
+    {   
+        step++;
+        pqueue_print_element(pqueue, left_child_index);
+        step--;
     }
 
-    if (right < pqueue->number_of_entries)
+    if (right_child_index < pqueue->number_of_entries)
     {
-
-        print_step(step);
-
-        printf("|-- %lu\n", (pqueue_element_get_weight(pqueue->entry[right])));
-        print_out_heap(pqueue,right, step + STEP_INDEX);
+        step++;
+        pqueue_print_element(pqueue, right_child_index);
+        step--;
     }
-}
-
-static void print_step(unsigned short step)
-{
-    unsigned short i;
-    for (i = 0; i < step * BLANKS; i++)
-    {
-        printf(" ");
-    }
+    
 }
