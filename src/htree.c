@@ -3,6 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "common.h"
 #include "htree.h"
 
 #include <stdlib.h>

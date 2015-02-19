@@ -3,6 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "common.h"
 #include "content_coder.h"
 
 #include <stdio.h>

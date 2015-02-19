@@ -3,6 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "common.h"
 #include "pqueue.h"
 
 #include <stdlib.h>

@@ -3,15 +3,17 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "common.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #ifdef DEBUG_HUFFMAN
 #include <time.h>
 #endif
+
 #include "parameterlist.h"
 #include "compressor.h"
 #include "error.h"
-/*#define DEBUG_HUFFMAN*/
 
 
 
@@ -79,7 +81,6 @@ int main(int argc, char** argv)
     /*Timer beenden*/
     end = clock();
     printf("\nBenoetigte Zeit: %i ms\n\n", (int) (end - begin));
-    getchar();
     #endif
 
     

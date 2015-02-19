@@ -3,6 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "common.h"
 #include "freqtab_element.h"
 
 #include <stdlib.h>

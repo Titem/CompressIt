@@ -3,6 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "common.h"
 #include "freqtab.h"
 
 #include <stdlib.h>
@@ -166,7 +167,7 @@ extern unsigned long freqtab_get_content_length(FREQTAB* freqtab)
 
 extern void freqtab_print(FREQTAB* freqtab)
 {
-    int i = 0;
+    int i;
 
     printf("Zeichen  ---> Haeufigkeit ---> NUMERIC\n");
     printf("--------------------------------------\n");
@@ -180,7 +181,6 @@ extern void freqtab_print(FREQTAB* freqtab)
     printf("--------------------------------------\n");
     printf("Zeichen insgesamt:   %lu\n", freqtab->content_length);
     printf("Zeichen verschieden: %i\n", (int) freqtab->length);
-
 }
 
 

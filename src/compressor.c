@@ -3,6 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "common.h"
 #include "compressor.h"
 
 #include "freqtab.h"
@@ -10,7 +11,6 @@
 #include "codetab.h"
 #include "content_coder.h"
 
-/*#define DEBUG_HUFFMAN*/
 
 
 
