@@ -25,8 +25,24 @@
  */
 struct S_CODETAB
 {
+    /**
+     * Diese Variable speichert die Anzahl der Elemente, die in dieser
+     * Code-Tabelle gespeichert sind.
+     */
     unsigned short length;
+    
+    /**
+     * Diese Variable speichert den Index des Elementes, an dem gerade 
+     * gearbeitet wird.
+     */
     unsigned short working_index;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das Array, welches die
+     * Zeiger auf die einzelnen Code-Tabellen-Elemente enthält.
+     * Der Index des Arrays ist gleichzeitig das Schriftzeichen, dem das
+     * Code-Tabellen-Element zugeordnet ist.
+     */
     CODETAB_ELEMENT* char_map[256];
 };
 

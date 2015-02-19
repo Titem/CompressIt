@@ -23,10 +23,31 @@
  */
 struct S_PARAMETERLIST
 {
+    /**
+     * Diese Variable speichert den Betriebs-Modus der Anwendung.
+     */
     RUN_MODE run_mode;
+    
+    /**
+     * Diese Variable speichert einen Zeiger auf eine Zeichenkette,
+     * die den Dateinamen der Quell-Datei enthält.
+     */
     char* input_filename;
+    
+    /**
+     * Diese Variable speichert einen Zeiger auf den Eingangs-Datenstrom.
+     */
     FILE* input_file;
+    
+    /**
+     * Diese Variable speichert einen Zeiger auf eine Zeichenkette,
+     * die den Dateinamen der Ziel-Datei enthält.
+     */
     char* output_filename;
+    
+    /**
+     * Diese Variable speichert einen Zeiger auf den Ausgangs-Datenstrom.
+     */
     FILE* output_file;
 };
 

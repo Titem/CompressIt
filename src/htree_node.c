@@ -22,7 +22,16 @@
  */
 struct S_HTREE_NODE
 {
+    /**
+     * Diese Variable speichert den Zeiger auf das Huffman-Baum-Element,
+     * welches das linke Kind dieses Huffman-Baum-Elementes ist.
+     */
     HTREE_ELEMENT* left_child;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das Huffman-Baum-Element,
+     * welches das rechte Kind dieses Huffman-Baum-Elementes ist.
+     */
     HTREE_ELEMENT* right_child;
 };
 

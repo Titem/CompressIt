@@ -21,8 +21,17 @@
  */
 struct S_FREQTAB_ELEMENT
 {
-    unsigned long frequency;
+    /**
+     * Diese Variable speichert das Schriftzeichen 
+     * dieses Häufigkeits-Tabellen-Elementes.
+     */
     unsigned char character;
+    
+    /**
+     * Diese Variable speichert die Häufigkeit 
+     * dieses Häufigkeits-Tabellen-Elementes.
+     */
+    unsigned long frequency;
 };
 
 

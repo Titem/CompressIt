@@ -20,6 +20,9 @@
  */
 struct S_HTREE_LEAF
 {
+    /**
+     * Diese Variable speichert das schrifzeichen dieses Huffman-Baum-Blattes.
+     */
     unsigned char character;
 };
 

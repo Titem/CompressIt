@@ -21,7 +21,18 @@
  */
 struct S_PQUEUE
 {
+    /**
+     * Diese Variable speichert die Anzahl der in dieser 
+     * Prioritäts-Warteschalnge wartenden Elemente.
+     */
     unsigned short number_of_entries;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das Binär-Heap-Array, 
+     * welches die Zeiger auf die einzelnen Prioritäts-Warteschalngen-Elemente
+     * enthält. Das sich hinter dieser Variable befindende Array besitzt die
+     * Struktur eines Binären-Heaps. 
+     */
     PQUEUE_ELEMENT* entry[256];
 };
 

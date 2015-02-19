@@ -24,9 +24,24 @@
  */
 struct S_HTREE_ELEMENT
 {
+    /**
+     * Diese Variable speichert den Typ dieses Huffman-Baum-Elementes bzw.
+     * ob ein Huffman-Baum-Blatt oder ein Huffman-Baum-Knoten von diesem
+     * Huffman-Baum-Element gekapselt wird.
+     */
     HTREE_ELEMENT_TYPE type;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das oder den von diesem 
+     * Huffman-Baum-Element gekapselte Blatt oder Knoten.
+     */
     void* element;
-    bool killed;
+    
+    /**
+     * Diese Variable speichert, ob dieses Huffman-Baum-Element als 
+     * entnommen makiert ist.
+     */
+    bool removed;
 };
 
 
@@ -42,7 +57,7 @@ extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, void* elemen
     
     new_htree_element->type = type;
     new_htree_element->element = element;
-    new_htree_element->killed = false;
+    new_htree_element->removed = false;
     
     return new_htree_element;
 }
@@ -72,7 +87,7 @@ extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child,
     new_htree_element->element = 
             (void*) create_htree_node(left_child, right_child);
     new_htree_element->type = NODE;
-    new_htree_element->killed = false;
+    new_htree_element->removed = false;
     
     return new_htree_element;
 }
@@ -92,13 +107,13 @@ extern bool htree_element_is_leaf(HTREE_ELEMENT* htree_element)
 
 extern bool htree_element_is_removed(HTREE_ELEMENT* htree_element)
 {
-    return htree_element->killed;
+    return htree_element->removed;
 }
 
 
 extern void htree_element_remove(HTREE_ELEMENT* htree_element)
 {
-    htree_element->killed = true;
+    htree_element->removed = true;
 }
 
 
@@ -107,7 +122,7 @@ extern void htree_element_print(HTREE_ELEMENT* htree_element)
     static int deepness = 0;
     
     int i;
-    if (htree_element != NULL && !htree_element->killed)
+    if (htree_element != NULL && !htree_element->removed)
     {
         for (i = 0; i < deepness; i++)
         {

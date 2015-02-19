@@ -19,8 +19,22 @@
  */
 struct S_CODETAB_ELEMENT
 {
+    /**
+     * Diese Variable speichert das Schriftzeichen 
+     * dieses Code-Tabellen-Elementes.
+     */
     unsigned char character;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das Code-Array, welches den
+     * Code dieses Code-Tabellen-Elementes enthält.
+     */
     bool* code;
+    
+    /**
+     * Diese Variable speichert die Code-Länge also die Länge des Code-Arrays
+     * dieses Code-Tabellen-Elementes.
+     */
     unsigned char length;
 };
 

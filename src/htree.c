@@ -29,9 +29,29 @@
  */
 struct S_HTREE
 {
+    /**
+     * Diese Variable speichert den Zeiger auf das für die nächste Rückgabe 
+     * vorbereitete Code-Tabellen-Element.
+     */
     CODETAB_ELEMENT* prep_codetab_element;
-    HTREE_ELEMENT* prep_htree_element;
-    HTREE_ELEMENT* tree_pointer;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das Huffman-baum-Element,
+     * welches, bei der nächsten Rückgabe des vorbereiteten 
+     * Code-Tabellen-Elementes, gelöscht wird.
+     */
+    HTREE_ELEMENT* dead_htree_element;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das aktuelle 
+     * Huffman-Baum-Element bei der Schriftzeichen-Suche mit htree_search_char.
+     */
+    HTREE_ELEMENT* search_pointer;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das Huffman-Baum-Element,
+     * welches den Wurzelknoten des gesamten Huffman-Baumes dastellt. 
+     */
     HTREE_ELEMENT* root_node;
 };
 
@@ -105,7 +125,7 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
 
     /* htree erzeugen mit dem letzten htree_element als root */
     new_htree->root_node = new_htree_element;
-    new_htree->tree_pointer = new_htree_element;
+    new_htree->search_pointer = new_htree_element;
     /* Initialisierung htree_get_codetab_element */
     htree_prep_codetab_element(new_htree);
 
@@ -195,7 +215,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
     }
 
     new_htree->root_node = root_node;
-    new_htree->tree_pointer = root_node;
+    new_htree->search_pointer = root_node;
     htree_prep_codetab_element(new_htree);
 
     return new_htree;
@@ -215,7 +235,7 @@ extern CODETAB_ELEMENT* htree_get_codetab_element(HTREE* htree)
      * lokaler Variable zwischenspeichern */
     CODETAB_ELEMENT* prep_codetab_element = htree->prep_codetab_element;
 
-	htree_element_remove(htree->prep_htree_element);
+	htree_element_remove(htree->dead_htree_element);
 
     if (!htree_is_empty(htree))
     {
@@ -236,7 +256,7 @@ extern bool htree_is_empty(HTREE* htree)
 
 extern bool htree_search_char(HTREE* htree, bool bit)
 {
-    if (htree_element_is_leaf(htree->tree_pointer))
+    if (htree_element_is_leaf(htree->search_pointer))
     {
         printf("Datei ungültig! #0\n"
                "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
@@ -247,7 +267,7 @@ extern bool htree_search_char(HTREE* htree, bool bit)
     if (bit)
     {
         /* @TODO: Wird das benötigt */
-        if (!htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
+        if (!htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree->search_pointer)))
         {
             printf("Datei ungültig! #1\n"
                    "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
@@ -256,12 +276,12 @@ extern bool htree_search_char(HTREE* htree, bool bit)
         }
 
         /* rechtes Kind auswählen */
-        htree->tree_pointer = htree_node_get_right((HTREE_NODE*)htree_element_get_element((htree->tree_pointer)));
+        htree->search_pointer = htree_node_get_right((HTREE_NODE*)htree_element_get_element((htree->search_pointer)));
     }
     else
     {
         /* @TODO: Wird das benötigt */
-        if (!htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree->tree_pointer)))
+        if (!htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree->search_pointer)))
         {
             printf("Datei ungültig! #2\n"
                    "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
@@ -270,20 +290,20 @@ extern bool htree_search_char(HTREE* htree, bool bit)
         }
 
         /* linkes Kind auswählen */
-        htree->tree_pointer = htree_node_get_left((HTREE_NODE*)htree_element_get_element((htree->tree_pointer)));
+        htree->search_pointer = htree_node_get_left((HTREE_NODE*)htree_element_get_element((htree->search_pointer)));
     }
 
-    return htree_element_is_leaf(htree->tree_pointer);
+    return htree_element_is_leaf(htree->search_pointer);
 }
 
 
 extern unsigned char htree_get_char(HTREE* htree)
 {
     /* char aus dem Element lesen auf den der tree_pointer zeigt */
-    unsigned char character = htree_leaf_get_char(((HTREE_LEAF*)htree_element_get_element(htree->tree_pointer)));
+    unsigned char character = htree_leaf_get_char(((HTREE_LEAF*)htree_element_get_element(htree->search_pointer)));
 
     /* tree_pointer auf Wutzelknoten zurücksetzen */
-    htree->tree_pointer = htree->root_node;
+    htree->search_pointer = htree->root_node;
 
     return character;
 }
@@ -342,5 +362,5 @@ static void htree_prep_codetab_element(HTREE* htree)
 
     htree->prep_codetab_element = codetab_element;
 
-    htree->prep_htree_element = htree_element;
+    htree->dead_htree_element = htree_element;
 }

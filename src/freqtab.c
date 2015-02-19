@@ -22,9 +22,30 @@
  */
 struct S_FREQTAB
 {
+    /**
+     * Diese Variable speichert die Anzahl der Elemente, die in dieser
+     * Häufigkeits-Tabelle gespeichert sind.
+     */
     unsigned short length;
+    
+    /**
+     * Diese Variable speichert den Index des Elementes, an dem gerade 
+     * gearbeitet wird.
+     */
     unsigned short working_index;
+    
+    /** 
+     * Diese Variable speichert den Zeiger auf das Array, welches die
+     * Zeiger auf die einzelnen Häufigkeits-Tabellen-Elemente enthält.
+     * Der Index des Arrays ist gleichzeitig das Schriftzeichen, dem das
+     * Häufigkeits-Tabellen-Element zugeordnet ist.
+     */
     FREQTAB_ELEMENT* char_map[MAX_CHARACTERS];
+    
+    /**
+     * Diese Variable speichert die Länge des Inhaltes, auf dessen Basis diese
+     * Häufigkeits-Tabelle erstellt wurde in Schriftzeichen (in Byte).
+     */
     unsigned long content_length;
 };
 

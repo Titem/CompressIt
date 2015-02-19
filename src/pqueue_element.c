@@ -20,7 +20,16 @@
  */
 struct S_PQUEUE_ELEMENT
 {
+    /**
+     * Diese Variable speichert das Gewicht (reziproke Priorität) dieses 
+     * Prioritäts-Warteschalngen-Elementes.
+     */
     unsigned long weight;
+    
+    /**
+     * Diese Variable speichert den Zeiger auf das wartende 
+     * Huffman-Baum-Element.
+     */
     HTREE_ELEMENT* htree_element;
 };
 
