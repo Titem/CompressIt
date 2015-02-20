@@ -3,17 +3,15 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
-
 #include <stdio.h>
 #include <stdlib.h>
-#ifdef DEBUG_HUFFMAN
+#ifdef TIME_MESSUREMENT
 #include <time.h>
 #endif
 
 #include "parameterlist.h"
 #include "compressor.h"
-#include "error.h"
+#include "debug_common.h"
 
 
 
@@ -54,7 +52,7 @@ int main(int argc, char** argv)
     PARAMETERLIST* parameterlist = create_parameterlist(argv, argc);
     
     
-    #ifdef DEBUG_HUFFMAN
+    #ifdef TIME_MESSUREMENT
     /*Für die Zeit zuständig.*/
     clock_t begin = NULL;
     clock_t end = NULL;
@@ -84,7 +82,7 @@ int main(int argc, char** argv)
     }
     
     
-    #ifdef DEBUG_HUFFMAN
+    #ifdef TIME_MESSUREMENT
     /*Timer beenden*/
     end = clock();
     printf("\nBenoetigte Zeit: %i ms\n\n", (int) (end - begin));

@@ -3,13 +3,12 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "freqtab.h"
 
 #include <stdlib.h>
 #include <string.h>
 
-#include "error.h"
+#include "debug_common.h"
 
 
 

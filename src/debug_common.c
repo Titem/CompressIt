@@ -3,8 +3,7 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
-#include "error.h"
+#include "debug_common.h"
 
 #include <errno.h>
 #include <stdlib.h>

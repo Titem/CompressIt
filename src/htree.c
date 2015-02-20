@@ -3,7 +3,6 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "htree.h"
 
 #include <stdlib.h>
@@ -17,6 +16,7 @@
 #include "htree_leaf.h"
 #include "htree_node.h"
 #include "pqueue.h"
+#include "debug_common.h"
 
 
 

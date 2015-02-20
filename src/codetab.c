@@ -3,7 +3,6 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "codetab.h"
 
 #include <stdbool.h>
@@ -13,6 +12,7 @@
 
 #include "codetab_element.h"
 #include "codetab.h"
+#include "debug_common.h"
 
 
 

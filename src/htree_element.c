@@ -3,7 +3,6 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "htree_element.h"
 
 #include <stdbool.h>
@@ -12,6 +11,7 @@
 
 #include "htree_node.h"
 #include "htree_leaf.h"
+#include "debug_common.h"
 
 
 

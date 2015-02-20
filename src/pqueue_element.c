@@ -3,10 +3,11 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "pqueue_element.h"
 
 #include <stdlib.h>
+
+#include "debug_common.h"
 
 
 

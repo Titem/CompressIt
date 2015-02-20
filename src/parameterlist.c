@@ -3,14 +3,13 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "parameterlist.h"
 
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "error.h"
+#include "debug_common.h"
 #include "error_handler.h"
 
 

@@ -14,7 +14,7 @@ DOXYGEN_CFG = res/ppr_doxygen.cfg
 # Konfiguration fuer Splint
 SPLINT_LOG = ./splint.log
 
-OBJS = $(OBJPATH)/error.o $(OBJPATH)/error_handler.o $(OBJPATH)/codetab_element.o $(OBJPATH)/parameterlist.o \
+OBJS = $(OBJPATH)/debug_common.o $(OBJPATH)/error_handler.o $(OBJPATH)/codetab_element.o $(OBJPATH)/parameterlist.o \
 $(OBJPATH)/compressor.o $(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o \
 $(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o $(OBJPATH)/freqtab.o \
 $(OBJPATH)/pqueue.o $(OBJPATH)/htree_element.o $(OBJPATH)/htree_node.o \
@@ -63,21 +63,21 @@ debug : $(OBJS)
 Debug : debug
 cleanDebug: clean
 
-$(OBJPATH)/error.o : src/error.c src/error.h
+$(OBJPATH)/debug_common.o : src/debug_common.c src/debug_common.h
 	@echo ========================================================
-	@echo Erzeuge $(OBJPATH)/error.o
+	@echo Erzeuge $(OBJPATH)/debug_common.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
-	gcc  $(GCC_OPTION) -o $(OBJPATH)/error.o src/error.c
+	gcc  $(GCC_OPTION) -o $(OBJPATH)/debug_common.o src/debug_common.c
 	
-$(OBJPATH)/error_handler.o : src/error_handler.c src/error_handler.h src/parameterlist.h
+$(OBJPATH)/error_handler.o : src/error_handler.c src/error_handler.h src/parameterlist.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/error_handler.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc  $(GCC_OPTION) -o $(OBJPATH)/error_handler.o src/error_handler.c
 
-$(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h
+$(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/freqtab_element.o
 	@echo --------------------------------------------------------
@@ -85,7 +85,7 @@ $(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h
 	gcc $(GCC_OPTION) -o $(OBJPATH)/freqtab_element.o src/freqtab_element.c
 
 
-$(OBJPATH)/freqtab.o : src/freqtab.c src/freqtab.h src/freqtab_element.h src/error.h
+$(OBJPATH)/freqtab.o : src/freqtab.c src/freqtab.h src/freqtab_element.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/freqtab.o
 	@echo --------------------------------------------------------
@@ -93,7 +93,7 @@ $(OBJPATH)/freqtab.o : src/freqtab.c src/freqtab.h src/freqtab_element.h src/err
 	gcc $(GCC_OPTION) -o $(OBJPATH)/freqtab.o src/freqtab.c
 
 
-$(OBJPATH)/htree_element.o : src/htree_element.c src/htree_element.h src/htree_element.h
+$(OBJPATH)/htree_element.o : src/htree_element.c src/htree_element.h src/htree_element.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree_element.o
 	@echo --------------------------------------------------------
@@ -101,21 +101,21 @@ $(OBJPATH)/htree_element.o : src/htree_element.c src/htree_element.h src/htree_e
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_element.o src/htree_element.c
 
 
-$(OBJPATH)/pqueue.o : src/pqueue.c src/pqueue.h src/htree_element.h
+$(OBJPATH)/pqueue.o : src/pqueue.c src/pqueue.h src/htree_element.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/pqueue.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/pqueue.o src/pqueue.c
 
-$(OBJPATH)/pqueue_element.o : src/pqueue_element.c src/pqueue_element.h src/htree_element.h
+$(OBJPATH)/pqueue_element.o : src/pqueue_element.c src/pqueue_element.h src/htree_element.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/pqueue_element.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/pqueue_element.o src/pqueue_element.c
 
-$(OBJPATH)/codetab_element.o : src/codetab_element.c
+$(OBJPATH)/codetab_element.o : src/codetab_element.c src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree_element.o
 	@echo --------------------------------------------------------
@@ -123,21 +123,21 @@ $(OBJPATH)/codetab_element.o : src/codetab_element.c
 	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab_element.o src/codetab_element.c
 
 
-$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h src/freqtab.h src/freqtab_element.h
+$(OBJPATH)/htree.o : src/htree.c src/htree.h src/codetab_element.h src/htree_element.h src/pqueue.h src/freqtab.h src/freqtab_element.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree.o src/htree.c
 
-$(OBJPATH)/htree_leaf.o : src/htree_leaf.c src/htree_leaf.h
+$(OBJPATH)/htree_leaf.o : src/htree_leaf.c src/htree_leaf.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_leaf.o src/htree_leaf.c
 
-$(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h
+$(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/htree.o
 	@echo --------------------------------------------------------
@@ -145,7 +145,7 @@ $(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_node.o src/htree_node.c
 
 
-$(OBJPATH)/parameterlist.o : src/parameterlist.c src/parameterlist.h src/error.h src/error_handler.h
+$(OBJPATH)/parameterlist.o : src/parameterlist.c src/parameterlist.h src/error_handler.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/parameterlist.o
 	@echo --------------------------------------------------------
@@ -153,7 +153,7 @@ $(OBJPATH)/parameterlist.o : src/parameterlist.c src/parameterlist.h src/error.h
 	gcc $(GCC_OPTION) -o $(OBJPATH)/parameterlist.o src/parameterlist.c
 
 
-$(OBJPATH)/codetab.o : src/codetab.c src/codetab.h src/codetab_element.h
+$(OBJPATH)/codetab.o : src/codetab.c src/codetab.h src/codetab_element.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/codetab.o
 	@echo --------------------------------------------------------
@@ -161,7 +161,7 @@ $(OBJPATH)/codetab.o : src/codetab.c src/codetab.h src/codetab_element.h
 	gcc $(GCC_OPTION) -o $(OBJPATH)/codetab.o src/codetab.c
 
 
-$(OBJPATH)/content_coder.o : src/content_coder.c src/content_coder.h src/codetab.h
+$(OBJPATH)/content_coder.o : src/content_coder.c src/content_coder.h src/codetab.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/content_coder.o
 	@echo --------------------------------------------------------
@@ -169,7 +169,7 @@ $(OBJPATH)/content_coder.o : src/content_coder.c src/content_coder.h src/codetab
 	gcc $(GCC_OPTION) -o $(OBJPATH)/content_coder.o src/content_coder.c
 
 
-$(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/freqtab.h src/htree.h src/codetab.h src/content_coder.h
+$(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/freqtab.h src/htree.h src/codetab.h src/content_coder.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/compressor.o
 	@echo --------------------------------------------------------
@@ -177,7 +177,7 @@ $(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/freqtab.h src/ht
 	gcc $(GCC_OPTION) -o $(OBJPATH)/compressor.o src/compressor.c
 
 
-$(OBJPATH)/main.o : src/main.c src/parameterlist.h src/compressor.h src/error.h src/freqtab.h
+$(OBJPATH)/main.o : src/main.c src/parameterlist.h src/compressor.h src/freqtab.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/main.o
 	@echo --------------------------------------------------------

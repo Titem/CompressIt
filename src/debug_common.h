@@ -1,5 +1,5 @@
 /* 
- * @file error.h
+ * @file debug_common.h
  * 
  * Dieses Modul enthält alle Fehlermeldungs-Texte und soinstige Funktionen
  * zur Fehlerhandhabung.
@@ -9,10 +9,12 @@
  *         Alexander Schmitz 
  */
 
-#ifndef ERROR_H
-#define	ERROR_H
+#ifndef DEBUG_COMMON_H
+#define	DEBUG_COMMON_H
 
 
+
+/* #define DEBUG_HUFFMAN */
 
 
 /* ======================================================================== *
@@ -58,4 +60,4 @@ extern void print_error(int error_message);
 extern char* convert_char(unsigned char character);
 
 
-#endif	/* ERROR_H */
+#endif	/* DEBUG_COMMON_H */

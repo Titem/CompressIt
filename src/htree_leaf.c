@@ -3,11 +3,12 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "htree_leaf.h"
 
 #include <stdbool.h>
 #include <stdlib.h>
+
+#include "debug_common.h"
 
 
 

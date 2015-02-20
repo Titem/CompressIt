@@ -3,13 +3,13 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "compressor.h"
 
 #include "freqtab.h"
 #include "htree.h"
 #include "codetab.h"
 #include "content_coder.h"
+#include "debug_common.h"
 
 
 

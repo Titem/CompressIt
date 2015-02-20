@@ -3,11 +3,12 @@
  * Header-Dateien                                                           *
  * ======================================================================== */
 
-#include "common.h"
 #include "content_coder.h"
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "debug_common.h"
 
 
 

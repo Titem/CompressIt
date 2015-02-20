@@ -6,6 +6,8 @@
 #include <errno.h>
 #include <string.h>
 
+#include "debug_common.h"
+
 
 
 PARAMETERLIST* error_handler_param;
