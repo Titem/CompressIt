@@ -255,6 +255,10 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 
 extern void delete_parameterlist(PARAMETERLIST** parameterlist)
 {
+    free((*parameterlist)->input_file);
+    free((*parameterlist)->input_filename);
+    free((*parameterlist)->output_file);
+    free((*parameterlist)->output_filename);
     free(*parameterlist);
     *parameterlist = NULL;
 }

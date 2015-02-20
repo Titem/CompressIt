@@ -64,6 +64,7 @@ extern CODETAB_ELEMENT* create_codetab_element(unsigned char character,
 
 extern void delete_codetab_element(CODETAB_ELEMENT** codetab_element)
 {
+    free((*codetab_element)->code);
     free(*codetab_element);
     *codetab_element = NULL;
 }
