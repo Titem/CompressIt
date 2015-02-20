@@ -14,7 +14,7 @@ DOXYGEN_CFG = res/ppr_doxygen.cfg
 # Konfiguration fuer Splint
 SPLINT_LOG = ./splint.log
 
-OBJS = $(OBJPATH)/error.o $(OBJPATH)/codetab_element.o $(OBJPATH)/parameterlist.o \
+OBJS = $(OBJPATH)/error.o $(OBJPATH)/error_handler.o $(OBJPATH)/codetab_element.o $(OBJPATH)/parameterlist.o \
 $(OBJPATH)/compressor.o $(OBJPATH)/content_coder.o $(OBJPATH)/codetab.o \
 $(OBJPATH)/htree.o $(OBJPATH)/freqtab_element.o $(OBJPATH)/freqtab.o \
 $(OBJPATH)/pqueue.o $(OBJPATH)/htree_element.o $(OBJPATH)/htree_node.o \
@@ -69,6 +69,13 @@ $(OBJPATH)/error.o : src/error.c src/error.h
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc  $(GCC_OPTION) -o $(OBJPATH)/error.o src/error.c
+	
+$(OBJPATH)/error_handler.o : src/error_handler.c src/error_handler.h src/parameterlist.h
+	@echo ========================================================
+	@echo Erzeuge $(OBJPATH)/error_handler.o
+	@echo --------------------------------------------------------
+	mkdir -p $(OBJPATH)
+	gcc  $(GCC_OPTION) -o $(OBJPATH)/error_handler.o src/error_handler.c
 
 $(OBJPATH)/freqtab_element.o : src/freqtab_element.c src/freqtab_element.h
 	@echo ========================================================
@@ -138,7 +145,7 @@ $(OBJPATH)/htree_node.o : src/htree_node.c src/htree_node.h
 	gcc $(GCC_OPTION) -o $(OBJPATH)/htree_node.o src/htree_node.c
 
 
-$(OBJPATH)/parameterlist.o : src/parameterlist.c src/parameterlist.h src/error.h
+$(OBJPATH)/parameterlist.o : src/parameterlist.c src/parameterlist.h src/error.h src/error_handler.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/parameterlist.o
 	@echo --------------------------------------------------------
