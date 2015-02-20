@@ -24,7 +24,7 @@
  * Diese globale Variable speichert für den Error-Handler einen Zeiger auf
  * die Parameterliste, mit der der Error-Handler aktiviert wurde.
  */
-PARAMETERLIST* error_handler_param;
+static PARAMETERLIST* error_handler_param;
 
 
 
@@ -35,7 +35,7 @@ PARAMETERLIST* error_handler_param;
 
 extern void error_handler_activate(PARAMETERLIST* parameterlist)
 {
-    error_handler_param = parameterlist; 
+    error_handler_param = parameterlist;
 }
 
 
@@ -60,12 +60,12 @@ extern void error_handler_handle_error(ERROR error, char* file, int line)
         fprintf(stderr, "MSG_FILENAMES_ARE_SAME");
         break;
     case CANT_OPEN_INPUT_FILE:
-        fprintf(stderr, "MSG_CANT_OPEN_INPUT_FILE(%s, %d, %s)", 
+        fprintf(stderr, "MSG_CANT_OPEN_INPUT_FILE(%s, %d, %s)",
                 parameterlist_get_input_filename(error_handler_param),
                 errno, strerror(errno));
         break;
     case CANT_OPEN_OUTPUT_FILE:
-        fprintf(stderr, "MSG_CANT_OPEN_OUTPUT_FILE(%s, %d, %s)", 
+        fprintf(stderr, "MSG_CANT_OPEN_OUTPUT_FILE(%s, %d, %s)",
                 parameterlist_get_output_filename(error_handler_param),
                 errno, strerror(errno));
         break;
@@ -73,13 +73,13 @@ extern void error_handler_handle_error(ERROR error, char* file, int line)
         fprintf(stderr, "MSG_UNKNOWN_ERROR");
         break;
     }
-    
+
     fprintf(stderr, "\n\nModul: %s\nZeile: %d\n\n\n", file, line);
-    
+
     if (parameterlist_get_output_stream(error_handler_param) != NULL)
     {
         remove(parameterlist_get_output_filename(error_handler_param));
     }
-    
+
     exit(EXIT_FAILURE);
 }
