@@ -61,6 +61,11 @@ extern void compress(FILE* input_stream, FILE* output_stream)
     encode_content(input_stream, output_stream, code_table,
                    freqtab_get_content_length(frequency_table));
 
+    /*Resourcen wieder freigeben*/
+    delete_freqtab(&frequency_table);
+    delete_htree(&huffman_tree);
+    delete_codetab(&code_table);
+    
     return;
 }
 
@@ -90,5 +95,9 @@ extern void decompress(FILE* input_stream, FILE* output_stream)
     /*Inhalt dekomprimieren*/
     decode_content(input_stream, output_stream, huffman_tree);
 
+    /*Resourcen wieder freigeben*/
+    delete_codetab(&code_table);
+    delete_htree(&huffman_tree);
+    
     return;
 }

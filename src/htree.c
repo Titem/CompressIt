@@ -87,8 +87,9 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     PQUEUE* pqueue = create_pqueue();
     FREQTAB_ELEMENT* freqtab_element;
     HTREE_ELEMENT* new_htree_element;
-    PQUEUE_ELEMENT* pqueue_element_left;
-    PQUEUE_ELEMENT* pqueue_element_right;
+    PQUEUE_ELEMENT* left_pqueue_element;
+    PQUEUE_ELEMENT* right_pqueue_element;
+    PQUEUE_ELEMENT* last_pqueue_element;
     #ifdef DEBUG_HUFFMAN
     printf("PQUEUE Number of Elements vor insert: %i\n\n", (int)pqueue_get_number_of_entries(pqueue));
     #endif
@@ -115,28 +116,40 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     while (pqueue_get_number_of_entries(pqueue) >= 2)
     {
         /* 2 htree_elemente mit minimalem Gewicht aus der pqueue entnehmen */
-        pqueue_element_left = pqueue_get_min_entry(pqueue);
-        pqueue_element_right = pqueue_get_min_entry(pqueue);
+        left_pqueue_element = pqueue_get_min_entry(pqueue);
+        right_pqueue_element = pqueue_get_min_entry(pqueue);
 
         /* die zwei entnommenen htree_elemente zusammenführen */
-        new_htree_element = merge_htree_elements(pqueue_element_get_htree_element(pqueue_element_left),
-                                                 pqueue_element_get_htree_element(pqueue_element_right));
-
+        new_htree_element = merge_htree_elements(pqueue_element_get_htree_element(left_pqueue_element),
+                                                 pqueue_element_get_htree_element(right_pqueue_element));
+        
         /* zusammengeführtes htree_element der pqueue hinzufügen */
-        pqueue_insert_htree_element(pqueue, new_htree_element, pqueue_element_get_weight(pqueue_element_left) + pqueue_element_get_weight(pqueue_element_right));
-
+        pqueue_insert_htree_element(pqueue, new_htree_element, pqueue_element_get_weight(left_pqueue_element) + pqueue_element_get_weight(right_pqueue_element));
+        
+        /* Resourcen wieder freigeben */
+        delete_pqueue_element(&left_pqueue_element);
+        delete_pqueue_element(&right_pqueue_element);
     }
+    
     #ifdef DEBUG_HUFFMAN
     printf("\n\nPQUEUE Number of Elements: %i\n\n", (int) pqueue_get_number_of_entries(pqueue));
     #endif
+
     /* letztes htree_element aus pqueue entnehmen */
-    new_htree_element = pqueue_element_get_htree_element(pqueue_get_min_entry(pqueue));
+    last_pqueue_element = pqueue_get_min_entry(pqueue);
+    new_htree_element = pqueue_element_get_htree_element(last_pqueue_element);
+    
+    /* Resourcen wieder freigeben */
+    delete_pqueue_element(&last_pqueue_element);
 
     /* htree erzeugen mit dem letzten htree_element als root */
     new_htree->root_node = new_htree_element;
     new_htree->search_pointer = new_htree_element;
     /* Initialisierung htree_get_codetab_element */
     htree_prep_codetab_element(new_htree);
+    
+    /* Resourcen wieder freigeben */
+    delete_pqueue(&pqueue);
 
     return new_htree;
 }

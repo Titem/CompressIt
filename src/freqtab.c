@@ -132,6 +132,15 @@ extern FREQTAB* create_freqtab(FILE* input_stream)
 
 extern void delete_freqtab(FREQTAB** freqtab)
 {
+    unsigned short i;
+    
+    for (i = 0; i < 256; i++)
+    {
+        if ((*freqtab)->char_map[i] != NULL)
+        {
+            delete_freqtab_element(&((*freqtab)->char_map[i]));
+        }
+    }
     
     free(*freqtab);
     *freqtab = NULL;

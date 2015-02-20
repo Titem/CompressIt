@@ -89,6 +89,9 @@ int main(int argc, char** argv)
     printf("\nBenoetigte Zeit: %i ms\n\n", (int) (end - begin));
     #endif
 
+    /* Resourcen wieder freigeben */
+    delete_parameterlist(&parameterlist);
+        
     exit(EXIT_SUCCESS);
 }
 
