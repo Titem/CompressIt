@@ -21,14 +21,16 @@
 extern void encode_content(FILE* input_stream, FILE* output_stream,
                            CODETAB* codetab, unsigned long content_length)
 {
-    /*Codelaenge des Codes*/
+
     unsigned long code_length = 0;
     unsigned long code_index = 0;
-    /*Aktuelle <position in der Bitqueue*/
+
+    unsigned char bitqueue = 0;
     unsigned char shift_count = 0;
+    
     int character = 0;
     bool* code = NULL;
-    unsigned char bitqueue = 0;
+    
 
     /* content_length in output_stream schreiben */
     if (fwrite(&content_length, sizeof(unsigned long), 1, output_stream) != 1)
@@ -137,7 +139,6 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
             /* gesuchtes Zeichen von htree anfordern */
             character = htree_get_char(htree);
 
-            /**/
             fputc(character, output_stream);
             content_length--;
         }
