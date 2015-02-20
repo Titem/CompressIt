@@ -103,6 +103,9 @@ extern void error_handler_handle_error(ERROR error, char* file, int line)
     case CANT_WRITE_CODETABLENGTH:
         fprintf(stderr, "MSG_CANT_WRITE_CODETABLENGTH");
         break;
+    case UNKNOWN_ERROR:
+        fprintf(stderr, "MSG_UNKNOWN_ERROR");
+        break;
     default:
         fprintf(stderr, "MSG_UNKNOWN_ERROR");
         break;

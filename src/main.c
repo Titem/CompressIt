@@ -12,6 +12,8 @@
 #include "parameterlist.h"
 #include "compressor.h"
 #include "debug_common.h"
+#include "messages_de.h"
+#include "error_handler.h"
 
 
 
@@ -78,16 +80,14 @@ int main(int argc, char** argv)
         break;
 
     default:
-        printf("Hier stimmt was nicht!");
+        error_handler_handle_error(UNKNOWN_ERROR, __FILE__, __LINE__);
     }
-
 
     #ifdef TIME_MESSUREMENT
     /*Timer beenden*/
     end = clock();
     printf("\nBenoetigte Zeit: %i ms\n\n", (int) (end - begin));
     #endif
-
 
     exit(EXIT_SUCCESS);
 }
@@ -96,5 +96,5 @@ int main(int argc, char** argv)
 
 static void show_manpage(void)
 {
-    printf("Dies ist die Hileseite von CompressIt!\n\n");
+    printf("MSG_MANPAGE");
 }

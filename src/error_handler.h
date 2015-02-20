@@ -25,6 +25,7 @@
  */
 typedef enum
 {
+    UNKNOWN_ERROR,
     CANT_ALLOCATE_MEMORY,
     NO_INPUT_FILENAME,
     TO_FEW_ARGUMENTS,

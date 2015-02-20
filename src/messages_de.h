@@ -106,6 +106,9 @@
 #define MSG_CANT_WRITE_CODETABLENGTH \
         Ein unbekannter Fehler ist aufgetreten, der verhindert, dass die \n \
         Laenge der Code-Tabelle in der Ziel-Datei gespeichert werden kann!
+
+#define MSG_MANPAGE \
+        Dies ist die Hilfeseite der Anwendung CompressIt!
         
 #endif	/* MESSAGES_DE_H */
 
