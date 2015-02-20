@@ -50,6 +50,62 @@
 #define MSG_UNKNOWN_ERROR \
         Ein unbekannter Fehler ist aufgetreten! 
 
+#define MSG_INVALID_FILE_CONTENT_INVALID(X) \
+        Bei der Quell-Datei X handelt es sich entweder um keine \n \
+        gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n \
+        oder die Datei ist beschaedigt! \n\n \
+        Beim Dekomprimieren ist aufgefallen, dass der Inhalt der \n \
+        Quell-Datei X eine ungueltige Codierung enthaelt!
+
+#define MSG_INVALID_FILE_CONTENT_TO_SHORT(X) \
+        Bei der Quell-Datei X handelt es sich entweder um keine \n \
+        gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n \
+        oder die Datei ist beschaedigt! \n\n \
+        Beim Dekomprimieren ist aufgefallen, dass der Inhalt der \n \
+        Quell-Datei X unvollstaendig ist!
+
+#define MSG_INVALID_FILE_CONTENT_TO_LONG(X) \
+        Bei der Quell-Datei X handelt es sich entweder um keine \n \
+        gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n \
+        oder die Datei ist beschaedigt! \n\n \
+        Beim Dekomprimieren ist aufgefallen, dass der Inhalt der \n \
+        Quell-Datei X laenger ist als erwartet!
+
+#define MSG_INVALID_FILE_CODETAB_INVALID(X) \
+        Bei der Quell-Datei X handelt es sich entweder um keine \n \
+        gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n \
+        oder die Datei ist beschaedigt! \n\n \
+        Beim Dekomprimieren ist aufgefallen, dass die Code-Tabelle der \n \
+        Quell-Datei X einen ungueltigen Eintrag enthaelt!
+
+#define MSG_INVALID_FILE_CODETAB_TO_SHORT(X) \
+        Bei der Quell-Datei X handelt es sich entweder um keine \n \
+        gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n \
+        oder die Datei ist beschaedigt! \n\n \
+        Beim Dekomprimieren ist aufgefallen, dass die Code-Tabelle der \n \
+        Quell-Datei X unvollstaendig ist!
+
+#define MSG_INVALID_FILE_CONTENTLENGTH_UNREADABLE(X) \
+        Bei der Quell-Datei X handelt es sich entweder um keine \n \
+        gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n \
+        oder die Datei ist beschaedigt! \n\n \
+        Beim Dekomprimieren ist aufgefallen, dass die Laenge des Inhalts \n \
+        nicht aus der Quell-Datei X gelesen werden konnte!
+
+#define MSG_INVALID_FILE_CODETABLENGTH_UNREADABLE(X) \
+        Bei der Quell-Datei X handelt es sich entweder um keine \n \
+        gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n \
+        oder die Datei ist beschaedigt! \n\n \
+        Beim Dekomprimieren ist aufgefallen, dass die Laenge der \n \
+        Code-Tabelle nicht aus der Quell-Datei X gelesen werden konnte!
+                
+#define MSG_CANT_WRITE_CONTENTLENGTH \
+        Ein unbekannter Fehler ist aufgetreten, der verhindert, dass die \n \
+        Laenge des Inhaltes in der Ziel-Datei gespeichert werden kann!
+
+#define MSG_CANT_WRITE_CODETABLENGTH \
+        Ein unbekannter Fehler ist aufgetreten, der verhindert, dass die \n \
+        Laenge der Code-Tabelle in der Ziel-Datei gespeichert werden kann!
         
 #endif	/* MESSAGES_DE_H */
 

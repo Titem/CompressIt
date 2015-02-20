@@ -69,6 +69,40 @@ extern void error_handler_handle_error(ERROR error, char* file, int line)
                 parameterlist_get_output_filename(error_handler_param),
                 errno, strerror(errno));
         break;
+    case INVALID_FILE_CONTENT_INVALID:
+        fprintf(stderr, "MSG_INVALID_FILE_CONTENT_INVALID(%s)",
+                parameterlist_get_input_filename(error_handler_param));
+        break;
+    case INVALID_FILE_CONTENT_TO_SHORT:
+        fprintf(stderr, "MSG_INVALID_FILE_CONTENT_TO_SHORT(%s)",
+                parameterlist_get_input_filename(error_handler_param));
+        break;
+    case INVALID_FILE_CONTENT_TO_LONG:
+        fprintf(stderr, "MSG_INVALID_FILE_CONTENT_TO_LONG(%s)",
+                parameterlist_get_input_filename(error_handler_param));
+        break;
+    case INVALID_FILE_CODETAB_INVALID:
+        fprintf(stderr, "MSG_INVALID_FILE_CODETAB_INVALID(%s)",
+                parameterlist_get_input_filename(error_handler_param));
+        break;
+    case INVALID_FILE_CODETAB_TO_SHORT:
+        fprintf(stderr, "MSG_INVALID_FILE_CODETAB_TO_SHORT(%s)",
+                parameterlist_get_input_filename(error_handler_param));
+        break;
+    case INVALID_FILE_CONTENTLENGTH_UNREADABLE:
+        fprintf(stderr, "MSG_INVALID_FILE_CONTENTLENGTH_UNREADABLE(%s)",
+                parameterlist_get_input_filename(error_handler_param));
+        break;
+    case INVALID_FILE_CODETABLENGTH_UNREADABLE:
+        fprintf(stderr, "MSG_INVALID_FILE_CODETABLENGTH_UNREADABLE(%s)",
+                parameterlist_get_input_filename(error_handler_param));
+        break;
+    case CANT_WRITE_CONTENTLENGTH:
+        fprintf(stderr, "MSG_CANT_WRITE_CONTENTLENGTH");
+        break;
+    case CANT_WRITE_CODETABLENGTH:
+        fprintf(stderr, "MSG_CANT_WRITE_CODETABLENGTH");
+        break;
     default:
         fprintf(stderr, "MSG_UNKNOWN_ERROR");
         break;

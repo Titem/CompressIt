@@ -13,6 +13,7 @@
 #include "codetab_element.h"
 #include "codetab.h"
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -146,9 +147,8 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
     if (fread(&(new_codetab->length), sizeof(unsigned short), 1, input_stream) != 1)
     {
-        printf("Hier stimmt was nicht!\n"
-               "Modul: codetab.c\tFunktion: read_codetab\n\n");
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(INVALID_FILE_CODETABLENGTH_UNREADABLE,
+                                   __FILE__, __LINE__);
     }
 
     new_codetab->working_index = 0;
@@ -161,11 +161,8 @@ extern CODETAB* read_codetab(FILE* input_stream)
             byte = fgetc(input_stream);
             if (byte == EOF)
             {
-                printf("Datei ungültig! #0\n"
-                       "Die Code-Tabelle endet zu früh!\n"
-                       "Modul: codetab.c\tFunktion: read_codetab\n\n");
-                printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
-                exit(EXIT_FAILURE);
+                error_handler_handle_error(INVALID_FILE_CODETAB_TO_SHORT, 
+                                            __FILE__, __LINE__);
             }
             bitqueue = (unsigned char) byte;
             queue_usage = 8;

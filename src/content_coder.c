@@ -9,6 +9,7 @@
 #include <stdlib.h>
 
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -106,11 +107,8 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
     /* content_length aus input_stream lesen */
     if (fread(&content_length, sizeof(unsigned long), 1, input_stream) != 1)
     {
-        printf("Datei ungültig! #0\n"
-               "Der Inhaltslänge der komprimierten Datei konnte nicht gelesen werden!\n"
-               "Modul: content_coder.c\t Funktion: decode_content\n\n");
-        printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(INVALID_FILE_CONTENTLENGTH_UNREADABLE, 
+                                   __FILE__, __LINE__);
     }
     
     #ifdef DEBUG_HUFFMAN
@@ -124,11 +122,8 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
             byte = fgetc(input_stream);
             if (byte == EOF)
             {
-                printf("Datei ungültig! #1\n"
-                       "Der Inhalt der komprimierten Datei endet früher als erlaubt!\n"
-                       "Modul: content_coder.c\t Funktion: decode_content\n\n");
-                printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
-                exit(EXIT_FAILURE);
+                error_handler_handle_error(INVALID_FILE_CONTENT_TO_SHORT, 
+                                           __FILE__, __LINE__);
             }
 
             bitqueue = (unsigned char) byte;
@@ -151,11 +146,8 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
 
     if (fgetc(input_stream) != EOF)
     {
-        printf("Datei ungültig! #2\n"
-               "Der Inhalt der komprimierten Datei ist länger als erlaubt!\n"
-               "Modul: content_coder.c\t Funktion: decode_content\n\n");
-        printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(INVALID_FILE_CONTENT_TO_LONG, 
+                                   __FILE__, __LINE__);
     }
 }
 
