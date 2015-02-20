@@ -33,10 +33,8 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
     /* content_length in output_stream schreiben */
     if (fwrite(&content_length, sizeof(unsigned long), 1, output_stream) != 1)
     {
-        printf("Fehler! #0\n"
-               "Die Inhaltslänge der Datei konnte nicht geschrieben werden!\n"
-               "Modul: content_coder.c\t Funktion: encode_content\n\n");
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(CANT_WRITE_CONTENTLENGTH, 
+                                   __FILE__, __LINE__);
     }
 
     while (true)

@@ -279,9 +279,8 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
 
     if (fwrite(&(codetab->length), sizeof(unsigned short), 1, output_stream) != 1)
     {
-        printf("Hier stimmt was nicht!\n"
-               "Modul: codetab.c\tFunktion: write_codetab\n\n");
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(CANT_WRITE_CODETABLENGTH, 
+                                   __FILE__, __LINE__);
     }
 
     while (count < codetab->length)
