@@ -1,4 +1,4 @@
-/* 
+/**
  * @file parameterlist.h
  * 
  * Dieses Modul repräsentiert eine Parameterliste mit allen Parametern,

@@ -112,9 +112,11 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
         printf("Position Output-Stream: %lu\n\n", (unsigned long) ftell(input_stream));
         exit(EXIT_FAILURE);
     }
+    
     #ifdef DEBUG_HUFFMAN
     printf("Content Länge:%lu\n", content_length);
     #endif
+
     while (content_length > 0)
     {
         if (shift_count == 8)

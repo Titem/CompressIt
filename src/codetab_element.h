@@ -1,4 +1,4 @@
-/* 
+/** 
  * @file codetab_element.h
  * 
  * Dieses Modul repräsentiert ein Code-Tabellen-Element also einen Eintrag 

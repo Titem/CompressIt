@@ -1,8 +1,8 @@
-/* 
+/** 
  * @file debug_common.h
  * 
- * Dieses Modul enthält alle Fehlermeldungs-Texte und soinstige Funktionen
- * zur Fehlerhandhabung.
+ * Dieses Modul stellt allen anderen Modulen Funktionen bereit, die zum
+ * Debuggen der Anwendung benötigt werden.
  * 
  * @author Tim Buschmann
  *         Artur Leinweber
@@ -14,7 +14,10 @@
 
 
 
+
 /* #define DEBUG_HUFFMAN */
+
+
 
 
 /* ======================================================================== *
@@ -25,38 +28,21 @@
 
 
 
-/*---------------------------------------------------------------------------------*/
-/*-----------------------------------ENUM FÜR FEHLER-------------------------------*/
-/*---------------------------------------------------------------------------------*/
-enum error_message
-{
-	dont_found_input_document,
-	dont_found_compress_mode,
-	too_many_arguments,
-	cant_malloc_memory,
-	in_and_output_document_are_the_same,
-	help,
-	AND
-};
-
-
-
 
 /* ======================================================================== *
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-/*---------------------------------------------------------------------------------*/
-/*---------------------PRÜFT EINEN STREAM AUF FEHLER-------------------------------*/
-/*---------------------------------------------------------------------------------*/
-extern void test_nullpointer_exception(FILE *file_p, char* file_name);
-
-/*---------------------------------------------------------------------------------*/
-/*---------------------GIBT DENN FEHLER AUF DEM BILDSCHIRM AUS---------------------*/
-/*---------------------------------------------------------------------------------*/
-extern void print_error(int error_message);
-
-
+/**
+ * Diese Funktion konvertiert ein Schriftzeichen in eine menschenlesbare
+ * Zeichenkette und gibt einen Zeiger auf diese Zeichenkette zurück.
+ * Nicht menschenlesbare Steuerzeichen werden dabei in menschenlesbare 
+ * Kürzel aus zwei Buchstaben übersetzt.
+ * 
+ * @param character zu konvertierendes Schriftzeichen
+ * @return Zeiger auf eine neu erstellte Zeichenkette, die ein menschenlesbares
+ *         Equivalent zum übergebenen Schriftzeichen enthält
+ */
 extern char* convert_char(unsigned char character);
 
 

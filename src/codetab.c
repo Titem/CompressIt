@@ -449,8 +449,8 @@ extern void codetab_print(CODETAB* codetab)
     {
         if (codetab->char_map[i] != NULL)
         {
-            printf("%c\t%i\t%i\t", 
-                   codetab_element_get_char(codetab->char_map[i]), 
+            printf("%s\t%i\t%i\t", 
+                   convert_char(codetab_element_get_char(codetab->char_map[i])), 
                    (int) codetab_element_get_char(codetab->char_map[i]), 
                    codetab_element_get_code_length(codetab->char_map[i]));
 

@@ -1,4 +1,4 @@
-/* 
+/**
  * @file freqtab.h
  * 
  * Dieses Modul repräsentiert eine Häufigkeits-Tabelle.

@@ -1,4 +1,4 @@
-/* 
+/**
  * @file pqueue.h
  * 
  * Dieses Modul repräsentiert eine Prioritäts-Warteschlange für 

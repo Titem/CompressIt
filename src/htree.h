@@ -1,4 +1,4 @@
-/* 
+/**
  * @file htree.h
  * 
  * Dieses Modul repräseintiert einen Huffman-Baum. 
@@ -14,6 +14,7 @@
 
 #ifndef HTREE_H
 #define	HTREE_H
+
 
 
 

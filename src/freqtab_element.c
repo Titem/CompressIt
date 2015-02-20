@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -47,8 +48,7 @@ extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character)
 
     if (new_freqtab_element == NULL)
     {
-	print_error(cant_malloc_memory);
-        exit(EXIT_FAILURE);
+	error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
     }
     
     new_freqtab_element->character = character;

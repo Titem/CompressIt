@@ -6,6 +6,7 @@
 #include <errno.h>
 #include <string.h>
 
+#include "messages_de.h"
 #include "debug_common.h"
 
 
@@ -19,13 +20,39 @@ extern void error_handler_activate(PARAMETERLIST* parameterlist)
 
 extern void error_handler_handle_error(ERROR error, char* file, int line)
 {
+    switch (error)
+    {
+    case CANT_ALLOCATE_MEMORY:
+        fprintf(stderr, "MSG_CANT_ALLOCATE_MEMORY");
+        break;
+    case NO_INPUT_FILENAME:
+        fprintf(stderr, "MSG_NO_INPUT_FILENAME");
+        break;
+    case TO_FEW_ARGUMENTS:
+        fprintf(stderr, "MSG_TO_FEW_ARGUMENTS");
+        break;
+    case TO_MANY_ARGUMENTS:
+        fprintf(stderr, "MSG_TO_MANY_ARGUMENTS");
+        break;
+    case FILENAMES_ARE_EQUAL:
+        fprintf(stderr, "MSG_FILENAMES_ARE_SAME");
+        break;
+    case CANT_OPEN_INPUT_FILE:
+        fprintf(stderr, "MSG_CANT_OPEN_INPUT_FILE(%s, %d, %s)", 
+                parameterlist_get_input_filename(error_handler_param),
+                errno, strerror(errno));
+        break;
+    case CANT_OPEN_OUTPUT_FILE:
+        fprintf(stderr, "MSG_CANT_OPEN_OUTPUT_FILE(%s, %d, %s)", 
+                parameterlist_get_output_filename(error_handler_param),
+                errno, strerror(errno));
+        break;
+    default:
+        fprintf(stderr, "MSG_UNKNOWN_ERROR");
+        break;
+    }
     
-    
-    fprintf(stderr, "Modul:        %s\n"
-                    "Zeile:        %d\n"
-                    "Fehlernummer: %d\n"
-                    "Beschreibung: %s\n\n",
-            file, line, errno, strerror(errno));
+    fprintf(stderr, "\n\nModul: %s\nZeile: %d\n\n\n", file, line);
     
     if (parameterlist_get_output_stream(error_handler_param) != NULL)
     {

@@ -1,4 +1,4 @@
-/* 
+/**
  * @file htree_node.h
  * 
  * Dieses Modul repräsentiert einen Huffman-Baum-Knoten.

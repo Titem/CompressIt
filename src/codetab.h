@@ -1,4 +1,4 @@
-/* 
+/** 
  * @file codetab.h
  * 
  * Dieses Modul repräsentiert eine Code-Tabelle.
