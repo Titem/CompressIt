@@ -1,4 +1,8 @@
 
+/* ======================================================================== *
+ * Header-Dateien                                                           *
+ * ======================================================================== */
+
 #include "error_handler.h"
 
 #include <stdio.h>
@@ -11,12 +15,30 @@
 
 
 
+
+/* ======================================================================== *
+ * globale Variablen                                                    *
+ * ======================================================================== */
+
+/**
+ * Diese globale Variable speichert für den Error-Handler einen Zeiger auf
+ * die Parameterliste, mit der der Error-Handler aktiviert wurde.
+ */
 PARAMETERLIST* error_handler_param;
+
+
+
+
+/* ======================================================================== *
+ * Funktionsdefinitionen                                                    *
+ * ======================================================================== */
 
 extern void error_handler_activate(PARAMETERLIST* parameterlist)
 {
     error_handler_param = parameterlist; 
 }
+
+
 
 extern void error_handler_handle_error(ERROR error, char* file, int line)
 {
