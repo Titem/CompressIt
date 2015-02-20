@@ -91,7 +91,8 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     PQUEUE_ELEMENT* right_pqueue_element;
     PQUEUE_ELEMENT* last_pqueue_element;
     #ifdef DEBUG_HUFFMAN
-    printf("PQUEUE Number of Elements vor insert: %i\n\n", (int)pqueue_get_number_of_entries(pqueue));
+    printf("PQUEUE Number of Elements vor insert: %i\n\n", 
+           (int)pqueue_get_number_of_entries(pqueue));
     #endif
     while (!freqtab_is_empty(freqtab))
     {
@@ -101,11 +102,15 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
 
         /* htree_leaf erstellen mit character und frequency des entnommenen
          * freqtab_element */
-        new_htree_element = create_htree_element(LEAF, (void*) create_htree_leaf
-                (freqtab_elememt_get_char(freqtab_element)));
+        new_htree_element 
+            = create_htree_element(LEAF, 
+              (void*) create_htree_leaf(
+              freqtab_elememt_get_char(freqtab_element)));
 
         /* neuen htree_leaf der pqueue hinzufügen */
-        pqueue_insert_htree_element(pqueue, new_htree_element, freqtab_element_get_frequency(freqtab_element));
+        pqueue_insert_htree_element(
+                pqueue, new_htree_element, 
+                freqtab_element_get_frequency(freqtab_element));
 
     }
     #ifdef DEBUG_HUFFMAN
@@ -120,11 +125,14 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
         right_pqueue_element = pqueue_get_min_entry(pqueue);
 
         /* die zwei entnommenen htree_elemente zusammenführen */
-        new_htree_element = merge_htree_elements(pqueue_element_get_htree_element(left_pqueue_element),
-                                                 pqueue_element_get_htree_element(right_pqueue_element));
+        new_htree_element = merge_htree_elements(
+                pqueue_element_get_htree_element(left_pqueue_element),
+                pqueue_element_get_htree_element(right_pqueue_element));
         
         /* zusammengeführtes htree_element der pqueue hinzufügen */
-        pqueue_insert_htree_element(pqueue, new_htree_element, pqueue_element_get_weight(left_pqueue_element) + pqueue_element_get_weight(right_pqueue_element));
+        pqueue_insert_htree_element(pqueue, new_htree_element, 
+                pqueue_element_get_weight(left_pqueue_element) + 
+                pqueue_element_get_weight(right_pqueue_element));
         
         /* Resourcen wieder freigeben */
         delete_pqueue_element(&left_pqueue_element);
@@ -132,7 +140,8 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     }
     
     #ifdef DEBUG_HUFFMAN
-    printf("\n\nPQUEUE Number of Elements: %i\n\n", (int) pqueue_get_number_of_entries(pqueue));
+    printf("\n\nPQUEUE Number of Elements: %i\n\n", 
+           (int) pqueue_get_number_of_entries(pqueue));
     #endif
 
     /* letztes htree_element aus pqueue entnehmen */
@@ -185,10 +194,8 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
         {
             if (htree_element_is_leaf(htree_element))
             {
-                printf("Datei ungültig! #0\n"
-                       "Die Codetabelle enthält einen ungültigen Eintrag!\n"
-                       "Modul: htree.c\tFunktion: create_htree_from_codetab\n\n");
-                exit(EXIT_FAILURE);
+                error_handler_handle_error(INVALID_FILE_CODETAB_INVALID,
+                                           __FILE__, __LINE__)
             }
 
             /* Bit mit Index holen */
@@ -280,21 +287,16 @@ extern bool htree_search_char(HTREE* htree, bool bit)
 {
     if (htree_element_is_leaf(htree->search_pointer))
     {
-        printf("Datei ungültig! #0\n"
-               "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
-               "Modul: htree.c\tFunktion: htree_search_char\n\n");
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(INVALID_FILE_CONTENT_INVALID,
+                                   __FILE__, __LINE__);
     }
 
     if (bit)
     {
-        /* @TODO: Wird das benötigt */
         if (!htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree->search_pointer)))
         {
-            printf("Datei ungültig! #1\n"
-                   "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
-                   "Modul: htree.c\tFunktion: htree_search_char\n\n");
-            exit(EXIT_FAILURE);
+            error_handler_handle_error(INVALID_FILE_CONTENT_INVALID,
+                                       __FILE__, __LINE__);
         }
 
         /* rechtes Kind auswählen */
@@ -302,13 +304,10 @@ extern bool htree_search_char(HTREE* htree, bool bit)
     }
     else
     {
-        /* @TODO: Wird das benötigt */
         if (!htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree->search_pointer)))
         {
-            printf("Datei ungültig! #2\n"
-                   "Der komprimierte Inhalt der Datei enthält eine ungültige Codierung!\n"
-                   "Modul: htree.c\tFunktion: htree_search_char\n\n");
-            exit(EXIT_FAILURE);
+            error_handler_handle_error(INVALID_FILE_CONTENT_INVALID,
+                                       __FILE__, __LINE__);
         }
 
         /* linkes Kind auswählen */
