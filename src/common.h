@@ -13,7 +13,7 @@
 #define	COMMON_H
 
 
-#define DEBUG_HUFFMAN
+/* #define DEBUG_HUFFMAN */
 
 
 #endif	/* COMMON_H */

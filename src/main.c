@@ -37,6 +37,13 @@ int main(int argc, char** argv);
 
 
 
+/**
+ * Diese Funktion gibt die Hilfeseite dieser Anwendung auf dem Bildschirm aus.
+ */
+void show_manpage(void);
+
+
+
 
 /* ======================================================================== *
  * Funktionsdefinitionen                                                    *
@@ -69,7 +76,7 @@ int main(int argc, char** argv)
         break;
 
     case MANPAGE:
-        print_error(help);
+        show_manpage();
         break;
 
     default:
@@ -87,3 +94,9 @@ int main(int argc, char** argv)
     exit(EXIT_SUCCESS);
 }
 
+
+
+void show_manpage(void)
+{
+    printf("Dies ist die Hileseite von CompressIt!\n\n");
+}
