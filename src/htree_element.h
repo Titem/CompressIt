@@ -32,8 +32,8 @@ typedef struct S_HTREE_ELEMENT HTREE_ELEMENT;
 /**
  * Dieser Datentyp repräsentiert eine Auswahl um welchen Typ von 
  * Huffman-Baum-Element es sich handelt.
- * Variablen diesen Datentyps können zwei Zustände annehmen, entweder Knoten oder
- * Blatt. 
+ * Variablen diesen Datentyps können zwei Zustände annehmen, 
+ * entweder Knoten oder Blatt. 
  */
 typedef enum
 {
@@ -71,7 +71,8 @@ typedef enum
  *                Huffman-baum-element abstrakt gekapselt werden soll
  * @return Zeiger auf das neu erstellte Huffman-Baum-Element
  */
-extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, void* element);
+extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, 
+                                           void* element);
 
 
 

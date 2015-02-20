@@ -74,7 +74,8 @@ extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freqtab_element)
 
 
 
-extern unsigned long freqtab_element_get_frequency(FREQTAB_ELEMENT* freqtab_element)
+extern unsigned long freqtab_element_get_frequency(
+                                            FREQTAB_ELEMENT* freqtab_element)
 {
     return freqtab_element->frequency;
 }

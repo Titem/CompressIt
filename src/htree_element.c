@@ -52,7 +52,8 @@ struct S_HTREE_ELEMENT
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
-extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, void* element)
+extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type, 
+                                           void* element)
 {
     HTREE_ELEMENT* new_htree_element = malloc(sizeof(HTREE_ELEMENT));
     
@@ -132,14 +133,18 @@ extern void htree_element_print(HTREE_ELEMENT* htree_element)
         printf("|--");
         if(htree_element->type == LEAF)
         {
-            printf("[%s]\n", convert_char(htree_leaf_get_char((HTREE_LEAF*)(htree_element->element))));
+            printf("[%s]\n", 
+                   convert_char(htree_leaf_get_char(
+                   (HTREE_LEAF*)(htree_element->element))));
         }
         else
         {
             printf("[NODE]\n");
             deepness++;
-            htree_element_print(htree_node_get_left((HTREE_NODE*)(htree_element->element)));
-            htree_element_print(htree_node_get_right((HTREE_NODE*)(htree_element->element)));
+            htree_element_print(htree_node_get_left(
+                (HTREE_NODE*)(htree_element->element)));
+            htree_element_print(htree_node_get_right(
+                (HTREE_NODE*)(htree_element->element)));
             deepness--;
         }
     }

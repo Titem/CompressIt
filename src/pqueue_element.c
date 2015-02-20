@@ -70,7 +70,8 @@ extern unsigned long pqueue_element_get_weight(PQUEUE_ELEMENT* pqueue_element)
 
 
 
-extern HTREE_ELEMENT* pqueue_element_get_htree_element(PQUEUE_ELEMENT* pqueue_element)
+extern HTREE_ELEMENT* pqueue_element_get_htree_element(
+                                            PQUEUE_ELEMENT* pqueue_element)
 {
     return pqueue_element->htree_element;
 }

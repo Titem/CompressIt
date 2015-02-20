@@ -183,7 +183,10 @@ extern void freqtab_print(FREQTAB* freqtab)
     {
         if (freqtab->char_map[i] != NULL)
         {
-            printf("%s \t ---> %d \t  ---> %d \n", convert_char(freqtab_elememt_get_char(freqtab->char_map[i])), (int) freqtab_element_get_frequency(freqtab->char_map[i]), (int) freqtab_elememt_get_char(freqtab->char_map[i]));
+            printf("%s \t ---> %d \t  ---> %d \n", 
+                   convert_char(freqtab_elememt_get_char(freqtab->char_map[i])), 
+                   (int) freqtab_element_get_frequency(freqtab->char_map[i]), 
+                   (int) freqtab_elememt_get_char(freqtab->char_map[i]));
         }
     }
     printf("--------------------------------------\n");
@@ -195,7 +198,8 @@ extern void freqtab_print(FREQTAB* freqtab)
 
 static void freqtab_init_working_index(FREQTAB* freqtab)
 {
-    while (freqtab->working_index < 256 && freqtab->char_map[freqtab->working_index] == NULL)
+    while (freqtab->working_index < 256 
+           && freqtab->char_map[freqtab->working_index] == NULL)
     {
         freqtab->working_index++;
     }

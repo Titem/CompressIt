@@ -53,7 +53,8 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
             code = codetab_get_code(codetab, (unsigned char) character);
 
             /* code_length für gelesenes Zeichen anfordern */
-            code_length = codetab_get_code_length(codetab, (unsigned char) character);
+            code_length = codetab_get_code_length(codetab, 
+                                                  (unsigned char) character);
             code_index = code_length;
         }
 

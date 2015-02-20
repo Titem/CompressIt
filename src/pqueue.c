@@ -100,7 +100,8 @@ static void pqueue_build_heap(PQUEUE* pqueue);
  * @param index2 positive Ganzzahl [0 bis 255], die den Index des anderen zu
  *               tauschenden Elementes repräsentiert
  */
-static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2);
+static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, 
+                        unsigned short index2);
 
 
 
@@ -210,14 +211,16 @@ static void pqueue_heapify(PQUEUE* pqueue, unsigned short index)
     {
         min = index;
         if ((GET_LEFT_CHILD_INDEX(index) < pqueue->number_of_entries) && 
-           (pqueue_element_get_weight(pqueue->entry[GET_LEFT_CHILD_INDEX(index)]) 
+           (pqueue_element_get_weight(
+                pqueue->entry[GET_LEFT_CHILD_INDEX(index)]) 
             < pqueue_element_get_weight(pqueue->entry[min])))
         {
             min = GET_LEFT_CHILD_INDEX(index);
         }
         if ((GET_RIGHT_CHILD_INDEX(index) < pqueue->number_of_entries) 
            && 
-           (pqueue_element_get_weight(pqueue->entry[GET_RIGHT_CHILD_INDEX(index)]) 
+           (pqueue_element_get_weight(
+                pqueue->entry[GET_RIGHT_CHILD_INDEX(index)]) 
            < pqueue_element_get_weight(pqueue->entry[min])))
         {
             min = GET_RIGHT_CHILD_INDEX(index);
@@ -248,7 +251,8 @@ static void pqueue_build_heap(PQUEUE* pqueue)
 
 
 
-static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, unsigned short index2)
+static void pqueue_swap(PQUEUE* pqueue, unsigned short index1, 
+                        unsigned short index2)
 {
     PQUEUE_ELEMENT* temp = pqueue->entry[index1];
     pqueue->entry[index1] = pqueue->entry[index2];

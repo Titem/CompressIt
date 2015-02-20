@@ -92,14 +92,18 @@ extern void pqueue_insert_htree_element(PQUEUE* pqueue,
                                         HTREE_ELEMENT* htree_element,
                                         unsigned long weight);
 
-/* char *min_element ist das Zeichen bzw. das Char Array in dem die Zeichenkette bzw. das Minimum zurï¿½ckgegeben wird.
-Liefert TRUE wenn das Minimum entfernt wurde und FALSE wenn kein Element mehr existiert
-evtl. den Speicherplatz verkleinern.*/
+
 
 /**
+ * Diese Funktion entnimmt das vorderste wartende Element der übergebenen 
+ * Prioritäts-Warteschlange und liefert einen Zeiger auf dieses entnommene
+ * Element zurück. Dises entnommende Element ist das Element mit dem 
+ * kleinsten Gewicht und somit der größten Priorität.
  * 
- * @param pqueue
- * @return 
+ * @param pqueue Zeiger auf die Prioritäts-Warteschlange, der das höchst
+ *               priorisierte Element mit dem kleinsten Gewicht entnommen
+ *               werden soll
+ * @return Zeiger auf das entnommene Prioritäts-Warteschlangen-Element
  */
 extern PQUEUE_ELEMENT* pqueue_get_min_entry(PQUEUE* pqueue);
 

@@ -88,7 +88,8 @@ static const char* WRITE_BINARY = "wb";
  * @param mime_type Zeiger auf die Zeichenkette, die den Mime-Typ enthält
  * @return Zeiger auf die neu erstellte Zeichenkette
  */
-static char* parameterlist_get_new_filename(char* filename, const char* mime_type);
+static char* parameterlist_get_new_filename(char* filename, 
+                                            const char* mime_type);
 
 
 
@@ -115,7 +116,8 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 
     if (new_parameterlist == NULL)
     {
-        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, 
+                                   __FILE__, __LINE__);
     }
 
     new_parameterlist->run_mode = UNDEFINED;
@@ -130,7 +132,8 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 
     if (argc <= 1)
     {
-        error_handler_handle_error(TO_FEW_ARGUMENTS, __FILE__, __LINE__);
+        error_handler_handle_error(TO_FEW_ARGUMENTS, 
+                                   __FILE__, __LINE__);
     }
 
     while (argc > 1)
@@ -146,7 +149,8 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 
             if (argc <= 0)
             {
-                error_handler_handle_error(NO_INPUT_FILENAME, __FILE__, __LINE__);
+                error_handler_handle_error(NO_INPUT_FILENAME, 
+                                           __FILE__, __LINE__);
             }
 
             #ifdef DEBUG_HUFFMAN
@@ -165,7 +169,8 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 
             if (argc <= 0)
             {
-                error_handler_handle_error(NO_INPUT_FILENAME, __FILE__, __LINE__);
+                error_handler_handle_error(NO_INPUT_FILENAME, 
+                                           __FILE__, __LINE__);
             }
 
             #ifdef DEBUG_HUFFMAN
@@ -194,7 +199,8 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 
         else
         {
-            error_handler_handle_error(TO_MANY_ARGUMENTS, __FILE__, __LINE__);
+            error_handler_handle_error(TO_MANY_ARGUMENTS, 
+                                       __FILE__, __LINE__);
         }
     }
 
@@ -203,18 +209,24 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
     {
         if (new_parameterlist->run_mode == COMPRESS)
         {
-            output_filename = parameterlist_get_new_filename(input_filename, COMPRESS_MIME_TYPE);
+            output_filename 
+                = parameterlist_get_new_filename(input_filename, 
+                                                 COMPRESS_MIME_TYPE);
         }
         else
         {
-            output_filename = parameterlist_get_new_filename(input_filename, DECOMPRESS_MIME_TYPE);
+            output_filename 
+                = parameterlist_get_new_filename(input_filename, 
+                                                 DECOMPRESS_MIME_TYPE);
         }
     }
 
     /* Prüfung ob Dateinamen gleich sind */
-    if (found_input_document && found_output_document && (strcmp(input_filename, output_filename) == 0) && !need_help)
+    if (found_input_document && found_output_document 
+        && (strcmp(input_filename, output_filename) == 0) && !need_help)
     {
-        error_handler_handle_error(FILENAMES_ARE_EQUAL, __FILE__, __LINE__);
+        error_handler_handle_error(FILENAMES_ARE_EQUAL, 
+                                   __FILE__, __LINE__);
     }
 
     /* Dateien öffnen */
@@ -223,7 +235,8 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
         input_file = fopen(input_filename, READ_BINARY);
         if (input_file == NULL)
         {
-            error_handler_handle_error(CANT_OPEN_INPUT_FILE, __FILE__, __LINE__);
+            error_handler_handle_error(CANT_OPEN_INPUT_FILE, 
+                                       __FILE__, __LINE__);
         }
 
         #ifdef DEBUG_HUFFMAN
@@ -233,7 +246,8 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
         output_file = fopen(output_filename, WRITE_BINARY);
         if (output_file == NULL)
         {
-            error_handler_handle_error(CANT_OPEN_OUTPUT_FILE, __FILE__, __LINE__);
+            error_handler_handle_error(CANT_OPEN_OUTPUT_FILE, 
+                                       __FILE__, __LINE__);
         }
 
         #ifdef DEBUG_HUFFMAN
@@ -300,7 +314,8 @@ extern FILE* parameterlist_get_output_stream(PARAMETERLIST* parameterlist)
 
 
 
-static char* parameterlist_get_new_filename(char* filename, const char* mime_type)
+static char* parameterlist_get_new_filename(char* filename, 
+                                            const char* mime_type)
 {
     size_t length = strlen(filename);
     char* new_filename = malloc(sizeof(char) * (length + 4));

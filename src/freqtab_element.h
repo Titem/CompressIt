@@ -90,7 +90,8 @@ extern unsigned char freqtab_elememt_get_char(FREQTAB_ELEMENT* freqtab_element);
  * @return positive Ganzzahl [0 bis MAX_ULONG], welche die Häufigkeit des
  *         übergebenen Häufigkeits-Tabellen-Elementes repräsentiert
  */
-extern unsigned long freqtab_element_get_frequency(FREQTAB_ELEMENT* freqtab_element);
+extern unsigned long freqtab_element_get_frequency(
+                                        FREQTAB_ELEMENT* freqtab_element);
 
 
 

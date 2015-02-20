@@ -17,6 +17,7 @@
 #include "htree_node.h"
 #include "pqueue.h"
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -195,7 +196,7 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
             if (htree_element_is_leaf(htree_element))
             {
                 error_handler_handle_error(INVALID_FILE_CODETAB_INVALID,
-                                           __FILE__, __LINE__)
+                                           __FILE__, __LINE__);
             }
 
             /* Bit mit Index holen */
@@ -203,25 +204,35 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
 
             if (bit)
             {
-                if (!htree_node_has_right(((HTREE_NODE*)htree_element_get_element(htree_element))))
+                if (!htree_node_has_right(
+                    ((HTREE_NODE*)htree_element_get_element(htree_element))))
                 {
                     /* rechtes Kind erzeugen und anhängen */
-                    htree_node_set_right((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(NODE, create_htree_node(NULL, NULL)));
+                    htree_node_set_right(
+                        (HTREE_NODE*)htree_element_get_element(htree_element), 
+                        create_htree_element(NODE, 
+                            create_htree_node(NULL, NULL)));
                 }
 
                 /* rechtes Kind auswählen */
-                htree_element = htree_node_get_right(((HTREE_NODE*)htree_element_get_element(htree_element)));
+                htree_element = htree_node_get_right(
+                    ((HTREE_NODE*)htree_element_get_element(htree_element)));
             }
             else
             {
-                if (!htree_node_has_left(((HTREE_NODE*)htree_element_get_element(htree_element))))
+                if (!htree_node_has_left(
+                    ((HTREE_NODE*)htree_element_get_element(htree_element))))
                 {
                     /* linkes Kind erzeugen und anhängen */
-                    htree_node_set_left((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(NODE, create_htree_node(NULL, NULL)));
+                    htree_node_set_left(
+                        (HTREE_NODE*)htree_element_get_element(htree_element), 
+                        create_htree_element(NODE, 
+                            create_htree_node(NULL, NULL)));
                 }
 
                 /* linkes Kind auswählen */
-                htree_element = htree_node_get_left(((HTREE_NODE*)htree_element_get_element(htree_element)));
+                htree_element = htree_node_get_left(
+                    ((HTREE_NODE*)htree_element_get_element(htree_element)));
             }
 
             index++;
@@ -233,12 +244,20 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
         if (bit)
         {
             /* rechtes Kind erzeugen und anhängen */
-            htree_node_set_right((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(LEAF, create_htree_leaf(codetab_element_get_char(codetab_element))));
+            htree_node_set_right(
+                (HTREE_NODE*)htree_element_get_element(htree_element), 
+                create_htree_element(LEAF, 
+                    create_htree_leaf(
+                        codetab_element_get_char(codetab_element))));
         }
         else
         {
             /* linkes Kind erzeugen und anhängen */
-            htree_node_set_left((HTREE_NODE*)htree_element_get_element(htree_element), create_htree_element(LEAF, create_htree_leaf(codetab_element_get_char(codetab_element))));
+            htree_node_set_left(
+                (HTREE_NODE*)htree_element_get_element(htree_element), 
+                create_htree_element(LEAF, 
+                    create_htree_leaf(
+                        codetab_element_get_char(codetab_element))));
         }
 
     }
@@ -293,25 +312,29 @@ extern bool htree_search_char(HTREE* htree, bool bit)
 
     if (bit)
     {
-        if (!htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree->search_pointer)))
+        if (!htree_node_has_right((HTREE_NODE*)htree_element_get_element
+            (htree->search_pointer)))
         {
             error_handler_handle_error(INVALID_FILE_CONTENT_INVALID,
                                        __FILE__, __LINE__);
         }
 
         /* rechtes Kind auswählen */
-        htree->search_pointer = htree_node_get_right((HTREE_NODE*)htree_element_get_element((htree->search_pointer)));
+        htree->search_pointer = htree_node_get_right(
+            (HTREE_NODE*)htree_element_get_element((htree->search_pointer)));
     }
     else
     {
-        if (!htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree->search_pointer)))
+        if (!htree_node_has_left((HTREE_NODE*)htree_element_get_element
+            (htree->search_pointer)))
         {
             error_handler_handle_error(INVALID_FILE_CONTENT_INVALID,
                                        __FILE__, __LINE__);
         }
 
         /* linkes Kind auswählen */
-        htree->search_pointer = htree_node_get_left((HTREE_NODE*)htree_element_get_element((htree->search_pointer)));
+        htree->search_pointer = htree_node_get_left(
+            (HTREE_NODE*)htree_element_get_element((htree->search_pointer)));
     }
 
     return htree_element_is_leaf(htree->search_pointer);
@@ -321,7 +344,8 @@ extern bool htree_search_char(HTREE* htree, bool bit)
 extern unsigned char htree_get_char(HTREE* htree)
 {
     /* char aus dem Element lesen auf den der tree_pointer zeigt */
-    unsigned char character = htree_leaf_get_char(((HTREE_LEAF*)htree_element_get_element(htree->search_pointer)));
+    unsigned char character = htree_leaf_get_char(
+        ((HTREE_LEAF*)htree_element_get_element(htree->search_pointer)));
 
     /* tree_pointer auf Wutzelknoten zurücksetzen */
     htree->search_pointer = htree->root_node;
@@ -352,17 +376,22 @@ static void htree_prep_codetab_element(HTREE* htree)
         index++;
     }
 
-    while (!htree_element_is_removed(htree_element) && !htree_element_is_leaf(htree_element))
+    while (!htree_element_is_removed(htree_element) 
+           && !htree_element_is_leaf(htree_element))
     {
-        if (htree_node_has_left((HTREE_NODE*)htree_element_get_element(htree_element)))
+        if (htree_node_has_left(
+            (HTREE_NODE*)htree_element_get_element(htree_element)))
         {
-            htree_element = htree_node_get_left((HTREE_NODE*)htree_element_get_element(htree_element));
+            htree_element = htree_node_get_left(
+                (HTREE_NODE*)htree_element_get_element(htree_element));
             code[index] = false;
             index++;
         }
-        else if(htree_node_has_right((HTREE_NODE*)htree_element_get_element(htree_element)))
+        else if(htree_node_has_right(
+                (HTREE_NODE*)htree_element_get_element(htree_element)))
         {
-            htree_element = htree_node_get_right((HTREE_NODE*)htree_element_get_element(htree_element));
+            htree_element = htree_node_get_right(
+                (HTREE_NODE*)htree_element_get_element(htree_element));
             code[index] = true;
             index++;
         }
@@ -378,8 +407,9 @@ static void htree_prep_codetab_element(HTREE* htree)
 
     memcpy(new_code, code, sizeof(bool) * index);
 
-    codetab_element = create_codetab_element(htree_leaf_get_char((HTREE_LEAF*)htree_element_get_element(htree_element)),
-                                             new_code, index);
+    codetab_element = create_codetab_element(htree_leaf_get_char(
+        (HTREE_LEAF*)htree_element_get_element(htree_element)), 
+        new_code, index);
 
     htree->prep_codetab_element = codetab_element;
 
