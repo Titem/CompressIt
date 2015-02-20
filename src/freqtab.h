@@ -120,6 +120,7 @@ extern unsigned long freqtab_get_content_length(FREQTAB* freqtab);
  * @param freqtab Zeiger auf Häufigkeits-Tabelle, die auf dem Bildschirm 
  *                ausgegeben werden soll
  */
+ /*@unused@*/
 extern void freqtab_print(FREQTAB* freqtab);
 
 

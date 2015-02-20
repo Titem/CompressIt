@@ -17,19 +17,19 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
-/** 
+/**
  * Diese Struktur beschreibt den Aufbau eines Häufigkeits-Tabellen-Elementes.
  */
 struct S_FREQTAB_ELEMENT
 {
     /**
-     * Diese Variable speichert das Schriftzeichen 
+     * Diese Variable speichert das Schriftzeichen
      * dieses Häufigkeits-Tabellen-Elementes.
      */
     unsigned char character;
-    
+
     /**
-     * Diese Variable speichert die Häufigkeit 
+     * Diese Variable speichert die Häufigkeit
      * dieses Häufigkeits-Tabellen-Elementes.
      */
     unsigned long frequency;
@@ -50,15 +50,15 @@ extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character)
     {
 	error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
     }
-    
+
     new_freqtab_element->character = character;
     new_freqtab_element->frequency = ININIT_CHARCTER;
-    
+
     return new_freqtab_element;
 }
 
 
-
+/* @unused@ */
 extern void delete_freqtab_element(FREQTAB_ELEMENT** freqtab_element)
 {
     free(*freqtab_element);

@@ -126,6 +126,7 @@ extern unsigned short pqueue_get_number_of_entries(PQUEUE* pqueue);
  * @param pqueue Zeiger auf die Prioritäts-Warteschlange, die auf dem 
  *               Bildschirm ausgegeben werden soll
  */
+ /*@unused@*/
 extern void pqueue_print(PQUEUE* pqueue);
 
 

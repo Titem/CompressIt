@@ -153,6 +153,7 @@ extern unsigned char htree_get_char(HTREE* htree);
  * @param htree Zeiger auf den Huffman-Baum, der auf dem Bildschirm ausgegeben 
  *              werden soll
  */
+ /*@unused@*/
 extern void htree_print(HTREE* htree);
 
 

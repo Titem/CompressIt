@@ -19,7 +19,7 @@
  * Strukturdefinitionen                                                     *
  * ======================================================================== */
 
-/** 
+/**
  * Diese Struktur beschreibt den Aufbau einer Parameterliste.
  */
 struct S_PARAMETERLIST
@@ -28,24 +28,24 @@ struct S_PARAMETERLIST
      * Diese Variable speichert den Betriebs-Modus der Anwendung.
      */
     RUN_MODE run_mode;
-    
+
     /**
      * Diese Variable speichert einen Zeiger auf eine Zeichenkette,
      * die den Dateinamen der Quell-Datei enthält.
      */
     char* input_filename;
-    
+
     /**
      * Diese Variable speichert einen Zeiger auf den Eingangs-Datenstrom.
      */
     FILE* input_file;
-    
+
     /**
      * Diese Variable speichert einen Zeiger auf eine Zeichenkette,
      * die den Dateinamen der Ziel-Datei enthält.
      */
     char* output_filename;
-    
+
     /**
      * Diese Variable speichert einen Zeiger auf den Ausgangs-Datenstrom.
      */
@@ -60,17 +60,17 @@ struct S_PARAMETERLIST
  * ======================================================================== */
 
 /* Beschreibt die Argumente für das Kodieren, Decodieren und den Hilfeaufruf. */
-const char* COMPPRESS_FLAG = "-c";
-const char* DECOMPRESS_FLAG = "-d";
-const char* HELP_FLAG = "-h";
+static const char* COMPPRESS_FLAG = "-c";
+static const char* DECOMPRESS_FLAG = "-d";
+static const char* HELP_FLAG = "-h";
 
 /* Beschreibt den MIME-Typ, der der Ausgabedatei angehangen wird. */
-const char* COMPRESS_MIME_TYPE = ".hc";
-const char* DECOMPRESS_MIME_TYPE = ".hd";
+static const char* COMPRESS_MIME_TYPE = ".hc";
+static const char* DECOMPRESS_MIME_TYPE = ".hd";
 
 /* Beschreibt den Lese- bzw- Schreibevorgang. */
-const char* READ_BINARY = "rb";
-const char* WRITE_BINARY = "wb";
+static const char* READ_BINARY = "rb";
+static const char* WRITE_BINARY = "wb";
 
 
 
@@ -79,11 +79,11 @@ const char* WRITE_BINARY = "wb";
  * Funktionsprototypen                                                      *
  * ======================================================================== */
 
-/** 
+/**
  * Diese Funktion erstellt einen Dateinamen als String auf dem Heap,
  * welcher aus dem Dateinamen und dem angehangenen Mime-Typ besteht und
  * liefert einen Zeiger auf diesen neu erstellten String zurück.
- * 
+ *
  * @param filename Zeiger auf die Zeichenkette, die den Dateinamen enthält
  * @param mime_type Zeiger auf die Zeichenkette, die den Mime-Typ enthält
  * @return Zeiger auf die neu erstellte Zeichenkette
@@ -112,27 +112,27 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
     PARAMETERLIST *new_parameterlist = malloc(sizeof(PARAMETERLIST));
 
     error_handler_activate(new_parameterlist);
-    
+
     if (new_parameterlist == NULL)
     {
         error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
     }
-    
+
     new_parameterlist->run_mode = UNDEFINED;
     new_parameterlist->input_filename = NULL;
     new_parameterlist->input_file = NULL;
     new_parameterlist->output_filename = NULL;
     new_parameterlist->output_file = NULL;
-    
+
 #ifdef DEBUG_HUFFMAN
     printf("Analyse der Parameter!\n");
 #endif
-    
+
     if (argc <= 1)
     {
         error_handler_handle_error(TO_FEW_ARGUMENTS, __FILE__, __LINE__);
     }
-    
+
     while (argc > 1)
     {
         argc--;
@@ -148,11 +148,11 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
             {
                 error_handler_handle_error(NO_INPUT_FILENAME, __FILE__, __LINE__);
             }
-                
+
             #ifdef DEBUG_HUFFMAN
                 printf("Quell-Dateinamen gefunden!\n");
             #endif
-            
+
             input_filename = *argv;
             found_input_document = true;
         }
@@ -167,15 +167,15 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
             {
                 error_handler_handle_error(NO_INPUT_FILENAME, __FILE__, __LINE__);
             }
-            
+
             #ifdef DEBUG_HUFFMAN
                 printf("Quell-Dateinamen gefunden!\n");
-            #endif 
+            #endif
 
             input_filename = *argv;
             found_input_document = true;
         }
-        
+
         else if (strcmp(*argv, HELP_FLAG) == 0)
         {
             new_parameterlist->run_mode = MANPAGE;
@@ -191,7 +191,7 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
             output_filename = *argv;
             found_output_document = true;
         }
-        
+
         else
         {
             error_handler_handle_error(TO_MANY_ARGUMENTS, __FILE__, __LINE__);
@@ -210,7 +210,7 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
             output_filename = parameterlist_get_new_filename(input_filename, DECOMPRESS_MIME_TYPE);
         }
     }
-    
+
     /* Prüfung ob Dateinamen gleich sind */
     if (found_input_document && found_output_document && (strcmp(input_filename, output_filename) == 0) && !need_help)
     {
@@ -243,7 +243,7 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
         new_parameterlist->input_file = input_file;
         new_parameterlist->output_file = output_file;
     }
-    
+
     #ifdef DEBUG_HUFFMAN
     printf("Analyse der Parameter beendet!\n\n\n");
     #endif
