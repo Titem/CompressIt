@@ -18,6 +18,8 @@
  * Funktionsdefinitionen                                                    *
  * ======================================================================== */
 
+
+
 extern void print_error(int message)
 {
 

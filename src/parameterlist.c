@@ -11,6 +11,7 @@
 #include <string.h>
 
 #include "error.h"
+#include "error_handler.h"
 
 
 
@@ -106,15 +107,16 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
     char *output_filename = NULL;
     char *input_filename = NULL;
 
-    FILE *file_read = NULL;
-    FILE *file_write = NULL;
+    FILE *output_file = NULL;
+    FILE *input_file = NULL;
 
     PARAMETERLIST *new_parameterlist = malloc(sizeof(PARAMETERLIST));
 
+    error_handler_activate(new_parameterlist);
+    
     if (new_parameterlist == NULL)
     {
-        print_error(cant_malloc_memory);
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
     }
     
     new_parameterlist->run_mode = UNDEFINED;
@@ -123,19 +125,14 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
     new_parameterlist->output_filename = NULL;
     new_parameterlist->output_file = NULL;
     
-
-    
-
 #ifdef DEBUG_HUFFMAN
     printf("Analyse der Parameter!\n");
 #endif
-
-        if ((argc == 1) || (argc == 2) || (argc > 4))
-        {
-            print_error(too_many_arguments);
-            exit(EXIT_FAILURE);
-        }
-
+    
+    if (argc <= 1)
+    {
+        error_handler_handle_error(TO_FEW_ARGUMENTS, __FILE__, __LINE__);
+    }
     
     while (argc > 1)
     {
@@ -148,125 +145,109 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
             argc--;
             argv++;
 
-            if (*argv == NULL)
+            if (argc <= 0)
             {
-                print_error(dont_found_input_document);
-                exit(EXIT_FAILURE);
+                error_handler_handle_error(NO_INPUT_FILENAME, __FILE__, __LINE__);
             }
                 
+            #ifdef DEBUG_HUFFMAN
+                printf("Quell-Dateinamen gefunden!\n");
+            #endif
+            
             input_filename = *argv;
             found_input_document = true;
-            
-            #ifdef DEBUG_HUFFMAN
-                printf("FOUND INPUT DOCUMENT AND STATUS -c !\n");
-            #endif
-
         }
 
-        if (!found_input_document && strcmp(*argv, DECOMPRESS_FLAG) == 0)
+        else if (!found_input_document && strcmp(*argv, DECOMPRESS_FLAG) == 0)
         {
             new_parameterlist->run_mode = DECOMPRESS;
             argc--;
             argv++;
 
-            if (*argv == NULL)
+            if (argc <= 0)
             {
-                print_error(dont_found_input_document);
-                exit(EXIT_FAILURE);
+                error_handler_handle_error(NO_INPUT_FILENAME, __FILE__, __LINE__);
             }
-                    
-            input_filename = *argv;
-            found_input_document = true;
             
             #ifdef DEBUG_HUFFMAN
-                printf("FOUND INPUT DOCUMENT AND STATUS -d !\n");
+                printf("Quell-Dateinamen gefunden!\n");
             #endif 
+
+            input_filename = *argv;
+            found_input_document = true;
         }
         
-        if (strcmp(*argv, HELP_FLAG) == 0)
+        else if (strcmp(*argv, HELP_FLAG) == 0)
         {
             new_parameterlist->run_mode = MANPAGE;
             need_help = true;
         }
-        /*else if (argc >= 1 && !found_input_document)
-        {
-            print_error(too_many_arguments);
-            print_error(AND);
-            print_error(dont_found_input_document);
-            exit(EXIT_FAILURE);
-        }*/
 
-        if (!found_output_document)
+        else if (found_input_document && !found_output_document)
         {
             #ifdef DEBUG_HUFFMAN
-                printf("DONT FOUND OUTPUT DOKUMENT!\n");
+                printf("Ziel-Dateinamen gefunden!\n");
             #endif
 
-            argc--;
-            argv++;
-            if (*argv != NULL)
-            {
-                #ifdef DEBUG_HUFFMAN
-                    printf("FOUND OUTPUT DOCUMENT!\n");
-                #endif
-
-                output_filename = *argv;
-                found_output_document = true;
-            }
-            else
-            {
-                #ifdef DEBUG_HUFFMAN
-                    printf("POINTER IS NULL -> INPUTFILENAME AS OUTPUTFILENAME!\n");
-                #endif
-
-                if (new_parameterlist->run_mode == COMPRESS)
-                {
-                    output_filename = parameterlist_get_new_filename(input_filename, COMPRESS_MIME_TYPE);
-                }
-                else
-                {
-                    output_filename = parameterlist_get_new_filename(input_filename, DECOMPRESS_MIME_TYPE);
-                }
-                
-            }
+            output_filename = *argv;
+            found_output_document = true;
+        }
+        
+        else
+        {
+            error_handler_handle_error(TO_MANY_ARGUMENTS, __FILE__, __LINE__);
         }
     }
 
+    /* automatisch Ziel-Dateinamen generieren */
+    if (!found_output_document && !need_help)
+    {
+        if (new_parameterlist->run_mode == COMPRESS)
+        {
+            output_filename = parameterlist_get_new_filename(input_filename, COMPRESS_MIME_TYPE);
+        }
+        else
+        {
+            output_filename = parameterlist_get_new_filename(input_filename, DECOMPRESS_MIME_TYPE);
+        }
+    }
+    
+    /* Prüfung ob Dateinamen gleich sind */
     if (found_input_document && found_output_document && (strcmp(input_filename, output_filename) == 0) && !need_help)
     {
-        print_error(in_and_output_document_are_the_same);
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(FILENAMES_ARE_EQUAL, __FILE__, __LINE__);
     }
 
+    /* Dateien öffnen */
     if (!need_help)
     {
+        input_file = fopen(input_filename, READ_BINARY);
+        if (input_file == NULL)
+        {
+            error_handler_handle_error(CANT_OPEN_INPUT_FILE, __FILE__, __LINE__);
+        }
 
-#ifdef DEBUG_HUFFMAN
-        printf("FILE POINTER setzen und pruefen !\n");
-        printf("FP READ Stream geoeffnet !\n");
-#endif
+        #ifdef DEBUG_HUFFMAN
+        printf("Input-File-Stream geoeffnet!\n");
+        #endif
 
-        file_read = fopen(input_filename, READ_BINARY);
-        test_nullpointer_exception(file_read, input_filename);
+        output_file = fopen(output_filename, WRITE_BINARY);
+        if (output_file == NULL)
+        {
+            error_handler_handle_error(CANT_OPEN_OUTPUT_FILE, __FILE__, __LINE__);
+        }
 
-#ifdef DEBUG_HUFFMAN
-        printf("FP WRITE Stream geoeffnet !\n");
-#endif
+        #ifdef DEBUG_HUFFMAN
+        printf("Output-File-Stream geoeffnet!\n");
+        #endif
 
-
-        file_write = fopen(output_filename, WRITE_BINARY);
-        test_nullpointer_exception(file_write, output_filename);
-
-#ifdef DEBUG_HUFFMAN
-        printf("FILE POINTER in die PROPERTIES STRUCT uebernehmen !\n");
-#endif
-
-        new_parameterlist->input_file = file_read;
-        new_parameterlist->output_file = file_write;
+        new_parameterlist->input_file = input_file;
+        new_parameterlist->output_file = output_file;
     }
-#ifdef DEBUG_HUFFMAN
-    printf("END OF PROPERTIES!\n");
-#endif
+    
+    #ifdef DEBUG_HUFFMAN
+    printf("Analyse der Parameter beendet!\n\n\n");
+    #endif
 
     return new_parameterlist;
 }
