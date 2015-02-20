@@ -45,69 +45,76 @@ extern void error_handler_handle_error(ERROR error, char* file, int line)
     switch (error)
     {
     case CANT_ALLOCATE_MEMORY:
-        fprintf(stderr, "MSG_CANT_ALLOCATE_MEMORY");
+        fprintf(stderr, MSG_CANT_ALLOCATE_MEMORY);
         break;
     case NO_INPUT_FILENAME:
-        fprintf(stderr, "MSG_NO_INPUT_FILENAME");
+        fprintf(stderr, MSG_NO_INPUT_FILENAME);
         break;
     case TO_FEW_ARGUMENTS:
-        fprintf(stderr, "MSG_TO_FEW_ARGUMENTS");
+        fprintf(stderr, MSG_TO_FEW_ARGUMENTS);
         break;
     case TO_MANY_ARGUMENTS:
-        fprintf(stderr, "MSG_TO_MANY_ARGUMENTS");
+        fprintf(stderr, MSG_WRONG_ARGUMENTS);
         break;
     case FILENAMES_ARE_EQUAL:
-        fprintf(stderr, "MSG_FILENAMES_ARE_SAME");
+        fprintf(stderr, MSG_FILENAMES_ARE_EQUAL);
         break;
     case CANT_OPEN_INPUT_FILE:
-        fprintf(stderr, "MSG_CANT_OPEN_INPUT_FILE(%s, %d, %s)",
+        fprintf(stderr, MSG_CANT_OPEN_INPUT_FILE("%s", "%d", "%s"),
                 parameterlist_get_input_filename(error_handler_param),
                 errno, strerror(errno));
         break;
     case CANT_OPEN_OUTPUT_FILE:
-        fprintf(stderr, "MSG_CANT_OPEN_OUTPUT_FILE(%s, %d, %s)",
+        fprintf(stderr, MSG_CANT_OPEN_OUTPUT_FILE("%s", "%d", "%s"),
                 parameterlist_get_output_filename(error_handler_param),
                 errno, strerror(errno));
         break;
     case INVALID_FILE_CONTENT_INVALID:
-        fprintf(stderr, "MSG_INVALID_FILE_CONTENT_INVALID(%s)",
+        fprintf(stderr, MSG_INVALID_FILE_CONTENT_INVALID("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
     case INVALID_FILE_CONTENT_TO_SHORT:
-        fprintf(stderr, "MSG_INVALID_FILE_CONTENT_TO_SHORT(%s)",
+        fprintf(stderr, MSG_INVALID_FILE_CONTENT_TO_SHORT("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
     case INVALID_FILE_CONTENT_TO_LONG:
-        fprintf(stderr, "MSG_INVALID_FILE_CONTENT_TO_LONG(%s)",
+        fprintf(stderr, MSG_INVALID_FILE_CONTENT_TO_LONG("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
     case INVALID_FILE_CODETAB_INVALID:
-        fprintf(stderr, "MSG_INVALID_FILE_CODETAB_INVALID(%s)",
+        fprintf(stderr, MSG_INVALID_FILE_CODETAB_INVALID("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
     case INVALID_FILE_CODETAB_TO_SHORT:
-        fprintf(stderr, "MSG_INVALID_FILE_CODETAB_TO_SHORT(%s)",
+        fprintf(stderr, MSG_INVALID_FILE_CODETAB_TO_SHORT("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
     case INVALID_FILE_CONTENTLENGTH_UNREADABLE:
-        fprintf(stderr, "MSG_INVALID_FILE_CONTENTLENGTH_UNREADABLE(%s)",
+        fprintf(stderr, MSG_INVALID_FILE_CONTENTLENGTH_UNREADABLE("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
     case INVALID_FILE_CODETABLENGTH_UNREADABLE:
-        fprintf(stderr, "MSG_INVALID_FILE_CODETABLENGTH_UNREADABLE(%s)",
+        fprintf(stderr, MSG_INVALID_FILE_CODETABLENGTH_UNREADABLE("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
     case CANT_WRITE_CONTENTLENGTH:
-        fprintf(stderr, "MSG_CANT_WRITE_CONTENTLENGTH");
+        fprintf(stderr, MSG_CANT_WRITE_CONTENTLENGTH);
         break;
     case CANT_WRITE_CODETABLENGTH:
-        fprintf(stderr, "MSG_CANT_WRITE_CODETABLENGTH");
+        fprintf(stderr, MSG_CANT_WRITE_CODETABLENGTH);
         break;
     case UNKNOWN_ERROR:
-        fprintf(stderr, "MSG_UNKNOWN_ERROR");
+        fprintf(stderr, MSG_UNKNOWN_ERROR);
         break;
     default:
-        fprintf(stderr, "MSG_UNKNOWN_ERROR");
+        fprintf(stderr, MSG_UNKNOWN_ERROR);
         break;
     }
 

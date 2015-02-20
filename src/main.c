@@ -96,5 +96,5 @@ int main(int argc, char** argv)
 
 static void show_manpage(void)
 {
-    printf("MSG_MANPAGE");
+    printf(MSG_MANPAGE);
 }
