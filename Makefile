@@ -177,7 +177,7 @@ $(OBJPATH)/compressor.o : src/compressor.c src/compressor.h src/freqtab.h src/ht
 	gcc $(GCC_OPTION) -o $(OBJPATH)/compressor.o src/compressor.c
 
 
-$(OBJPATH)/main.o : src/main.c src/parameterlist.h src/compressor.h src/freqtab.h src/debug_common.h
+$(OBJPATH)/main.o : src/main.c src/parameterlist.h src/compressor.h src/freqtab.h src/debug_common.h src/messages_de.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/main.o
 	@echo --------------------------------------------------------
