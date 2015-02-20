@@ -69,7 +69,7 @@ $(OBJPATH)/debug_common.o : src/debug_common.c src/debug_common.h
 	@echo --------------------------------------------------------
 	mkdir -p $(OBJPATH)
 	gcc  $(GCC_OPTION) -o $(OBJPATH)/debug_common.o src/debug_common.c
-	
+
 $(OBJPATH)/error_handler.o : src/error_handler.c src/error_handler.h src/parameterlist.h src/debug_common.h
 	@echo ========================================================
 	@echo Erzeuge $(OBJPATH)/error_handler.o
@@ -195,7 +195,7 @@ $(SPLINT_LOG) : src/*.c src/*.h
            -booltype BOOL -boolfalse FALSE -booltrue TRUE \
            +predboolint +noret +usedef -infloops +casebreak \
            -initallelements -incompletetype -fixedformalarray \
-           +posix-lib src/*.c
+           +posix-lib +exportlocal src/*.c
 
 # ----------------------------------------------------------------------------
 # Regel zum Erzeugen der Projektdokumentation

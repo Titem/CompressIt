@@ -1,12 +1,12 @@
-/* 
+/*
  * @file debug_common.h
- * 
+ *
  * Dieses Modul enthält alle Fehlermeldungs-Texte und soinstige Funktionen
  * zur Fehlerhandhabung.
- * 
+ *
  * @author Tim Buschmann
  *         Artur Leinweber
- *         Alexander Schmitz 
+ *         Alexander Schmitz
  */
 
 #ifndef DEBUG_COMMON_H
@@ -49,6 +49,7 @@ enum error_message
 /*---------------------------------------------------------------------------------*/
 /*---------------------PRÜFT EINEN STREAM AUF FEHLER-------------------------------*/
 /*---------------------------------------------------------------------------------*/
+/*@unused@*/
 extern void test_nullpointer_exception(FILE *file_p, char* file_name);
 
 /*---------------------------------------------------------------------------------*/
