@@ -214,7 +214,7 @@ clean :
 
 
 
-test : build test1 test2 test3 test4 test5 test6 test7
+test : build test1 test2 test3 test4 test5 test6 test7 test8
 #-----------------------------------------------------------------------------
 # Automatisches Testen
 
@@ -222,7 +222,7 @@ test : build test1 test2 test3 test4 test5 test6 test7
 
 # Test mit der gesamten Bibel
 test1 :
-	@echo Test1: 
+	@echo Test1:
 	@echo ======
 	@echo
 	@echo komprimieren von .res/tests/bibel.txt
@@ -246,7 +246,7 @@ test1 :
 
 # Test mit nur einem Char in einer Datei
 test2 :
-	@echo Test2: 
+	@echo Test2:
 	@echo ======
 	@echo
 	@echo komprimieren von .res/tests/one_char.txt
@@ -270,7 +270,7 @@ test2 :
 
 # Test mit allen ASCII Zeichen in einer Datei
 test3 :
-	@echo Test3: 
+	@echo Test3:
 	@echo ======
 	@echo
 	@echo komprimieren von .res/tests/all_chars.txt
@@ -294,7 +294,7 @@ test3 :
 
 # Test mit 2 Chars
 test4 :
-	@echo Test4: 
+	@echo Test4:
 	@echo ======
 	@echo
 	@echo komprimieren von ./res/tests/two_char.txt
@@ -318,7 +318,7 @@ test4 :
 
 # Test mit einer .exe
 test5 :
-	@echo Test5: 
+	@echo Test5:
 	@echo ======
 	@echo
 	@echo komprimieren von ./res/tests/huffman.exe
@@ -342,7 +342,7 @@ test5 :
 
 # Test mit einer Datei mit "Fakultaet" von Zeichen
 test6 :
-	@echo Test6: 
+	@echo Test6:
 	@echo ======
 	@echo
 	@echo komprimieren von ./res/tests/chars-full.txt
@@ -362,15 +362,35 @@ test6 :
 	@echo
 	@echo
 
-
-
 # Test für die Ausgabe der Manpage
 test7 :
-	@echo Test7: 
+	@echo Test7:
 	@echo ======
 	@echo
 	@echo Aufruf der Manpage
-	./$(EXEPATH)/$(EXE) -h 
+	./$(EXEPATH)/$(EXE) -h
+	@echo
+	@echo Test erfolgreich durchgefuehrt!
+	@echo
+	@echo
+	@echo
+
+# Test ohne Output-Filename
+test8 :
+	@echo Test8:
+	@echo ======
+	@echo
+	@echo komprimieren von ./res/tests/huffman.exe
+	./$(EXEPATH)/$(EXE) -c ./res/tests/huffman.exe
+	@echo
+	@echo dekomprimieren von ./res/tests/huffman.exe.hc
+	./$(EXEPATH)/$(EXE) -d ./res/tests/huffman.exe.hc
+	@echo
+	@echo vergleichen von Quell-Datei und dekomprimierter Datei
+	diff -s ./res/tests/huffman.exe ./res/tests/huffman.exe.hc.hd
+	@echo
+	@echo loeschen der Dateien
+	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
 	@echo
 	@echo Test erfolgreich durchgefuehrt!
 	@echo
