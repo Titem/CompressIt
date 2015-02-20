@@ -132,7 +132,7 @@ extern void htree_element_print(HTREE_ELEMENT* htree_element)
         printf("|--");
         if(htree_element->type == LEAF)
         {
-            printf("[%c]\n", htree_leaf_get_char((HTREE_LEAF*)(htree_element->element)));
+            printf("[%s]\n", convert_char(htree_leaf_get_char((HTREE_LEAF*)(htree_element->element))));
         }
         else
         {

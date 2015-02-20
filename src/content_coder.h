@@ -1,4 +1,4 @@
-/* 
+/** 
  * @file content_coder.h
  * 
  * Dieses Modul repräsentiert das kodiersystem, welches den zu 

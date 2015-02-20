@@ -9,6 +9,7 @@
 #include <string.h>
 
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -106,8 +107,7 @@ extern FREQTAB* create_freqtab(FILE* input_stream)
     
     if (new_freqtab == NULL)
     {
-        print_error(cant_malloc_memory);
-        exit(EXIT_FAILURE);
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
     }
 
     new_freqtab->length = 0;

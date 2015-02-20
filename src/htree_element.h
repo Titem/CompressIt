@@ -1,4 +1,4 @@
-/* 
+/** 
  * @file htree_element.h
  * 
  * Dieses Modul repräsentiert ein Huffman-Baum-Element also ein Bestandteil

@@ -1,4 +1,4 @@
-/* 
+/**
  * @file htree_leaf.h
  * 
  * Dieses Modul repräsentiert ein Huffman-Baum-Blatt.

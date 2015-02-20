@@ -1,4 +1,4 @@
-/* 
+/**
  * @file pqueue_element.h
  * 
  * Dieses Modul repräsentiert ein Prioritäts-Warteschlangen-Element also einen

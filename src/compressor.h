@@ -1,4 +1,4 @@
-/* 
+/** 
  * @file compressor.h
  * 
  * Dieses Modul repräsentiert den Komprimierungs-Controller, der nacheinander
