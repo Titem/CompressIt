@@ -221,7 +221,7 @@ clean :
 
 
 
-test : build test1 test2 test3 test4 test5 test6 test7 test8
+test : build test1 test2 test3 test4 test5 test6 test7 test8 test9
 #-----------------------------------------------------------------------------
 # Automatisches Testen
 
@@ -398,6 +398,28 @@ test8 :
 	@echo
 	@echo loeschen der Dateien
 	rm ./res/tests/huffman.exe.hc ./res/tests/huffman.exe.hc.hd
+	@echo
+	@echo Test erfolgreich durchgefuehrt!
+	@echo
+	@echo
+	@echo
+
+# Test mit einer leeren Datei
+test9 :
+	@echo Test9:
+	@echo ======
+	@echo
+	@echo komprimieren von ./res/tests/empty.txt
+	./$(EXEPATH)/$(EXE) -c ./res/tests/empty.txt
+	@echo
+	@echo dekomprimieren von ./res/tests/empty.txt.hc
+	./$(EXEPATH)/$(EXE) -d ./res/tests/empty.txt.hc
+	@echo
+	@echo vergleichen von Quell-Datei und dekomprimierter Datei
+	diff -s ./res/tests/empty.txt ./res/tests/empty.txt.hc.hd
+	@echo
+	@echo loeschen der Dateien
+	rm ./res/tests/empty.txt.hc ./res/tests/empty.txt.hc.hd
 	@echo
 	@echo Test erfolgreich durchgefuehrt!
 	@echo
