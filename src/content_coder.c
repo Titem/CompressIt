@@ -31,7 +31,12 @@ extern void encode_content(FILE* input_stream, FILE* output_stream,
     int character = 0;
     bool* code = NULL;
     
-
+    /* Bei einer leeren Datei, wäre die Länge des Inhaltes 0 */
+    if (content_length == 0)
+    {
+        return;
+    }
+    
     /* content_length in output_stream schreiben */
     if (fwrite(&content_length, sizeof(unsigned long), 1, output_stream) != 1)
     {
