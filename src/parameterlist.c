@@ -100,17 +100,11 @@ static char* parameterlist_get_new_filename(char* filename,
 
 extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 {
+    PARAMETERLIST *new_parameterlist = malloc(sizeof(PARAMETERLIST));
+    
     bool found_input_document = false;
     bool found_output_document = false;
     bool need_help = false;
-
-    char *output_filename = NULL;
-    char *input_filename = NULL;
-
-    FILE *output_file = NULL;
-    FILE *input_file = NULL;
-
-    PARAMETERLIST *new_parameterlist = malloc(sizeof(PARAMETERLIST));
 
     error_handler_activate(new_parameterlist);
 
@@ -126,9 +120,9 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
     new_parameterlist->output_filename = NULL;
     new_parameterlist->output_file = NULL;
 
-#ifdef DEBUG_HUFFMAN
-    printf("Analyse der Parameter!\n");
-#endif
+    #ifdef DEBUG_HUFFMAN
+        printf("Analyse der Parameter!\n");
+    #endif
 
     if (argc <= 1)
     {
@@ -157,7 +151,7 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
                 printf("Quell-Dateinamen gefunden!\n");
             #endif
 
-            input_filename = *argv;
+            new_parameterlist->input_filename = *argv;
             found_input_document = true;
         }
 
@@ -177,7 +171,7 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
                 printf("Quell-Dateinamen gefunden!\n");
             #endif
 
-            input_filename = *argv;
+            new_parameterlist->input_filename = *argv;
             found_input_document = true;
         }
 
@@ -193,7 +187,7 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
                 printf("Ziel-Dateinamen gefunden!\n");
             #endif
 
-            output_filename = *argv;
+            new_parameterlist->output_filename = *argv;
             found_output_document = true;
         }
 
@@ -209,21 +203,24 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
     {
         if (new_parameterlist->run_mode == COMPRESS)
         {
-            output_filename 
-                = parameterlist_get_new_filename(input_filename, 
-                                                 COMPRESS_MIME_TYPE);
+            new_parameterlist->output_filename 
+                = parameterlist_get_new_filename(
+                    new_parameterlist->input_filename, 
+                    COMPRESS_MIME_TYPE);
         }
         else
         {
-            output_filename 
-                = parameterlist_get_new_filename(input_filename, 
-                                                 DECOMPRESS_MIME_TYPE);
+            new_parameterlist->output_filename
+                = parameterlist_get_new_filename(
+                    new_parameterlist->input_filename, 
+                    DECOMPRESS_MIME_TYPE);
         }
     }
 
     /* Prüfung ob Dateinamen gleich sind */
     if (found_input_document && found_output_document 
-        && (strcmp(input_filename, output_filename) == 0) && !need_help)
+        && (strcmp(new_parameterlist->input_filename, 
+        new_parameterlist->output_filename) == 0) && !need_help)
     {
         error_handler_handle_error(FILENAMES_ARE_EQUAL, 
                                    __FILE__, __LINE__);
@@ -232,8 +229,9 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
     /* Dateien öffnen */
     if (!need_help)
     {
-        input_file = fopen(input_filename, READ_BINARY);
-        if (input_file == NULL)
+        new_parameterlist->input_file 
+            = fopen(new_parameterlist->input_filename, READ_BINARY);
+        if (new_parameterlist->input_file == NULL)
         {
             error_handler_handle_error(CANT_OPEN_INPUT_FILE, 
                                        __FILE__, __LINE__);
@@ -243,8 +241,9 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
         printf("Input-File-Stream geoeffnet!\n");
         #endif
 
-        output_file = fopen(output_filename, WRITE_BINARY);
-        if (output_file == NULL)
+        new_parameterlist->output_file 
+            = fopen(new_parameterlist->output_filename, WRITE_BINARY);
+        if (new_parameterlist->output_file == NULL)
         {
             error_handler_handle_error(CANT_OPEN_OUTPUT_FILE, 
                                        __FILE__, __LINE__);
@@ -253,9 +252,6 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
         #ifdef DEBUG_HUFFMAN
         printf("Output-File-Stream geoeffnet!\n");
         #endif
-
-        new_parameterlist->input_file = input_file;
-        new_parameterlist->output_file = output_file;
     }
 
     #ifdef DEBUG_HUFFMAN
@@ -270,9 +266,7 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 extern void delete_parameterlist(PARAMETERLIST** parameterlist)
 {
     free((*parameterlist)->input_file);
-    free((*parameterlist)->input_filename);
     free((*parameterlist)->output_file);
-    free((*parameterlist)->output_filename);
     free(*parameterlist);
     *parameterlist = NULL;
 }
