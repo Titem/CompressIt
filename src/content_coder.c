@@ -113,6 +113,11 @@ extern void decode_content(FILE* input_stream, FILE* output_stream,
     /* content_length aus input_stream lesen */
     if (fread(&content_length, sizeof(unsigned long), 1, input_stream) != 1)
     {
+        /* Wenn die zu dekomprimierende Datei leer ist */
+        if (feof(input_stream))
+        {         
+            return;
+        }
         error_handler_handle_error(INVALID_FILE_CONTENTLENGTH_UNREADABLE, 
                                    __FILE__, __LINE__);
     }

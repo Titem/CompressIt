@@ -114,7 +114,7 @@ extern CODETAB* create_codetab(HTREE* htree)
 extern CODETAB* read_codetab(FILE* input_stream)
 {
     CODETAB_ELEMENT* new_codetab_element;
-    CODETAB* new_codetab;
+    CODETAB* new_codetab = malloc(sizeof(CODETAB));
 
     enum
     {
@@ -142,18 +142,24 @@ extern CODETAB* read_codetab(FILE* input_stream)
     /* Zählervariable Init */
     unsigned short count = 0;
 
-
-    new_codetab = malloc(sizeof(CODETAB));
-
+    new_codetab->length = 0;
+    new_codetab->working_index = 0;
+    memset(new_codetab->char_map, 0, sizeof(CODETAB_ELEMENT*) * 256);
+    
     if (fread(&(new_codetab->length), sizeof(unsigned short), 1, input_stream) 
         != 1)
     {
+        /* Wenn die zu dekomprimierende Datei leer ist */
+        if (feof(input_stream))
+        {
+            /* Working Index auf erstes gültiges Element setzen */
+            codetab_init_working_index(new_codetab);
+            
+            return new_codetab;
+        }
         error_handler_handle_error(INVALID_FILE_CODETABLENGTH_UNREADABLE,
                                    __FILE__, __LINE__);
     }
-
-    new_codetab->working_index = 0;
-    memset(new_codetab->char_map, 0, sizeof(CODETAB_ELEMENT*) * 256);
 
     while (count < new_codetab->length)
     {
