@@ -91,14 +91,27 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     PQUEUE_ELEMENT* left_pqueue_element;
     PQUEUE_ELEMENT* right_pqueue_element;
     PQUEUE_ELEMENT* last_pqueue_element;
+    
     #ifdef DEBUG_HUFFMAN
     printf("PQUEUE Number of Elements vor insert: %i\n\n", 
            (int)pqueue_get_number_of_entries(pqueue));
     #endif
+    
+    /* Wenn eine leere Datei komprimiert wird, ist die 
+     * freqtab von Beginn an leer */
+    if (freqtab_is_empty(freqtab))
+    {
+        new_htree->dead_htree_element = NULL;
+        new_htree->prep_codetab_element = NULL;
+        new_htree->root_node = NULL;
+        new_htree->search_pointer = NULL;
+        
+        return new_htree;
+    }
+    
     while (!freqtab_is_empty(freqtab))
     {
         /* freqtab_element aus freqtab entnehmen */
-        /*HIER IST DER FEHLER freqtab_element is NULL.*/
         freqtab_element = freqtab_get_element(freqtab);
 
         /* htree_leaf erstellen mit character und frequency des entnommenen
@@ -114,11 +127,13 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
                 freqtab_element_get_frequency(freqtab_element));
 
     }
+    
     #ifdef DEBUG_HUFFMAN
-    printf("\nPQUEUE Number of Elements nach insert: %i \n\n", (int)pqueue_get_number_of_entries(pqueue));
-
+    printf("\nPQUEUE Number of Elements nach insert: %i \n\n", 
+           (int)pqueue_get_number_of_entries(pqueue));
     pqueue_print(pqueue);
     #endif
+
     while (pqueue_get_number_of_entries(pqueue) >= 2)
     {
         /* 2 htree_elemente mit minimalem Gewicht aus der pqueue entnehmen */

@@ -110,12 +110,12 @@
 
 #define MSG_MANPAGE \
         "Usage: \n" \
-        "\t Compress: \t" \
+        "\t Compress:    " \
         " huffman.exe -c <in_file> [<out_file> (default: <in_file>.hc)] \n" \
-        "\t Decompress: \t" \
+        "\t Decompress:  " \
         " huffman.exe -d <in_file> [<out_file> (default: <in_file>.hd)] \n" \
-        "\t Help: \t" \
-        " huffman.exe -h \n" \
+        "\t Help:        " \
+        " huffman.exe -h \n\n" 
 
 #endif	/* MESSAGES_DE_H */
 

@@ -262,8 +262,7 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
     } state = CHAR;
 
     /* Werte Init */
-    unsigned char character 
-        = codetab_element_get_char(codetab->char_map[codetab->working_index]);
+    unsigned char character = 0;
     unsigned char code_length = 0;
     bool* code = NULL;
     
@@ -280,12 +279,21 @@ extern void write_codetab(FILE* output_stream, CODETAB* codetab)
     /* Zählervariable Init */
     unsigned short count = 0;
 
+    /* Bei einer leeren Datei, wäre die Länge der Code-Tabelle 0 */
+    if (codetab->length == 0)
+    {
+        return;
+    }
+    
     if (fwrite(&(codetab->length), sizeof(unsigned short), 1, output_stream) 
         != 1)
     {
         error_handler_handle_error(CANT_WRITE_CODETABLENGTH, 
                                    __FILE__, __LINE__);
     }
+    
+    character = codetab_element_get_char(
+        codetab->char_map[codetab->working_index]);
 
     while (count < codetab->length)
     {
