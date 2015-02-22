@@ -29,9 +29,24 @@
  */
 typedef enum
 {
+    /**
+     * Es ist noch nicht entschieden, was die Anwendung tun soll.
+     */
     UNDEFINED,
+            
+    /**
+     * Die Anwendung soll eine Datei komprimieren.
+     */
     COMPRESS,
+            
+    /**
+     * Die Anwendung soll eine Datei dekomprimieren.
+     */
     DECOMPRESS,
+            
+    /**
+     * Die Anwendung soll die Hilfe-Seite (Manpage) anzeigen.
+     */
     MANPAGE
 }RUN_MODE;
 

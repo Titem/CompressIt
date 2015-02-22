@@ -25,22 +25,91 @@
  */
 typedef enum
 {
+    /** 
+     * Ein unbekannter Fehler ist aufgetreten.
+     */
     UNKNOWN_ERROR,
+            
+    /** 
+     * Es konnte kein Speicher allociert werden.
+     */
     CANT_ALLOCATE_MEMORY,
+            
+    /** 
+     * Es wurde kein Dateiname für die Quell-Datei gefunden.
+     */
     NO_INPUT_FILENAME,
+            
+    /** 
+     * Es wurden der Anwendung zu wenige Argumente übergeben.
+     */
     TO_FEW_ARGUMENTS,
+    
+    /** 
+     * Es wurden der Anwendung zu viele Argumente übergeben.
+     */
     TO_MANY_ARGUMENTS,
+            
+    /** 
+     * Der Dateiname der Quell-Datei ist gleich dem Dateinamen der Ziel-Datei.
+     */
     FILENAMES_ARE_EQUAL,
+            
+    /** 
+     * Die Quell-Datei konnte nicht geöffnet werden.
+     */
     CANT_OPEN_INPUT_FILE,
+            
+    /** 
+     * Die Ziel-Datei konnte nicht angelegt werden.
+     */
     CANT_OPEN_OUTPUT_FILE,
+            
+    /** 
+     * Die Quell-Datei ist ungültig. Der Inhalt enthält eine 
+     * ungültige Codierung.
+     */
     INVALID_FILE_CONTENT_INVALID,
+            
+    /** 
+     * Die Quell-Datei ist ungültig. Der Inhalt ist zu kurz.
+     */
     INVALID_FILE_CONTENT_TO_SHORT,
+            
+    /** 
+     * Die Quell-Datei ist ungültig. Der Inhalt ist zu lang.
+     */
     INVALID_FILE_CONTENT_TO_LONG,
+            
+    /** 
+     * Die Quell-Datei ist ungültig. Die Code-Tabelle enthält einen 
+     * ungültigen Eintrag.
+     */
     INVALID_FILE_CODETAB_INVALID,
+            
+    /** 
+     * Die Quell-Datei ist ungültig. Die Code-Tabelle ist zu kurz.
+     */
     INVALID_FILE_CODETAB_TO_SHORT,
+            
+    /** 
+     * Die Quell-Datei ist ungültig. Die Inhalts-Länge ist beschädigt.
+     */
     INVALID_FILE_CONTENTLENGTH_UNREADABLE,
+            
+    /** 
+     * Die Quell-Datei ist ungültig. Die Code-Tabellen-Länge ist beschädigt.
+     */
     INVALID_FILE_CODETABLENGTH_UNREADABLE,
+            
+    /** 
+     * Die Inhalts-Länge konnte nicht gespeichert werden.
+     */
     CANT_WRITE_CONTENTLENGTH,
+            
+    /** 
+     * Die Code-Tabellen-Länge konnte nicht gespeichert werden.
+     */
     CANT_WRITE_CODETABLENGTH
 } ERROR;
 

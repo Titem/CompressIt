@@ -37,7 +37,14 @@ typedef struct S_HTREE_ELEMENT HTREE_ELEMENT;
  */
 typedef enum
 {
+    /**
+     * Es handelt sich um einen Knoten.
+     */
     NODE,
+            
+    /**
+     * Es handelt sich um ein Blatt.
+     */
     LEAF
 } HTREE_ELEMENT_TYPE;
 
