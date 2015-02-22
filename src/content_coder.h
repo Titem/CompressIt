@@ -4,8 +4,8 @@
  * Dieses Modul repräsentiert das kodiersystem, welches den zu 
  * komprimierenden/dekomprimierenden Inhalt enkodiert/dekodiert.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

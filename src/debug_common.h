@@ -4,8 +4,8 @@
  * Dieses Modul stellt allen anderen Modulen Funktionen bereit, die zum
  * Debuggen der Anwendung benötigt werden.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz 
  */
 

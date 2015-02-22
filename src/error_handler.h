@@ -4,8 +4,8 @@
  * Dieses Modul repräsentiert einen Fehler-Handler, der alle Funktionen
  * zur Fehlerhandhabung bereit stellt.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz 
  */
 

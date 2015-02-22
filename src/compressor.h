@@ -5,8 +5,8 @@
  * die einzelnen Schritte bei der Komprimierung sowie Dekomprimierung 
  * ansteuert.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

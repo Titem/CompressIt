@@ -10,8 +10,8 @@
  * sodass das Element mit dem niedrigsten Gewicht der Wartescxhlange zuerst 
  * entnommen werden kann um es dem Merge-Prozess zuzuführen.  
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

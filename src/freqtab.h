@@ -5,8 +5,8 @@
  * Eine Häufigkeits-Tabelle beinhaltet die Häufigkeiten, mit der jedes 
  * verwendete Schriftzeichen im Inhalt der zu komprimierenden Datei vorkommt. 
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz 
  */
 

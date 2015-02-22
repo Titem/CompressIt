@@ -7,8 +7,8 @@
  * komprimierten Datei abgelegt um das spätere Dekomprimieren (Dekodieren)
  * zu ermöglichen.
  *
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

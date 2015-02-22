@@ -6,8 +6,8 @@
  * die Gabelungen in der Baumstruktur. Ein Knoten kann dabei zwei weitere 
  * Kind-elemente enthalten die ein Blatt oder wiederum ein Knoten sein können.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

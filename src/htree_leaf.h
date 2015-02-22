@@ -5,8 +5,8 @@
  * Ein solches Blatt enthält das Schriftzeichen, welches an der Position,
  * an der sich das Blatt im Baum befindet, abgelegt ist.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

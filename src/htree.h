@@ -7,8 +7,8 @@
  * Huffman-Baum so angeordnet, dass der Weg von der Wurzel zu den Blättern 
  * die Kodierung des jeweiligen Zeichens repräsentiert.  
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

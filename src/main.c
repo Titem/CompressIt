@@ -1,3 +1,17 @@
+/** 
+ * @file main.c
+ * 
+ * Dieses Modul ist das Hauptmodul des gesamten Projektes. 
+ * In diesem Modul befindet sich die Main-Funktion mit der die Anwendung
+ * gestartet wird.
+ *
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
+ *         Alexander Schmitz
+ */
+
+
+
 
 /* ======================================================================== *
  * Header-Dateien                                                           *

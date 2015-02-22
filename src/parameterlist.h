@@ -6,8 +6,8 @@
  * Die Parameter der Parameterliste werden aus den 
  * Programm-Aufruf-Parametern ermittelt. 
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

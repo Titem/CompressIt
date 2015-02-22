@@ -6,8 +6,8 @@
  * Häufigkeit, mit der ein bestimmtes Schriftzeichen im Inhalt der zu 
  * komprimierenden Datei vorkommt, und dieses Zeichen selber.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz 
  */
 

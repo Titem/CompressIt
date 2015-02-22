@@ -7,8 +7,8 @@
  * Ein Huffman-Baum-Element stellt in etwa eine abstrakte Generalisierung eines
  * Huffman-Baum-Knotens und einem Huffman-Baum-Blattes da.
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 

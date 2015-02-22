@@ -5,8 +5,8 @@
  * in der Code-Tabelle. Ein solcher Eintrag enthält den Code mit seiner 
  * Code-Länge und das Zeichen, welches durch den Code repräsentiert wird. 
  * 
- * @author Tim Buschmann
- *         Artur Leinweber
+ * @author Tim Buschmann <br>
+ *         Artur Leinweber <br>
  *         Alexander Schmitz
  */
 
