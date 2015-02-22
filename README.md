@@ -1,15 +1,19 @@
 CompressIt
 ==========
-Implementierung der Huffman-Kodierung zum komprimieren einer Datei
+CompressIt ist eine Software, die auf Basis der Huffman-Kodierung Dateien komprimieren und dekomprimieren kann.
 
 Modulübersicht
 --------------
 ![ModulDiagramm](Konzept/Diagramme/png/CompressIt__Modulübersicht_0.png)
 
-Compress
---------
+Funktionsabhängigkeiten
+-----------------------
+![Functions](Konzept/Funktionsabhaengigkeiten.png)
+
+Komprimierung
+-------------
 ![Compress](Konzept/Diagramme/png/Sequenzdiagramme__compress__compress_1.png)
 
-Decompress
-----------
+Dekomprimierung
+---------------
 ![Decompress](Konzept/Diagramme/png/Sequenzdiagramme__decompress__decompress_2.png)
