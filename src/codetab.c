@@ -89,6 +89,11 @@ extern CODETAB* create_codetab(HTREE* htree)
     CODETAB* new_codetab = malloc(sizeof (CODETAB));
     CODETAB_ELEMENT* new_codetab_element;
 
+    if (new_codetab == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     /* Initialisieren */
     new_codetab->working_index = 0;
     new_codetab->length = 0;
@@ -142,6 +147,11 @@ extern CODETAB* read_codetab(FILE* input_stream)
     /* Zählervariable Init */
     unsigned short count = 0;
 
+    if (new_codetab == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     new_codetab->length = 0;
     new_codetab->working_index = 0;
     memset(new_codetab->char_map, 0, sizeof(CODETAB_ELEMENT*) * 256);
@@ -220,6 +230,11 @@ extern CODETAB* read_codetab(FILE* input_stream)
                 length_shift = 0;
 
                 code = malloc(sizeof(bool) * code_length);
+                if (code == NULL)
+                {
+                    error_handler_handle_error(CANT_ALLOCATE_MEMORY, 
+                                               __FILE__, __LINE__);
+                }
             }
             break;
 

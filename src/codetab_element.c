@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -52,6 +53,11 @@ extern CODETAB_ELEMENT* create_codetab_element(unsigned char character,
                                                unsigned char code_length)
 {
     CODETAB_ELEMENT* new_codetab_element = malloc(sizeof(CODETAB_ELEMENT));
+    
+    if (new_codetab_element == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
     
     new_codetab_element->character = character;
     new_codetab_element->code = code;

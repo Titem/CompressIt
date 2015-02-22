@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -46,6 +47,11 @@ extern PQUEUE_ELEMENT* create_pqueue_element(HTREE_ELEMENT* htree_element,
                                              unsigned long weight)
 {
     PQUEUE_ELEMENT* new_pqueue_element = malloc(sizeof(PQUEUE_ELEMENT));
+    
+    if (new_pqueue_element == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
     
     new_pqueue_element->htree_element = htree_element;
     new_pqueue_element->weight = weight;

@@ -10,6 +10,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "error_handler.h"
+
 
 
 
@@ -20,6 +22,11 @@
 extern char* convert_char(unsigned char character)
 {
     char* converted_char = malloc(3);
+    
+    if (converted_char == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
 
     switch (character)
     {

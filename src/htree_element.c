@@ -12,6 +12,7 @@
 #include "htree_node.h"
 #include "htree_leaf.h"
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -57,6 +58,11 @@ extern HTREE_ELEMENT* create_htree_element(HTREE_ELEMENT_TYPE type,
 {
     HTREE_ELEMENT* new_htree_element = malloc(sizeof(HTREE_ELEMENT));
     
+    if (new_htree_element == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     new_htree_element->type = type;
     new_htree_element->element = element;
     new_htree_element->removed = false;
@@ -85,6 +91,11 @@ extern HTREE_ELEMENT* merge_htree_elements(HTREE_ELEMENT* left_child,
                                            HTREE_ELEMENT* right_child)
 {
     HTREE_ELEMENT* new_htree_element = malloc(sizeof(HTREE_ELEMENT));
+    
+    if (new_htree_element == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
     
     new_htree_element->element = 
             (void*) create_htree_node(left_child, right_child);

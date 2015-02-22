@@ -313,7 +313,14 @@ static char* parameterlist_get_new_filename(char* filename,
 {
     size_t length = strlen(filename);
     char* new_filename = malloc(sizeof(char) * (length + 4));
+    
+    if (new_filename == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     strcpy(new_filename, filename);
     strcat(new_filename, mime_type);
+    
     return new_filename;
 }

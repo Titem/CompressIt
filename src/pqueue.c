@@ -9,6 +9,7 @@
 #include <stdio.h>
 
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -129,6 +130,11 @@ extern PQUEUE* create_pqueue(void)
 {
     PQUEUE* new_pqueue = malloc(sizeof(PQUEUE));
 
+    if (new_pqueue == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     new_pqueue->number_of_entries = 0;
 
     return new_pqueue;

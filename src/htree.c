@@ -92,6 +92,11 @@ extern HTREE* create_htree_from_freqtab(FREQTAB* freqtab)
     PQUEUE_ELEMENT* right_pqueue_element;
     PQUEUE_ELEMENT* last_pqueue_element;
     
+    if (new_htree == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     #ifdef DEBUG_HUFFMAN
     printf("PQUEUE Number of Elements vor insert: %i\n\n", 
            (int)pqueue_get_number_of_entries(pqueue));
@@ -191,6 +196,11 @@ extern HTREE* create_htree_from_codetab(CODETAB* codetab)
     unsigned char length;
     bool bit;
 
+    if (new_htree == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     /* Wurzel erstellen */
     root_node = create_htree_element(NODE, create_htree_node(NULL, NULL));
 
@@ -419,6 +429,11 @@ static void htree_prep_codetab_element(HTREE* htree)
     }
 
     new_code = malloc(sizeof(bool) * index);
+    
+    if (new_code == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
 
     memcpy(new_code, code, sizeof(bool) * index);
 

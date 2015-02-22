@@ -10,6 +10,7 @@
 
 #include "htree_leaf.h"
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -47,6 +48,11 @@ extern HTREE_NODE* create_htree_node(HTREE_ELEMENT* left_child,
                                      HTREE_ELEMENT* right_child)
 {
     HTREE_NODE* new_htree_node = malloc(sizeof(HTREE_NODE));
+    
+    if (new_htree_node == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
     
     new_htree_node->left_child = left_child;
     new_htree_node->right_child = right_child;

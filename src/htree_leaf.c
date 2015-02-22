@@ -9,6 +9,7 @@
 #include <stdlib.h>
 
 #include "debug_common.h"
+#include "error_handler.h"
 
 
 
@@ -38,7 +39,14 @@ struct S_HTREE_LEAF
 extern HTREE_LEAF* create_htree_leaf(unsigned char character)
 {
     HTREE_LEAF* new_htree_leaf = malloc(sizeof(HTREE_LEAF));
+    
+    if (new_htree_leaf == NULL)
+    {
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+    }
+    
     new_htree_leaf->character = character;
+    
     return new_htree_leaf;
 }
 
