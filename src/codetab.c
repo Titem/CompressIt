@@ -11,7 +11,6 @@
 #include <stdio.h>
 
 #include "codetab_element.h"
-#include "codetab.h"
 #include "debug_common.h"
 #include "error_handler.h"
 

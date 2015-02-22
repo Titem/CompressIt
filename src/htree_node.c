@@ -8,7 +8,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "htree_leaf.h"
 #include "debug_common.h"
 #include "error_handler.h"
 

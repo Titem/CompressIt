@@ -60,16 +60,54 @@ struct S_PARAMETERLIST
  * ======================================================================== */
 
 /* Beschreibt die Argumente für das Kodieren, Decodieren und den Hilfeaufruf. */
+
+/**
+ * Diese Konstante enthält das Kommandozeilen-Symbol, welches dem Programm
+ * mitteilt, dass eine Datei komprimiert werden soll.
+ */
 static const char* COMPPRESS_FLAG = "-c";
+
+/**
+ * Diese Konstante enthält das Kommandozeilen-Symbol, welches dem Programm
+ * mitteilt, dass eine Datei dekomprimiert werden soll.
+ */
 static const char* DECOMPRESS_FLAG = "-d";
+
+/**
+ * Diese Konstante enthält das Kommandozeilen-Symbol, welches dem Programm
+ * mitteilt, dass die Hilfe-Seite (Manpage) auf dem Bildschirm 
+ * angezeigt werden soll.
+ */
 static const char* HELP_FLAG = "-h";
 
+
+
 /* Beschreibt den MIME-Typ, der der Ausgabedatei angehangen wird. */
+
+/**
+ * Diese Konstante enthält den Mime-Typ für eine mit diesem Programm
+ * komprimierte Datei.
+ */
 static const char* COMPRESS_MIME_TYPE = ".hc";
+
+/**
+ * Diese Konstante enthält den Mime-Typ für eine mit diesem Programm
+ * dekomprimierte Datei.
+ */
 static const char* DECOMPRESS_MIME_TYPE = ".hd";
 
+
+
 /* Beschreibt den Lese- bzw- Schreibevorgang. */
+
+/**
+ * Diese Konstante enthält den Format-String für das binäre Lesen.
+ */
 static const char* READ_BINARY = "rb";
+
+/**
+ * Diese Konstante enthält den Format-String für das binäre Schreiben.
+ */
 static const char* WRITE_BINARY = "wb";
 
 

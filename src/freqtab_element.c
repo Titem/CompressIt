@@ -52,7 +52,7 @@ extern FREQTAB_ELEMENT* create_freqtab_element(unsigned char character)
     }
 
     new_freqtab_element->character = character;
-    new_freqtab_element->frequency = ININIT_CHARCTER;
+    new_freqtab_element->frequency = 1;
 
     return new_freqtab_element;
 }

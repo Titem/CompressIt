@@ -14,7 +14,7 @@
 #define	CODETAB_ELEMENT_H
 
 
-#include "codetab_element.h"
+
 
 /* ======================================================================== *
  * Typdefinitionen                                                          *
@@ -33,7 +33,10 @@ typedef struct S_CODETAB_ELEMENT CODETAB_ELEMENT;
  * Header-Dateien                                                           *
  * ======================================================================== */
 
+#include "codetab_element.h"
+
 #include <stdbool.h>
+
 
 
 
