@@ -8,7 +8,7 @@ Modulübersicht
 
 Funktionsabhängigkeiten
 -----------------------
-![Functions](Konzept/Diagramme/Funktionsabhaengigkeiten.png)
+![Functions](Konzept/Funktionsabhaengigkeiten.png)
 
 Komprimierung
 -------------
