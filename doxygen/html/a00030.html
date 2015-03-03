@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>src/htree_element.c-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Datenstrukturen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Dateien</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variablen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typdefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Aufzählungen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Aufzählungswerte</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Makrodefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Seiten</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Datenstrukturen</a> &#124;
+<a href="#func-members">Funktionen</a>  </div>
+  <div class="headertitle">
+<div class="title">htree_element.c-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="a00031_source.html">htree_element.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="a00035_source.html">htree_node.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00033_source.html">htree_leaf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00021_source.html">debug_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00023_source.html">error_handler.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für htree_element.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00063.png" border="0" usemap="#src_2htree__element_8c" alt=""/></div>
+<map name="src_2htree__element_8c" id="src_2htree__element_8c">
+<area shape="rect" id="node2" href="a00031.html" title="htree_element.h" alt="" coords="91,155,219,181"/><area shape="rect" id="node6" href="a00035.html" title="htree_node.h" alt="" coords="5,80,112,107"/><area shape="rect" id="node7" href="a00033.html" title="htree_leaf.h" alt="" coords="381,80,480,107"/><area shape="rect" id="node8" href="a00021.html" title="debug_common.h" alt="" coords="392,155,531,181"/><area shape="rect" id="node9" href="a00023.html" title="error_handler.h" alt="" coords="555,80,675,107"/><area shape="rect" id="node10" href="a00039.html" title="parameterlist.h" alt="" coords="555,155,675,181"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datenstrukturen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html">S_HTREE_ELEMENT</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:ab5416e84d3c3e4047a3af04d7408f642"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#ab5416e84d3c3e4047a3af04d7408f642">create_htree_element</a> (<a class="el" href="a00031.html#ae4ad0f58874dc3995c62bd03349f3ab0">HTREE_ELEMENT_TYPE</a> type, void *element)</td></tr>
+<tr class="separator:ab5416e84d3c3e4047a3af04d7408f642"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28fd5f940ad08257f81fd6aece676381"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#a28fd5f940ad08257f81fd6aece676381">delete_htree_element</a> (<a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> **htree_element)</td></tr>
+<tr class="separator:a28fd5f940ad08257f81fd6aece676381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a099fc5584e6588c27e21e4342c0f06b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#a099fc5584e6588c27e21e4342c0f06b3">merge_htree_elements</a> (<a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *left_child, <a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *right_child)</td></tr>
+<tr class="separator:a099fc5584e6588c27e21e4342c0f06b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a513da6bba1e7853e80b53625f1aed341"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#a513da6bba1e7853e80b53625f1aed341">htree_element_get_element</a> (<a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *htree_element)</td></tr>
+<tr class="separator:a513da6bba1e7853e80b53625f1aed341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a495bebdb29b72d595cec5a48659cd72e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#a495bebdb29b72d595cec5a48659cd72e">htree_element_is_leaf</a> (<a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *htree_element)</td></tr>
+<tr class="separator:a495bebdb29b72d595cec5a48659cd72e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b6bb47280a59070dd750bb831d0fc0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#ae6b6bb47280a59070dd750bb831d0fc0">htree_element_is_removed</a> (<a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *htree_element)</td></tr>
+<tr class="separator:ae6b6bb47280a59070dd750bb831d0fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab682e7b42c2a36bfa199fea2f66b8ab4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#ab682e7b42c2a36bfa199fea2f66b8ab4">htree_element_remove</a> (<a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *htree_element)</td></tr>
+<tr class="separator:ab682e7b42c2a36bfa199fea2f66b8ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5257d994edd491a1f5980d6be324d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00030.html#a5d5257d994edd491a1f5980d6be324d5">htree_element_print</a> (<a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *htree_element)</td></tr>
+<tr class="separator:a5d5257d994edd491a1f5980d6be324d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a class="anchor" id="ab5416e84d3c3e4047a3af04d7408f642"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a>* create_htree_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#ae4ad0f58874dc3995c62bd03349f3ab0">HTREE_ELEMENT_TYPE</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion erstellt ein neues Huffman-Baum-Element auf dem Heap auf Basis eines übergebenen Huffman-Baum-Blattes oder Huffman-Baum-Knotens und der Angabe, um welchen Typ (Blatt, Knoten) von Huffman-Baum-Element es sich handelt, und gibt einen Zeiger auf das neu erstellte Huffman-Baum-Element zurück.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Typ-Angabe, um welchen Typ von Huffman-Baum-Element es sich handelt (Blatt oder Knoten) </td></tr>
+    <tr><td class="paramname">element</td><td>Zeiger auf das Huffman-Baum-Blatt oder den Huffman-Baum-Knoten der durch dieses neu erstellte Huffman-baum-element abstrakt gekapselt werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf das neu erstellte Huffman-Baum-Element </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_ab5416e84d3c3e4047a3af04d7408f642_cgraph.png" border="0" usemap="#a00030_ab5416e84d3c3e4047a3af04d7408f642_cgraph" alt=""/></div>
+<map name="a00030_ab5416e84d3c3e4047a3af04d7408f642_cgraph" id="a00030_ab5416e84d3c3e4047a3af04d7408f642_cgraph">
+<area shape="rect" id="node2" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="217,71,376,112"/><area shape="rect" id="node3" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="429,5,604,47"/><area shape="rect" id="node4" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="424,71,609,112"/><area shape="rect" id="node5" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="424,136,609,177"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_ab5416e84d3c3e4047a3af04d7408f642_icgraph.png" border="0" usemap="#a00030_ab5416e84d3c3e4047a3af04d7408f642_icgraph" alt=""/></div>
+<map name="a00030_ab5416e84d3c3e4047a3af04d7408f642_icgraph" id="a00030_ab5416e84d3c3e4047a3af04d7408f642_icgraph">
+<area shape="rect" id="node2" href="a00029.html#aea45cbde07f3058e8cbff3fd74ace6da" title="create_htree_from_freqtab" alt="" coords="220,5,415,32"/><area shape="rect" id="node5" href="a00029.html#a8d8fe7405c27841a1d89359b56c7d4f1" title="create_htree_from_codetab" alt="" coords="217,56,417,83"/><area shape="rect" id="node3" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="473,5,559,32"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="615,31,669,57"/><area shape="rect" id="node6" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="465,56,567,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a28fd5f940ad08257f81fd6aece676381"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_htree_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> **&#160;</td>
+          <td class="paramname"><em>htree_element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion löscht ein übergebenes Huffman-Baum-Element vom Heap und gibt den Speicher wieder frei.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree_element</td><td>Zeiger auf die Adresse des Huffman-Baum-Elementes, das gelöscht werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a28fd5f940ad08257f81fd6aece676381_cgraph.png" border="0" usemap="#a00030_a28fd5f940ad08257f81fd6aece676381_cgraph" alt=""/></div>
+<map name="a00030_a28fd5f940ad08257f81fd6aece676381_cgraph" id="a00030_a28fd5f940ad08257f81fd6aece676381_cgraph">
+<area shape="rect" id="node2" href="a00034.html#aea34058adf2a76c6431ee2197b89d340" title="delete_htree_node" alt="" coords="216,5,359,32"/><area shape="rect" id="node3" href="a00032.html#a9392c6ff5bac8d02a6694638a5b4f8d2" title="delete_htree_leaf" alt="" coords="221,56,354,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a28fd5f940ad08257f81fd6aece676381_icgraph.png" border="0" usemap="#a00030_a28fd5f940ad08257f81fd6aece676381_icgraph" alt=""/></div>
+<map name="a00030_a28fd5f940ad08257f81fd6aece676381_icgraph" id="a00030_a28fd5f940ad08257f81fd6aece676381_icgraph">
+<area shape="rect" id="node2" href="a00035.html#aea34058adf2a76c6431ee2197b89d340" title="delete_htree_node" alt="" coords="216,5,359,32"/><area shape="rect" id="node3" href="a00031.html#a28fd5f940ad08257f81fd6aece676381" title="delete_htree_element" alt="" coords="407,5,569,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a513da6bba1e7853e80b53625f1aed341"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* htree_element_get_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td>
+          <td class="paramname"><em>htree_element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion liefert einen Zeiger auf das Huffman-Baum-Blatt oder den Huffman-Baum-Knoten zurück, der vom übergebenen Huffman-Baum-Element gekapselt wird.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree_element</td><td>Zeiger auf das Huffman-Baum-Element, dessen gekapseltes Huffman-Baum-Blatt oder Huffman-Baum-Knoten zurückgeliefert werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf das Huffman-Baum-Blatt oder den Huffman-Baum-Knoten, der vom übergebenen Huffman-Baum-Element gekapselt wird </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a513da6bba1e7853e80b53625f1aed341_icgraph.png" border="0" usemap="#a00030_a513da6bba1e7853e80b53625f1aed341_icgraph" alt=""/></div>
+<map name="a00030_a513da6bba1e7853e80b53625f1aed341_icgraph" id="a00030_a513da6bba1e7853e80b53625f1aed341_icgraph">
+<area shape="rect" id="node2" href="a00029.html#a8d8fe7405c27841a1d89359b56c7d4f1" title="create_htree_from_codetab" alt="" coords="457,107,657,133"/><area shape="rect" id="node5" href="a00029.html#a187e9754d66965d174d56a3954a64e4b" title="htree_search_char" alt="" coords="262,5,403,32"/><area shape="rect" id="node7" href="a00029.html#ae98eb2c165b76efca527ce4b9a73d355" title="htree_get_char" alt="" coords="273,56,392,83"/><area shape="rect" id="node8" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="257,158,408,199"/><area shape="rect" id="node3" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="753,107,855,133"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="1083,132,1137,159"/><area shape="rect" id="node6" href="a00019.html#a010f973452095cfbc1a4622ee4f361a4" title="decode_content" alt="" coords="495,56,620,83"/><area shape="rect" id="node9" href="a00029.html#aea45cbde07f3058e8cbff3fd74ace6da" title="create_htree_from_freqtab" alt="" coords="707,208,901,235"/><area shape="rect" id="node11" href="a00029.html#a8eaaae906b4df85c073fb13eebe0ab7d" title="htree_get_codetab_element" alt="" coords="456,157,659,184"/><area shape="rect" id="node10" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="949,157,1035,184"/><area shape="rect" id="node12" href="a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="743,157,865,184"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a495bebdb29b72d595cec5a48659cd72e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool htree_element_is_leaf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td>
+          <td class="paramname"><em>htree_element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funition liefert einen Wahrheitswert zurück, der angibt, ob das übergebene Huffman-Baum-Element ein Blatt ist bzw. ein Huffman-Baum-Blatt kapselt.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree_element</td><td>Zeiger auf das Huffman-Baum-Element, welches abgefragt werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Wahrheitswert, der angibt, ob das übergebene Huffman-Baum-Element ein Huffman-Baum-Blatt enthält (true = es ist ein Blatt; false = es ist ein Knoten) </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a495bebdb29b72d595cec5a48659cd72e_icgraph.png" border="0" usemap="#a00030_a495bebdb29b72d595cec5a48659cd72e_icgraph" alt=""/></div>
+<map name="a00030_a495bebdb29b72d595cec5a48659cd72e_icgraph" id="a00030_a495bebdb29b72d595cec5a48659cd72e_icgraph">
+<area shape="rect" id="node2" href="a00029.html#a8d8fe7405c27841a1d89359b56c7d4f1" title="create_htree_from_codetab" alt="" coords="416,56,616,83"/><area shape="rect" id="node5" href="a00029.html#a187e9754d66965d174d56a3954a64e4b" title="htree_search_char" alt="" coords="221,5,362,32"/><area shape="rect" id="node7" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="216,107,367,149"/><area shape="rect" id="node3" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="712,56,813,83"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="1041,81,1096,108"/><area shape="rect" id="node6" href="a00019.html#a010f973452095cfbc1a4622ee4f361a4" title="decode_content" alt="" coords="453,5,579,32"/><area shape="rect" id="node8" href="a00029.html#aea45cbde07f3058e8cbff3fd74ace6da" title="create_htree_from_freqtab" alt="" coords="665,157,860,184"/><area shape="rect" id="node10" href="a00029.html#a8eaaae906b4df85c073fb13eebe0ab7d" title="htree_get_codetab_element" alt="" coords="415,107,617,133"/><area shape="rect" id="node9" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="908,107,993,133"/><area shape="rect" id="node11" href="a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="701,107,824,133"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae6b6bb47280a59070dd750bb831d0fc0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool htree_element_is_removed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td>
+          <td class="paramname"><em>htree_element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion liefert einen Wahrheitswert zurück, der angibt, ob das übergebene Huffman-Baum-Element als entnommen makiert ist.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree_element</td><td>Zeiger auf das Huffman-Baum-Element, welches abgefragt werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Wahrheitswert, der angibt, ob das übergebene Huffman-Baum-Element als entnommen makiert ist (true = entnommen; false = nicht entnommen) </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_ae6b6bb47280a59070dd750bb831d0fc0_icgraph.png" border="0" usemap="#a00030_ae6b6bb47280a59070dd750bb831d0fc0_icgraph" alt=""/></div>
+<map name="a00030_ae6b6bb47280a59070dd750bb831d0fc0_icgraph" id="a00030_ae6b6bb47280a59070dd750bb831d0fc0_icgraph">
+<area shape="rect" id="node2" href="a00029.html#ab0f709127d63b904a92b21673b6f3f67" title="htree_is_empty" alt="" coords="475,6,596,33"/><area shape="rect" id="node7" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="460,57,611,99"/><area shape="rect" id="node11" href="a00035.html#a9152e9bc0a65cc62dfbe24c15a0c8418" title="htree_node_has_left" alt="" coords="255,121,407,147"/><area shape="rect" id="node14" href="a00035.html#abd95c9da13d9c92e71958ffe5854facf" title="htree_node_has_right" alt="" coords="251,173,412,199"/><area shape="rect" id="node3" href="a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="945,22,1068,49"/><area shape="rect" id="node6" href="a00029.html#a8eaaae906b4df85c073fb13eebe0ab7d" title="htree_get_codetab_element" alt="" coords="659,22,861,49"/><area shape="rect" id="node4" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="1152,73,1237,99"/><area shape="rect" id="node5" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="1285,98,1340,125"/><area shape="rect" id="node8" href="a00029.html#aea45cbde07f3058e8cbff3fd74ace6da" title="create_htree_from_freqtab" alt="" coords="909,73,1104,99"/><area shape="rect" id="node9" href="a00029.html#a8d8fe7405c27841a1d89359b56c7d4f1" title="create_htree_from_codetab" alt="" coords="660,123,860,150"/><area shape="rect" id="node10" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="956,123,1057,150"/><area shape="rect" id="node12" href="a00029.html#a187e9754d66965d174d56a3954a64e4b" title="htree_search_char" alt="" coords="465,174,606,201"/><area shape="rect" id="node13" href="a00019.html#a010f973452095cfbc1a4622ee4f361a4" title="decode_content" alt="" coords="697,174,823,201"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d5257d994edd491a1f5980d6be324d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void htree_element_print </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td>
+          <td class="paramname"><em>htree_element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion gibt das übergebene Huffman-Baum-Element auf dem Bildschirm aus.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree_element</td><td>Zeiger auf das Huffman-Baum-Element, das auf dem Bildschirm ausgegeben werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a5d5257d994edd491a1f5980d6be324d5_cgraph.png" border="0" usemap="#a00030_a5d5257d994edd491a1f5980d6be324d5_cgraph" alt=""/></div>
+<map name="a00030_a5d5257d994edd491a1f5980d6be324d5_cgraph" id="a00030_a5d5257d994edd491a1f5980d6be324d5_cgraph">
+<area shape="rect" id="node2" href="a00020.html#ab18aa439b705fb8af9916707c54aa479" title="convert_char" alt="" coords="232,78,337,105"/><area shape="rect" id="node7" href="a00032.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="210,129,359,155"/><area shape="rect" id="node8" href="a00034.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="209,179,360,206"/><area shape="rect" id="node9" href="a00034.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="205,230,364,257"/><area shape="rect" id="node3" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="412,71,571,112"/><area shape="rect" id="node4" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="624,5,799,47"/><area shape="rect" id="node5" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="619,71,804,112"/><area shape="rect" id="node6" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="619,136,804,177"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a5d5257d994edd491a1f5980d6be324d5_icgraph.png" border="0" usemap="#a00030_a5d5257d994edd491a1f5980d6be324d5_icgraph" alt=""/></div>
+<map name="a00030_a5d5257d994edd491a1f5980d6be324d5_icgraph" id="a00030_a5d5257d994edd491a1f5980d6be324d5_icgraph">
+<area shape="rect" id="node2" href="a00029.html#a9d4d56163df19f384fad2b28f214c2c5" title="htree_print" alt="" coords="405,31,497,57"/><area shape="rect" id="node6" href="a00031.html#a5d5257d994edd491a1f5980d6be324d5" title="htree_element_print" alt="" coords="205,68,357,95"/><area shape="rect" id="node3" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="553,5,639,32"/><area shape="rect" id="node5" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="545,56,647,83"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="695,31,749,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab682e7b42c2a36bfa199fea2f66b8ab4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void htree_element_remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td>
+          <td class="paramname"><em>htree_element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion makiert das übergebene Huffman-Baum-Element als entnommen. Haben alle Huffman-Baum-Elemente den Status entnommen, gilt der Huffman-Baum als leer.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree_element</td><td>Zeiger auf das Huffman-Baum-Element, das als entnommen makiert werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_ab682e7b42c2a36bfa199fea2f66b8ab4_icgraph.png" border="0" usemap="#a00030_ab682e7b42c2a36bfa199fea2f66b8ab4_icgraph" alt=""/></div>
+<map name="a00030_ab682e7b42c2a36bfa199fea2f66b8ab4_icgraph" id="a00030_ab682e7b42c2a36bfa199fea2f66b8ab4_icgraph">
+<area shape="rect" id="node2" href="a00029.html#a8eaaae906b4df85c073fb13eebe0ab7d" title="htree_get_codetab_element" alt="" coords="424,5,627,32"/><area shape="rect" id="node6" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="225,53,376,94"/><area shape="rect" id="node3" href="a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="713,5,836,32"/><area shape="rect" id="node4" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="931,56,1016,83"/><area shape="rect" id="node5" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="1072,81,1127,108"/><area shape="rect" id="node7" href="a00029.html#aea45cbde07f3058e8cbff3fd74ace6da" title="create_htree_from_freqtab" alt="" coords="428,56,623,83"/><area shape="rect" id="node8" href="a00029.html#a8d8fe7405c27841a1d89359b56c7d4f1" title="create_htree_from_codetab" alt="" coords="675,107,875,133"/><area shape="rect" id="node9" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="923,107,1024,133"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a099fc5584e6588c27e21e4342c0f06b3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a>* merge_htree_elements </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td>
+          <td class="paramname"><em>left_child</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00031.html#a5cbc711b952ad54dcda20c968aa1c048">HTREE_ELEMENT</a> *&#160;</td>
+          <td class="paramname"><em>right_child</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion fügt zwei Huffman-Baum-Elemente zusammen zu einem neu erstellten Huffamn-Baum-Element. Die beiden Huffman-baum-Elemente, die zusammengefügt werden soll, werden dabei als Kinder dem neuen Huffman-Baum-Element hinzugefügt.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left_child</td><td>Zeiger auf das Huffman-Baum-Element, welches nach dem zusammenfügen das linke Kind des neuen Huffman-Baum-Elementes ist </td></tr>
+    <tr><td class="paramname">right_child</td><td>Zeiger auf das Huffman-Baum-Element, welches nach dem zusammenfügen das rechtes Kind des neuen Huffman-Baum-Elementes ist </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf das neu erstellte Huffman-Baum-Element, das die Zusammenfügung der zwei übergebenen Huffman-Baum-Elemente repräsentiert </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a099fc5584e6588c27e21e4342c0f06b3_cgraph.png" border="0" usemap="#a00030_a099fc5584e6588c27e21e4342c0f06b3_cgraph" alt=""/></div>
+<map name="a00030_a099fc5584e6588c27e21e4342c0f06b3_cgraph" id="a00030_a099fc5584e6588c27e21e4342c0f06b3_cgraph">
+<area shape="rect" id="node2" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="416,71,575,112"/><area shape="rect" id="node6" href="a00034.html#a4892e72b199218a6d999447053667f6b" title="create_htree_node" alt="" coords="225,103,368,130"/><area shape="rect" id="node3" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="628,5,803,47"/><area shape="rect" id="node4" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="623,71,808,112"/><area shape="rect" id="node5" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="623,136,808,177"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00030_a099fc5584e6588c27e21e4342c0f06b3_icgraph.png" border="0" usemap="#a00030_a099fc5584e6588c27e21e4342c0f06b3_icgraph" alt=""/></div>
+<map name="a00030_a099fc5584e6588c27e21e4342c0f06b3_icgraph" id="a00030_a099fc5584e6588c27e21e4342c0f06b3_icgraph">
+<area shape="rect" id="node2" href="a00029.html#aea45cbde07f3058e8cbff3fd74ace6da" title="create_htree_from_freqtab" alt="" coords="225,5,420,32"/><area shape="rect" id="node3" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="468,5,553,32"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="601,5,656,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt am Die Mär 3 2015 11:03:31 von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

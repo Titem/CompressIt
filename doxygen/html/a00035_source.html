@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>src/htree_node.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Datenstrukturen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Dateien</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variablen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typdefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Aufzählungen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Aufzählungswerte</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Makrodefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Seiten</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">htree_node.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="a00035.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef HTREE_NODE_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define HTREE_NODE_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * Header-Dateien                                                           *</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00031.html">htree_element.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * Typdefinitionen                                                          *</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00035.html#a42612aa1058eefe8dcfd9dcf8fd74bb1">   39</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00008.html">S_HTREE_NODE</a> <a class="code" href="a00008.html">HTREE_NODE</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * Funktionsprototypen                                                      *</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00008.html">HTREE_NODE</a>* <a class="code" href="a00035.html#a4892e72b199218a6d999447053667f6b">create_htree_node</a>(<a class="code" href="a00006.html">HTREE_ELEMENT</a>* <a class="code" href="a00008.html#a8eb3007698af9f9081dd2e4454c7d4c0">left_child</a>, </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                     <a class="code" href="a00006.html">HTREE_ELEMENT</a>* <a class="code" href="a00008.html#af60d0d670ff5165f0b946d75383ce93b">right_child</a>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a00035.html#aea34058adf2a76c6431ee2197b89d340">delete_htree_node</a>(<a class="code" href="a00008.html">HTREE_NODE</a>** htree_node);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00006.html">HTREE_ELEMENT</a>* <a class="code" href="a00035.html#ab0e5e28853580161fcda3ad27d945ec2">htree_node_get_left</a>(<a class="code" href="a00008.html">HTREE_NODE</a>* htree_node);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00006.html">HTREE_ELEMENT</a>* <a class="code" href="a00035.html#a511d9691d6990863546876f55464c145">htree_node_get_right</a>(<a class="code" href="a00008.html">HTREE_NODE</a>* htree_node);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="a00035.html#a9152e9bc0a65cc62dfbe24c15a0c8418">htree_node_has_left</a>(<a class="code" href="a00008.html">HTREE_NODE</a>* htree_node);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="a00035.html#abd95c9da13d9c92e71958ffe5854facf">htree_node_has_right</a>(<a class="code" href="a00008.html">HTREE_NODE</a>* htree_node);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a00035.html#acf6e0af230c9497d5a9df76e54ec0b78">htree_node_set_left</a>(<a class="code" href="a00008.html">HTREE_NODE</a>* htree_node, </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                <a class="code" href="a00006.html">HTREE_ELEMENT</a>* htree_element);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a00035.html#a7fc9abfba8635946ad154eb2365aa879">htree_node_set_right</a>(<a class="code" href="a00008.html">HTREE_NODE</a>* htree_node, </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                 <a class="code" href="a00006.html">HTREE_ELEMENT</a>* htree_element);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* HTREE_NODE_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="ttc" id="a00035_html_a511d9691d6990863546876f55464c145"><div class="ttname"><a href="a00035.html#a511d9691d6990863546876f55464c145">htree_node_get_right</a></div><div class="ttdeci">HTREE_ELEMENT * htree_node_get_right(HTREE_NODE *htree_node)</div><div class="ttdef"><b>Definition:</b> htree_node.c:78</div></div>
+<div class="ttc" id="a00035_html_aea34058adf2a76c6431ee2197b89d340"><div class="ttname"><a href="a00035.html#aea34058adf2a76c6431ee2197b89d340">delete_htree_node</a></div><div class="ttdeci">void delete_htree_node(HTREE_NODE **htree_node)</div><div class="ttdef"><b>Definition:</b> htree_node.c:63</div></div>
+<div class="ttc" id="a00035_html_a9152e9bc0a65cc62dfbe24c15a0c8418"><div class="ttname"><a href="a00035.html#a9152e9bc0a65cc62dfbe24c15a0c8418">htree_node_has_left</a></div><div class="ttdeci">bool htree_node_has_left(HTREE_NODE *htree_node)</div><div class="ttdef"><b>Definition:</b> htree_node.c:84</div></div>
+<div class="ttc" id="a00008_html_a8eb3007698af9f9081dd2e4454c7d4c0"><div class="ttname"><a href="a00008.html#a8eb3007698af9f9081dd2e4454c7d4c0">S_HTREE_NODE::left_child</a></div><div class="ttdeci">HTREE_ELEMENT * left_child</div><div class="ttdef"><b>Definition:</b> htree_node.c:30</div></div>
+<div class="ttc" id="a00035_html_a7fc9abfba8635946ad154eb2365aa879"><div class="ttname"><a href="a00035.html#a7fc9abfba8635946ad154eb2365aa879">htree_node_set_right</a></div><div class="ttdeci">void htree_node_set_right(HTREE_NODE *htree_node, HTREE_ELEMENT *htree_element)</div><div class="ttdef"><b>Definition:</b> htree_node.c:105</div></div>
+<div class="ttc" id="a00035_html_a4892e72b199218a6d999447053667f6b"><div class="ttname"><a href="a00035.html#a4892e72b199218a6d999447053667f6b">create_htree_node</a></div><div class="ttdeci">HTREE_NODE * create_htree_node(HTREE_ELEMENT *left_child, HTREE_ELEMENT *right_child)</div><div class="ttdef"><b>Definition:</b> htree_node.c:46</div></div>
+<div class="ttc" id="a00006_html"><div class="ttname"><a href="a00006.html">S_HTREE_ELEMENT</a></div><div class="ttdef"><b>Definition:</b> htree_element.c:27</div></div>
+<div class="ttc" id="a00035_html_abd95c9da13d9c92e71958ffe5854facf"><div class="ttname"><a href="a00035.html#abd95c9da13d9c92e71958ffe5854facf">htree_node_has_right</a></div><div class="ttdeci">bool htree_node_has_right(HTREE_NODE *htree_node)</div><div class="ttdef"><b>Definition:</b> htree_node.c:91</div></div>
+<div class="ttc" id="a00035_html_acf6e0af230c9497d5a9df76e54ec0b78"><div class="ttname"><a href="a00035.html#acf6e0af230c9497d5a9df76e54ec0b78">htree_node_set_left</a></div><div class="ttdeci">void htree_node_set_left(HTREE_NODE *htree_node, HTREE_ELEMENT *htree_element)</div><div class="ttdef"><b>Definition:</b> htree_node.c:98</div></div>
+<div class="ttc" id="a00008_html_af60d0d670ff5165f0b946d75383ce93b"><div class="ttname"><a href="a00008.html#af60d0d670ff5165f0b946d75383ce93b">S_HTREE_NODE::right_child</a></div><div class="ttdeci">HTREE_ELEMENT * right_child</div><div class="ttdef"><b>Definition:</b> htree_node.c:36</div></div>
+<div class="ttc" id="a00008_html"><div class="ttname"><a href="a00008.html">S_HTREE_NODE</a></div><div class="ttdef"><b>Definition:</b> htree_node.c:24</div></div>
+<div class="ttc" id="a00031_html"><div class="ttname"><a href="a00031.html">htree_element.h</a></div></div>
+<div class="ttc" id="a00035_html_ab0e5e28853580161fcda3ad27d945ec2"><div class="ttname"><a href="a00035.html#ab0e5e28853580161fcda3ad27d945ec2">htree_node_get_left</a></div><div class="ttdeci">HTREE_ELEMENT * htree_node_get_left(HTREE_NODE *htree_node)</div><div class="ttdef"><b>Definition:</b> htree_node.c:72</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt am Die Mär 3 2015 11:03:28 von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<map id="codetab_print" name="codetab_print">
+<area shape="rect" id="node2" href="$a00020.html#ab18aa439b705fb8af9916707c54aa479" title="convert_char" alt="" coords="211,78,317,105"/>
+<area shape="rect" id="node7" href="$a00014.html#a545241c18626592152f5693700448a3c" title="codetab_element_get_char" alt="" coords="165,129,363,155"/>
+<area shape="rect" id="node8" href="$a00014.html#afbdd9a7fe06fee5d981ef9bcadb50cce" title="codetab_element_get\l_code_length" alt="" coords="412,223,575,264"/>
+<area shape="rect" id="node9" href="$a00014.html#ac90b759e23b8551313160fb4cce850b0" title="codetab_element_get_code" alt="" coords="164,230,364,257"/>
+<area shape="rect" id="node10" href="$a00012.html#a8e95241c91452ad8723f6508a84db958" title="codetab_get_code_length" alt="" coords="171,281,357,307"/>
+<area shape="rect" id="node3" href="$a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="414,71,573,112"/>
+<area shape="rect" id="node4" href="$a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="628,5,803,47"/>
+<area shape="rect" id="node5" href="$a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="623,71,808,112"/>
+<area shape="rect" id="node6" href="$a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="623,136,808,177"/>
+</map>

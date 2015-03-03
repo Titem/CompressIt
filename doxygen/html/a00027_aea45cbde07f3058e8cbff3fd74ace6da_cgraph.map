@@ -1,0 +1,35 @@
+<map id="create_htree_from_freqtab" name="create_htree_from_freqtab">
+<area shape="rect" id="node2" href="$a00038.html#aec5ffcab9ae8b3fec485544740d677a1" title="create_pqueue" alt="" coords="287,5,405,32"/>
+<area shape="rect" id="node3" href="$a00038.html#af433509efb1c77888748394e935357d8" title="pqueue_get_number_of\l_entries" alt="" coords="259,57,433,98"/>
+<area shape="rect" id="node4" href="$a00023.html#a311ca0e7805965bec5e12b152cfd2156" title="freqtab_is_empty" alt="" coords="279,123,413,149"/>
+<area shape="rect" id="node5" href="$a00023.html#a78318d595d26bb726188bd6c120f68a5" title="freqtab_get_element" alt="" coords="268,173,424,200"/>
+<area shape="rect" id="node8" href="$a00029.html#ab5416e84d3c3e4047a3af04d7408f642" title="create_htree_element" alt="" coords="264,224,428,251"/>
+<area shape="rect" id="node9" href="$a00031.html#a5caed3cb3a8f640a79eba49cf070d26e" title="create_htree_leaf" alt="" coords="279,275,413,301"/>
+<area shape="rect" id="node10" href="$a00025.html#ac53c27af531411fc0ddfeaf07d82b72a" title="freqtab_elememt_get_char" alt="" coords="248,325,444,352"/>
+<area shape="rect" id="node11" href="$a00038.html#a580c52815dfbdc603fb15e14c19bc5bd" title="pqueue_insert_htree\l_element" alt="" coords="269,478,423,519"/>
+<area shape="rect" id="node15" href="$a00040.html#a0a869ad58375f2c1561121b135353c3a" title="pqueue_element_get\l_weight" alt="" coords="989,419,1148,461"/>
+<area shape="rect" id="node17" href="$a00025.html#a3bb7fcbc7046c171ab36eddfe12ead0f" title="freqtab_element_get\l_frequency" alt="" coords="268,595,424,637"/>
+<area shape="rect" id="node18" href="$a00038.html#a28c2cc55e83a303e60ea6b27a42958cc" title="pqueue_print" alt="" coords="293,427,399,453"/>
+<area shape="rect" id="node20" href="$a00038.html#a8d815b1a8b6d78981d815d84b42e1a06" title="pqueue_get_min_entry" alt="" coords="509,579,679,605"/>
+<area shape="rect" id="node21" href="$a00029.html#a099fc5584e6588c27e21e4342c0f06b3" title="merge_htree_elements" alt="" coords="260,661,432,688"/>
+<area shape="rect" id="node23" href="$a00040.html#a785da9032c3bca1c5ea1de56e73a4d42" title="pqueue_element_get\l_htree_element" alt="" coords="267,713,425,754"/>
+<area shape="rect" id="node24" href="$a00027.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="271,891,421,933"/>
+<area shape="rect" id="node6" href="$a00023.html#a10c6d4c45d027f70db40a5ddfd30dbd8" title="freqtab_next_working\l_index" alt="" coords="515,166,673,207"/>
+<area shape="rect" id="node7" href="$a00023.html#a4d7eaa9f91fdee003f3f24e316f224e8" title="freqtab_init_working\l_index" alt="" coords="768,166,917,207"/>
+<area shape="rect" id="node12" href="$a00040.html#a29c747a9e6f2ba708810a12d67e132c3" title="create_pqueue_element" alt="" coords="505,477,683,504"/>
+<area shape="rect" id="node13" href="$a00038.html#ab3e9d2f6941e9a40fc0d9466be41fe69" title="pqueue_build_heap" alt="" coords="521,528,667,555"/>
+<area shape="rect" id="node14" href="$a00038.html#a4a249da8500c637f2383b880dff08304" title="pqueue_heapify" alt="" coords="781,528,904,555"/>
+<area shape="rect" id="node16" href="$a00038.html#afa8ac4a0c4e3caebcafe016f039a192a" title="pqueue_swap" alt="" coords="1014,553,1123,580"/>
+<area shape="rect" id="node19" href="$a00038.html#a5adb13120022961255a86b6c7268d612" title="pqueue_print_element" alt="" coords="759,427,926,453"/>
+<area shape="rect" id="node22" href="$a00033.html#a4892e72b199218a6d999447053667f6b" title="create_htree_node" alt="" coords="523,645,665,672"/>
+<area shape="rect" id="node25" href="$a00029.html#a495bebdb29b72d595cec5a48659cd72e" title="htree_element_is_leaf" alt="" coords="513,1051,675,1077"/>
+<area shape="rect" id="node26" href="$a00029.html#ae6b6bb47280a59070dd750bb831d0fc0" title="htree_element_is_removed" alt="" coords="744,1101,941,1128"/>
+<area shape="rect" id="node27" href="$a00033.html#a9152e9bc0a65cc62dfbe24c15a0c8418" title="htree_node_has_left" alt="" coords="518,1101,670,1128"/>
+<area shape="rect" id="node28" href="$a00029.html#a513da6bba1e7853e80b53625f1aed341" title="htree_element_get_element" alt="" coords="492,747,696,773"/>
+<area shape="rect" id="node29" href="$a00033.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="519,797,669,824"/>
+<area shape="rect" id="node30" href="$a00033.html#abd95c9da13d9c92e71958ffe5854facf" title="htree_node_has_right" alt="" coords="513,1152,675,1179"/>
+<area shape="rect" id="node31" href="$a00033.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="515,848,673,875"/>
+<area shape="rect" id="node32" href="$a00029.html#ab682e7b42c2a36bfa199fea2f66b8ab4" title="htree_element_remove" alt="" coords="508,899,680,925"/>
+<area shape="rect" id="node33" href="$a00014.html#ac48d64df3baef1ddcddd4b6a02093bca" title="create_codetab_element" alt="" coords="503,949,685,976"/>
+<area shape="rect" id="node34" href="$a00031.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="519,1000,669,1027"/>
+</map>

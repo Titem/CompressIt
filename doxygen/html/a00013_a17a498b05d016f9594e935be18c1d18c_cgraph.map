@@ -1,0 +1,8 @@
+<map id="read_codetab" name="read_codetab">
+<area shape="rect" id="node2" href="$a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="395,71,553,112"/>
+<area shape="rect" id="node6" href="$a00012.html#a2894a6ad57b9d5f879801779296fa6cf" title="codetab_init_working\l_index" alt="" coords="178,71,333,112"/>
+<area shape="rect" id="node7" href="$a00014.html#ac48d64df3baef1ddcddd4b6a02093bca" title="create_codetab_element" alt="" coords="164,137,347,163"/>
+<area shape="rect" id="node3" href="$a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="607,5,781,47"/>
+<area shape="rect" id="node4" href="$a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="601,71,787,112"/>
+<area shape="rect" id="node5" href="$a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="601,136,787,177"/>
+</map>

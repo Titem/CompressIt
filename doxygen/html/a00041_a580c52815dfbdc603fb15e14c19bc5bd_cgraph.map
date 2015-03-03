@@ -1,0 +1,11 @@
+<map id="pqueue_insert_htree_element" name="pqueue_insert_htree_element">
+<area shape="rect" id="node2" href="$a00042.html#a29c747a9e6f2ba708810a12d67e132c3" title="create_pqueue_element" alt="" coords="208,123,387,150"/>
+<area shape="rect" id="node7" href="$a00040.html#ab3e9d2f6941e9a40fc0d9466be41fe69" title="pqueue_build_heap" alt="" coords="224,186,371,213"/>
+<area shape="rect" id="node3" href="$a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="435,104,593,145"/>
+<area shape="rect" id="node4" href="$a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="647,5,821,47"/>
+<area shape="rect" id="node5" href="$a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="641,71,827,112"/>
+<area shape="rect" id="node6" href="$a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="641,136,827,177"/>
+<area shape="rect" id="node8" href="$a00040.html#a4a249da8500c637f2383b880dff08304" title="pqueue_heapify" alt="" coords="453,209,575,235"/>
+<area shape="rect" id="node9" href="$a00042.html#a0a869ad58375f2c1561121b135353c3a" title="pqueue_element_get\l_weight" alt="" coords="655,201,813,243"/>
+<area shape="rect" id="node10" href="$a00040.html#afa8ac4a0c4e3caebcafe016f039a192a" title="pqueue_swap" alt="" coords="679,267,789,294"/>
+</map>

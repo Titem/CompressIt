@@ -1,0 +1,11 @@
+<map id="codetab_init_working_index" name="codetab_init_working_index">
+<area shape="rect" id="node2" href="$a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="440,5,563,32"/>
+<area shape="rect" id="node5" href="$a00013.html#a17a498b05d016f9594e935be18c1d18c" title="read_codetab" alt="" coords="235,140,345,167"/>
+<area shape="rect" id="node7" href="$a00012.html#a0bececf3417e841020c54e193f0a3639" title="codetab_next_working\l_index" alt="" coords="208,66,372,107"/>
+<area shape="rect" id="node3" href="$a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="688,56,773,83"/>
+<area shape="rect" id="node4" href="$a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="1028,81,1083,108"/>
+<area shape="rect" id="node6" href="$a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="879,107,980,133"/>
+<area shape="rect" id="node8" href="$a00013.html#ab7451ee1515f03d74d0ee3b8496edee5" title="write_codetab" alt="" coords="446,56,557,83"/>
+<area shape="rect" id="node9" href="$a00013.html#ae5424ffba2b96b21d7251927fe8f43d5" title="codetab_get_element" alt="" coords="420,107,583,133"/>
+<area shape="rect" id="node10" href="$a00029.html#a8d8fe7405c27841a1d89359b56c7d4f1" title="create_htree_from_codetab" alt="" coords="631,107,831,133"/>
+</map>

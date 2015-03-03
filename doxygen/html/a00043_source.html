@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>src/pqueue_element.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Datenstrukturen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Dateien</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variablen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typdefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Aufzählungen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Aufzählungswerte</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Makrodefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Seiten</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">pqueue_element.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="a00043.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef PQUEUE_ELEMENT_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define PQUEUE_ELEMENT_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * Typdefinitionen                                                          *</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="a00043.html#ae52e3bf4e0a01bc25e377160dec23d6d">   28</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00011.html">S_PQUEUE_ELEMENT</a> <a class="code" href="a00011.html">PQUEUE_ELEMENT</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * Header-Dateien                                                           *</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00031.html">htree_element.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * Funktionsprototypen                                                      *</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00011.html">PQUEUE_ELEMENT</a>* <a class="code" href="a00043.html#a29c747a9e6f2ba708810a12d67e132c3">create_pqueue_element</a>(<a class="code" href="a00006.html">HTREE_ELEMENT</a>* <a class="code" href="a00011.html#a96bf5340ece1b608786bc02234d57fc1">htree_element</a>, </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                             <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="a00011.html#a6cd569c148e4eb4bb9919ce862582832">weight</a>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a00043.html#a163c7421d915a881986c776f42def452">delete_pqueue_element</a>(<a class="code" href="a00011.html">PQUEUE_ELEMENT</a>** pqueue_element);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="a00043.html#a51e1409c0306e457c38ee8b71f238d5d">pqueue_element_get_weight</a>(<a class="code" href="a00011.html">PQUEUE_ELEMENT</a>* pqueue);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00006.html">HTREE_ELEMENT</a>* <a class="code" href="a00043.html#a9fadfced63168fc99bc04ff2fddb7635">pqueue_element_get_htree_element</a>(<a class="code" href="a00011.html">PQUEUE_ELEMENT</a>* pqueue);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* PQUEUE_ELEMENT_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="ttc" id="a00011_html_a6cd569c148e4eb4bb9919ce862582832"><div class="ttname"><a href="a00011.html#a6cd569c148e4eb4bb9919ce862582832">S_PQUEUE_ELEMENT::weight</a></div><div class="ttdeci">unsigned long weight</div><div class="ttdef"><b>Definition:</b> pqueue_element.c:30</div></div>
+<div class="ttc" id="a00006_html"><div class="ttname"><a href="a00006.html">S_HTREE_ELEMENT</a></div><div class="ttdef"><b>Definition:</b> htree_element.c:27</div></div>
+<div class="ttc" id="a00043_html_a29c747a9e6f2ba708810a12d67e132c3"><div class="ttname"><a href="a00043.html#a29c747a9e6f2ba708810a12d67e132c3">create_pqueue_element</a></div><div class="ttdeci">PQUEUE_ELEMENT * create_pqueue_element(HTREE_ELEMENT *htree_element, unsigned long weight)</div><div class="ttdef"><b>Definition:</b> pqueue_element.c:46</div></div>
+<div class="ttc" id="a00043_html_a51e1409c0306e457c38ee8b71f238d5d"><div class="ttname"><a href="a00043.html#a51e1409c0306e457c38ee8b71f238d5d">pqueue_element_get_weight</a></div><div class="ttdeci">unsigned long pqueue_element_get_weight(PQUEUE_ELEMENT *pqueue)</div><div class="ttdef"><b>Definition:</b> pqueue_element.c:72</div></div>
+<div class="ttc" id="a00011_html"><div class="ttname"><a href="a00011.html">S_PQUEUE_ELEMENT</a></div><div class="ttdef"><b>Definition:</b> pqueue_element.c:24</div></div>
+<div class="ttc" id="a00043_html_a163c7421d915a881986c776f42def452"><div class="ttname"><a href="a00043.html#a163c7421d915a881986c776f42def452">delete_pqueue_element</a></div><div class="ttdeci">void delete_pqueue_element(PQUEUE_ELEMENT **pqueue_element)</div><div class="ttdef"><b>Definition:</b> pqueue_element.c:64</div></div>
+<div class="ttc" id="a00031_html"><div class="ttname"><a href="a00031.html">htree_element.h</a></div></div>
+<div class="ttc" id="a00011_html_a96bf5340ece1b608786bc02234d57fc1"><div class="ttname"><a href="a00011.html#a96bf5340ece1b608786bc02234d57fc1">S_PQUEUE_ELEMENT::htree_element</a></div><div class="ttdeci">HTREE_ELEMENT * htree_element</div><div class="ttdef"><b>Definition:</b> pqueue_element.c:36</div></div>
+<div class="ttc" id="a00043_html_a9fadfced63168fc99bc04ff2fddb7635"><div class="ttname"><a href="a00043.html#a9fadfced63168fc99bc04ff2fddb7635">pqueue_element_get_htree_element</a></div><div class="ttdeci">HTREE_ELEMENT * pqueue_element_get_htree_element(PQUEUE_ELEMENT *pqueue)</div><div class="ttdef"><b>Definition:</b> pqueue_element.c:79</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt am Die Mär 3 2015 11:03:28 von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

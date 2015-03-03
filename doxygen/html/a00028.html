@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>src/htree.c-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Datenstrukturen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Dateien</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variablen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typdefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Aufzählungen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Aufzählungswerte</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Makrodefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Seiten</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Datenstrukturen</a> &#124;
+<a href="#func-members">Funktionen</a>  </div>
+  <div class="headertitle">
+<div class="title">htree.c-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="a00029_source.html">htree.h</a>&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="a00025_source.html">freqtab.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00027_source.html">freqtab_element.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00013_source.html">codetab.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00015_source.html">codetab_element.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00031_source.html">htree_element.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00033_source.html">htree_leaf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00035_source.html">htree_node.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00041_source.html">pqueue.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00021_source.html">debug_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00023_source.html">error_handler.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für htree.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00061.png" border="0" usemap="#src_2htree_8c" alt=""/></div>
+<map name="src_2htree_8c" id="src_2htree_8c">
+<area shape="rect" id="node2" href="a00029.html" title="htree.h" alt="" coords="930,80,998,107"/><area shape="rect" id="node4" href="a00025.html" title="freqtab.h" alt="" coords="456,155,536,181"/><area shape="rect" id="node6" href="a00027.html" title="freqtab_element.h" alt="" coords="349,229,489,256"/><area shape="rect" id="node7" href="a00013.html" title="codetab.h" alt="" coords="918,155,1005,181"/><area shape="rect" id="node8" href="a00015.html" title="codetab_element.h" alt="" coords="968,229,1115,256"/><area shape="rect" id="node11" href="a00031.html" title="htree_element.h" alt="" coords="136,229,264,256"/><area shape="rect" id="node12" href="a00033.html" title="htree_leaf.h" alt="" coords="663,80,761,107"/><area shape="rect" id="node13" href="a00035.html" title="htree_node.h" alt="" coords="5,155,112,181"/><area shape="rect" id="node14" href="a00041.html" title="pqueue.h" alt="" coords="216,80,299,107"/><area shape="rect" id="node16" href="a00021.html" title="debug_common.h" alt="" coords="560,155,699,181"/><area shape="rect" id="node17" href="a00023.html" title="error_handler.h" alt="" coords="785,80,905,107"/><area shape="rect" id="node15" href="a00043.html" title="pqueue_element.h" alt="" coords="238,155,381,181"/><area shape="rect" id="node18" href="a00039.html" title="parameterlist.h" alt="" coords="723,155,843,181"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datenstrukturen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html">S_HTREE</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:ada07138c9cb56d59a07aec0668c1b9af"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af">htree_prep_codetab_element</a> (<a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *htree)</td></tr>
+<tr class="separator:ada07138c9cb56d59a07aec0668c1b9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea45cbde07f3058e8cbff3fd74ace6da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#aea45cbde07f3058e8cbff3fd74ace6da">create_htree_from_freqtab</a> (<a class="el" href="a00025.html#ae5065a2bb09927111182404317eafd61">FREQTAB</a> *freqtab)</td></tr>
+<tr class="separator:aea45cbde07f3058e8cbff3fd74ace6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d8fe7405c27841a1d89359b56c7d4f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#a8d8fe7405c27841a1d89359b56c7d4f1">create_htree_from_codetab</a> (<a class="el" href="a00013.html#a1ae7c26633f0d7cd30dd4640dbe996df">CODETAB</a> *codetab)</td></tr>
+<tr class="separator:a8d8fe7405c27841a1d89359b56c7d4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25cec85e53d378b67a9d5c40688117e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#a25cec85e53d378b67a9d5c40688117e4">delete_htree</a> (<a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> **htree)</td></tr>
+<tr class="separator:a25cec85e53d378b67a9d5c40688117e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eaaae906b4df85c073fb13eebe0ab7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00015.html#ae7ae5fbd69758016286d617a92ae1ed3">CODETAB_ELEMENT</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#a8eaaae906b4df85c073fb13eebe0ab7d">htree_get_codetab_element</a> (<a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *htree)</td></tr>
+<tr class="separator:a8eaaae906b4df85c073fb13eebe0ab7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f709127d63b904a92b21673b6f3f67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#ab0f709127d63b904a92b21673b6f3f67">htree_is_empty</a> (<a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *htree)</td></tr>
+<tr class="separator:ab0f709127d63b904a92b21673b6f3f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a187e9754d66965d174d56a3954a64e4b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#a187e9754d66965d174d56a3954a64e4b">htree_search_char</a> (<a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *htree, bool bit)</td></tr>
+<tr class="separator:a187e9754d66965d174d56a3954a64e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae98eb2c165b76efca527ce4b9a73d355"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#ae98eb2c165b76efca527ce4b9a73d355">htree_get_char</a> (<a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *htree)</td></tr>
+<tr class="separator:ae98eb2c165b76efca527ce4b9a73d355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d4d56163df19f384fad2b28f214c2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html#a9d4d56163df19f384fad2b28f214c2c5">htree_print</a> (<a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *htree)</td></tr>
+<tr class="separator:a9d4d56163df19f384fad2b28f214c2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a class="anchor" id="a8d8fe7405c27841a1d89359b56c7d4f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a>* create_htree_from_codetab </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00013.html#a1ae7c26633f0d7cd30dd4640dbe996df">CODETAB</a> *&#160;</td>
+          <td class="paramname"><em>codetab</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion erstellt einen Huffman-Baum auf dem Heap aus einer übergebenen Code-Tabelle und liefert einen Zeiger auf diesen neu erstellten Huffman-Baum zurück.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">codetab</td><td>Zeiger auf Code-Tabelle aus der der Huffman-Baum erstellt wird </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf den neu erstellten Huffman-Baum </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a8d8fe7405c27841a1d89359b56c7d4f1_cgraph.png" border="0" usemap="#a00028_a8d8fe7405c27841a1d89359b56c7d4f1_cgraph" alt=""/></div>
+<map name="a00028_a8d8fe7405c27841a1d89359b56c7d4f1_cgraph" id="a00028_a8d8fe7405c27841a1d89359b56c7d4f1_cgraph">
+<area shape="rect" id="node2" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="770,150,929,191"/><area shape="rect" id="node6" href="a00030.html#ab5416e84d3c3e4047a3af04d7408f642" title="create_htree_element" alt="" coords="519,81,683,108"/><area shape="rect" id="node7" href="a00034.html#a4892e72b199218a6d999447053667f6b" title="create_htree_node" alt="" coords="281,140,423,167"/><area shape="rect" id="node8" href="a00012.html#a7d1d15fcda93fb7eb33cb007d34e501c" title="codetab_is_empty" alt="" coords="283,723,421,749"/><area shape="rect" id="node9" href="a00012.html#ae5424ffba2b96b21d7251927fe8f43d5" title="codetab_get_element" alt="" coords="271,773,433,800"/><area shape="rect" id="node12" href="a00014.html#afbdd9a7fe06fee5d981ef9bcadb50cce" title="codetab_element_get\l_code_length" alt="" coords="271,825,433,866"/><area shape="rect" id="node13" href="a00030.html#a495bebdb29b72d595cec5a48659cd72e" title="htree_element_is_leaf" alt="" coords="519,233,682,260"/><area shape="rect" id="node14" href="a00014.html#a0825b0d92fb8427afbd1b2d800249706" title="codetab_element_is\l_bit_set" alt="" coords="277,890,427,931"/><area shape="rect" id="node15" href="a00034.html#abd95c9da13d9c92e71958ffe5854facf" title="htree_node_has_right" alt="" coords="520,284,681,311"/><area shape="rect" id="node17" href="a00030.html#a513da6bba1e7853e80b53625f1aed341" title="htree_element_get_element" alt="" coords="499,639,703,665"/><area shape="rect" id="node18" href="a00034.html#a7fc9abfba8635946ad154eb2365aa879" title="htree_node_set_right" alt="" coords="273,956,431,983"/><area shape="rect" id="node19" href="a00034.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="521,689,680,716"/><area shape="rect" id="node20" href="a00034.html#a9152e9bc0a65cc62dfbe24c15a0c8418" title="htree_node_has_left" alt="" coords="525,588,677,615"/><area shape="rect" id="node21" href="a00034.html#acf6e0af230c9497d5a9df76e54ec0b78" title="htree_node_set_left" alt="" coords="277,1007,427,1033"/><area shape="rect" id="node22" href="a00034.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="525,740,676,767"/><area shape="rect" id="node23" href="a00032.html#a5caed3cb3a8f640a79eba49cf070d26e" title="create_htree_leaf" alt="" coords="285,203,419,229"/><area shape="rect" id="node24" href="a00014.html#a545241c18626592152f5693700448a3c" title="codetab_element_get_char" alt="" coords="253,1057,451,1084"/><area shape="rect" id="node25" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="277,454,427,495"/><area shape="rect" id="node3" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="1001,85,1176,126"/><area shape="rect" id="node4" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="996,150,1181,191"/><area shape="rect" id="node5" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="996,215,1181,257"/><area shape="rect" id="node10" href="a00012.html#a0bececf3417e841020c54e193f0a3639" title="codetab_next_working\l_index" alt="" coords="519,791,683,833"/><area shape="rect" id="node11" href="a00012.html#a2894a6ad57b9d5f879801779296fa6cf" title="codetab_init_working\l_index" alt="" coords="772,791,927,833"/><area shape="rect" id="node16" href="a00030.html#ae6b6bb47280a59070dd750bb831d0fc0" title="htree_element_is_removed" alt="" coords="751,537,948,564"/><area shape="rect" id="node26" href="a00030.html#ab682e7b42c2a36bfa199fea2f66b8ab4" title="htree_element_remove" alt="" coords="515,335,687,361"/><area shape="rect" id="node27" href="a00014.html#ac48d64df3baef1ddcddd4b6a02093bca" title="create_codetab_element" alt="" coords="509,436,692,463"/><area shape="rect" id="node28" href="a00032.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="526,487,675,513"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a8d8fe7405c27841a1d89359b56c7d4f1_icgraph.png" border="0" usemap="#a00028_a8d8fe7405c27841a1d89359b56c7d4f1_icgraph" alt=""/></div>
+<map name="a00028_a8d8fe7405c27841a1d89359b56c7d4f1_icgraph" id="a00028_a8d8fe7405c27841a1d89359b56c7d4f1_icgraph">
+<area shape="rect" id="node2" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="253,5,355,32"/><area shape="rect" id="node3" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="403,5,457,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aea45cbde07f3058e8cbff3fd74ace6da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a>* create_htree_from_freqtab </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00025.html#ae5065a2bb09927111182404317eafd61">FREQTAB</a> *&#160;</td>
+          <td class="paramname"><em>freqtab</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion erstelle einen Huffman-Baum auf dem Heap aus einer übergebenen Häufigkeits-Tabelle und liefert einen Zeiger auf diesen neu erstellte Huffman-Baum zurück.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">freqtab</td><td>Zeiger auf Häufigkeits-Tabelle aus der der Huffman-Baum erstellt wird </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf den neu erstellten Huffman-Baum </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_aea45cbde07f3058e8cbff3fd74ace6da_cgraph.png" border="0" usemap="#a00028_aea45cbde07f3058e8cbff3fd74ace6da_cgraph" alt=""/></div>
+<map name="a00028_aea45cbde07f3058e8cbff3fd74ace6da_cgraph" id="a00028_aea45cbde07f3058e8cbff3fd74ace6da_cgraph">
+<area shape="rect" id="node2" href="a00040.html#aec5ffcab9ae8b3fec485544740d677a1" title="create_pqueue" alt="" coords="287,79,405,106"/><area shape="rect" id="node3" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="763,217,922,259"/><area shape="rect" id="node7" href="a00040.html#af433509efb1c77888748394e935357d8" title="pqueue_get_number_of\l_entries" alt="" coords="259,867,433,908"/><area shape="rect" id="node8" href="a00024.html#a311ca0e7805965bec5e12b152cfd2156" title="freqtab_is_empty" alt="" coords="279,933,413,959"/><area shape="rect" id="node9" href="a00024.html#a78318d595d26bb726188bd6c120f68a5" title="freqtab_get_element" alt="" coords="268,983,424,1010"/><area shape="rect" id="node12" href="a00030.html#ab5416e84d3c3e4047a3af04d7408f642" title="create_htree_element" alt="" coords="264,142,428,169"/><area shape="rect" id="node13" href="a00032.html#a5caed3cb3a8f640a79eba49cf070d26e" title="create_htree_leaf" alt="" coords="279,218,413,245"/><area shape="rect" id="node14" href="a00026.html#ac53c27af531411fc0ddfeaf07d82b72a" title="freqtab_elememt_get_char" alt="" coords="248,1034,444,1061"/><area shape="rect" id="node15" href="a00040.html#a580c52815dfbdc603fb15e14c19bc5bd" title="pqueue_insert_htree\l_element" alt="" coords="269,529,423,571"/><area shape="rect" id="node19" href="a00042.html#a0a869ad58375f2c1561121b135353c3a" title="pqueue_element_get\l_weight" alt="" coords="1003,1028,1161,1069"/><area shape="rect" id="node21" href="a00026.html#a3bb7fcbc7046c171ab36eddfe12ead0f" title="freqtab_element_get\l_frequency" alt="" coords="268,1085,424,1127"/><area shape="rect" id="node22" href="a00040.html#a28c2cc55e83a303e60ea6b27a42958cc" title="pqueue_print" alt="" coords="541,1086,647,1113"/><area shape="rect" id="node24" href="a00040.html#a8d815b1a8b6d78981d815d84b42e1a06" title="pqueue_get_min_entry" alt="" coords="509,478,679,505"/><area shape="rect" id="node25" href="a00030.html#a099fc5584e6588c27e21e4342c0f06b3" title="merge_htree_elements" alt="" coords="260,275,432,302"/><area shape="rect" id="node27" href="a00042.html#a785da9032c3bca1c5ea1de56e73a4d42" title="pqueue_element_get\l_htree_element" alt="" coords="267,1151,425,1192"/><area shape="rect" id="node28" href="a00042.html#a163c7421d915a881986c776f42def452" title="delete_pqueue_element" alt="" coords="257,1217,435,1243"/><area shape="rect" id="node29" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="271,699,421,740"/><area shape="rect" id="node40" href="a00040.html#afe908e3ec8528038aacbd669b3ef0259" title="delete_pqueue" alt="" coords="287,1267,405,1294"/><area shape="rect" id="node4" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="995,152,1169,193"/><area shape="rect" id="node5" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="989,217,1175,259"/><area shape="rect" id="node6" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="989,283,1175,324"/><area shape="rect" id="node10" href="a00024.html#a10c6d4c45d027f70db40a5ddfd30dbd8" title="freqtab_next_working\l_index" alt="" coords="515,1137,673,1179"/><area shape="rect" id="node11" href="a00024.html#a4d7eaa9f91fdee003f3f24e316f224e8" title="freqtab_init_working\l_index" alt="" coords="768,1137,917,1179"/><area shape="rect" id="node16" href="a00042.html#a29c747a9e6f2ba708810a12d67e132c3" title="create_pqueue_element" alt="" coords="505,326,683,353"/><area shape="rect" id="node17" href="a00040.html#ab3e9d2f6941e9a40fc0d9466be41fe69" title="pqueue_build_heap" alt="" coords="521,529,667,555"/><area shape="rect" id="node18" href="a00040.html#a4a249da8500c637f2383b880dff08304" title="pqueue_heapify" alt="" coords="781,529,904,555"/><area shape="rect" id="node20" href="a00040.html#afa8ac4a0c4e3caebcafe016f039a192a" title="pqueue_swap" alt="" coords="1027,503,1137,530"/><area shape="rect" id="node23" href="a00040.html#a5adb13120022961255a86b6c7268d612" title="pqueue_print_element" alt="" coords="759,1086,926,1113"/><area shape="rect" id="node26" href="a00034.html#a4892e72b199218a6d999447053667f6b" title="create_htree_node" alt="" coords="523,275,665,302"/><area shape="rect" id="node30" href="a00030.html#a495bebdb29b72d595cec5a48659cd72e" title="htree_element_is_leaf" alt="" coords="513,833,675,859"/><area shape="rect" id="node31" href="a00030.html#ae6b6bb47280a59070dd750bb831d0fc0" title="htree_element_is_removed" alt="" coords="744,883,941,910"/><area shape="rect" id="node32" href="a00034.html#a9152e9bc0a65cc62dfbe24c15a0c8418" title="htree_node_has_left" alt="" coords="518,579,670,606"/><area shape="rect" id="node33" href="a00030.html#a513da6bba1e7853e80b53625f1aed341" title="htree_element_get_element" alt="" coords="492,934,696,961"/><area shape="rect" id="node34" href="a00034.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="519,630,669,657"/><area shape="rect" id="node35" href="a00034.html#abd95c9da13d9c92e71958ffe5854facf" title="htree_node_has_right" alt="" coords="513,883,675,910"/><area shape="rect" id="node36" href="a00034.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="515,681,673,707"/><area shape="rect" id="node37" href="a00030.html#ab682e7b42c2a36bfa199fea2f66b8ab4" title="htree_element_remove" alt="" coords="508,731,680,758"/><area shape="rect" id="node38" href="a00014.html#ac48d64df3baef1ddcddd4b6a02093bca" title="create_codetab_element" alt="" coords="503,427,685,454"/><area shape="rect" id="node39" href="a00032.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="519,782,669,809"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_aea45cbde07f3058e8cbff3fd74ace6da_icgraph.png" border="0" usemap="#a00028_aea45cbde07f3058e8cbff3fd74ace6da_icgraph" alt=""/></div>
+<map name="a00028_aea45cbde07f3058e8cbff3fd74ace6da_icgraph" id="a00028_aea45cbde07f3058e8cbff3fd74ace6da_icgraph">
+<area shape="rect" id="node2" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="248,5,333,32"/><area shape="rect" id="node3" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="381,5,436,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a25cec85e53d378b67a9d5c40688117e4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_htree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> **&#160;</td>
+          <td class="paramname"><em>htree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion löscht einen übergebenen Huffman-Baum vom Heap und gibt den Speicher wieder frei.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree</td><td>Zeiger auf die Adresse des Huffman-Baumes, der gelöscht werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a25cec85e53d378b67a9d5c40688117e4_icgraph.png" border="0" usemap="#a00028_a25cec85e53d378b67a9d5c40688117e4_icgraph" alt=""/></div>
+<map name="a00028_a25cec85e53d378b67a9d5c40688117e4_icgraph" id="a00028_a25cec85e53d378b67a9d5c40688117e4_icgraph">
+<area shape="rect" id="node2" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="164,5,249,32"/><area shape="rect" id="node4" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="156,56,257,83"/><area shape="rect" id="node3" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="305,31,360,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae98eb2c165b76efca527ce4b9a73d355"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char htree_get_char </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td>
+          <td class="paramname"><em>htree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion liefert das gesuchte Schriftzeichen, dass durch mehrmaliges Aufrufen der Funktion htree_search_char ermittelt aus dem übergebenen Baum wurde zurück.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree</td><td>Zeiger auf den Huffman-Baum, aus dem das Schriftzeichen zurückgeliefert werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>gesuchtes Schriftzeichen </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_ae98eb2c165b76efca527ce4b9a73d355_cgraph.png" border="0" usemap="#a00028_ae98eb2c165b76efca527ce4b9a73d355_cgraph" alt=""/></div>
+<map name="a00028_ae98eb2c165b76efca527ce4b9a73d355_cgraph" id="a00028_ae98eb2c165b76efca527ce4b9a73d355_cgraph">
+<area shape="rect" id="node2" href="a00032.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="199,5,349,32"/><area shape="rect" id="node3" href="a00030.html#a513da6bba1e7853e80b53625f1aed341" title="htree_element_get_element" alt="" coords="172,56,376,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_ae98eb2c165b76efca527ce4b9a73d355_icgraph.png" border="0" usemap="#a00028_ae98eb2c165b76efca527ce4b9a73d355_icgraph" alt=""/></div>
+<map name="a00028_ae98eb2c165b76efca527ce4b9a73d355_icgraph" id="a00028_ae98eb2c165b76efca527ce4b9a73d355_icgraph">
+<area shape="rect" id="node2" href="a00019.html#a010f973452095cfbc1a4622ee4f361a4" title="decode_content" alt="" coords="172,5,297,32"/><area shape="rect" id="node3" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="345,5,447,32"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="495,5,549,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8eaaae906b4df85c073fb13eebe0ab7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00015.html#ae7ae5fbd69758016286d617a92ae1ed3">CODETAB_ELEMENT</a>* htree_get_codetab_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td>
+          <td class="paramname"><em>htree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion entnimmt dem Hufmann-baum ein Blatt und erzeugt aus diesem ein Code-Tabellen-Element und liefert einen Zeiger auf das neu erstellte Code-Tabellen-element zurück. Das Schriftzeichen des neu erstellten Code-Tabellen-Elementes ist das Schriftzeichen des Blattes, der Code des Code-Tabellen-Elementes ergibt aus der Position des entnommenen Blattes innerhalb des Baumes.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree</td><td>Zeiger auf den Huffman-Baum dem ein Blatt entnommen wird, welches in Form eines Code-Tabellen-Elementes zurückgeliefert wird </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf neu erstelltes Code-Tabellen-Element </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a8eaaae906b4df85c073fb13eebe0ab7d_cgraph.png" border="0" usemap="#a00028_a8eaaae906b4df85c073fb13eebe0ab7d_cgraph" alt=""/></div>
+<map name="a00028_a8eaaae906b4df85c073fb13eebe0ab7d_cgraph" id="a00028_a8eaaae906b4df85c073fb13eebe0ab7d_cgraph">
+<area shape="rect" id="node2" href="a00030.html#ab682e7b42c2a36bfa199fea2f66b8ab4" title="htree_element_remove" alt="" coords="471,56,643,83"/><area shape="rect" id="node3" href="a00028.html#ab0f709127d63b904a92b21673b6f3f67" title="htree_is_empty" alt="" coords="271,5,392,32"/><area shape="rect" id="node5" href="a00028.html#ada07138c9cb56d59a07aec0668c1b9af" title="htree_prep_codetab\l_element" alt="" coords="256,277,407,318"/><area shape="rect" id="node4" href="a00030.html#ae6b6bb47280a59070dd750bb831d0fc0" title="htree_element_is_removed" alt="" coords="707,157,904,184"/><area shape="rect" id="node6" href="a00030.html#a495bebdb29b72d595cec5a48659cd72e" title="htree_element_is_leaf" alt="" coords="475,259,638,285"/><area shape="rect" id="node7" href="a00034.html#a9152e9bc0a65cc62dfbe24c15a0c8418" title="htree_node_has_left" alt="" coords="481,208,633,235"/><area shape="rect" id="node8" href="a00030.html#a513da6bba1e7853e80b53625f1aed341" title="htree_element_get_element" alt="" coords="455,360,659,387"/><area shape="rect" id="node9" href="a00034.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="481,411,632,437"/><area shape="rect" id="node10" href="a00034.html#abd95c9da13d9c92e71958ffe5854facf" title="htree_node_has_right" alt="" coords="476,309,637,336"/><area shape="rect" id="node11" href="a00034.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="477,512,636,539"/><area shape="rect" id="node12" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="726,505,885,546"/><area shape="rect" id="node16" href="a00014.html#ac48d64df3baef1ddcddd4b6a02093bca" title="create_codetab_element" alt="" coords="465,563,648,589"/><area shape="rect" id="node17" href="a00032.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="482,157,631,184"/><area shape="rect" id="node13" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="957,439,1132,481"/><area shape="rect" id="node14" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="952,505,1137,546"/><area shape="rect" id="node15" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="952,570,1137,611"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a8eaaae906b4df85c073fb13eebe0ab7d_icgraph.png" border="0" usemap="#a00028_a8eaaae906b4df85c073fb13eebe0ab7d_icgraph" alt=""/></div>
+<map name="a00028_a8eaaae906b4df85c073fb13eebe0ab7d_icgraph" id="a00028_a8eaaae906b4df85c073fb13eebe0ab7d_icgraph">
+<area shape="rect" id="node2" href="a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="256,5,379,32"/><area shape="rect" id="node3" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="427,5,512,32"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="560,5,615,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab0f709127d63b904a92b21673b6f3f67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool htree_is_empty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td>
+          <td class="paramname"><em>htree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion liefert einen Wahrheitswert zurück, der angibt, ob der übergebene Huffman-Baum noch Blätter besitzt oder leer ist.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree</td><td>Zeiger auf den Huffman-Baum, der abgefragt werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Wahrheitswert, der gangibt ob der Huffman-Baum leer ist bzw. keine Blätter mehr enthält (true = Huffman-Baum enthält KEINE Blätter (leer); false = Huffman-Baum enthält noch Blätter) </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_ab0f709127d63b904a92b21673b6f3f67_cgraph.png" border="0" usemap="#a00028_ab0f709127d63b904a92b21673b6f3f67_cgraph" alt=""/></div>
+<map name="a00028_ab0f709127d63b904a92b21673b6f3f67_cgraph" id="a00028_ab0f709127d63b904a92b21673b6f3f67_cgraph">
+<area shape="rect" id="node2" href="a00030.html#ae6b6bb47280a59070dd750bb831d0fc0" title="htree_element_is_removed" alt="" coords="175,5,372,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_ab0f709127d63b904a92b21673b6f3f67_icgraph.png" border="0" usemap="#a00028_ab0f709127d63b904a92b21673b6f3f67_icgraph" alt=""/></div>
+<map name="a00028_ab0f709127d63b904a92b21673b6f3f67_icgraph" id="a00028_ab0f709127d63b904a92b21673b6f3f67_icgraph">
+<area shape="rect" id="node2" href="a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="425,5,548,32"/><area shape="rect" id="node5" href="a00029.html#a8eaaae906b4df85c073fb13eebe0ab7d" title="htree_get_codetab_element" alt="" coords="175,31,377,57"/><area shape="rect" id="node3" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="596,5,681,32"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="729,5,784,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ada07138c9cb56d59a07aec0668c1b9af"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void htree_prep_codetab_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td>
+          <td class="paramname"><em>htree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Diese Funktion bereitet ein Code-Tabellen-Element für die Rückgabe durch die Funktion htree_get_codetab_element vor auf Basis eines Blattes des übergebenen Huffman-Baumes.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree</td><td>Zeiger auf den Huffman-Baum, dessen Blatt vorlage für das vorzubereitende Code-tabellen_element ist. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_ada07138c9cb56d59a07aec0668c1b9af_cgraph.png" border="0" usemap="#a00028_ada07138c9cb56d59a07aec0668c1b9af_cgraph" alt=""/></div>
+<map name="a00028_ada07138c9cb56d59a07aec0668c1b9af_cgraph" id="a00028_ada07138c9cb56d59a07aec0668c1b9af_cgraph">
+<area shape="rect" id="node2" href="a00030.html#a495bebdb29b72d595cec5a48659cd72e" title="htree_element_is_leaf" alt="" coords="225,5,387,32"/><area shape="rect" id="node3" href="a00030.html#ae6b6bb47280a59070dd750bb831d0fc0" title="htree_element_is_removed" alt="" coords="456,107,653,133"/><area shape="rect" id="node4" href="a00034.html#a9152e9bc0a65cc62dfbe24c15a0c8418" title="htree_node_has_left" alt="" coords="230,107,382,133"/><area shape="rect" id="node5" href="a00030.html#a513da6bba1e7853e80b53625f1aed341" title="htree_element_get_element" alt="" coords="204,157,408,184"/><area shape="rect" id="node6" href="a00034.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="231,208,381,235"/><area shape="rect" id="node7" href="a00034.html#abd95c9da13d9c92e71958ffe5854facf" title="htree_node_has_right" alt="" coords="225,259,387,285"/><area shape="rect" id="node8" href="a00034.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="227,309,385,336"/><area shape="rect" id="node9" href="a00030.html#ab682e7b42c2a36bfa199fea2f66b8ab4" title="htree_element_remove" alt="" coords="220,360,392,387"/><area shape="rect" id="node10" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="475,429,634,470"/><area shape="rect" id="node14" href="a00014.html#ac48d64df3baef1ddcddd4b6a02093bca" title="create_codetab_element" alt="" coords="215,461,397,488"/><area shape="rect" id="node15" href="a00032.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="231,512,381,539"/><area shape="rect" id="node11" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="707,363,881,405"/><area shape="rect" id="node12" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="701,429,887,470"/><area shape="rect" id="node13" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="701,494,887,535"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_ada07138c9cb56d59a07aec0668c1b9af_icgraph.png" border="0" usemap="#a00028_ada07138c9cb56d59a07aec0668c1b9af_icgraph" alt=""/></div>
+<map name="a00028_ada07138c9cb56d59a07aec0668c1b9af_icgraph" id="a00028_ada07138c9cb56d59a07aec0668c1b9af_icgraph">
+<area shape="rect" id="node2" href="a00029.html#aea45cbde07f3058e8cbff3fd74ace6da" title="create_htree_from_freqtab" alt="" coords="455,56,649,83"/><area shape="rect" id="node5" href="a00029.html#a8d8fe7405c27841a1d89359b56c7d4f1" title="create_htree_from_codetab" alt="" coords="205,107,405,133"/><area shape="rect" id="node7" href="a00029.html#a8eaaae906b4df85c073fb13eebe0ab7d" title="htree_get_codetab_element" alt="" coords="204,5,407,32"/><area shape="rect" id="node3" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="705,56,791,83"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="847,81,901,108"/><area shape="rect" id="node6" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="697,107,799,133"/><area shape="rect" id="node8" href="a00013.html#a12557de87cd681723362acd0b8754d0e" title="create_codetab" alt="" coords="491,5,613,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d4d56163df19f384fad2b28f214c2c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void htree_print </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td>
+          <td class="paramname"><em>htree</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion gibt den übergebene Huffman-Baum auf dem Bildschirm aus.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree</td><td>Zeiger auf den Huffman-Baum, der auf dem Bildschirm ausgegeben werden soll </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a9d4d56163df19f384fad2b28f214c2c5_cgraph.png" border="0" usemap="#a00028_a9d4d56163df19f384fad2b28f214c2c5_cgraph" alt=""/></div>
+<map name="a00028_a9d4d56163df19f384fad2b28f214c2c5_cgraph" id="a00028_a9d4d56163df19f384fad2b28f214c2c5_cgraph">
+<area shape="rect" id="node2" href="a00030.html#a5d5257d994edd491a1f5980d6be324d5" title="htree_element_print" alt="" coords="145,154,297,181"/><area shape="rect" id="node3" href="a00020.html#ab18aa439b705fb8af9916707c54aa479" title="convert_char" alt="" coords="372,78,477,105"/><area shape="rect" id="node8" href="a00032.html#a270aff97eae866703c58bab6ce91be87" title="htree_leaf_get_char" alt="" coords="350,129,499,155"/><area shape="rect" id="node9" href="a00034.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="349,179,500,206"/><area shape="rect" id="node10" href="a00034.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="345,230,504,257"/><area shape="rect" id="node4" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="552,71,711,112"/><area shape="rect" id="node5" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="764,5,939,47"/><area shape="rect" id="node6" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="759,71,944,112"/><area shape="rect" id="node7" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="759,136,944,177"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a9d4d56163df19f384fad2b28f214c2c5_icgraph.png" border="0" usemap="#a00028_a9d4d56163df19f384fad2b28f214c2c5_icgraph" alt=""/></div>
+<map name="a00028_a9d4d56163df19f384fad2b28f214c2c5_icgraph" id="a00028_a9d4d56163df19f384fad2b28f214c2c5_icgraph">
+<area shape="rect" id="node2" href="a00017.html#ac6a60b9afa6eb75f422b22a201068543" title="compress" alt="" coords="153,5,239,32"/><area shape="rect" id="node4" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="145,56,247,83"/><area shape="rect" id="node3" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="295,31,349,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a187e9754d66965d174d56a3954a64e4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool htree_search_char </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00029.html#aebe772fdbe97b363c9fe0e8527397b93">HTREE</a> *&#160;</td>
+          <td class="paramname"><em>htree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Diese Funktion sucht durch mehrmaliges Aufrufen bit für bit das passende Schriftzeichen für einen Code in dem übergebenen Huffman-Baum und liefert true zurück, wenn ein Schriftzeichen gefunden wurde.</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">htree</td><td>Zeiger auf den Huffman-Baum, indem nach dem Schriftzeichen gesucht werden soll </td></tr>
+    <tr><td class="paramname">bit</td><td>Bit des Codes des gesuchten Schriftzeichens </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Wahrheitswert, der angibt, ob bereits ein Schriftzeichen gefunden wurde (true = es wurde ein Schriftzeichen gefunden; false = es wurde bis jetzt noch kein Schriftzeichen gefunden, die Funktion muss mit weiteren Bits aufgerufen werden) </dd></dl>
+
+<p><div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a187e9754d66965d174d56a3954a64e4b_cgraph.png" border="0" usemap="#a00028_a187e9754d66965d174d56a3954a64e4b_cgraph" alt=""/></div>
+<map name="a00028_a187e9754d66965d174d56a3954a64e4b_cgraph" id="a00028_a187e9754d66965d174d56a3954a64e4b_cgraph">
+<area shape="rect" id="node2" href="a00030.html#a495bebdb29b72d595cec5a48659cd72e" title="htree_element_is_leaf" alt="" coords="215,19,378,46"/><area shape="rect" id="node3" href="a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="217,71,376,112"/><area shape="rect" id="node7" href="a00034.html#abd95c9da13d9c92e71958ffe5854facf" title="htree_node_has_right" alt="" coords="216,137,377,163"/><area shape="rect" id="node9" href="a00030.html#a513da6bba1e7853e80b53625f1aed341" title="htree_element_get_element" alt="" coords="195,187,399,214"/><area shape="rect" id="node10" href="a00034.html#a511d9691d6990863546876f55464c145" title="htree_node_get_right" alt="" coords="217,238,376,265"/><area shape="rect" id="node11" href="a00034.html#a9152e9bc0a65cc62dfbe24c15a0c8418" title="htree_node_has_left" alt="" coords="221,289,373,315"/><area shape="rect" id="node12" href="a00034.html#ab0e5e28853580161fcda3ad27d945ec2" title="htree_node_get_left" alt="" coords="221,339,372,366"/><area shape="rect" id="node4" href="a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="458,5,633,47"/><area shape="rect" id="node5" href="a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="453,71,638,112"/><area shape="rect" id="node6" href="a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="453,136,638,177"/><area shape="rect" id="node8" href="a00030.html#ae6b6bb47280a59070dd750bb831d0fc0" title="htree_element_is_removed" alt="" coords="447,245,644,271"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00028_a187e9754d66965d174d56a3954a64e4b_icgraph.png" border="0" usemap="#a00028_a187e9754d66965d174d56a3954a64e4b_icgraph" alt=""/></div>
+<map name="a00028_a187e9754d66965d174d56a3954a64e4b_icgraph" id="a00028_a187e9754d66965d174d56a3954a64e4b_icgraph">
+<area shape="rect" id="node2" href="a00019.html#a010f973452095cfbc1a4622ee4f361a4" title="decode_content" alt="" coords="195,5,320,32"/><area shape="rect" id="node3" href="a00017.html#a364d61e7cfc9833319f948f33dcaa47a" title="decompress" alt="" coords="368,5,469,32"/><area shape="rect" id="node4" href="a00036.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="517,5,572,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt am Die Mär 3 2015 11:03:30 von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

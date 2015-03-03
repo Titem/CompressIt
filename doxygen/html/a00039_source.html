@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>src/parameterlist.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Datenstrukturen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Dateien</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variablen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typdefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Aufzählungen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Aufzählungswerte</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Makrodefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Seiten</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">parameterlist.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="a00039.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef PARAMETERLIST_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define PARAMETERLIST_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * Typdefinitionen                                                          *</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91">   30</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a605159e8a4c32319fd69b5d151369d93">   35</a></span>&#160;    <a class="code" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a605159e8a4c32319fd69b5d151369d93">UNDEFINED</a>,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a1e26a051d7e266d3ce65586f43c1d45d">   40</a></span>&#160;    <a class="code" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a1e26a051d7e266d3ce65586f43c1d45d">COMPRESS</a>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a864a47c54f5c10b7ae5432711361cf5a">   45</a></span>&#160;    <a class="code" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a864a47c54f5c10b7ae5432711361cf5a">DECOMPRESS</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91ade349549a16f42932313f15b652447be">   50</a></span>&#160;    <a class="code" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91ade349549a16f42932313f15b652447be">MANPAGE</a></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}<a class="code" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91">RUN_MODE</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00039.html#aa7c453679b5c55d603a50f05d9e1f79e">   58</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00009.html">S_PARAMETERLIST</a> <a class="code" href="a00009.html">PARAMETERLIST</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * Header-Dateien                                                           *</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/* ======================================================================== *</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * Funktionsprototypen                                                      *</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> * ======================================================================== */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00009.html">PARAMETERLIST</a>* <a class="code" href="a00039.html#ae12119777cea381d510962f3c769757d">create_parameterlist</a>(<span class="keywordtype">char</span>** argv, <span class="keywordtype">int</span> argc);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="a00039.html#a39644a124e280f64784ed3ef8099b68e">delete_parameterlist</a>(<a class="code" href="a00009.html">PARAMETERLIST</a>** parameterlist);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91">RUN_MODE</a> <a class="code" href="a00039.html#ad99b6f6d560cc8640c0e1bd976fca09f">parameterlist_get_run_mode</a>(<a class="code" href="a00009.html">PARAMETERLIST</a>* parameterlist);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span>* <a class="code" href="a00039.html#a5ac8a5f356bcffe30004cbf07a2e024d">parameterlist_get_input_filename</a>(<a class="code" href="a00009.html">PARAMETERLIST</a>* parameterlist);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">extern</span> FILE* <a class="code" href="a00039.html#a915c16d79021ab89f10e3b6d03e960ed">parameterlist_get_input_stream</a>(<a class="code" href="a00009.html">PARAMETERLIST</a>* parameterlist);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span>* <a class="code" href="a00039.html#a2885fc23b5e50c977eae7646fb05dcab">parameterlist_get_output_filename</a>(<a class="code" href="a00009.html">PARAMETERLIST</a>* parameterlist);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">extern</span> FILE* <a class="code" href="a00039.html#afb3790852d225030fcec1197b52bce8a">parameterlist_get_output_stream</a>(<a class="code" href="a00009.html">PARAMETERLIST</a>* parameterlist);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* PARAMETERLIST_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="ttc" id="a00039_html_a8c551c1eb58ae69a51730eb254b93c91a864a47c54f5c10b7ae5432711361cf5a"><div class="ttname"><a href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a864a47c54f5c10b7ae5432711361cf5a">DECOMPRESS</a></div><div class="ttdef"><b>Definition:</b> parameterlist.h:45</div></div>
+<div class="ttc" id="a00039_html_a915c16d79021ab89f10e3b6d03e960ed"><div class="ttname"><a href="a00039.html#a915c16d79021ab89f10e3b6d03e960ed">parameterlist_get_input_stream</a></div><div class="ttdeci">FILE * parameterlist_get_input_stream(PARAMETERLIST *parameterlist)</div><div class="ttdef"><b>Definition:</b> parameterlist.c:328</div></div>
+<div class="ttc" id="a00039_html_a8c551c1eb58ae69a51730eb254b93c91a605159e8a4c32319fd69b5d151369d93"><div class="ttname"><a href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a605159e8a4c32319fd69b5d151369d93">UNDEFINED</a></div><div class="ttdef"><b>Definition:</b> parameterlist.h:35</div></div>
+<div class="ttc" id="a00039_html_a39644a124e280f64784ed3ef8099b68e"><div class="ttname"><a href="a00039.html#a39644a124e280f64784ed3ef8099b68e">delete_parameterlist</a></div><div class="ttdeci">void delete_parameterlist(PARAMETERLIST **parameterlist)</div><div class="ttdef"><b>Definition:</b> parameterlist.c:304</div></div>
+<div class="ttc" id="a00039_html_a8c551c1eb58ae69a51730eb254b93c91a1e26a051d7e266d3ce65586f43c1d45d"><div class="ttname"><a href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91a1e26a051d7e266d3ce65586f43c1d45d">COMPRESS</a></div><div class="ttdef"><b>Definition:</b> parameterlist.h:40</div></div>
+<div class="ttc" id="a00009_html"><div class="ttname"><a href="a00009.html">S_PARAMETERLIST</a></div><div class="ttdef"><b>Definition:</b> parameterlist.c:25</div></div>
+<div class="ttc" id="a00039_html_ad99b6f6d560cc8640c0e1bd976fca09f"><div class="ttname"><a href="a00039.html#ad99b6f6d560cc8640c0e1bd976fca09f">parameterlist_get_run_mode</a></div><div class="ttdeci">RUN_MODE parameterlist_get_run_mode(PARAMETERLIST *parameterlist)</div><div class="ttdef"><b>Definition:</b> parameterlist.c:314</div></div>
+<div class="ttc" id="a00039_html_a8c551c1eb58ae69a51730eb254b93c91"><div class="ttname"><a href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91">RUN_MODE</a></div><div class="ttdeci">RUN_MODE</div><div class="ttdef"><b>Definition:</b> parameterlist.h:30</div></div>
+<div class="ttc" id="a00039_html_a8c551c1eb58ae69a51730eb254b93c91ade349549a16f42932313f15b652447be"><div class="ttname"><a href="a00039.html#a8c551c1eb58ae69a51730eb254b93c91ade349549a16f42932313f15b652447be">MANPAGE</a></div><div class="ttdef"><b>Definition:</b> parameterlist.h:50</div></div>
+<div class="ttc" id="a00039_html_ae12119777cea381d510962f3c769757d"><div class="ttname"><a href="a00039.html#ae12119777cea381d510962f3c769757d">create_parameterlist</a></div><div class="ttdeci">PARAMETERLIST * create_parameterlist(char **argv, int argc)</div><div class="ttdef"><b>Definition:</b> parameterlist.c:139</div></div>
+<div class="ttc" id="a00039_html_afb3790852d225030fcec1197b52bce8a"><div class="ttname"><a href="a00039.html#afb3790852d225030fcec1197b52bce8a">parameterlist_get_output_stream</a></div><div class="ttdeci">FILE * parameterlist_get_output_stream(PARAMETERLIST *parameterlist)</div><div class="ttdef"><b>Definition:</b> parameterlist.c:342</div></div>
+<div class="ttc" id="a00039_html_a2885fc23b5e50c977eae7646fb05dcab"><div class="ttname"><a href="a00039.html#a2885fc23b5e50c977eae7646fb05dcab">parameterlist_get_output_filename</a></div><div class="ttdeci">char * parameterlist_get_output_filename(PARAMETERLIST *parameterlist)</div><div class="ttdef"><b>Definition:</b> parameterlist.c:335</div></div>
+<div class="ttc" id="a00039_html_a5ac8a5f356bcffe30004cbf07a2e024d"><div class="ttname"><a href="a00039.html#a5ac8a5f356bcffe30004cbf07a2e024d">parameterlist_get_input_filename</a></div><div class="ttdeci">char * parameterlist_get_input_filename(PARAMETERLIST *parameterlist)</div><div class="ttdef"><b>Definition:</b> parameterlist.c:321</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt am Die Mär 3 2015 11:03:28 von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

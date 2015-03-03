@@ -1,0 +1,9 @@
+<map id="freqtab_print" name="freqtab_print">
+<area shape="rect" id="node2" href="$a00020.html#ab18aa439b705fb8af9916707c54aa479" title="convert_char" alt="" coords="203,78,308,105"/>
+<area shape="rect" id="node7" href="$a00026.html#ac53c27af531411fc0ddfeaf07d82b72a" title="freqtab_elememt_get_char" alt="" coords="157,129,353,155"/>
+<area shape="rect" id="node8" href="$a00026.html#a3bb7fcbc7046c171ab36eddfe12ead0f" title="freqtab_element_get\l_frequency" alt="" coords="177,180,333,221"/>
+<area shape="rect" id="node3" href="$a00022.html#a15e7d4483f10015513c7b2f7f9df6408" title="error_handler_handle\l_error" alt="" coords="401,71,560,112"/>
+<area shape="rect" id="node4" href="$a00038.html#a5ac8a5f356bcffe30004cbf07a2e024d" title="parameterlist_get_input\l_filename" alt="" coords="613,5,788,47"/>
+<area shape="rect" id="node5" href="$a00038.html#a2885fc23b5e50c977eae7646fb05dcab" title="parameterlist_get_output\l_filename" alt="" coords="608,71,793,112"/>
+<area shape="rect" id="node6" href="$a00038.html#afb3790852d225030fcec1197b52bce8a" title="parameterlist_get_output\l_stream" alt="" coords="608,136,793,177"/>
+</map>
