@@ -97,6 +97,7 @@ int main(int argc, char** argv)
     default:
         error_handler_handle_error(UNKNOWN_ERROR, __FILE__, __LINE__);
     }
+    
 
     #ifdef TIME_MESSUREMENT
     /*Timer beenden*/

@@ -86,6 +86,13 @@
         "Beim Dekomprimieren ist aufgefallen, dass die Code-Tabelle der \n" \
         "Quell-Datei " Y " unvollstaendig ist!"
 
+#define MSG_INVALID_FILE_CODETAB_TO_LONG(X, Y) \
+        "Bei der Quell-Datei " X " handelt es sich entweder um keine \n" \
+        "gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n" \
+        "oder die Datei ist beschaedigt! \n\n" \
+        "Beim Dekomprimieren ist aufgefallen, dass die Code-Tabelle der \n" \
+        "Quell-Datei " Y " zu viele Element enthält!"
+
 #define MSG_INVALID_FILE_CONTENTLENGTH_UNREADABLE(X, Y) \
         "Bei der Quell-Datei " X " handelt es sich entweder um keine \n" \
         "gueltige Datei, die mit dieser Anwendung komprimiert wurde, \n" \

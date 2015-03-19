@@ -94,6 +94,11 @@ extern void error_handler_handle_error(ERROR error, char* file, int line)
                 parameterlist_get_input_filename(error_handler_param),
                 parameterlist_get_input_filename(error_handler_param));
         break;
+    case INVALID_FILE_CODETAB_TO_LONG:
+        fprintf(stderr, MSG_INVALID_FILE_CODETAB_TO_LONG("%s", "%s"),
+                parameterlist_get_input_filename(error_handler_param),
+                parameterlist_get_input_filename(error_handler_param));
+        break;
     case INVALID_FILE_CONTENTLENGTH_UNREADABLE:
         fprintf(stderr, MSG_INVALID_FILE_CONTENTLENGTH_UNREADABLE("%s", "%s"),
                 parameterlist_get_input_filename(error_handler_param),
