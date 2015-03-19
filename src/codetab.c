@@ -148,7 +148,8 @@ extern CODETAB* read_codetab(FILE* input_stream)
 
     if (new_codetab == NULL)
     {
-        error_handler_handle_error(CANT_ALLOCATE_MEMORY, __FILE__, __LINE__);
+        error_handler_handle_error(CANT_ALLOCATE_MEMORY, 
+                                   __FILE__, __LINE__);
     }
     
     new_codetab->length = 0;
@@ -167,6 +168,12 @@ extern CODETAB* read_codetab(FILE* input_stream)
             return new_codetab;
         }
         error_handler_handle_error(INVALID_FILE_CODETABLENGTH_UNREADABLE,
+                                   __FILE__, __LINE__);
+    }
+    
+    if (new_codetab->length > 256)
+    {
+        error_handler_handle_error(INVALID_FILE_CODETAB_TO_LONG, 
                                    __FILE__, __LINE__);
     }
 

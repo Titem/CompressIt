@@ -93,6 +93,11 @@ typedef enum
     INVALID_FILE_CODETAB_TO_SHORT,
             
     /** 
+     * Die Quell-Datei ist ungültig. Die Code-Tabelle ist zu lang.
+     */
+    INVALID_FILE_CODETAB_TO_LONG,
+            
+    /** 
      * Die Quell-Datei ist ungültig. Die Inhalts-Länge ist beschädigt.
      */
     INVALID_FILE_CONTENTLENGTH_UNREADABLE,
