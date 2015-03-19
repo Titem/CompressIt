@@ -125,6 +125,15 @@ extern void error_handler_handle_error(ERROR error, char* file, int line)
 
     fprintf(stderr, "\n\nModul: %s\nZeile: %d\n\n\n", file, line);
 
+    if (parameterlist_get_input_stream(error_handler_param) != NULL)
+    {
+        fclose(parameterlist_get_input_stream(error_handler_param));
+    }
+    if (parameterlist_get_output_stream(error_handler_param) != NULL)
+    {
+        fclose(parameterlist_get_output_stream(error_handler_param));
+    }
+    
     if (parameterlist_get_output_stream(error_handler_param) != NULL)
     {
         remove(parameterlist_get_output_filename(error_handler_param));

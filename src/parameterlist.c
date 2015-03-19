@@ -303,8 +303,15 @@ extern PARAMETERLIST* create_parameterlist(char** argv, int argc)
 
 extern void delete_parameterlist(PARAMETERLIST** parameterlist)
 {
-    //free((*parameterlist)->input_file);
-    //free((*parameterlist)->output_file);
+    if ((*parameterlist)->input_file != NULL)
+    {
+        fclose((*parameterlist)->input_file);
+    }
+    if ((*parameterlist)->output_file != NULL)
+    {
+        fclose((*parameterlist)->output_file);
+    }
+    
     free(*parameterlist);
     *parameterlist = NULL;
 }
