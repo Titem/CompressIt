@@ -86,11 +86,31 @@
     <Text Include="..\res\bibel.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\codetab.h" />
+    <ClInclude Include="..\src\codetab_element.h" />
+    <ClInclude Include="..\src\compressor.h" />
+    <ClInclude Include="..\src\content_coder.h" />
+    <ClInclude Include="..\src\debug_common.h" />
+    <ClInclude Include="..\src\error_handler.h" />
+    <ClInclude Include="..\src\freqtab.h" />
+    <ClInclude Include="..\src\freqtab_element.h" />
+    <ClInclude Include="..\src\htree.h" />
+    <ClInclude Include="..\src\htree_element.h" />
+    <ClInclude Include="..\src\htree_leaf.h" />
+    <ClInclude Include="..\src\htree_node.h" />
+    <ClInclude Include="..\src\messages_de.h" />
+    <ClInclude Include="..\src\parameterlist.h" />
+    <ClInclude Include="..\src\pqueue.h" />
+    <ClInclude Include="..\src\pqueue_element.h" />
+    <ClInclude Include="..\src\project.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\src\codetab.c" />
     <ClCompile Include="..\src\codetab_element.c" />
     <ClCompile Include="..\src\compressor.c" />
     <ClCompile Include="..\src\content_coder.c" />
-    <ClCompile Include="..\src\error.c" />
+    <ClCompile Include="..\src\debug_common.c" />
+    <ClCompile Include="..\src\error_handler.c" />
     <ClCompile Include="..\src\freqtab.c" />
     <ClCompile Include="..\src\freqtab_element.c" />
     <ClCompile Include="..\src\htree.c" />
@@ -98,25 +118,9 @@
     <ClCompile Include="..\src\htree_leaf.c" />
     <ClCompile Include="..\src\htree_node.c" />
     <ClCompile Include="..\src\main.c" />
+    <ClCompile Include="..\src\parameterlist.c" />
     <ClCompile Include="..\src\pqueue.c" />
     <ClCompile Include="..\src\pqueue_element.c" />
-    <ClCompile Include="..\src\properties.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\codetab.h" />
-    <ClInclude Include="..\src\codetab_element.h" />
-    <ClInclude Include="..\src\compressor.h" />
-    <ClInclude Include="..\src\content_coder.h" />
-    <ClInclude Include="..\src\error.h" />
-    <ClInclude Include="..\src\freqtab.h" />
-    <ClInclude Include="..\src\freqtab_element.h" />
-    <ClInclude Include="..\src\htree.h" />
-    <ClInclude Include="..\src\htree_element.h" />
-    <ClInclude Include="..\src\htree_leaf.h" />
-    <ClInclude Include="..\src\htree_node.h" />
-    <ClInclude Include="..\src\pqueue.h" />
-    <ClInclude Include="..\src\pqueue_element.h" />
-    <ClInclude Include="..\src\properties.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
